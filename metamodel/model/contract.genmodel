@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/lsi.us.es.mis.contract/src-gen" creationIcons="false"
+    editDirectory="/lsi.us.es.mis.contract.edit/src-gen" editorDirectory="/lsi.us.es.mis.contract.editor/src-gen"
+    modelPluginID="lsi.us.es.mis.contract" modelName="Contract" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>contract.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Contract" basePackage="lsi.us.es.mis" disposableProviderFactory="true"
+      ecorePackage="contract.ecore#/"/>
+</genmodel:GenModel>
