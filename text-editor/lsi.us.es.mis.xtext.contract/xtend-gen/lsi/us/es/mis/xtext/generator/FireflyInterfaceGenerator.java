@@ -6,6 +6,7 @@ package lsi.us.es.mis.xtext.generator;
 import lsi.us.es.mis.xtext.contract.Contract;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
@@ -28,41 +29,38 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
   }
   
   public String toFireflyInterface(final Contract contract) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field schema is undefined for the type Param"
-      + "\nThe method or field schema is undefined for the type Param"
-      + "\nThe method or field schema is undefined for the type Param"
-      + "\nThe method or field schema is undefined for the type Param"
-      + "\nThe method or field returns is undefined for the type Method"
-      + "\nThe method or field returns is undefined for the type Method"
-      + "\nThe method or field returns is undefined for the type Method"
-      + "\nThe method or field returns is undefined for the type Method"
-      + "\nThe method or field returns is undefined for the type Method"
-      + "\ntype cannot be resolved"
-      + "\ndetails cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\n?: cannot be resolved"
-      + "\ndetails cannot be resolved"
-      + "\ninternalType cannot be resolved"
-      + "\n?: cannot be resolved"
-      + "\ndetails cannot be resolved"
-      + "\nindexed cannot be resolved"
-      + "\n?: cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\nschema cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\nschema cannot be resolved"
-      + "\ndetails cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\n?: cannot be resolved"
-      + "\nschema cannot be resolved"
-      + "\ndetails cannot be resolved"
-      + "\ninternalType cannot be resolved"
-      + "\n?: cannot be resolved"
-      + "\nschema cannot be resolved"
-      + "\ndetails cannot be resolved"
-      + "\nindexed cannot be resolved"
-      + "\n?: cannot be resolved");
+    final String name = contract.getName();
+    final String version = contract.getVersion();
+    String methods = "";
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("{");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("\"name\": ");
+    _builder.append(name, "    ");
+    _builder.append(",");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("\"version\":  ");
+    _builder.append(version, "    ");
+    _builder.append(",");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("\"methods\": [");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append(methods, "        ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("],");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("\"events\": []");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final String interfaceCode = _builder.toString();
+    return interfaceCode;
   }
   
   public String getSolidityDataType(final String dataType) {
