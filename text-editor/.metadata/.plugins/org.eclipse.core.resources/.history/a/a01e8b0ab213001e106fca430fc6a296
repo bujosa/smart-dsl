@@ -1,0 +1,65 @@
+grammar lsi.us.es.mis.xtext.Contract with org.eclipse.xtext.common.Terminals
+
+generate contract "http://www.us.lsi/es/mis/xtext/Contract"
+
+Contract:
+	'Contract' name=ID
+	'{'
+		'version:' version = STRING
+		(elements+=Attribute)*
+	'}'
+;
+
+Attribute: 
+	'attribute' name=ID
+	'{'
+		'type:' type=DataType
+		(modifiable?='modifiable')?
+	'}'
+;
+
+Method: 
+	'method' name=ID
+	 '{'
+	 	('stateMutability:' statemutability=STRING)? 
+	 	('description:' description = STRING)? 
+	 	(variables+=(Param | Output))* 
+	 '}'
+;
+
+Event:
+	'event' name=ID
+	 '{'
+	 	'description:' description=STRING
+	 	(params+=Param)*
+	 '}'
+;
+
+Param:
+	'param' name=STRING
+	'{'
+		'schema:' schema=Schema
+	'}'
+;
+
+Output:
+	Param
+;
+
+Schema:
+	'{'
+		'type:' type=DataType
+		(details=Detail)?
+	'}'
+;
+
+Detail:
+	'{'
+		'type:' type=STRING
+		'internalType:' internalType=STRING
+		(indexed?='indexed')?
+	'}'
+;
+
+enum DataType:
+	INTEGER = 'integer' | STRING='string' | BOOLEAN='boolean' | OBJECT = 'object' | array = 'array';

@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: lsi.us.es.mis.xtext.contract
+Bundle-ManifestVersion: 2
+Bundle-Name: lsi.us.es.mis.xtext.contract
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: lsi.us.es.mis.xtext.contract; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: lsi.us.es.mis.xtext.contract,
+ lsi.us.es.mis.xtext.validation,
+ lsi.us.es.mis.xtext,
+ lsi.us.es.mis.xtext.services,
+ lsi.us.es.mis.xtext.serializer,
+ lsi.us.es.mis.xtext.contract.impl,
+ lsi.us.es.mis.xtext.parser.antlr,
+ lsi.us.es.mis.xtext.scoping,
+ lsi.us.es.mis.xtext.parser.antlr.internal,
+ lsi.us.es.mis.xtext.generator,
+ lsi.us.es.mis.xtext.contract.util
+Import-Package: org.apache.log4j
