@@ -12,6 +12,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -34,9 +35,12 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
     final String name = contract.getName();
     final String version = contract.getVersion();
     String methods = "";
+    int count = 0;
+    int max = ((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length;
     EList<Attribute> _attributes = contract.getAttributes();
     for (final Attribute attribute : _attributes) {
       {
+        count++;
         final String attributeName = attribute.getName();
         final String attributeType = attribute.getType().toString();
         boolean _isModifiable = attribute.isModifiable();
@@ -78,11 +82,11 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder_1.append("    ");
           _builder_1.append("\"returns\": {}");
           _builder_1.newLine();
-          _builder_1.append("}");
+          _builder_1.append("},");
           _builder_1.newLine();
           final String methodCode = _builder_1.toString();
           String _methods = methods;
-          methods = (_methods + (methodCode + ",\n"));
+          methods = (_methods + methodCode);
         }
         StringConcatenation _builder_2 = new StringConcatenation();
         _builder_2.append("{");
@@ -121,24 +125,29 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         _builder_2.append("    ");
         _builder_2.newLine();
         _builder_2.append("}");
-        _builder_2.newLine();
+        {
+          if ((count < max)) {
+            _builder_2.append(",");
+          }
+        }
+        _builder_2.newLineIfNotEmpty();
         final String methodCode_1 = _builder_2.toString();
         String _methods_1 = methods;
-        methods = (_methods_1 + (methodCode_1 + ",\n"));
+        methods = (_methods_1 + methodCode_1);
       }
     }
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("{");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("\"name\": ");
+    _builder.append("\"name\": \"");
     _builder.append(name, "    ");
-    _builder.append(",");
+    _builder.append("\",");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
-    _builder.append("\"version\":  ");
+    _builder.append("\"version\":  \"");
     _builder.append(version, "    ");
-    _builder.append(",");
+    _builder.append("\",");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("\"methods\": [");
@@ -177,10 +186,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder.append("\"type\": \"uint256\",");
           _builder.newLine();
           _builder.append("        ");
-          _builder.append("\"internalType\": \"uint256\",");
-          _builder.newLine();
-          _builder.append("        ");
-          _builder.append("\"indexed\": false");
+          _builder.append("\"internalType\": \"uint256\"");
           _builder.newLine();
           _builder.append("    ");
           _builder.append("}");
@@ -332,10 +338,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder.append("\"type\": \"uint256\",");
           _builder.newLine();
           _builder.append("        ");
-          _builder.append("\"internalType\": \"uint256\",");
-          _builder.newLine();
-          _builder.append("        ");
-          _builder.append("\"indexed\": false");
+          _builder.append("\"internalType\": \"uint256\"");
           _builder.newLine();
           _builder.append("    ");
           _builder.append("}");

@@ -27,7 +27,10 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    val version = contract.version
 	    
 	    var methods = ""
+	    var count = 0
+	    var max = contract.attributes.length()
 	    for (attribute : contract.attributes) {
+	    	count++
 	        val attributeName = attribute.name
 	        val attributeType = attribute.type.toString()
 	        
@@ -48,9 +51,9 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 			                «param»
 			            ],
 			            "returns": {}
-			        }
+			        },
 			        '''
-				 methods += methodCode + ",\n"
+				 methods += methodCode
 	        }
 	        
 	        // Get Method
@@ -66,16 +69,16 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	                "stateMutability": "viewable"
 	            }
 	            
-	        }
+	        }«IF count < max»,«ENDIF»
 	        '''
 	        
-	        methods += methodCode + ",\n"
+	        methods += methodCode
 	    }
 	    
 	    val interfaceCode = '''
 	    {
-	        "name": «name»,
-	        "version":  «version»,
+	        "name": "«name»",
+	        "version":  "«version»",
 	        "methods": [
 	            «methods»
 	        ],
@@ -96,8 +99,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
                     "type": "integer",
                     "details": {
                         "type": "uint256",
-                        "internalType": "uint256",
-                        "indexed": false
+                        "internalType": "uint256"
                     }
                 }
 	            '''
@@ -161,8 +163,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
                     "type": "integer",
                     "details": {
                         "type": "uint256",
-                        "internalType": "uint256",
-                        "indexed": false
+                        "internalType": "uint256"
                     }
                 }
 	            '''
