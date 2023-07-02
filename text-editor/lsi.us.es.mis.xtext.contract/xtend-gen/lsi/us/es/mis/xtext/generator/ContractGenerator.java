@@ -14,9 +14,13 @@ public class ContractGenerator extends AbstractGenerator {
   @Inject
   private HyperledgerGenerator genHyper;
   
+  @Inject
+  private FireflyInterfaceGenerator genFFI;
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     this.genSol.doGenerate(resource, fsa, context);
     this.genHyper.doGenerate(resource, fsa, context);
+    this.genFFI.doGenerate(resource, fsa, context);
   }
 }

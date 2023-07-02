@@ -22,122 +22,70 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 		fsa.generateFile(contract.name + ".json", toFireflyInterface(contract))
 	}
 	
-def String toFireflyInterface(Contract contract) {
-    val name = contract.name
-    val version = contract.version
-    
-    var methods = ""
-    for (attribute : contract.attributes) {
-        val attributeName = attribute.name
-        val attributeType = attribute.type.toString()
-        
-        // Set Method
-        if (attribute.modifiable) {
-        	
-	        val param = '''
-		        {
-		            "name": "$paramName",
-		            "type": "$paramType",
-		            "schema": {
-		                "type": "$paramSchemaType",
-		                "details": {
-		                    "type": "$paramSchemaDetailsType",
-		                    "internalType": "$paramSchemaDetailsInternalType",
-		                    "indexed": $paramSchemaDetailsIndexed
-		                }
-		            }
-		        }
-		      '''
-		      
-		     val methodCode = '''
+	def String toFireflyInterface(Contract contract) {
+	    val name = contract.name
+	    val version = contract.version
+	    
+	    var methods = ""
+	    for (attribute : contract.attributes) {
+	        val attributeName = attribute.name
+	        val attributeType = attribute.type.toString()
+	        
+	        // Set Method
+	        if (attribute.modifiable) {
+		        val param = '''
 			        {
-			            "name": "$methodName",
-			            "description": "$methodDescription",
+			            "name": "_value",
+			            «getParamTypeForSolidity(attributeType)»
+			        }
+			      '''
+			      
+			     val methodCode = '''
+			        {
+			            "name": "set«capitalizeFirstLetter(attributeName)»",
+			            "description": "",
 			            "params": [
 			                «param»
 			            ],
-			            "returns": {
-			                "type": "$returnsType",
-			                "schema": {
-			                    "type": "$returnsSchemaType",
-			                    "details": {
-			                        "type": "$returnsSchemaDetailsType",
-			                        "internalType": "$returnsSchemaDetailsInternalType",
-			                        "indexed": $returnsSchemaDetailsIndexed
-			                    }
-			                }
-			            }
+			            "returns": {}
 			        }
 			        '''
-			 methods += methodCode + ",\n"
-        }
-        
-        // Get Method
-        val methodCode = '''
-        {
-            "name": "get«capitalizeFirstLetter(attributeName)»",
-            "description": "",
-            "params": [],
-            "returns": {
-                «getReturnTypeForSolidity(attributeType)»
-            },
-            "details": {
-                "stateMutability": "viewable"
-            }
-            
-        }
-        '''
-        
-        methods += methodCode + ",\n"
-    }
-    
-    val interfaceCode = '''
-    {
-        "name": «name»,
-        "version":  «version»,
-        "methods": [
-            «methods»
-        ],
-        "events": []
-    }
-    '''
-    
-    return interfaceCode
-}
-
-	def String getSolidityDataType(String dataType) {
-	    switch (dataType) {
-	        case "integer":
-	            return "uint256"
-	        case "string":
-	            return "string"
-	        case "boolean":
-	            return "bool"
-	        case "address":
-	            return "address"
-	        case "array":
-	            return "uint256[]"
-	        default:
-	            return "uint256"
+				 methods += methodCode + ",\n"
+	        }
+	        
+	        // Get Method
+	        val methodCode = '''
+	        {
+	            "name": "get«capitalizeFirstLetter(attributeName)»",
+	            "description": "",
+	            "params": [],
+	            "returns": {
+	                «getReturnTypeForSolidity(attributeType)»
+	            },
+	            "details": {
+	                "stateMutability": "viewable"
+	            }
+	            
+	        }
+	        '''
+	        
+	        methods += methodCode + ",\n"
 	    }
+	    
+	    val interfaceCode = '''
+	    {
+	        "name": «name»,
+	        "version":  «version»,
+	        "methods": [
+	            «methods»
+	        ],
+	        "events": []
+	    }
+	    '''
+	    
+	    return interfaceCode
 	}
 	
-	def String getSolidityDataTypeForFunction(String dataType) {
-		switch (dataType) {
-	        case "integer":
-	            return "uint256"
-	        case "string":
-	            return "string memory"
-	        case "boolean":
-	            return "bool"
-	        case "address":
-	            return "address"
-	        case "array":
-	            return "uint256[]"
-	        default:
-	            return "uint256"
-	    }
-	}
 	
 	def String getReturnTypeForSolidity(String dataType) {
 		switch (dataType) {
@@ -203,7 +151,72 @@ def String toFireflyInterface(Contract contract) {
 	            '''
 	    }
 	}
+	
+	
+	def String getParamTypeForSolidity(String dataType) {
+		switch (dataType) {
+	        case "integer":
+	            return '''
+                "schema": {
+                    "type": "integer",
+                    "details": {
+                        "type": "uint256",
+                        "internalType": "uint256",
+                        "indexed": false
+                    }
+                }
+	            '''
+	        case "string":
+	            return '''
+                "schema": {
+                    "type": "string",
+                    "details": {
+                        "type": "string memory",
+                        "internalType": "string memory"
+                    }
+                }
+	            '''
+	        case "boolean":
+	            return '''
+                "schema": {
+                    "type": "boolean"
+                }
+	            '''
+	        case "address":
+	            return '''
+                "schema": {
+                    "type": "address",
+                    "details": {
+                        "type": "address",
+                        "internalType": "address",
+                        "indexed": false
+                    }
+                }
+            	'''
+	        case "array":
+	            return '''
+                "schema": {
+                    "type": "array",
+                    "details": {
+                        "type": "uint256[]",
+                        "internalType": "uint256[]"
+                    }
+                }
+	            '''
+	        default:
+	            return '''
+                "schema": {
+                    "type": "integer",
+                    "details": {
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    }
+                }
+	            '''
+	    }
+	}
 
+	
 	def String capitalizeFirstLetter(String str) {
 	    return str.substring(0, 1).toUpperCase() + str.substring(1)
 	}

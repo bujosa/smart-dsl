@@ -45,35 +45,12 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder.append("{");
           _builder.newLine();
           _builder.append("    ");
-          _builder.append("\"name\": \"$paramName\",");
+          _builder.append("\"name\": \"_value\",");
           _builder.newLine();
           _builder.append("    ");
-          _builder.append("\"type\": \"$paramType\",");
-          _builder.newLine();
-          _builder.append("    ");
-          _builder.append("\"schema\": {");
-          _builder.newLine();
-          _builder.append("        ");
-          _builder.append("\"type\": \"$paramSchemaType\",");
-          _builder.newLine();
-          _builder.append("        ");
-          _builder.append("\"details\": {");
-          _builder.newLine();
-          _builder.append("            ");
-          _builder.append("\"type\": \"$paramSchemaDetailsType\",");
-          _builder.newLine();
-          _builder.append("            ");
-          _builder.append("\"internalType\": \"$paramSchemaDetailsInternalType\",");
-          _builder.newLine();
-          _builder.append("            ");
-          _builder.append("\"indexed\": $paramSchemaDetailsIndexed");
-          _builder.newLine();
-          _builder.append("        ");
-          _builder.append("}");
-          _builder.newLine();
-          _builder.append("    ");
-          _builder.append("}");
-          _builder.newLine();
+          String _paramTypeForSolidity = this.getParamTypeForSolidity(attributeType);
+          _builder.append(_paramTypeForSolidity, "    ");
+          _builder.newLineIfNotEmpty();
           _builder.append("}");
           _builder.newLine();
           final String param = _builder.toString();
@@ -81,10 +58,13 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder_1.append("{");
           _builder_1.newLine();
           _builder_1.append("    ");
-          _builder_1.append("\"name\": \"$methodName\",");
-          _builder_1.newLine();
+          _builder_1.append("\"name\": \"set");
+          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
+          _builder_1.append(_capitalizeFirstLetter, "    ");
+          _builder_1.append("\",");
+          _builder_1.newLineIfNotEmpty();
           _builder_1.append("    ");
-          _builder_1.append("\"description\": \"$methodDescription\",");
+          _builder_1.append("\"description\": \"\",");
           _builder_1.newLine();
           _builder_1.append("    ");
           _builder_1.append("\"params\": [");
@@ -96,37 +76,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder_1.append("],");
           _builder_1.newLine();
           _builder_1.append("    ");
-          _builder_1.append("\"returns\": {");
-          _builder_1.newLine();
-          _builder_1.append("        ");
-          _builder_1.append("\"type\": \"$returnsType\",");
-          _builder_1.newLine();
-          _builder_1.append("        ");
-          _builder_1.append("\"schema\": {");
-          _builder_1.newLine();
-          _builder_1.append("            ");
-          _builder_1.append("\"type\": \"$returnsSchemaType\",");
-          _builder_1.newLine();
-          _builder_1.append("            ");
-          _builder_1.append("\"details\": {");
-          _builder_1.newLine();
-          _builder_1.append("                ");
-          _builder_1.append("\"type\": \"$returnsSchemaDetailsType\",");
-          _builder_1.newLine();
-          _builder_1.append("                ");
-          _builder_1.append("\"internalType\": \"$returnsSchemaDetailsInternalType\",");
-          _builder_1.newLine();
-          _builder_1.append("                ");
-          _builder_1.append("\"indexed\": $returnsSchemaDetailsIndexed");
-          _builder_1.newLine();
-          _builder_1.append("            ");
-          _builder_1.append("}");
-          _builder_1.newLine();
-          _builder_1.append("        ");
-          _builder_1.append("}");
-          _builder_1.newLine();
-          _builder_1.append("    ");
-          _builder_1.append("}");
+          _builder_1.append("\"returns\": {}");
           _builder_1.newLine();
           _builder_1.append("}");
           _builder_1.newLine();
@@ -139,8 +89,8 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         _builder_2.newLine();
         _builder_2.append("    ");
         _builder_2.append("\"name\": \"get");
-        String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-        _builder_2.append(_capitalizeFirstLetter, "    ");
+        String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(attributeName);
+        _builder_2.append(_capitalizeFirstLetter_1, "    ");
         _builder_2.append("\",");
         _builder_2.newLineIfNotEmpty();
         _builder_2.append("    ");
@@ -206,48 +156,6 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
     _builder.newLine();
     final String interfaceCode = _builder.toString();
     return interfaceCode;
-  }
-  
-  public String getSolidityDataType(final String dataType) {
-    if (dataType != null) {
-      switch (dataType) {
-        case "integer":
-          return "uint256";
-        case "string":
-          return "string";
-        case "boolean":
-          return "bool";
-        case "address":
-          return "address";
-        case "array":
-          return "uint256[]";
-        default:
-          return "uint256";
-      }
-    } else {
-      return "uint256";
-    }
-  }
-  
-  public String getSolidityDataTypeForFunction(final String dataType) {
-    if (dataType != null) {
-      switch (dataType) {
-        case "integer":
-          return "uint256";
-        case "string":
-          return "string memory";
-        case "boolean":
-          return "bool";
-        case "address":
-          return "address";
-        case "array":
-          return "uint256[]";
-        default:
-          return "uint256";
-      }
-    } else {
-      return "uint256";
-    }
   }
   
   public String getReturnTypeForSolidity(final String dataType) {
@@ -384,6 +292,161 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
       StringConcatenation _builder_5 = new StringConcatenation();
       _builder_5.append("\"name\": \"output\",");
       _builder_5.newLine();
+      _builder_5.append("\"schema\": {");
+      _builder_5.newLine();
+      _builder_5.append("    ");
+      _builder_5.append("\"type\": \"integer\",");
+      _builder_5.newLine();
+      _builder_5.append("    ");
+      _builder_5.append("\"details\": {");
+      _builder_5.newLine();
+      _builder_5.append("        ");
+      _builder_5.append("\"type\": \"uint256\",");
+      _builder_5.newLine();
+      _builder_5.append("        ");
+      _builder_5.append("\"internalType\": \"uint256\"");
+      _builder_5.newLine();
+      _builder_5.append("    ");
+      _builder_5.append("}");
+      _builder_5.newLine();
+      _builder_5.append("}");
+      _builder_5.newLine();
+      return _builder_5.toString();
+    }
+  }
+  
+  public String getParamTypeForSolidity(final String dataType) {
+    if (dataType != null) {
+      switch (dataType) {
+        case "integer":
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("\"schema\": {");
+          _builder.newLine();
+          _builder.append("    ");
+          _builder.append("\"type\": \"integer\",");
+          _builder.newLine();
+          _builder.append("    ");
+          _builder.append("\"details\": {");
+          _builder.newLine();
+          _builder.append("        ");
+          _builder.append("\"type\": \"uint256\",");
+          _builder.newLine();
+          _builder.append("        ");
+          _builder.append("\"internalType\": \"uint256\",");
+          _builder.newLine();
+          _builder.append("        ");
+          _builder.append("\"indexed\": false");
+          _builder.newLine();
+          _builder.append("    ");
+          _builder.append("}");
+          _builder.newLine();
+          _builder.append("}");
+          _builder.newLine();
+          return _builder.toString();
+        case "string":
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("\"schema\": {");
+          _builder_1.newLine();
+          _builder_1.append("    ");
+          _builder_1.append("\"type\": \"string\",");
+          _builder_1.newLine();
+          _builder_1.append("    ");
+          _builder_1.append("\"details\": {");
+          _builder_1.newLine();
+          _builder_1.append("        ");
+          _builder_1.append("\"type\": \"string memory\",");
+          _builder_1.newLine();
+          _builder_1.append("        ");
+          _builder_1.append("\"internalType\": \"string memory\"");
+          _builder_1.newLine();
+          _builder_1.append("    ");
+          _builder_1.append("}");
+          _builder_1.newLine();
+          _builder_1.append("}");
+          _builder_1.newLine();
+          return _builder_1.toString();
+        case "boolean":
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("\"schema\": {");
+          _builder_2.newLine();
+          _builder_2.append("    ");
+          _builder_2.append("\"type\": \"boolean\"");
+          _builder_2.newLine();
+          _builder_2.append("}");
+          _builder_2.newLine();
+          return _builder_2.toString();
+        case "address":
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append("\"schema\": {");
+          _builder_3.newLine();
+          _builder_3.append("    ");
+          _builder_3.append("\"type\": \"address\",");
+          _builder_3.newLine();
+          _builder_3.append("    ");
+          _builder_3.append("\"details\": {");
+          _builder_3.newLine();
+          _builder_3.append("        ");
+          _builder_3.append("\"type\": \"address\",");
+          _builder_3.newLine();
+          _builder_3.append("        ");
+          _builder_3.append("\"internalType\": \"address\",");
+          _builder_3.newLine();
+          _builder_3.append("        ");
+          _builder_3.append("\"indexed\": false");
+          _builder_3.newLine();
+          _builder_3.append("    ");
+          _builder_3.append("}");
+          _builder_3.newLine();
+          _builder_3.append("}");
+          _builder_3.newLine();
+          return _builder_3.toString();
+        case "array":
+          StringConcatenation _builder_4 = new StringConcatenation();
+          _builder_4.append("\"schema\": {");
+          _builder_4.newLine();
+          _builder_4.append("    ");
+          _builder_4.append("\"type\": \"array\",");
+          _builder_4.newLine();
+          _builder_4.append("    ");
+          _builder_4.append("\"details\": {");
+          _builder_4.newLine();
+          _builder_4.append("        ");
+          _builder_4.append("\"type\": \"uint256[]\",");
+          _builder_4.newLine();
+          _builder_4.append("        ");
+          _builder_4.append("\"internalType\": \"uint256[]\"");
+          _builder_4.newLine();
+          _builder_4.append("    ");
+          _builder_4.append("}");
+          _builder_4.newLine();
+          _builder_4.append("}");
+          _builder_4.newLine();
+          return _builder_4.toString();
+        default:
+          StringConcatenation _builder_5 = new StringConcatenation();
+          _builder_5.append("\"schema\": {");
+          _builder_5.newLine();
+          _builder_5.append("    ");
+          _builder_5.append("\"type\": \"integer\",");
+          _builder_5.newLine();
+          _builder_5.append("    ");
+          _builder_5.append("\"details\": {");
+          _builder_5.newLine();
+          _builder_5.append("        ");
+          _builder_5.append("\"type\": \"uint256\",");
+          _builder_5.newLine();
+          _builder_5.append("        ");
+          _builder_5.append("\"internalType\": \"uint256\"");
+          _builder_5.newLine();
+          _builder_5.append("    ");
+          _builder_5.append("}");
+          _builder_5.newLine();
+          _builder_5.append("}");
+          _builder_5.newLine();
+          return _builder_5.toString();
+      }
+    } else {
+      StringConcatenation _builder_5 = new StringConcatenation();
       _builder_5.append("\"schema\": {");
       _builder_5.newLine();
       _builder_5.append("    ");

@@ -11,9 +11,11 @@ class ContractGenerator extends AbstractGenerator {
 
 	@Inject SolidityGenerator genSol
 	@Inject HyperledgerGenerator genHyper
+	@Inject FireflyInterfaceGenerator genFFI
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	    genSol.doGenerate(resource, fsa, context);
 	    genHyper.doGenerate(resource, fsa, context);
+	    genFFI.doGenerate(resource, fsa, context);
 	}
 }
 /* Author: David Bujosa */
