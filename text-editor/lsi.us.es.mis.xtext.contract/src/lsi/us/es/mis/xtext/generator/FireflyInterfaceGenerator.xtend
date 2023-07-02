@@ -27,63 +27,69 @@ def String toFireflyInterface(Contract contract) {
     val version = contract.version
     
     var methods = ""
-//    for (method : contract.methods) {
-//        val methodName = method.name
-//        val methodDescription = method.description ?: ""
-//        
-//        val params = method.params.map[p |
-//            val paramName = p.name
-//            val paramType = p.type
-//            val paramSchemaType = p.schema.type
-//            val paramSchemaDetailsType = p.schema.details.type ?: ""
-//            val paramSchemaDetailsInternalType = p.schema.details.internalType ?: ""
-//            val paramSchemaDetailsIndexed = p.schema.details.indexed ?: "false"
-//            
-//            '''
-//            {
-//                "name": "$paramName",
-//                "type": "$paramType",
-//                "schema": {
-//                    "type": "$paramSchemaType",
-//                    "details": {
-//                        "type": "$paramSchemaDetailsType",
-//                        "internalType": "$paramSchemaDetailsInternalType",
-//                        "indexed": $paramSchemaDetailsIndexed
-//                    }
-//                }
-//            }
-//            '''
-//        ].join(",\n")
-//        
-//        val returnsType = method.returns.type
-//        val returnsSchemaType = method.returns.schema.type
-//        val returnsSchemaDetailsType = method.returns.schema.details.type ?: ""
-//        val returnsSchemaDetailsInternalType = method.returns.schema.details.internalType ?: ""
-//        val returnsSchemaDetailsIndexed = method.returns.schema.details.indexed ?: "false"
-//        
-//        val methodCode = '''
-//        {
-//            "name": "$methodName",
-//            "description": "$methodDescription",
-//            "params": [
-//                $params
-//            ],
-//            "returns": {
-//                "type": "$returnsType",
-//                "schema": {
-//                    "type": "$returnsSchemaType",
-//                    "details": {
-//                        "type": "$returnsSchemaDetailsType",
-//                        "internalType": "$returnsSchemaDetailsInternalType",
-//                        "indexed": $returnsSchemaDetailsIndexed
-//                    }
-//                }
-//            }
-//        }
-//        '''
-//        
-//        methods += methodCode + ",\n"
-//    }
+    for (attribute : contract.attributes) {
+        val attributeName = attribute.name
+        val attributeType = attribute.type.toString()
+        
+        // Set Method
+        if (attribute.modifiable) {
+        	
+	        val param = '''
+		        {
+		            "name": "$paramName",
+		            "type": "$paramType",
+		            "schema": {
+		                "type": "$paramSchemaType",
+		                "details": {
+		                    "type": "$paramSchemaDetailsType",
+		                    "internalType": "$paramSchemaDetailsInternalType",
+		                    "indexed": $paramSchemaDetailsIndexed
+		                }
+		            }
+		        }
+		      '''
+		      
+		     val methodCode = '''
+			        {
+			            "name": "$methodName",
+			            "description": "$methodDescription",
+			            "params": [
+			                «param»
+			            ],
+			            "returns": {
+			                "type": "$returnsType",
+			                "schema": {
+			                    "type": "$returnsSchemaType",
+			                    "details": {
+			                        "type": "$returnsSchemaDetailsType",
+			                        "internalType": "$returnsSchemaDetailsInternalType",
+			                        "indexed": $returnsSchemaDetailsIndexed
+			                    }
+			                }
+			            }
+			        }
+			        '''
+			 methods += methodCode + ",\n"
+        }
+        
+        // Get Method
+        val methodCode = '''
+        {
+            "name": "get«capitalizeFirstLetter(attributeName)»",
+            "description": "",
+            "params": [],
+            "returns": {
+                «getReturnTypeForSolidity(attributeType)»
+            },
+            "details": {
+                "stateMutability": "viewable"
+            }
+            
+        }
+        '''
+        
+        methods += methodCode + ",\n"
+    }
     
     val interfaceCode = '''
     {
@@ -130,6 +136,71 @@ def String toFireflyInterface(Contract contract) {
 	            return "uint256[]"
 	        default:
 	            return "uint256"
+	    }
+	}
+	
+	def String getReturnTypeForSolidity(String dataType) {
+		switch (dataType) {
+	        case "integer":
+	            return '''
+                "name": "output",
+                "schema": {
+                    "type": "integer",
+                    "details": {
+                        "type": "uint256",
+                        "internalType": "uint256",
+                        "indexed": false
+                    }
+                }
+	            '''
+	        case "string":
+	            return '''
+                "name": "output",
+                "schema": {
+                    "type": "string"
+                }
+	            '''
+	        case "boolean":
+	            return '''
+                "name": "output",
+                "schema": {
+                    "type": "boolean"
+                }
+	            '''
+	        case "address":
+	            return '''
+                "name": "output",
+                "schema": {
+                    "type": "address",
+                    "details": {
+                        "type": "address",
+                        "internalType": "address",
+                        "indexed": false
+                    }
+                }
+            	'''
+	        case "array":
+	            return '''
+                "name": "output",
+                "schema": {
+                    "type": "array",
+                    "details": {
+                        "type": "uint256[]",
+                        "internalType": "uint256[]"
+                    }
+                }
+	            '''
+	        default:
+	            return '''
+                "name": "output",
+                "schema": {
+                    "type": "integer",
+                    "details": {
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    }
+                }
+	            '''
 	    }
 	}
 
