@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="contract" nsURI="http://www.example.org/contract" nsPrefix="contract">
+  <eClassifiers xsi:type="ecore:EClass" name="Contract" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="contractName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="v1.0.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ContractType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataType">
+    <eLiterals name="integer"/>
+    <eLiterals name="boolean" value="1"/>
+    <eLiterals name="string" value="2"/>
+    <eLiterals name="address" value="3" literal="address"/>
+    <eLiterals name="array" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifiable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ContractType">
+    <eLiterals name="general"/>
+    <eLiterals name="ERC20" value="1"/>
+    <eLiterals name="ERC721" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContractGeneral" eSuperTypes="#//Contract">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//Attribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ERC20" eSuperTypes="#//Contract">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tokenName" eType="#//DataType"
+        defaultValueLiteral="string"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbol" eType="#//DataType"
+        defaultValueLiteral="string"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalSupply" eType="#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="balanceOf" eType="#//DataType"
+        defaultValueLiteral="array"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//TransferEventERC20"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transfer" lowerBound="1"
+        eType="#//TransferERC20" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ERC721" eSuperTypes="#//Contract">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tokenName" eType="#//DataType"
+        defaultValueLiteral="string"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbol" eType="#//DataType"
+        defaultValueLiteral="string"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalSupply" eType="#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ownerOf" eType="#//DataType"
+        defaultValueLiteral="array"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ownedTokens" eType="#//DataType"
+        defaultValueLiteral="array"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transfer" lowerBound="1"
+        eType="#//TransferERC721" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mint" lowerBound="1" eType="#//MintERC721"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//TransferEventERC721"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TransferERC20">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transfer" eType="#//DataType"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransferEventERC20">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="#//DataType"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" eType="#//DataType"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransferERC721">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" eType="#//DataType"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tokenId" eType="#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MintERC721">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tokenId" eType="#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransferEventERC721">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="#//DataType"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" eType="#//DataType"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tokenId" eType="#//DataType"/>
+  </eClassifiers>
+</ecore:EPackage>
