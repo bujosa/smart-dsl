@@ -8,6 +8,8 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import lsi.us.es.mis.xtext.contract.Contract
+import java.util.List
+import lsi.us.es.mis.xtext.contract.Attribute
 
 /**
  * Generates code from your model files on save.
@@ -29,54 +31,63 @@ class SolidityGenerator extends AbstractGenerator {
 	    code.append("pragma solidity ^0.8.0;\n\n")
 	    code.append("contract " + contractName + " {\n")
 
-	    for (attribute : contract.attributes) {
+	    appendAttributes(contract.attributes, code)
+	    
+	    appendConstructor(contract.attributes, code)
+  
+    	appendAttributeFunctions(contract.attributes, code)
+	    
+	    code.append("}")
+	    return code.toString
+	}
+	
+	def appendAttributes(List<Attribute> attributes, StringBuilder code) {
+	    for (attribute : attributes) {
 	        val attributeName = attribute.name
 	        val attributeType = getSolidityDataType(attribute.type.toString)
-	        
-	        // Agrega la declaración del atributo
 	        code.append("\t"+ attributeType + " " + attributeName +";\n")
 	    }
 	    code.append("\n")
-    
-	    // Agrega el constructor
+	}
+	
+	def appendConstructor(List<Attribute> attributes, StringBuilder code) {
 	    code.append("\tconstructor(")
-	    for (attribute : contract.attributes) {
+	    for (attribute : attributes) {
 	        val attributeName = attribute.name
 	        val attributeType = getSolidityDataTypeForFunction(attribute.type.toString)
 	        
 	        code.append(attributeType + " _" + attributeName)
-	        if (attribute != contract.attributes.last) {
+	        if (attribute != attributes.last) {
 	            code.append(", ")
 	        }
 	    }
 	    
 	    code.append(") {\n")
-	    for (attribute : contract.attributes) {
+	    for (attribute : attributes) {
 	        val attributeName = attribute.name
 	        code.append("\t\t" + attributeName + " = _" + attributeName +";\n")
 	    }
 	    code.append("\t}\n\n")
-    
-    	// Genera las funciones de set y get
-	    for (attribute : contract.attributes) {
+	}
+	
+	def appendAttributeFunctions(List<Attribute> attributes, StringBuilder code) {
+	    for (attribute : attributes) {
 	        val attributeName = attribute.name
 	        val attributeType = getSolidityDataTypeForFunction(attribute.type.toString)
 	        
 	        if (attribute.modifiable) {
-		        code.append("\tfunction set" + capitalizeFirstLetter(attributeName)+ "("+ attributeType + " _value) public {\n")
-		        code.append("\t\t"+attributeName+" = _value;\n")
-		        code.append("\t}\n\n")
+	            code.append("\tfunction set" + capitalizeFirstLetter(attributeName)+ "("+ attributeType + " _value) public {\n")
+	            code.append("\t\t"+attributeName+" = _value;\n")
+	            code.append("\t}\n\n")
 	        }
 	        
 	        code.append("\tfunction get" + capitalizeFirstLetter(attributeName)+ "() public view returns (" +attributeType +") {\n")
 	        code.append("\t\treturn " + attributeName + ";\n")
 	        code.append("\t}\n\n")
 	    }
-	    
-	    code.append("}")
-	    return code.toString
 	}
-
+	
+	
 	def String getSolidityDataType(String dataType) {
 	    switch (dataType) {
 	        case "integer":

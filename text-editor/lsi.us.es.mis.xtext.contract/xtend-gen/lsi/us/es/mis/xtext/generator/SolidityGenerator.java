@@ -4,9 +4,9 @@
 package lsi.us.es.mis.xtext.generator;
 
 import com.google.common.base.Objects;
+import java.util.List;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
@@ -36,44 +36,62 @@ public class SolidityGenerator extends AbstractGenerator {
     code.append("// SPDX-License-Identifier: MIT\n");
     code.append("pragma solidity ^0.8.0;\n\n");
     code.append((("contract " + contractName) + " {\n"));
-    EList<Attribute> _attributes = contract.getAttributes();
-    for (final Attribute attribute : _attributes) {
-      {
-        final String attributeName = attribute.getName();
-        final String attributeType = this.getSolidityDataType(attribute.getType().toString());
-        code.append((((("\t" + attributeType) + " ") + attributeName) + ";\n"));
-      }
-    }
-    code.append("\n");
-    code.append("\tconstructor(");
-    EList<Attribute> _attributes_1 = contract.getAttributes();
-    for (final Attribute attribute_1 : _attributes_1) {
-      {
-        final String attributeName = attribute_1.getName();
-        final String attributeType = this.getSolidityDataTypeForFunction(attribute_1.getType().toString());
-        code.append(((attributeType + " _") + attributeName));
-        Attribute _last = IterableExtensions.<Attribute>last(contract.getAttributes());
-        boolean _notEquals = (!Objects.equal(attribute_1, _last));
-        if (_notEquals) {
-          code.append(", ");
+    this.appendAttributes(contract.getAttributes(), code);
+    this.appendConstructor(contract.getAttributes(), code);
+    this.appendAttributeFunctions(contract.getAttributes(), code);
+    code.append("}");
+    return code.toString();
+  }
+  
+  public StringBuilder appendAttributes(final List<Attribute> attributes, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      for (final Attribute attribute : attributes) {
+        {
+          final String attributeName = attribute.getName();
+          final String attributeType = this.getSolidityDataType(attribute.getType().toString());
+          code.append((((("\t" + attributeType) + " ") + attributeName) + ";\n"));
         }
       }
+      _xblockexpression = code.append("\n");
     }
-    code.append(") {\n");
-    EList<Attribute> _attributes_2 = contract.getAttributes();
-    for (final Attribute attribute_2 : _attributes_2) {
-      {
-        final String attributeName = attribute_2.getName();
-        code.append((((("\t\t" + attributeName) + " = _") + attributeName) + ";\n"));
+    return _xblockexpression;
+  }
+  
+  public StringBuilder appendConstructor(final List<Attribute> attributes, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      code.append("\tconstructor(");
+      for (final Attribute attribute : attributes) {
+        {
+          final String attributeName = attribute.getName();
+          final String attributeType = this.getSolidityDataTypeForFunction(attribute.getType().toString());
+          code.append(((attributeType + " _") + attributeName));
+          Attribute _last = IterableExtensions.<Attribute>last(attributes);
+          boolean _notEquals = (!Objects.equal(attribute, _last));
+          if (_notEquals) {
+            code.append(", ");
+          }
+        }
       }
+      code.append(") {\n");
+      for (final Attribute attribute_1 : attributes) {
+        {
+          final String attributeName = attribute_1.getName();
+          code.append((((("\t\t" + attributeName) + " = _") + attributeName) + ";\n"));
+        }
+      }
+      _xblockexpression = code.append("\t}\n\n");
     }
-    code.append("\t}\n\n");
-    EList<Attribute> _attributes_3 = contract.getAttributes();
-    for (final Attribute attribute_3 : _attributes_3) {
+    return _xblockexpression;
+  }
+  
+  public void appendAttributeFunctions(final List<Attribute> attributes, final StringBuilder code) {
+    for (final Attribute attribute : attributes) {
       {
-        final String attributeName = attribute_3.getName();
-        final String attributeType = this.getSolidityDataTypeForFunction(attribute_3.getType().toString());
-        boolean _isModifiable = attribute_3.isModifiable();
+        final String attributeName = attribute.getName();
+        final String attributeType = this.getSolidityDataTypeForFunction(attribute.getType().toString());
+        boolean _isModifiable = attribute.isModifiable();
         if (_isModifiable) {
           String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
           String _plus = ("\tfunction set" + _capitalizeFirstLetter);
@@ -94,8 +112,6 @@ public class SolidityGenerator extends AbstractGenerator {
         code.append("\t}\n\n");
       }
     }
-    code.append("}");
-    return code.toString();
   }
   
   public String getSolidityDataType(final String dataType) {
