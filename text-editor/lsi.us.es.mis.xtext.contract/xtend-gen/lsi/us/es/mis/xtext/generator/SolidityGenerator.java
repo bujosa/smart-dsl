@@ -7,6 +7,9 @@ import com.google.common.base.Objects;
 import java.util.List;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
+import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.Param;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
@@ -37,6 +40,7 @@ public class SolidityGenerator extends AbstractGenerator {
     code.append("pragma solidity ^0.8.0;\n\n");
     code.append((("contract " + contractName) + " {\n"));
     this.appendAttributes(contract.getAttributes(), code);
+    this.appendEvents(contract.getEvents(), code);
     this.appendConstructor(contract.getAttributes(), code);
     this.appendAttributeFunctions(contract.getAttributes(), code);
     code.append("}");
@@ -110,6 +114,36 @@ public class SolidityGenerator extends AbstractGenerator {
         code.append(_plus_7);
         code.append((("\t\treturn " + attributeName) + ";\n"));
         code.append("\t}\n\n");
+      }
+    }
+  }
+  
+  public void appendEvents(final List<Event> events, final StringBuilder code) {
+    for (final Event event : events) {
+      {
+        String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
+        String _plus = ("\tevent " + _capitalizeFirstLetter);
+        String _plus_1 = (_plus + "(");
+        code.append(_plus_1);
+        EList<Param> _params = event.getParams();
+        for (final Param param : _params) {
+          {
+            final String parameterName = param.getName();
+            final String parameterType = this.getSolidityDataTypeForFunction(param.getType().toString());
+            code.append(((parameterType + " ") + parameterName));
+            Param _last = IterableExtensions.<Param>last(event.getParams());
+            boolean _notEquals = (!Objects.equal(param, _last));
+            if (_notEquals) {
+              code.append(", ");
+            }
+          }
+        }
+        code.append(");\n");
+        Event _last = IterableExtensions.<Event>last(events);
+        boolean _equals = Objects.equal(event, _last);
+        if (_equals) {
+          code.append("\n");
+        }
       }
     }
   }

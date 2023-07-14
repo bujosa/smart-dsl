@@ -10,6 +10,7 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import lsi.us.es.mis.xtext.contract.Contract
 import java.util.List
 import lsi.us.es.mis.xtext.contract.Attribute
+import lsi.us.es.mis.xtext.contract.Event
 
 /**
  * Generates code from your model files on save.
@@ -32,6 +33,8 @@ class SolidityGenerator extends AbstractGenerator {
 	    code.append("contract " + contractName + " {\n")
 
 	    appendAttributes(contract.attributes, code)
+	    
+	    appendEvents(contract.events, code)
 	    
 	    appendConstructor(contract.attributes, code)
   
@@ -84,6 +87,27 @@ class SolidityGenerator extends AbstractGenerator {
 	        code.append("\tfunction get" + capitalizeFirstLetter(attributeName)+ "() public view returns (" +attributeType +") {\n")
 	        code.append("\t\treturn " + attributeName + ";\n")
 	        code.append("\t}\n\n")
+	    }
+	}
+	
+	def appendEvents(List<Event> events, StringBuilder code) {
+	    for (event : events) {
+	        code.append("\tevent " + capitalizeFirstLetter(event.name) + "(")
+	        for (param : event.params) {
+	            val parameterName = param.name
+	            val parameterType = getSolidityDataTypeForFunction(param.type.toString)
+	            
+	            code.append(parameterType + " " + parameterName)
+	            if (param != event.params.last) {
+	                code.append(", ")
+	            }
+	        }
+	        
+	        code.append(");\n")
+	        
+	        if (event == events.last){
+	        	code.append("\n")
+	        }
 	    }
 	}
 	
