@@ -34,19 +34,22 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cVersionKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cVersionAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cVersionSTRINGTerminalRuleCall_4_0 = (RuleCall)cVersionAssignment_4.eContents().get(0);
-		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
-		private final Assignment cAttributesAssignment_5_0 = (Assignment)cAlternatives_5.eContents().get(0);
-		private final RuleCall cAttributesAttributeParserRuleCall_5_0_0 = (RuleCall)cAttributesAssignment_5_0.eContents().get(0);
-		private final Assignment cEventsAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
-		private final RuleCall cEventsEventParserRuleCall_5_1_0 = (RuleCall)cEventsAssignment_5_1.eContents().get(0);
-		private final Assignment cMethodsAssignment_5_2 = (Assignment)cAlternatives_5.eContents().get(2);
-		private final RuleCall cMethodsMethodParserRuleCall_5_2_0 = (RuleCall)cMethodsAssignment_5_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cHasReceiveAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final Keyword cHasReceiveHasReceiveKeyword_5_0 = (Keyword)cHasReceiveAssignment_5.eContents().get(0);
+		private final Alternatives cAlternatives_6 = (Alternatives)cGroup.eContents().get(6);
+		private final Assignment cAttributesAssignment_6_0 = (Assignment)cAlternatives_6.eContents().get(0);
+		private final RuleCall cAttributesAttributeParserRuleCall_6_0_0 = (RuleCall)cAttributesAssignment_6_0.eContents().get(0);
+		private final Assignment cEventsAssignment_6_1 = (Assignment)cAlternatives_6.eContents().get(1);
+		private final RuleCall cEventsEventParserRuleCall_6_1_0 = (RuleCall)cEventsAssignment_6_1.eContents().get(0);
+		private final Assignment cMethodsAssignment_6_2 = (Assignment)cAlternatives_6.eContents().get(2);
+		private final RuleCall cMethodsMethodParserRuleCall_6_2_0 = (RuleCall)cMethodsAssignment_6_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Contract:
 		//    'Contract' name=ID
 		//    '{'
 		//        'version:' version = STRING
+		//        (hasReceive?='hasReceive')?
 		//        (attributes+=Attribute | events+=Event | methods+=Method)*
 		//    '}'
 		//;
@@ -55,6 +58,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'Contract' name=ID
 		//'{'
 		//    'version:' version = STRING
+		//    (hasReceive?='hasReceive')?
 		//    (attributes+=Attribute | events+=Event | methods+=Method)*
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -80,29 +84,35 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//STRING
 		public RuleCall getVersionSTRINGTerminalRuleCall_4_0() { return cVersionSTRINGTerminalRuleCall_4_0; }
 		
+		//(hasReceive?='hasReceive')?
+		public Assignment getHasReceiveAssignment_5() { return cHasReceiveAssignment_5; }
+		
+		//'hasReceive'
+		public Keyword getHasReceiveHasReceiveKeyword_5_0() { return cHasReceiveHasReceiveKeyword_5_0; }
+		
 		//(attributes+=Attribute | events+=Event | methods+=Method)*
-		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		public Alternatives getAlternatives_6() { return cAlternatives_6; }
 		
 		//attributes+=Attribute
-		public Assignment getAttributesAssignment_5_0() { return cAttributesAssignment_5_0; }
+		public Assignment getAttributesAssignment_6_0() { return cAttributesAssignment_6_0; }
 		
 		//Attribute
-		public RuleCall getAttributesAttributeParserRuleCall_5_0_0() { return cAttributesAttributeParserRuleCall_5_0_0; }
+		public RuleCall getAttributesAttributeParserRuleCall_6_0_0() { return cAttributesAttributeParserRuleCall_6_0_0; }
 		
 		//events+=Event
-		public Assignment getEventsAssignment_5_1() { return cEventsAssignment_5_1; }
+		public Assignment getEventsAssignment_6_1() { return cEventsAssignment_6_1; }
 		
 		//Event
-		public RuleCall getEventsEventParserRuleCall_5_1_0() { return cEventsEventParserRuleCall_5_1_0; }
+		public RuleCall getEventsEventParserRuleCall_6_1_0() { return cEventsEventParserRuleCall_6_1_0; }
 		
 		//methods+=Method
-		public Assignment getMethodsAssignment_5_2() { return cMethodsAssignment_5_2; }
+		public Assignment getMethodsAssignment_6_2() { return cMethodsAssignment_6_2; }
 		
 		//Method
-		public RuleCall getMethodsMethodParserRuleCall_5_2_0() { return cMethodsMethodParserRuleCall_5_2_0; }
+		public RuleCall getMethodsMethodParserRuleCall_6_2_0() { return cMethodsMethodParserRuleCall_6_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class AttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.Attribute");
@@ -530,6 +540,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//    'Contract' name=ID
 	//    '{'
 	//        'version:' version = STRING
+	//        (hasReceive?='hasReceive')?
 	//        (attributes+=Attribute | events+=Event | methods+=Method)*
 	//    '}'
 	//;

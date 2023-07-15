@@ -6,6 +6,7 @@ Contract:
 	'Contract' name=ID
 	'{'
 		'version:' version = STRING
+		(hasReceive?='hasReceive')?
 		(attributes+=Attribute | events+=Event | methods+=Method)*
 	'}'
 ;

@@ -87,13 +87,22 @@ public interface ContractPackage extends EPackage
   int CONTRACT__VERSION = 1;
 
   /**
+   * The feature id for the '<em><b>Has Receive</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTRACT__HAS_RECEIVE = 2;
+
+  /**
    * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTRACT__ATTRIBUTES = 2;
+  int CONTRACT__ATTRIBUTES = 3;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -102,7 +111,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTRACT__EVENTS = 3;
+  int CONTRACT__EVENTS = 4;
 
   /**
    * The feature id for the '<em><b>Methods</b></em>' containment reference list.
@@ -111,7 +120,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTRACT__METHODS = 4;
+  int CONTRACT__METHODS = 5;
 
   /**
    * The number of structural features of the '<em>Contract</em>' class.
@@ -120,7 +129,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTRACT_FEATURE_COUNT = 5;
+  int CONTRACT_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -394,6 +403,17 @@ public interface ContractPackage extends EPackage
    * @generated
    */
   EAttribute getContract_Version();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Contract#isHasReceive <em>Has Receive</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Receive</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Contract#isHasReceive()
+   * @see #getContract()
+   * @generated
+   */
+  EAttribute getContract_HasReceive();
 
   /**
    * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getAttributes <em>Attributes</em>}'.
@@ -701,6 +721,14 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EAttribute CONTRACT__VERSION = eINSTANCE.getContract_Version();
+
+    /**
+     * The meta object literal for the '<em><b>Has Receive</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTRACT__HAS_RECEIVE = eINSTANCE.getContract_HasReceive();
 
     /**
      * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.

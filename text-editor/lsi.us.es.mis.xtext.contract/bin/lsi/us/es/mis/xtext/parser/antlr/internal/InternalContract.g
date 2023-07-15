@@ -127,11 +127,25 @@ ruleContract returns [EObject current=null]
 		)
 		(
 			(
+				lv_hasReceive_5_0='hasReceive'
+				{
+					newLeafNode(lv_hasReceive_5_0, grammarAccess.getContractAccess().getHasReceiveHasReceiveKeyword_5_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getContractRule());
+					}
+					setWithLastConsumed($current, "hasReceive", lv_hasReceive_5_0 != null, "hasReceive");
+				}
+			)
+		)?
+		(
+			(
 				(
 					{
-						newCompositeNode(grammarAccess.getContractAccess().getAttributesAttributeParserRuleCall_5_0_0());
+						newCompositeNode(grammarAccess.getContractAccess().getAttributesAttributeParserRuleCall_6_0_0());
 					}
-					lv_attributes_5_0=ruleAttribute
+					lv_attributes_6_0=ruleAttribute
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getContractRule());
@@ -139,7 +153,7 @@ ruleContract returns [EObject current=null]
 						add(
 							$current,
 							"attributes",
-							lv_attributes_5_0,
+							lv_attributes_6_0,
 							"lsi.us.es.mis.xtext.Contract.Attribute");
 						afterParserOrEnumRuleCall();
 					}
@@ -149,9 +163,9 @@ ruleContract returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getContractAccess().getEventsEventParserRuleCall_5_1_0());
+						newCompositeNode(grammarAccess.getContractAccess().getEventsEventParserRuleCall_6_1_0());
 					}
-					lv_events_6_0=ruleEvent
+					lv_events_7_0=ruleEvent
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getContractRule());
@@ -159,7 +173,7 @@ ruleContract returns [EObject current=null]
 						add(
 							$current,
 							"events",
-							lv_events_6_0,
+							lv_events_7_0,
 							"lsi.us.es.mis.xtext.Contract.Event");
 						afterParserOrEnumRuleCall();
 					}
@@ -169,9 +183,9 @@ ruleContract returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getContractAccess().getMethodsMethodParserRuleCall_5_2_0());
+						newCompositeNode(grammarAccess.getContractAccess().getMethodsMethodParserRuleCall_6_2_0());
 					}
-					lv_methods_7_0=ruleMethod
+					lv_methods_8_0=ruleMethod
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getContractRule());
@@ -179,16 +193,16 @@ ruleContract returns [EObject current=null]
 						add(
 							$current,
 							"methods",
-							lv_methods_7_0,
+							lv_methods_8_0,
 							"lsi.us.es.mis.xtext.Contract.Method");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_8='}'
+		otherlv_9='}'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getContractAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_9, grammarAccess.getContractAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;

@@ -34,7 +34,7 @@ class SolidityGenerator extends AbstractGenerator {
 
 	    appendAttributes(contract.attributes, code)
 	    
-	    appendEvents(contract.events, code)
+	    appendEvents(contract, code)
 	    
 	    appendConstructor(contract.attributes, code)
   
@@ -90,7 +90,11 @@ class SolidityGenerator extends AbstractGenerator {
 	    }
 	}
 	
-	def appendEvents(List<Event> events, StringBuilder code) {
+	def appendEvents(Contract contract, StringBuilder code) {
+		val events = contract.events
+		
+		appendPaymentReceivedEvent(contract, code)
+		
 	    for (event : events) {
 	        code.append("\tevent " + capitalizeFirstLetter(event.name) + "(")
 	        for (param : event.params) {
@@ -111,6 +115,20 @@ class SolidityGenerator extends AbstractGenerator {
 	    }
 	}
 	
+	def appendReceiveFunction(StringBuilder code) {
+	    code.append("\treceive() external payable {\n")
+	    code.append("\t\temit PaymentReceived(msg.sender, msg.value);\n")
+	    code.append("\t}\n\n")
+	}
+	
+	def appendPaymentReceivedEvent(Contract contract, StringBuilder code) {
+		if (contract.hasReceive){
+			code.append("\tevent PaymentReceived(address sender, uint amount);\n")
+	    	if (contract.events.size == 0){
+	    		code.append("\n")
+	    	}
+		}
+	}
 	
 	def String getSolidityDataType(String dataType) {
 	    switch (dataType) {
@@ -149,6 +167,4 @@ class SolidityGenerator extends AbstractGenerator {
 	def String capitalizeFirstLetter(String str) {
 	    return str.substring(0, 1).toUpperCase() + str.substring(1)
 	}
-	
-	
 }

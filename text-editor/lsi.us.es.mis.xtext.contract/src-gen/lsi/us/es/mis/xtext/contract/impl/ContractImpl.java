@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getName <em>Name</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#isHasReceive <em>Has Receive</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getMethods <em>Methods</em>}</li>
@@ -83,6 +84,26 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @ordered
    */
   protected String version = VERSION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isHasReceive() <em>Has Receive</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasReceive()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_RECEIVE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasReceive() <em>Has Receive</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasReceive()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasReceive = HAS_RECEIVE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
@@ -191,6 +212,31 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @generated
    */
   @Override
+  public boolean isHasReceive()
+  {
+    return hasReceive;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setHasReceive(boolean newHasReceive)
+  {
+    boolean oldHasReceive = hasReceive;
+    hasReceive = newHasReceive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.CONTRACT__HAS_RECEIVE, oldHasReceive, hasReceive));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Attribute> getAttributes()
   {
     if (attributes == null)
@@ -264,6 +310,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return getName();
       case ContractPackage.CONTRACT__VERSION:
         return getVersion();
+      case ContractPackage.CONTRACT__HAS_RECEIVE:
+        return isHasReceive();
       case ContractPackage.CONTRACT__ATTRIBUTES:
         return getAttributes();
       case ContractPackage.CONTRACT__EVENTS:
@@ -290,6 +338,9 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return;
       case ContractPackage.CONTRACT__VERSION:
         setVersion((String)newValue);
+        return;
+      case ContractPackage.CONTRACT__HAS_RECEIVE:
+        setHasReceive((Boolean)newValue);
         return;
       case ContractPackage.CONTRACT__ATTRIBUTES:
         getAttributes().clear();
@@ -323,6 +374,9 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
       case ContractPackage.CONTRACT__VERSION:
         setVersion(VERSION_EDEFAULT);
         return;
+      case ContractPackage.CONTRACT__HAS_RECEIVE:
+        setHasReceive(HAS_RECEIVE_EDEFAULT);
+        return;
       case ContractPackage.CONTRACT__ATTRIBUTES:
         getAttributes().clear();
         return;
@@ -350,6 +404,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ContractPackage.CONTRACT__VERSION:
         return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+      case ContractPackage.CONTRACT__HAS_RECEIVE:
+        return hasReceive != HAS_RECEIVE_EDEFAULT;
       case ContractPackage.CONTRACT__ATTRIBUTES:
         return attributes != null && !attributes.isEmpty();
       case ContractPackage.CONTRACT__EVENTS:
@@ -375,6 +431,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
     result.append(name);
     result.append(", version: ");
     result.append(version);
+    result.append(", hasReceive: ");
+    result.append(hasReceive);
     result.append(')');
     return result.toString();
   }

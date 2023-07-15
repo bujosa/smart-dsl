@@ -16,6 +16,7 @@
     <genClasses ecoreClass="Contract.ecore#//Contract">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Contract/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Contract/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Contract/hasReceive"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/events"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/methods"/>

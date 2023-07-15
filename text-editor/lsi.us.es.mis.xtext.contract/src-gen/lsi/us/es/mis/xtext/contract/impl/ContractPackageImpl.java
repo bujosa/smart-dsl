@@ -180,9 +180,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getContract_Attributes()
+  public EAttribute getContract_HasReceive()
   {
-    return (EReference)contractEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)contractEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -191,7 +191,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getContract_Events()
+  public EReference getContract_Attributes()
   {
     return (EReference)contractEClass.getEStructuralFeatures().get(3);
   }
@@ -202,9 +202,20 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getContract_Methods()
+  public EReference getContract_Events()
   {
     return (EReference)contractEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getContract_Methods()
+  {
+    return (EReference)contractEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -472,6 +483,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     contractEClass = createEClass(CONTRACT);
     createEAttribute(contractEClass, CONTRACT__NAME);
     createEAttribute(contractEClass, CONTRACT__VERSION);
+    createEAttribute(contractEClass, CONTRACT__HAS_RECEIVE);
     createEReference(contractEClass, CONTRACT__ATTRIBUTES);
     createEReference(contractEClass, CONTRACT__EVENTS);
     createEReference(contractEClass, CONTRACT__METHODS);
@@ -539,6 +551,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEClass(contractEClass, Contract.class, "Contract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getContract_Name(), ecorePackage.getEString(), "name", null, 0, 1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContract_Version(), ecorePackage.getEString(), "version", null, 0, 1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContract_HasReceive(), ecorePackage.getEBoolean(), "hasReceive", null, 0, 1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Events(), this.getEvent(), null, "events", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Methods(), this.getMethod(), null, "methods", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

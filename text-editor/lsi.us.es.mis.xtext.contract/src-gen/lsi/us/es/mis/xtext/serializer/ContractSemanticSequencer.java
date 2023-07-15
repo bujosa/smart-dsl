@@ -77,7 +77,7 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Contract returns Contract
 	 *
 	 * Constraint:
-	 *     (name=ID version=STRING (attributes+=Attribute | events+=Event | methods+=Method)*)
+	 *     (name=ID version=STRING hasReceive?='hasReceive'? (attributes+=Attribute | events+=Event | methods+=Method)*)
 	 */
 	protected void sequence_Contract(ISerializationContext context, Contract semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

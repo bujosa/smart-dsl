@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getName <em>Name</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getVersion <em>Version</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#isHasReceive <em>Has Receive</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getMethods <em>Methods</em>}</li>
@@ -72,6 +73,28 @@ public interface Contract extends EObject
    * @generated
    */
   void setVersion(String value);
+
+  /**
+   * Returns the value of the '<em><b>Has Receive</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Receive</em>' attribute.
+   * @see #setHasReceive(boolean)
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_HasReceive()
+   * @model
+   * @generated
+   */
+  boolean isHasReceive();
+
+  /**
+   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Contract#isHasReceive <em>Has Receive</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Receive</em>' attribute.
+   * @see #isHasReceive()
+   * @generated
+   */
+  void setHasReceive(boolean value);
 
   /**
    * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.

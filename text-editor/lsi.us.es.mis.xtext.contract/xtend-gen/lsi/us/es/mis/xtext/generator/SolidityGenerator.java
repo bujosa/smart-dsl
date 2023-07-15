@@ -40,7 +40,7 @@ public class SolidityGenerator extends AbstractGenerator {
     code.append("pragma solidity ^0.8.0;\n\n");
     code.append((("contract " + contractName) + " {\n"));
     this.appendAttributes(contract.getAttributes(), code);
-    this.appendEvents(contract.getEvents(), code);
+    this.appendEvents(contract, code);
     this.appendConstructor(contract.getAttributes(), code);
     this.appendAttributeFunctions(contract.getAttributes(), code);
     code.append("}");
@@ -118,7 +118,9 @@ public class SolidityGenerator extends AbstractGenerator {
     }
   }
   
-  public void appendEvents(final List<Event> events, final StringBuilder code) {
+  public void appendEvents(final Contract contract, final StringBuilder code) {
+    final EList<Event> events = contract.getEvents();
+    this.appendPaymentReceivedEvent(contract, code);
     for (final Event event : events) {
       {
         String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
@@ -146,6 +148,36 @@ public class SolidityGenerator extends AbstractGenerator {
         }
       }
     }
+  }
+  
+  public StringBuilder appendReceiveFunction(final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      code.append("\treceive() external payable {\n");
+      code.append("\t\temit PaymentReceived(msg.sender, msg.value);\n");
+      _xblockexpression = code.append("\t}\n\n");
+    }
+    return _xblockexpression;
+  }
+  
+  public StringBuilder appendPaymentReceivedEvent(final Contract contract, final StringBuilder code) {
+    StringBuilder _xifexpression = null;
+    boolean _isHasReceive = contract.isHasReceive();
+    if (_isHasReceive) {
+      StringBuilder _xblockexpression = null;
+      {
+        code.append("\tevent PaymentReceived(address sender, uint amount);\n");
+        StringBuilder _xifexpression_1 = null;
+        int _size = contract.getEvents().size();
+        boolean _equals = (_size == 0);
+        if (_equals) {
+          _xifexpression_1 = code.append("\n");
+        }
+        _xblockexpression = _xifexpression_1;
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
   }
   
   public String getSolidityDataType(final String dataType) {
