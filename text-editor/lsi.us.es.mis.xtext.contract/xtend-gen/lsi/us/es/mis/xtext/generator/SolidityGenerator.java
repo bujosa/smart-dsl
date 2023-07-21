@@ -41,6 +41,7 @@ public class SolidityGenerator extends AbstractGenerator {
     code.append((("contract " + contractName) + " {\n"));
     this.appendAttributes(contract.getAttributes(), code);
     this.appendEvents(contract, code);
+    this.appendModifiers(contract, code);
     this.appendConstructor(contract.getAttributes(), code);
     this.appendAttributeFunctions(contract.getAttributes(), code);
     code.append("}");
@@ -148,6 +149,10 @@ public class SolidityGenerator extends AbstractGenerator {
         }
       }
     }
+  }
+  
+  public Object appendModifiers(final Contract contract, final StringBuilder code) {
+    return null;
   }
   
   public StringBuilder appendReceiveFunction(final StringBuilder code) {

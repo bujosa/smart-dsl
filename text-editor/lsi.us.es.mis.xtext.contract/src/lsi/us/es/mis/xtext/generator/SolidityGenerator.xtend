@@ -36,6 +36,8 @@ class SolidityGenerator extends AbstractGenerator {
 	    
 	    appendEvents(contract, code)
 	    
+	    appendModifiers(contract, code)
+	    
 	    appendConstructor(contract.attributes, code)
   
     	appendAttributeFunctions(contract.attributes, code)
@@ -113,6 +115,10 @@ class SolidityGenerator extends AbstractGenerator {
 	        	code.append("\n")
 	        }
 	    }
+	}
+	
+	def appendModifiers(Contract contract, StringBuilder code) {
+		
 	}
 	
 	def appendReceiveFunction(StringBuilder code) {
