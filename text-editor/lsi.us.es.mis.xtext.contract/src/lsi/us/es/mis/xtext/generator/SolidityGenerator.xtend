@@ -7,10 +7,9 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import lsi.us.es.mis.xtext.contract.Contract
 import java.util.List
 import lsi.us.es.mis.xtext.contract.Attribute
-import lsi.us.es.mis.xtext.contract.Event
+import lsi.us.es.mis.xtext.contract.Contract
 
 /**
  * Generates code from your model files on save.
