@@ -155,6 +155,29 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    return methods		
 	}
 	
+	def appendPaymentReceivedEvent(Contract contract) {
+		var data = ""
+		if (contract.hasReceive){
+	        data += '''
+	        {
+	            "name": "PaymentReceived",
+	            "description": "This event is for notify when a payment was receive",
+	            "params": [
+	            	{
+	            		"name": "sender",
+	            		«getParamTypeForSolidity("address")»
+	            	},
+	            	{
+	            		"name": "amount",
+	            		«getParamTypeForSolidity("integer")»
+	            	}
+	            ],
+	            "details": {}
+	        }«IF contract.events.length() != 0»,«ENDIF»
+	        '''
+		}
+		return data
+	}
 	
 	def String getReturnTypeForSolidity(String dataType) {
 		switch (dataType) {

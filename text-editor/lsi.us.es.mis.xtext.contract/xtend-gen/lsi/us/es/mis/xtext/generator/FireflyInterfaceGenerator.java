@@ -284,6 +284,69 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
     return methods;
   }
   
+  public String appendPaymentReceivedEvent(final Contract contract) {
+    String data = "";
+    boolean _isHasReceive = contract.isHasReceive();
+    if (_isHasReceive) {
+      String _data = data;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("{");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"name\": \"PaymentReceived\",");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"description\": \"This event is for notify when a payment was receive\",");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"params\": [");
+      _builder.newLine();
+      _builder.append("    \t");
+      _builder.append("{");
+      _builder.newLine();
+      _builder.append("    \t\t");
+      _builder.append("\"name\": \"sender\",");
+      _builder.newLine();
+      _builder.append("    \t\t");
+      String _paramTypeForSolidity = this.getParamTypeForSolidity("address");
+      _builder.append(_paramTypeForSolidity, "    \t\t");
+      _builder.newLineIfNotEmpty();
+      _builder.append("    \t");
+      _builder.append("},");
+      _builder.newLine();
+      _builder.append("    \t");
+      _builder.append("{");
+      _builder.newLine();
+      _builder.append("    \t\t");
+      _builder.append("\"name\": \"amount\",");
+      _builder.newLine();
+      _builder.append("    \t\t");
+      String _paramTypeForSolidity_1 = this.getParamTypeForSolidity("integer");
+      _builder.append(_paramTypeForSolidity_1, "    \t\t");
+      _builder.newLineIfNotEmpty();
+      _builder.append("    \t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("],");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"details\": {}");
+      _builder.newLine();
+      _builder.append("}");
+      {
+        int _length = ((Object[])Conversions.unwrapArray(contract.getEvents(), Object.class)).length;
+        boolean _notEquals = (_length != 0);
+        if (_notEquals) {
+          _builder.append(",");
+        }
+      }
+      _builder.newLineIfNotEmpty();
+      data = (_data + _builder);
+    }
+    return data;
+  }
+  
   public String getReturnTypeForSolidity(final String dataType) {
     if (dataType != null) {
       switch (dataType) {
