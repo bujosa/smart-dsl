@@ -39,40 +39,31 @@ public class SolidityGenerator extends AbstractGenerator {
     code.append("// SPDX-License-Identifier: MIT\n");
     code.append("pragma solidity ^0.8.0;\n\n");
     code.append((("contract " + contractName) + " {\n"));
-    this.appendAttributes(contract.getAttributes(), code);
+    this.appendAttributes(contract, code);
     this.appendEvents(contract, code);
     this.appendModifiers(contract, code);
-    this.appendConstructor(contract.getAttributes(), code);
+    this.appendConstructor(contract, code);
     this.appendAttributeFunctions(contract.getAttributes(), code);
     code.append("}");
     return code.toString();
   }
   
-  public StringBuilder appendAttributes(final List<Attribute> attributes, final StringBuilder code) {
-    StringBuilder _xblockexpression = null;
-    {
-      for (final Attribute attribute : attributes) {
-        {
-          final String attributeName = attribute.getName();
-          final String attributeType = this.getSolidityDataType(attribute.getType().toString());
-          code.append((((("\t" + attributeType) + " ") + attributeName) + ";\n"));
-        }
-      }
-      _xblockexpression = code.append("\n");
-    }
-    return _xblockexpression;
+  public StringBuilder appendAttributes(final Contract contract, final StringBuilder code) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field ownership is undefined for the type Contract");
   }
   
-  public StringBuilder appendConstructor(final List<Attribute> attributes, final StringBuilder code) {
+  public StringBuilder appendConstructor(final Contract contract, final StringBuilder code) {
     StringBuilder _xblockexpression = null;
     {
       code.append("\tconstructor(");
-      for (final Attribute attribute : attributes) {
+      EList<Attribute> _attributes = contract.getAttributes();
+      for (final Attribute attribute : _attributes) {
         {
           final String attributeName = attribute.getName();
           final String attributeType = this.getSolidityDataTypeForFunction(attribute.getType().toString());
           code.append(((attributeType + " _") + attributeName));
-          Attribute _last = IterableExtensions.<Attribute>last(attributes);
+          Attribute _last = IterableExtensions.<Attribute>last(contract.getAttributes());
           boolean _notEquals = (!Objects.equal(attribute, _last));
           if (_notEquals) {
             code.append(", ");
@@ -80,7 +71,8 @@ public class SolidityGenerator extends AbstractGenerator {
         }
       }
       code.append(") {\n");
-      for (final Attribute attribute_1 : attributes) {
+      EList<Attribute> _attributes_1 = contract.getAttributes();
+      for (final Attribute attribute_1 : _attributes_1) {
         {
           final String attributeName = attribute_1.getName();
           code.append((((("\t\t" + attributeName) + " = _") + attributeName) + ";\n"));

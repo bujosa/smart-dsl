@@ -32,13 +32,13 @@ class SolidityGenerator extends AbstractGenerator {
 	    code.append("pragma solidity ^0.8.0;\n\n")
 	    code.append("contract " + contractName + " {\n")
 
-	    appendAttributes(contract.attributes, code)
+	    appendAttributes(contract, code)
 	    
 	    appendEvents(contract, code)
 	    
 	    appendModifiers(contract, code)
 	    
-	    appendConstructor(contract.attributes, code)
+	    appendConstructor(contract, code)
   
     	appendAttributeFunctions(contract.attributes, code)
 	    
@@ -46,8 +46,12 @@ class SolidityGenerator extends AbstractGenerator {
 	    return code.toString
 	}
 	
-	def appendAttributes(List<Attribute> attributes, StringBuilder code) {
-	    for (attribute : attributes) {
+	def appendAttributes(Contract contract, StringBuilder code) {
+		if (contract.ownership){
+			code.append("\t address owner;\n")
+		}
+		
+	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val attributeType = getSolidityDataType(attribute.type.toString)
 	        code.append("\t"+ attributeType + " " + attributeName +";\n")
@@ -55,20 +59,20 @@ class SolidityGenerator extends AbstractGenerator {
 	    code.append("\n")
 	}
 	
-	def appendConstructor(List<Attribute> attributes, StringBuilder code) {
+	def appendConstructor(Contract contract, StringBuilder code) {
 	    code.append("\tconstructor(")
-	    for (attribute : attributes) {
+	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val attributeType = getSolidityDataTypeForFunction(attribute.type.toString)
 	        
 	        code.append(attributeType + " _" + attributeName)
-	        if (attribute != attributes.last) {
+	        if (attribute != contract.attributes.last) {
 	            code.append(", ")
 	        }
 	    }
 	    
 	    code.append(") {\n")
-	    for (attribute : attributes) {
+	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        code.append("\t\t" + attributeName + " = _" + attributeName +";\n")
 	    }

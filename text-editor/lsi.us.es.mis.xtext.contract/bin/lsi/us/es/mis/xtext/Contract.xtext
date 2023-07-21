@@ -7,7 +7,8 @@ Contract:
 	'{'
 		'version:' version = STRING
 		(hasReceive?='hasReceive')?
-		(attributes+=Attribute | events+=Event | methods+=Method)*
+		(ownership?='ownership')?
+		(attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
 	'}'
 ;
 
@@ -15,10 +16,19 @@ Attribute:
 	(modifiable?='modifiable')? name=ID type=DataType 
 ;
 
+Modifier:
+	'Modifier' name=ID '(' (params+=Param (',' params+=Param)*)? ')' 
+	'{'
+		'message:' message = STRING
+		'validation:' validation = STRING
+	'}'
+;
+
 Method: 
 	'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 	 '{'
-	 	('description:' description = STRING)? 
+	 	('description:' description = STRING)?
+	 	(modifiers+=[Modifier] (',' modifiers+=[Modifier])*)? 
 	 '}'
 ;
 
