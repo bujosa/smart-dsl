@@ -67,7 +67,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
   public String defineEvents(final Contract contract) {
     int count = 0;
     int max = ((Object[])Conversions.unwrapArray(contract.getEvents(), Object.class)).length;
-    String events = "";
+    String events = this.appendPaymentReceivedEvent(contract);
     EList<Event> _events = contract.getEvents();
     for (final Event event : _events) {
       {
@@ -165,7 +165,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
   public String defineMethods(final Contract contract) {
     int count = 0;
     int max = ((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length;
-    String methods = "";
+    String methods = this.appendReceiveMethod(contract);
     EList<Attribute> _attributes = contract.getAttributes();
     for (final Attribute attribute : _attributes) {
       {
@@ -209,7 +209,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder_1.append("],");
           _builder_1.newLine();
           _builder_1.append("    ");
-          _builder_1.append("\"returns\": {}");
+          _builder_1.append("\"returns\": []");
           _builder_1.newLine();
           _builder_1.append("},");
           _builder_1.newLine();
@@ -233,14 +233,14 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         _builder_2.append("\"params\": [],");
         _builder_2.newLine();
         _builder_2.append("    ");
-        _builder_2.append("\"returns\": {");
+        _builder_2.append("\"returns\": [");
         _builder_2.newLine();
         _builder_2.append("        ");
         String _returnTypeForSolidity = this.getReturnTypeForSolidity(attributeType);
         _builder_2.append(_returnTypeForSolidity, "        ");
         _builder_2.newLineIfNotEmpty();
         _builder_2.append("    ");
-        _builder_2.append("},");
+        _builder_2.append("],");
         _builder_2.newLine();
         _builder_2.append("    ");
         _builder_2.append("\"details\": {");
@@ -250,8 +250,6 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         _builder_2.newLine();
         _builder_2.append("    ");
         _builder_2.append("}");
-        _builder_2.newLine();
-        _builder_2.append("    ");
         _builder_2.newLine();
         _builder_2.append("}");
         {
@@ -296,7 +294,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
       _builder.append("\"name\": \"PaymentReceived\",");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("\"description\": \"This event is for notify when a payment was receive\",");
+      _builder.append("\"description\": \"This event is for notify when a payment was received\",");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("\"params\": [");
@@ -338,6 +336,47 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         int _length = ((Object[])Conversions.unwrapArray(contract.getEvents(), Object.class)).length;
         boolean _notEquals = (_length != 0);
         if (_notEquals) {
+          _builder.append(",");
+        }
+      }
+      _builder.newLineIfNotEmpty();
+      data = (_data + _builder);
+    }
+    return data;
+  }
+  
+  public String appendReceiveMethod(final Contract contract) {
+    String data = "";
+    boolean _isHasReceive = contract.isHasReceive();
+    if (_isHasReceive) {
+      String _data = data;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("{");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"name\": \"receive\",");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"description\": \"This function is to receive payments to the smart contract\",");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"params\": [],");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"returns\": [],");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"details\": {");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("\"stateMutability\": \"payable\"");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      {
+        if (((((Object[])Conversions.unwrapArray(contract.getMethods(), Object.class)).length != 0) || (((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length != 0))) {
           _builder.append(",");
         }
       }

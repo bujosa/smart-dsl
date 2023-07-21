@@ -44,7 +44,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	def String defineEvents(Contract contract) {
 		var count = 0
 	    var max = contract.events.length()
-	    var events = ""
+	    var events = appendPaymentReceivedEvent(contract)
 	    
 	    for (event : contract.events) {
 	    	count++
@@ -93,7 +93,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	def String defineMethods(Contract contract) {
 		var count = 0
 	    var max = contract.attributes.length()
-	    var methods = ""
+	    var methods = appendReceiveMethod(contract)
 	    
 	    for (attribute : contract.attributes) {
 	    	
@@ -117,7 +117,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 			            "params": [
 			                «param»
 			            ],
-			            "returns": {}
+			            "returns": []
 			        },
 			        '''
 				 methods += methodCode
@@ -129,13 +129,12 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	            "name": "get«capitalizeFirstLetter(attributeName)»",
 	            "description": "",
 	            "params": [],
-	            "returns": {
+	            "returns": [
 	                «getReturnTypeForSolidity(attributeType)»
-	            },
+	            ],
 	            "details": {
 	                "stateMutability": "viewable"
 	            }
-	            
 	        }«IF count < max»,«ENDIF»
 	        '''
 	        
@@ -161,7 +160,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	        data += '''
 	        {
 	            "name": "PaymentReceived",
-	            "description": "This event is for notify when a payment was receive",
+	            "description": "This event is for notify when a payment was received",
 	            "params": [
 	            	{
 	            		"name": "sender",
@@ -178,6 +177,25 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 		}
 		return data
 	}
+	
+	def appendReceiveMethod(Contract contract) {
+		var data = ""
+		if (contract.hasReceive){
+	        data += '''
+	        {
+	            "name": "receive",
+	            "description": "This function is to receive payments to the smart contract",
+	            "params": [],
+	            "returns": [],
+	            "details": {
+	                "stateMutability": "payable"
+	            }
+	        }«IF contract.methods.length() != 0 || contract.attributes.length() != 0»,«ENDIF»
+	        '''
+		}
+		return data
+	}
+	
 	
 	def String getReturnTypeForSolidity(String dataType) {
 		switch (dataType) {
@@ -243,7 +261,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    }
 	}
 	
-	
+
 	def String getParamTypeForSolidity(String dataType) {
 		switch (dataType) {
 	        case "integer":
