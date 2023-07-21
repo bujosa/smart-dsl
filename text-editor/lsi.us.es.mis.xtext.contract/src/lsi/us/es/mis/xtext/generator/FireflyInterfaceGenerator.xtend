@@ -29,23 +29,11 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    var methods = defineMethods(contract)
 	    var events = defineEvents(contract)
 	    
-	    if (events.empty) {
-	    	events = '''"events": []'''
-	    } else {
-	    	events = '''
-	    		"events": [
-	    			«events»
-	    		]
-	    	'''
-	    }
-
 	    val interfaceCode = '''
 	    {
 	        "name": "«name»",
 	        "version":  "«version»",
-	        "methods": [
-	            «methods»
-	        ],
+	        «methods»,
 	    	«events»
 	    }
 	    '''
@@ -87,6 +75,16 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	        '''
 	        
 	        events += eventCode
+	    }
+	    
+	    if (events.empty) {
+	    	events = '''"events": []'''
+	    } else {
+	    	events = '''
+	    		"events": [
+	    			«events»
+	    		]
+	    	'''
 	    }
 	    
 	    return events	
@@ -142,6 +140,16 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	        '''
 	        
 	        methods += methodCode
+	    }
+	    
+	    if (methods.empty) {
+	    	methods = '''"methods": []'''
+	    } else {
+	    	methods = '''
+	    		"methods": [
+	    			«methods»
+	    		]
+	    	'''
 	    }
 	    
 	    return methods		

@@ -38,50 +38,29 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
     final String version = contract.getVersion();
     String methods = this.defineMethods(contract);
     String events = this.defineEvents(contract);
-    boolean _isEmpty = events.isEmpty();
-    if (_isEmpty) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("\"events\": []");
-      events = _builder.toString();
-    } else {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("\"events\": [");
-      _builder_1.newLine();
-      _builder_1.append("\t");
-      _builder_1.append(events, "\t");
-      _builder_1.newLineIfNotEmpty();
-      _builder_1.append("]");
-      _builder_1.newLine();
-      events = _builder_1.toString();
-    }
-    StringConcatenation _builder_2 = new StringConcatenation();
-    _builder_2.append("{");
-    _builder_2.newLine();
-    _builder_2.append("    ");
-    _builder_2.append("\"name\": \"");
-    _builder_2.append(name, "    ");
-    _builder_2.append("\",");
-    _builder_2.newLineIfNotEmpty();
-    _builder_2.append("    ");
-    _builder_2.append("\"version\":  \"");
-    _builder_2.append(version, "    ");
-    _builder_2.append("\",");
-    _builder_2.newLineIfNotEmpty();
-    _builder_2.append("    ");
-    _builder_2.append("\"methods\": [");
-    _builder_2.newLine();
-    _builder_2.append("        ");
-    _builder_2.append(methods, "        ");
-    _builder_2.newLineIfNotEmpty();
-    _builder_2.append("    ");
-    _builder_2.append("],");
-    _builder_2.newLine();
-    _builder_2.append("\t");
-    _builder_2.append(events, "\t");
-    _builder_2.newLineIfNotEmpty();
-    _builder_2.append("}");
-    _builder_2.newLine();
-    final String interfaceCode = _builder_2.toString();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("{");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("\"name\": \"");
+    _builder.append(name, "    ");
+    _builder.append("\",");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("\"version\":  \"");
+    _builder.append(version, "    ");
+    _builder.append("\",");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append(methods, "    ");
+    _builder.append(",");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append(events, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    final String interfaceCode = _builder.toString();
     return interfaceCode;
   }
   
@@ -163,6 +142,22 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         String _events_1 = events;
         events = (_events_1 + eventCode);
       }
+    }
+    boolean _isEmpty = events.isEmpty();
+    if (_isEmpty) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\"events\": []");
+      events = _builder.toString();
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("\"events\": [");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append(events, "\t");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("]");
+      _builder_1.newLine();
+      events = _builder_1.toString();
     }
     return events;
   }
@@ -269,6 +264,22 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         String _methods_1 = methods;
         methods = (_methods_1 + methodCode_1);
       }
+    }
+    boolean _isEmpty = methods.isEmpty();
+    if (_isEmpty) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\"methods\": []");
+      methods = _builder.toString();
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("\"methods\": [");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append(methods, "\t");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("]");
+      _builder_1.newLine();
+      methods = _builder_1.toString();
     }
     return methods;
   }
