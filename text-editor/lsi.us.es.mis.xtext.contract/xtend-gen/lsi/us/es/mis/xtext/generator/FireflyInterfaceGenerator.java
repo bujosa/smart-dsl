@@ -5,6 +5,8 @@ package lsi.us.es.mis.xtext.generator;
 
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
+import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.Param;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -36,51 +38,133 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
     final String version = contract.getVersion();
     String methods = this.defineMethods(contract);
     String events = this.defineEvents(contract);
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("{");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("\"name\": \"");
-    _builder.append(name, "    ");
-    _builder.append("\",");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("\"version\":  \"");
-    _builder.append(version, "    ");
-    _builder.append("\",");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("\"methods\": [");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append(methods, "        ");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("],");
-    _builder.newLine();
-    {
-      boolean _isEmpty = events.isEmpty();
-      if (_isEmpty) {
-        _builder.append("\"events\": []");
-        _builder.newLine();
-      } else {
-        _builder.append("\"events\": [");
-        _builder.newLine();
-        _builder.append("            \t");
-        _builder.append(events, "            \t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("]");
-        _builder.newLine();
-      }
+    boolean _isEmpty = events.isEmpty();
+    if (_isEmpty) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\"events\": []");
+      events = _builder.toString();
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("\"events\": [");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append(events, "\t");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("]");
+      _builder_1.newLine();
+      events = _builder_1.toString();
     }
-    _builder.append("}");
-    _builder.newLine();
-    final String interfaceCode = _builder.toString();
+    StringConcatenation _builder_2 = new StringConcatenation();
+    _builder_2.append("{");
+    _builder_2.newLine();
+    _builder_2.append("    ");
+    _builder_2.append("\"name\": \"");
+    _builder_2.append(name, "    ");
+    _builder_2.append("\",");
+    _builder_2.newLineIfNotEmpty();
+    _builder_2.append("    ");
+    _builder_2.append("\"version\":  \"");
+    _builder_2.append(version, "    ");
+    _builder_2.append("\",");
+    _builder_2.newLineIfNotEmpty();
+    _builder_2.append("    ");
+    _builder_2.append("\"methods\": [");
+    _builder_2.newLine();
+    _builder_2.append("        ");
+    _builder_2.append(methods, "        ");
+    _builder_2.newLineIfNotEmpty();
+    _builder_2.append("    ");
+    _builder_2.append("],");
+    _builder_2.newLine();
+    _builder_2.append("\t");
+    _builder_2.append(events, "\t");
+    _builder_2.newLineIfNotEmpty();
+    _builder_2.append("}");
+    _builder_2.newLine();
+    final String interfaceCode = _builder_2.toString();
     return interfaceCode;
   }
   
   public String defineEvents(final Contract contract) {
-    return "";
+    int count = 0;
+    int max = ((Object[])Conversions.unwrapArray(contract.getEvents(), Object.class)).length;
+    String events = "";
+    EList<Event> _events = contract.getEvents();
+    for (final Event event : _events) {
+      {
+        count++;
+        String params = "";
+        int paramCount = 0;
+        int paramMax = ((Object[])Conversions.unwrapArray(event.getParams(), Object.class)).length;
+        EList<Param> _params = event.getParams();
+        for (final Param param : _params) {
+          {
+            final String attributeType = param.getType().toString();
+            paramCount++;
+            String _params_1 = params;
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("{");
+            _builder.newLine();
+            _builder.append("    ");
+            _builder.append("\"name\": \"");
+            String _name = param.getName();
+            _builder.append(_name, "    ");
+            _builder.append("\",");
+            _builder.newLineIfNotEmpty();
+            _builder.append("    ");
+            String _paramTypeForSolidity = this.getParamTypeForSolidity(attributeType);
+            _builder.append(_paramTypeForSolidity, "    ");
+            _builder.newLineIfNotEmpty();
+            _builder.append("}");
+            {
+              if ((paramCount < paramMax)) {
+                _builder.append(",");
+              }
+            }
+            _builder.newLineIfNotEmpty();
+            params = (_params_1 + _builder);
+          }
+        }
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{");
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("\"name\": \"");
+        String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
+        _builder.append(_capitalizeFirstLetter, "    ");
+        _builder.append("\",");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        _builder.append("\"description\": \"");
+        String _description = event.getDescription();
+        _builder.append(_description, "    ");
+        _builder.append("\",");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        _builder.append("\"params\": [");
+        _builder.newLine();
+        _builder.append("    \t");
+        _builder.append(params, "    \t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        _builder.append("],");
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("\"details\": {}");
+        _builder.newLine();
+        _builder.append("}");
+        {
+          if ((count < max)) {
+            _builder.append(",");
+          }
+        }
+        _builder.newLineIfNotEmpty();
+        final String eventCode = _builder.toString();
+        String _events_1 = events;
+        events = (_events_1 + eventCode);
+      }
+    }
+    return events;
   }
   
   public String defineMethods(final Contract contract) {

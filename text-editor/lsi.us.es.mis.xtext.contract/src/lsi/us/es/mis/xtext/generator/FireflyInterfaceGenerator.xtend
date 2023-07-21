@@ -28,6 +28,16 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    
 	    var methods = defineMethods(contract)
 	    var events = defineEvents(contract)
+	    
+	    if (events.empty) {
+	    	events = '''"events": []'''
+	    } else {
+	    	events = '''
+	    		"events": [
+	    			«events»
+	    		]
+	    	'''
+	    }
 
 	    val interfaceCode = '''
 	    {
@@ -36,13 +46,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	        "methods": [
 	            «methods»
 	        ],
-	    «IF events.empty»
-	    	"events": []
-        «ELSE»
-	    	"events": [
-            	«events»
-	    	]
-        «ENDIF»
+	    	«events»
 	    }
 	    '''
 	    
@@ -50,7 +54,42 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	}
 	
 	def String defineEvents(Contract contract) {
-		return ""
+		var count = 0
+	    var max = contract.events.length()
+	    var events = ""
+	    
+	    for (event : contract.events) {
+	    	count++
+	        var params = ""
+	        var paramCount = 0
+	        var paramMax = event.params.length()
+	        
+	        for (param : event.params) {
+	        	val attributeType = param.type.toString()
+	        	paramCount++
+	        	params += '''
+			        {
+			            "name": "«param.name»",
+			            «getParamTypeForSolidity(attributeType)»
+			        }«IF paramCount < paramMax»,«ENDIF»
+			      '''
+	        }
+	        
+	        val eventCode = '''
+	        {
+	            "name": "«capitalizeFirstLetter(event.name)»",
+	            "description": "«event.description»",
+	            "params": [
+	            	«params»
+	            ],
+	            "details": {}
+	        }«IF count < max»,«ENDIF»
+	        '''
+	        
+	        events += eventCode
+	    }
+	    
+	    return events	
 	}
 	
 	def String defineMethods(Contract contract) {
