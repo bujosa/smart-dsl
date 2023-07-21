@@ -26,10 +26,40 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    val name = contract.name
 	    val version = contract.version
 	    
-	    var methods = ""
-	    var count = 0
+	    var methods = defineMethods(contract)
+	    var events = defineEvents(contract)
+
+	    val interfaceCode = '''
+	    {
+	        "name": "«name»",
+	        "version":  "«version»",
+	        "methods": [
+	            «methods»
+	        ],
+	    «IF events.empty»
+	    	"events": []
+        «ELSE»
+	    	"events": [
+            	«events»
+	    	]
+        «ENDIF»
+	    }
+	    '''
+	    
+	    return interfaceCode
+	}
+	
+	def String defineEvents(Contract contract) {
+		return ""
+	}
+	
+	def String defineMethods(Contract contract) {
+		var count = 0
 	    var max = contract.attributes.length()
+	    var methods = ""
+	    
 	    for (attribute : contract.attributes) {
+	    	
 	    	count++
 	        val attributeName = attribute.name
 	        val attributeType = attribute.type.toString()
@@ -75,18 +105,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	        methods += methodCode
 	    }
 	    
-	    val interfaceCode = '''
-	    {
-	        "name": "«name»",
-	        "version":  "«version»",
-	        "methods": [
-	            «methods»
-	        ],
-	        "events": []
-	    }
-	    '''
-	    
-	    return interfaceCode
+	    return methods		
 	}
 	
 	

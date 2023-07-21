@@ -49,8 +49,23 @@ public class SolidityGenerator extends AbstractGenerator {
   }
   
   public StringBuilder appendAttributes(final Contract contract, final StringBuilder code) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field ownership is undefined for the type Contract");
+    StringBuilder _xblockexpression = null;
+    {
+      boolean _isOwnership = contract.isOwnership();
+      if (_isOwnership) {
+        code.append("\t address owner;\n");
+      }
+      EList<Attribute> _attributes = contract.getAttributes();
+      for (final Attribute attribute : _attributes) {
+        {
+          final String attributeName = attribute.getName();
+          final String attributeType = this.getSolidityDataType(attribute.getType().toString());
+          code.append((((("\t" + attributeType) + " ") + attributeName) + ";\n"));
+        }
+      }
+      _xblockexpression = code.append("\n");
+    }
+    return _xblockexpression;
   }
   
   public StringBuilder appendConstructor(final Contract contract, final StringBuilder code) {

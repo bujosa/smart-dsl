@@ -19,9 +19,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getName <em>Name</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getVersion <em>Version</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#isHasReceive <em>Has Receive</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#isOwnership <em>Ownership</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getMethods <em>Methods</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getModifiers <em>Modifiers</em>}</li>
  * </ul>
  *
  * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract()
@@ -97,6 +99,28 @@ public interface Contract extends EObject
   void setHasReceive(boolean value);
 
   /**
+   * Returns the value of the '<em><b>Ownership</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ownership</em>' attribute.
+   * @see #setOwnership(boolean)
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Ownership()
+   * @model
+   * @generated
+   */
+  boolean isOwnership();
+
+  /**
+   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Contract#isOwnership <em>Ownership</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ownership</em>' attribute.
+   * @see #isOwnership()
+   * @generated
+   */
+  void setOwnership(boolean value);
+
+  /**
    * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
    * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Attribute}.
    * <!-- begin-user-doc -->
@@ -131,5 +155,17 @@ public interface Contract extends EObject
    * @generated
    */
   EList<Method> getMethods();
+
+  /**
+   * Returns the value of the '<em><b>Modifiers</b></em>' containment reference list.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Modifier}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modifiers</em>' containment reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Modifiers()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Modifier> getModifiers();
 
 } // Contract

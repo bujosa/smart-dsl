@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getStatemutability <em>Statemutability</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getDescription <em>Description</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getModifiers <em>Modifiers</em>}</li>
  * </ul>
  *
  * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod()
@@ -118,5 +119,17 @@ public interface Method extends EObject
    * @generated
    */
   void setDescription(String value);
+
+  /**
+   * Returns the value of the '<em><b>Modifiers</b></em>' reference list.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Modifier}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modifiers</em>' reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod_Modifiers()
+   * @model
+   * @generated
+   */
+  EList<Modifier> getModifiers();
 
 } // Method

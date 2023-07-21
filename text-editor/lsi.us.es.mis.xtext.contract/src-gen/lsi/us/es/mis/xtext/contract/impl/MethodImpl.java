@@ -7,6 +7,7 @@ import java.util.Collection;
 
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.Method;
+import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -37,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getStatemutability <em>Statemutability</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getModifiers <em>Modifiers</em>}</li>
  * </ul>
  *
  * @generated
@@ -122,6 +125,16 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @ordered
    */
   protected String description = DESCRIPTION_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getModifiers() <em>Modifiers</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifiers()
+   * @generated
+   * @ordered
+   */
+  protected EList<Modifier> modifiers;
 
   /**
    * <!-- begin-user-doc -->
@@ -255,6 +268,21 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @generated
    */
   @Override
+  public EList<Modifier> getModifiers()
+  {
+    if (modifiers == null)
+    {
+      modifiers = new EObjectResolvingEList<Modifier>(Modifier.class, this, ContractPackage.METHOD__MODIFIERS);
+    }
+    return modifiers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -287,6 +315,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return getOutputs();
       case ContractPackage.METHOD__DESCRIPTION:
         return getDescription();
+      case ContractPackage.METHOD__MODIFIERS:
+        return getModifiers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -319,6 +349,10 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case ContractPackage.METHOD__DESCRIPTION:
         setDescription((String)newValue);
         return;
+      case ContractPackage.METHOD__MODIFIERS:
+        getModifiers().clear();
+        getModifiers().addAll((Collection<? extends Modifier>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -348,6 +382,9 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case ContractPackage.METHOD__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
+      case ContractPackage.METHOD__MODIFIERS:
+        getModifiers().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -372,6 +409,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return outputs != null && !outputs.isEmpty();
       case ContractPackage.METHOD__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+      case ContractPackage.METHOD__MODIFIERS:
+        return modifiers != null && !modifiers.isEmpty();
     }
     return super.eIsSet(featureID);
   }

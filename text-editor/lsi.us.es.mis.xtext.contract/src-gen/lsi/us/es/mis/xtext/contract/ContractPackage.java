@@ -96,13 +96,22 @@ public interface ContractPackage extends EPackage
   int CONTRACT__HAS_RECEIVE = 2;
 
   /**
+   * The feature id for the '<em><b>Ownership</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTRACT__OWNERSHIP = 3;
+
+  /**
    * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTRACT__ATTRIBUTES = 3;
+  int CONTRACT__ATTRIBUTES = 4;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -111,7 +120,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTRACT__EVENTS = 4;
+  int CONTRACT__EVENTS = 5;
 
   /**
    * The feature id for the '<em><b>Methods</b></em>' containment reference list.
@@ -120,7 +129,16 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTRACT__METHODS = 5;
+  int CONTRACT__METHODS = 6;
+
+  /**
+   * The feature id for the '<em><b>Modifiers</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTRACT__MODIFIERS = 7;
 
   /**
    * The number of structural features of the '<em>Contract</em>' class.
@@ -129,7 +147,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTRACT_FEATURE_COUNT = 6;
+  int CONTRACT_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -178,6 +196,61 @@ public interface ContractPackage extends EPackage
   int ATTRIBUTE_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl <em>Modifier</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see lsi.us.es.mis.xtext.contract.impl.ModifierImpl
+   * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getModifier()
+   * @generated
+   */
+  int MODIFIER = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER__PARAMS = 1;
+
+  /**
+   * The feature id for the '<em><b>Message</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER__MESSAGE = 2;
+
+  /**
+   * The feature id for the '<em><b>Validation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER__VALIDATION = 3;
+
+  /**
+   * The number of structural features of the '<em>Modifier</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl <em>Method</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -185,7 +258,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getMethod()
    * @generated
    */
-  int METHOD = 2;
+  int METHOD = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -233,13 +306,22 @@ public interface ContractPackage extends EPackage
   int METHOD__DESCRIPTION = 4;
 
   /**
+   * The feature id for the '<em><b>Modifiers</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD__MODIFIERS = 5;
+
+  /**
    * The number of structural features of the '<em>Method</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_FEATURE_COUNT = 5;
+  int METHOD_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.EventImpl <em>Event</em>}' class.
@@ -249,7 +331,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getEvent()
    * @generated
    */
-  int EVENT = 3;
+  int EVENT = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -295,7 +377,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getParam()
    * @generated
    */
-  int PARAM = 4;
+  int PARAM = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -332,7 +414,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getOutput()
    * @generated
    */
-  int OUTPUT = 5;
+  int OUTPUT = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -369,7 +451,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getDataType()
    * @generated
    */
-  int DATA_TYPE = 6;
+  int DATA_TYPE = 7;
 
 
   /**
@@ -416,6 +498,17 @@ public interface ContractPackage extends EPackage
   EAttribute getContract_HasReceive();
 
   /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Contract#isOwnership <em>Ownership</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Ownership</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Contract#isOwnership()
+   * @see #getContract()
+   * @generated
+   */
+  EAttribute getContract_Ownership();
+
+  /**
    * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getAttributes <em>Attributes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -447,6 +540,17 @@ public interface ContractPackage extends EPackage
    * @generated
    */
   EReference getContract_Methods();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getModifiers <em>Modifiers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Modifiers</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Contract#getModifiers()
+   * @see #getContract()
+   * @generated
+   */
+  EReference getContract_Modifiers();
 
   /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Attribute <em>Attribute</em>}'.
@@ -490,6 +594,60 @@ public interface ContractPackage extends EPackage
    * @generated
    */
   EAttribute getAttribute_Type();
+
+  /**
+   * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Modifier <em>Modifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Modifier</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Modifier
+   * @generated
+   */
+  EClass getModifier();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Modifier#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Modifier#getName()
+   * @see #getModifier()
+   * @generated
+   */
+  EAttribute getModifier_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Modifier#getParams <em>Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Modifier#getParams()
+   * @see #getModifier()
+   * @generated
+   */
+  EReference getModifier_Params();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Modifier#getMessage <em>Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Message</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Modifier#getMessage()
+   * @see #getModifier()
+   * @generated
+   */
+  EAttribute getModifier_Message();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Modifier#getValidation <em>Validation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Validation</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Modifier#getValidation()
+   * @see #getModifier()
+   * @generated
+   */
+  EAttribute getModifier_Validation();
 
   /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Method <em>Method</em>}'.
@@ -555,6 +713,17 @@ public interface ContractPackage extends EPackage
    * @generated
    */
   EAttribute getMethod_Description();
+
+  /**
+   * Returns the meta object for the reference list '{@link lsi.us.es.mis.xtext.contract.Method#getModifiers <em>Modifiers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Modifiers</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Method#getModifiers()
+   * @see #getMethod()
+   * @generated
+   */
+  EReference getMethod_Modifiers();
 
   /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Event <em>Event</em>}'.
@@ -731,6 +900,14 @@ public interface ContractPackage extends EPackage
     EAttribute CONTRACT__HAS_RECEIVE = eINSTANCE.getContract_HasReceive();
 
     /**
+     * The meta object literal for the '<em><b>Ownership</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTRACT__OWNERSHIP = eINSTANCE.getContract_Ownership();
+
+    /**
      * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -753,6 +930,14 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EReference CONTRACT__METHODS = eINSTANCE.getContract_Methods();
+
+    /**
+     * The meta object literal for the '<em><b>Modifiers</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTRACT__MODIFIERS = eINSTANCE.getContract_Modifiers();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -787,6 +972,48 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EAttribute ATTRIBUTE__TYPE = eINSTANCE.getAttribute_Type();
+
+    /**
+     * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl <em>Modifier</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see lsi.us.es.mis.xtext.contract.impl.ModifierImpl
+     * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getModifier()
+     * @generated
+     */
+    EClass MODIFIER = eINSTANCE.getModifier();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODIFIER__NAME = eINSTANCE.getModifier_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODIFIER__PARAMS = eINSTANCE.getModifier_Params();
+
+    /**
+     * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODIFIER__MESSAGE = eINSTANCE.getModifier_Message();
+
+    /**
+     * The meta object literal for the '<em><b>Validation</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODIFIER__VALIDATION = eINSTANCE.getModifier_Validation();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl <em>Method</em>}' class.
@@ -837,6 +1064,14 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EAttribute METHOD__DESCRIPTION = eINSTANCE.getMethod_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Modifiers</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD__MODIFIERS = eINSTANCE.getMethod_Modifiers();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.EventImpl <em>Event</em>}' class.

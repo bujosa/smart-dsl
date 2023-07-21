@@ -10,6 +10,7 @@ import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
+import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 import lsi.us.es.mis.xtext.services.ContractGrammarAccess;
@@ -49,6 +50,9 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case ContractPackage.METHOD:
 				sequence_Method(context, (Method) semanticObject); 
 				return; 
+			case ContractPackage.MODIFIER:
+				sequence_Modifier(context, (Modifier) semanticObject); 
+				return; 
 			case ContractPackage.OUTPUT:
 				sequence_Output(context, (Output) semanticObject); 
 				return; 
@@ -77,7 +81,13 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Contract returns Contract
 	 *
 	 * Constraint:
-	 *     (name=ID version=STRING hasReceive?='hasReceive'? (attributes+=Attribute | events+=Event | methods+=Method)*)
+	 *     (
+	 *         name=ID 
+	 *         version=STRING 
+	 *         hasReceive?='hasReceive'? 
+	 *         ownership?='ownership'? 
+	 *         (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
+	 *     )
 	 */
 	protected void sequence_Contract(ISerializationContext context, Contract semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -101,9 +111,28 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Method returns Method
 	 *
 	 * Constraint:
-	 *     (name=ID (params+=Param params+=Param*)? statemutability=STRING? (outputs+=Output outputs+=Output*)? description=STRING?)
+	 *     (
+	 *         name=ID 
+	 *         (params+=Param params+=Param*)? 
+	 *         statemutability=STRING? 
+	 *         (outputs+=Output outputs+=Output*)? 
+	 *         description=STRING? 
+	 *         (modifiers+=[Modifier|ID] modifiers+=[Modifier|ID]*)?
+	 *     )
 	 */
 	protected void sequence_Method(ISerializationContext context, Method semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Modifier returns Modifier
+	 *
+	 * Constraint:
+	 *     (name=ID (params+=Param params+=Param*)? message=STRING validation=STRING)
+	 */
+	protected void sequence_Modifier(ISerializationContext context, Modifier semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

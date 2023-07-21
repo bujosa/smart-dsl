@@ -17,14 +17,22 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Contract/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Contract/version"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Contract/hasReceive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Contract/ownership"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/events"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/methods"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/modifiers"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/modifiable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Contract.ecore#//Modifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Modifier/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Modifier/params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Modifier/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Modifier/validation"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Method">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/name"/>
@@ -32,6 +40,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/statemutability"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/outputs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/modifiers"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Event">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Event/name"/>

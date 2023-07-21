@@ -10,6 +10,7 @@ import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
+import lsi.us.es.mis.xtext.contract.Modifier;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -36,9 +37,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getName <em>Name</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#isHasReceive <em>Has Receive</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#isOwnership <em>Ownership</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getMethods <em>Methods</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getModifiers <em>Modifiers</em>}</li>
  * </ul>
  *
  * @generated
@@ -106,6 +109,26 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
   protected boolean hasReceive = HAS_RECEIVE_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isOwnership() <em>Ownership</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOwnership()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean OWNERSHIP_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isOwnership() <em>Ownership</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOwnership()
+   * @generated
+   * @ordered
+   */
+  protected boolean ownership = OWNERSHIP_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -134,6 +157,16 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @ordered
    */
   protected EList<Method> methods;
+
+  /**
+   * The cached value of the '{@link #getModifiers() <em>Modifiers</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifiers()
+   * @generated
+   * @ordered
+   */
+  protected EList<Modifier> modifiers;
 
   /**
    * <!-- begin-user-doc -->
@@ -237,6 +270,31 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @generated
    */
   @Override
+  public boolean isOwnership()
+  {
+    return ownership;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOwnership(boolean newOwnership)
+  {
+    boolean oldOwnership = ownership;
+    ownership = newOwnership;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.CONTRACT__OWNERSHIP, oldOwnership, ownership));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Attribute> getAttributes()
   {
     if (attributes == null)
@@ -282,6 +340,21 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @generated
    */
   @Override
+  public EList<Modifier> getModifiers()
+  {
+    if (modifiers == null)
+    {
+      modifiers = new EObjectContainmentEList<Modifier>(Modifier.class, this, ContractPackage.CONTRACT__MODIFIERS);
+    }
+    return modifiers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -292,6 +365,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
       case ContractPackage.CONTRACT__METHODS:
         return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
+      case ContractPackage.CONTRACT__MODIFIERS:
+        return ((InternalEList<?>)getModifiers()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -312,12 +387,16 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return getVersion();
       case ContractPackage.CONTRACT__HAS_RECEIVE:
         return isHasReceive();
+      case ContractPackage.CONTRACT__OWNERSHIP:
+        return isOwnership();
       case ContractPackage.CONTRACT__ATTRIBUTES:
         return getAttributes();
       case ContractPackage.CONTRACT__EVENTS:
         return getEvents();
       case ContractPackage.CONTRACT__METHODS:
         return getMethods();
+      case ContractPackage.CONTRACT__MODIFIERS:
+        return getModifiers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -342,6 +421,9 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
       case ContractPackage.CONTRACT__HAS_RECEIVE:
         setHasReceive((Boolean)newValue);
         return;
+      case ContractPackage.CONTRACT__OWNERSHIP:
+        setOwnership((Boolean)newValue);
+        return;
       case ContractPackage.CONTRACT__ATTRIBUTES:
         getAttributes().clear();
         getAttributes().addAll((Collection<? extends Attribute>)newValue);
@@ -353,6 +435,10 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
       case ContractPackage.CONTRACT__METHODS:
         getMethods().clear();
         getMethods().addAll((Collection<? extends Method>)newValue);
+        return;
+      case ContractPackage.CONTRACT__MODIFIERS:
+        getModifiers().clear();
+        getModifiers().addAll((Collection<? extends Modifier>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -377,6 +463,9 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
       case ContractPackage.CONTRACT__HAS_RECEIVE:
         setHasReceive(HAS_RECEIVE_EDEFAULT);
         return;
+      case ContractPackage.CONTRACT__OWNERSHIP:
+        setOwnership(OWNERSHIP_EDEFAULT);
+        return;
       case ContractPackage.CONTRACT__ATTRIBUTES:
         getAttributes().clear();
         return;
@@ -385,6 +474,9 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return;
       case ContractPackage.CONTRACT__METHODS:
         getMethods().clear();
+        return;
+      case ContractPackage.CONTRACT__MODIFIERS:
+        getModifiers().clear();
         return;
     }
     super.eUnset(featureID);
@@ -406,12 +498,16 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
       case ContractPackage.CONTRACT__HAS_RECEIVE:
         return hasReceive != HAS_RECEIVE_EDEFAULT;
+      case ContractPackage.CONTRACT__OWNERSHIP:
+        return ownership != OWNERSHIP_EDEFAULT;
       case ContractPackage.CONTRACT__ATTRIBUTES:
         return attributes != null && !attributes.isEmpty();
       case ContractPackage.CONTRACT__EVENTS:
         return events != null && !events.isEmpty();
       case ContractPackage.CONTRACT__METHODS:
         return methods != null && !methods.isEmpty();
+      case ContractPackage.CONTRACT__MODIFIERS:
+        return modifiers != null && !modifiers.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -433,6 +529,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
     result.append(version);
     result.append(", hasReceive: ");
     result.append(hasReceive);
+    result.append(", ownership: ");
+    result.append(ownership);
     result.append(')');
     return result.toString();
   }

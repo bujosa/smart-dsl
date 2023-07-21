@@ -34,9 +34,59 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
   public String toFireflyInterface(final Contract contract) {
     final String name = contract.getName();
     final String version = contract.getVersion();
-    String methods = "";
+    String methods = this.defineMethods(contract);
+    String events = this.defineEvents(contract);
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("{");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("\"name\": \"");
+    _builder.append(name, "    ");
+    _builder.append("\",");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("\"version\":  \"");
+    _builder.append(version, "    ");
+    _builder.append("\",");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("\"methods\": [");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append(methods, "        ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("],");
+    _builder.newLine();
+    {
+      boolean _isEmpty = events.isEmpty();
+      if (_isEmpty) {
+        _builder.append("\"events\": []");
+        _builder.newLine();
+      } else {
+        _builder.append("\"events\": [");
+        _builder.newLine();
+        _builder.append("            \t");
+        _builder.append(events, "            \t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("]");
+        _builder.newLine();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    final String interfaceCode = _builder.toString();
+    return interfaceCode;
+  }
+  
+  public String defineEvents(final Contract contract) {
+    return "";
+  }
+  
+  public String defineMethods(final Contract contract) {
     int count = 0;
     int max = ((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length;
+    String methods = "";
     EList<Attribute> _attributes = contract.getAttributes();
     for (final Attribute attribute : _attributes) {
       {
@@ -136,35 +186,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         methods = (_methods_1 + methodCode_1);
       }
     }
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("{");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("\"name\": \"");
-    _builder.append(name, "    ");
-    _builder.append("\",");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("\"version\":  \"");
-    _builder.append(version, "    ");
-    _builder.append("\",");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("\"methods\": [");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append(methods, "        ");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("],");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("\"events\": []");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
-    final String interfaceCode = _builder.toString();
-    return interfaceCode;
+    return methods;
   }
   
   public String getReturnTypeForSolidity(final String dataType) {

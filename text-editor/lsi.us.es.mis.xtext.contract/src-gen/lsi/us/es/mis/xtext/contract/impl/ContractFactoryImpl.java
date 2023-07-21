@@ -68,6 +68,7 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
     {
       case ContractPackage.CONTRACT: return createContract();
       case ContractPackage.ATTRIBUTE: return createAttribute();
+      case ContractPackage.MODIFIER: return createModifier();
       case ContractPackage.METHOD: return createMethod();
       case ContractPackage.EVENT: return createEvent();
       case ContractPackage.PARAM: return createParam();
@@ -133,6 +134,18 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
   {
     AttributeImpl attribute = new AttributeImpl();
     return attribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Modifier createModifier()
+  {
+    ModifierImpl modifier = new ModifierImpl();
+    return modifier;
   }
 
   /**
