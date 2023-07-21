@@ -130,7 +130,9 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	            "description": "",
 	            "params": [],
 	            "returns": [
-	                «getReturnTypeForSolidity(attributeType)»
+	                {
+	                	«getReturnTypeForSolidity(attributeType)»
+	                }
 	            ],
 	            "details": {
 	                "stateMutability": "viewable"

@@ -236,9 +236,15 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         _builder_2.append("\"returns\": [");
         _builder_2.newLine();
         _builder_2.append("        ");
+        _builder_2.append("{");
+        _builder_2.newLine();
+        _builder_2.append("        \t");
         String _returnTypeForSolidity = this.getReturnTypeForSolidity(attributeType);
-        _builder_2.append(_returnTypeForSolidity, "        ");
+        _builder_2.append(_returnTypeForSolidity, "        \t");
         _builder_2.newLineIfNotEmpty();
+        _builder_2.append("        ");
+        _builder_2.append("}");
+        _builder_2.newLine();
         _builder_2.append("    ");
         _builder_2.append("],");
         _builder_2.newLine();

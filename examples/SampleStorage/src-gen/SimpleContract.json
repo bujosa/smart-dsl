@@ -1,0 +1,150 @@
+{
+    "name": "SimpleContract",
+    "version":  "v1.0.0",
+    "methods": [
+    	{
+    	    "name": "receive",
+    	    "description": "This function is to receive payments to the smart contract",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {
+    	        "stateMutability": "payable"
+    	    }
+    	},
+    	{
+    	    "name": "setTotal",
+    	    "description": "",
+    	    "params": [
+    	        {
+    	            "name": "_value",
+    	            "schema": {
+    	                "type": "integer",
+    	                "details": {
+    	                    "type": "uint256",
+    	                    "internalType": "uint256"
+    	                }
+    	            }
+    	        }
+    	    ],
+    	    "returns": []
+    	},
+    	{
+    	    "name": "getTotal",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "integer",
+    	        	    "details": {
+    	        	        "type": "uint256",
+    	        	        "internalType": "uint256"
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "setName",
+    	    "description": "",
+    	    "params": [
+    	        {
+    	            "name": "_value",
+    	            "schema": {
+    	                "type": "string",
+    	                "details": {
+    	                    "type": "string memory",
+    	                    "internalType": "string memory"
+    	                }
+    	            }
+    	        }
+    	    ],
+    	    "returns": []
+    	},
+    	{
+    	    "name": "getName",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	}
+    ]
+    ,
+	"events": [
+		{
+		    "name": "PaymentReceived",
+		    "description": "This event is for notify when a payment was received",
+		    "params": [
+		    	{
+		    		"name": "sender",
+		    		"schema": {
+		    		    "type": "address",
+		    		    "details": {
+		    		        "type": "address",
+		    		        "internalType": "address",
+		    		        "indexed": false
+		    		    }
+		    		}
+		    	},
+		    	{
+		    		"name": "amount",
+		    		"schema": {
+		    		    "type": "integer",
+		    		    "details": {
+		    		        "type": "uint256",
+		    		        "internalType": "uint256"
+		    		    }
+		    		}
+		    	}
+		    ],
+		    "details": {}
+		},
+		{
+		    "name": "NumberUpdated",
+		    "description": "Este evento se utilizo para notificar a la red cuando el name sea actualizado",
+		    "params": [
+		    	{
+		    	    "name": "total",
+		    	    "schema": {
+		    	        "type": "integer",
+		    	        "details": {
+		    	            "type": "uint256",
+		    	            "internalType": "uint256"
+		    	        }
+		    	    }
+		    	}
+		    ],
+		    "details": {}
+		},
+		{
+		    "name": "NameUpdated",
+		    "description": "Esto es para enviar el evento de cuando se actualice el nombre.",
+		    "params": [
+		    	{
+		    	    "name": "name",
+		    	    "schema": {
+		    	        "type": "string",
+		    	        "details": {
+		    	            "type": "string memory",
+		    	            "internalType": "string memory"
+		    	        }
+		    	    }
+		    	}
+		    ],
+		    "details": {}
+		}
+	]
+}
