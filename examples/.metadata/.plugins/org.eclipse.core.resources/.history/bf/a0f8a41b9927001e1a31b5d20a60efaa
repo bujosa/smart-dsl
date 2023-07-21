@@ -1,0 +1,11 @@
+Contract SimpleContract {
+	version: "v1.0.0"
+
+	event NumberUpdated (total integer){
+		description: "Este evento se utilizo para notificar a la red cuando el name sea actualizado"
+	}
+	
+	event NameUpdated (name string){
+		description: "Esto es para enviar el evento de cuando se actualice el nombre."
+	}
+}

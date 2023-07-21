@@ -1,0 +1,736 @@
+!SESSION 2023-06-21 23:02:36.416 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-21 23:02:49.327
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-21 23:05:30.577 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-21 23:05:42.745
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-21 23:17:40.186 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-21 23:17:50.861
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-25 18:47:10.412 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-25 18:47:20.353
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-25 18:55:03.702 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-25 18:55:13.683
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-25 19:05:28.923 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-25 19:05:38.739
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-25 19:15:00.714 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-25 19:15:11.442
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-25 19:26:16.555 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-25 19:26:26.339
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-25 19:52:53.068 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-25 19:53:02.451
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-25 20:01:39.498 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-25 20:01:49.016
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 09:43:31.464 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 09:43:42.422
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 09:50:17.640 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 09:50:28.165
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 09:54:40.171 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 09:54:50.501
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 10:04:51.354 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:05:01.702
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 10:05:29.461 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:05:39.393
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 10:09:06.361 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:09:16.988
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 10:11:00.492 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:11:10.758
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 10:15:12.611 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:15:22.804
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.ide 4 4 2023-06-26 10:16:48.314
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:728)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:338)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.xtext.ui.PluginImageHelper.getImage(PluginImageHelper.java:87)
+	at org.eclipse.xtext.ui.editor.XtextEditorErrorTickUpdater$1.run(XtextEditorErrorTickUpdater.java:148)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1435)
+!SESSION 2023-06-26 10:16:54.157 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:17:04.139
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.ide 4 4 2023-06-26 10:18:42.843
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:728)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:338)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.xtext.ui.PluginImageHelper.getImage(PluginImageHelper.java:87)
+	at org.eclipse.xtext.ui.editor.XtextEditorErrorTickUpdater$1.run(XtextEditorErrorTickUpdater.java:148)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1435)
+!SESSION 2023-06-26 10:19:03.230 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:19:13.610
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-06-26 10:21:40.651 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-06-26 10:21:52.180
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 03:39:54.012 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 03:40:04.853
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 03:47:41.647 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 03:47:49.867
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 03:50:06.583 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 03:50:14.458
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 03:56:05.359 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 03:56:13.341
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 03:59:58.041 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 04:00:07.450
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 04:04:21.467 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 04:04:29.407
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 04:05:58.850 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 04:06:06.778
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 04:34:44.267 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 04:34:52.496
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 04:55:48.418 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 04:55:57.048
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 05:26:43.724 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 05:26:54.794
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 05:28:39.068 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 05:28:47.071
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-01 05:32:09.985 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-01 05:32:21.516
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-02 04:56:05.927 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-02 04:56:16.860
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-02 05:04:17.389 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-02 05:04:25.618
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-02 05:06:56.722 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-02 05:07:06.202
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-13 21:50:37.462 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-13 21:50:54.149
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-13 21:52:32.194 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-13 21:52:42.412
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-14 04:23:16.359 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-14 04:23:26.778
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-14 04:26:05.507 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-14 04:26:15.413
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-14 04:29:08.656 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-14 04:29:19.433
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-14 04:32:19.470 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-14 04:32:31.750
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-20 21:02:26.483 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-20 21:02:38.999
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-21 03:16:52.188 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-21 03:17:01.106
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-21 03:29:40.263 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-21 03:29:51.402
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-21 03:33:59.661 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-21 03:34:09.706
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-07-21 03:36:28.187 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product fr.obeo.dsl.designer.ce.product
+Command-line arguments:  -product fr.obeo.dsl.designer.ce.product -data C:\Users\Bujosa\OneDrive - UNIVERSIDAD DE SEVILLA\workspaces\obeodesign/../runtime-EclipseApplication -dev file:C:/Users/Bujosa/OneDrive - UNIVERSIDAD DE SEVILLA/workspaces/obeodesign/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-07-21 03:36:38.903
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Bujosa'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

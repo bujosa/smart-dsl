@@ -1,0 +1,13 @@
+Contract SampleContract {
+	version: "v1.0.0"
+	age integer
+	lastName string
+	
+	method example (x integer, name string, lastname string) -> x integer, name string {
+		description: "This is a sample of method"
+	}
+	
+	event NumberUpdated (x2 integer){
+		description: "esto es para enviar eventos"
+	}
+}
