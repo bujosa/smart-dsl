@@ -40,6 +40,8 @@ class SolidityGenerator extends AbstractGenerator {
 	    appendConstructor(contract, code)
   
     	appendAttributeFunctions(contract.attributes, code)
+    	
+    	appendMethods(contract, code)
 	    
 	    code.append("}")
 	    return code.toString
@@ -164,6 +166,10 @@ class SolidityGenerator extends AbstractGenerator {
 	    		code.append("\n")
 	    	}
 		}
+	}
+	
+	def appendMethods(Contract contract, StringBuilder code) {
+		
 	}
 	
 	def String getSolidityDataType(String dataType) {

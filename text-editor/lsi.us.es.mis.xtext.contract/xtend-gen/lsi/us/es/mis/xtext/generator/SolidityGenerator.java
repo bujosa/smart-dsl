@@ -45,6 +45,7 @@ public class SolidityGenerator extends AbstractGenerator {
     this.appendModifiers(contract, code);
     this.appendConstructor(contract, code);
     this.appendAttributeFunctions(contract.getAttributes(), code);
+    this.appendMethods(contract, code);
     code.append("}");
     return code.toString();
   }
@@ -242,6 +243,10 @@ public class SolidityGenerator extends AbstractGenerator {
       _xifexpression = _xblockexpression;
     }
     return _xifexpression;
+  }
+  
+  public Object appendMethods(final Contract contract, final StringBuilder code) {
+    return null;
   }
   
   public String getSolidityDataType(final String dataType) {
