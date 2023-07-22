@@ -306,13 +306,31 @@ public interface ContractPackage extends EPackage
   int METHOD__DESCRIPTION = 4;
 
   /**
+   * The feature id for the '<em><b>Modifiers Keyword</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD__MODIFIERS_KEYWORD = 5;
+
+  /**
    * The feature id for the '<em><b>Modifiers</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD__MODIFIERS = 5;
+  int METHOD__MODIFIERS = 6;
+
+  /**
+   * The feature id for the '<em><b>Events Keyword</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD__EVENTS_KEYWORD = 7;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' reference list.
@@ -321,7 +339,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD__EVENTS = 6;
+  int METHOD__EVENTS = 8;
 
   /**
    * The number of structural features of the '<em>Method</em>' class.
@@ -330,7 +348,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_FEATURE_COUNT = 7;
+  int METHOD_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.EventImpl <em>Event</em>}' class.
@@ -724,6 +742,17 @@ public interface ContractPackage extends EPackage
   EAttribute getMethod_Description();
 
   /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Method#getModifiersKeyword <em>Modifiers Keyword</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Modifiers Keyword</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Method#getModifiersKeyword()
+   * @see #getMethod()
+   * @generated
+   */
+  EAttribute getMethod_ModifiersKeyword();
+
+  /**
    * Returns the meta object for the reference list '{@link lsi.us.es.mis.xtext.contract.Method#getModifiers <em>Modifiers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -733,6 +762,17 @@ public interface ContractPackage extends EPackage
    * @generated
    */
   EReference getMethod_Modifiers();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Method#getEventsKeyword <em>Events Keyword</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Events Keyword</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Method#getEventsKeyword()
+   * @see #getMethod()
+   * @generated
+   */
+  EAttribute getMethod_EventsKeyword();
 
   /**
    * Returns the meta object for the reference list '{@link lsi.us.es.mis.xtext.contract.Method#getEvents <em>Events</em>}'.
@@ -1086,12 +1126,28 @@ public interface ContractPackage extends EPackage
     EAttribute METHOD__DESCRIPTION = eINSTANCE.getMethod_Description();
 
     /**
+     * The meta object literal for the '<em><b>Modifiers Keyword</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METHOD__MODIFIERS_KEYWORD = eINSTANCE.getMethod_ModifiersKeyword();
+
+    /**
      * The meta object literal for the '<em><b>Modifiers</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference METHOD__MODIFIERS = eINSTANCE.getMethod_Modifiers();
+
+    /**
+     * The meta object literal for the '<em><b>Events Keyword</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METHOD__EVENTS_KEYWORD = eINSTANCE.getMethod_EventsKeyword();
 
     /**
      * The meta object literal for the '<em><b>Events</b></em>' reference list feature.

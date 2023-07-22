@@ -302,31 +302,35 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Assignment cDescriptionAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
 		private final RuleCall cDescriptionSTRINGTerminalRuleCall_9_1_0 = (RuleCall)cDescriptionAssignment_9_1.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Assignment cModifiersAssignment_10_0 = (Assignment)cGroup_10.eContents().get(0);
-		private final CrossReference cModifiersModifierCrossReference_10_0_0 = (CrossReference)cModifiersAssignment_10_0.eContents().get(0);
-		private final RuleCall cModifiersModifierIDTerminalRuleCall_10_0_0_1 = (RuleCall)cModifiersModifierCrossReference_10_0_0.eContents().get(1);
-		private final Group cGroup_10_1 = (Group)cGroup_10.eContents().get(1);
-		private final Keyword cCommaKeyword_10_1_0 = (Keyword)cGroup_10_1.eContents().get(0);
-		private final Assignment cModifiersAssignment_10_1_1 = (Assignment)cGroup_10_1.eContents().get(1);
-		private final CrossReference cModifiersModifierCrossReference_10_1_1_0 = (CrossReference)cModifiersAssignment_10_1_1.eContents().get(0);
-		private final RuleCall cModifiersModifierIDTerminalRuleCall_10_1_1_0_1 = (RuleCall)cModifiersModifierCrossReference_10_1_1_0.eContents().get(1);
+		private final Assignment cModifiersKeywordAssignment_10_0 = (Assignment)cGroup_10.eContents().get(0);
+		private final Keyword cModifiersKeywordModifiersKeyword_10_0_0 = (Keyword)cModifiersKeywordAssignment_10_0.eContents().get(0);
+		private final Assignment cModifiersAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final CrossReference cModifiersModifierCrossReference_10_1_0 = (CrossReference)cModifiersAssignment_10_1.eContents().get(0);
+		private final RuleCall cModifiersModifierIDTerminalRuleCall_10_1_0_1 = (RuleCall)cModifiersModifierCrossReference_10_1_0.eContents().get(1);
+		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
+		private final Keyword cCommaKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
+		private final Assignment cModifiersAssignment_10_2_1 = (Assignment)cGroup_10_2.eContents().get(1);
+		private final CrossReference cModifiersModifierCrossReference_10_2_1_0 = (CrossReference)cModifiersAssignment_10_2_1.eContents().get(0);
+		private final RuleCall cModifiersModifierIDTerminalRuleCall_10_2_1_0_1 = (RuleCall)cModifiersModifierCrossReference_10_2_1_0.eContents().get(1);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Assignment cEventsAssignment_11_0 = (Assignment)cGroup_11.eContents().get(0);
-		private final CrossReference cEventsEventCrossReference_11_0_0 = (CrossReference)cEventsAssignment_11_0.eContents().get(0);
-		private final RuleCall cEventsEventIDTerminalRuleCall_11_0_0_1 = (RuleCall)cEventsEventCrossReference_11_0_0.eContents().get(1);
-		private final Group cGroup_11_1 = (Group)cGroup_11.eContents().get(1);
-		private final Keyword cCommaKeyword_11_1_0 = (Keyword)cGroup_11_1.eContents().get(0);
-		private final Assignment cEventsAssignment_11_1_1 = (Assignment)cGroup_11_1.eContents().get(1);
-		private final CrossReference cEventsEventCrossReference_11_1_1_0 = (CrossReference)cEventsAssignment_11_1_1.eContents().get(0);
-		private final RuleCall cEventsEventIDTerminalRuleCall_11_1_1_0_1 = (RuleCall)cEventsEventCrossReference_11_1_1_0.eContents().get(1);
+		private final Assignment cEventsKeywordAssignment_11_0 = (Assignment)cGroup_11.eContents().get(0);
+		private final Keyword cEventsKeywordEventsKeyword_11_0_0 = (Keyword)cEventsKeywordAssignment_11_0.eContents().get(0);
+		private final Assignment cEventsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final CrossReference cEventsEventCrossReference_11_1_0 = (CrossReference)cEventsAssignment_11_1.eContents().get(0);
+		private final RuleCall cEventsEventIDTerminalRuleCall_11_1_0_1 = (RuleCall)cEventsEventCrossReference_11_1_0.eContents().get(1);
+		private final Group cGroup_11_2 = (Group)cGroup_11.eContents().get(2);
+		private final Keyword cCommaKeyword_11_2_0 = (Keyword)cGroup_11_2.eContents().get(0);
+		private final Assignment cEventsAssignment_11_2_1 = (Assignment)cGroup_11_2.eContents().get(1);
+		private final CrossReference cEventsEventCrossReference_11_2_1_0 = (CrossReference)cEventsAssignment_11_2_1.eContents().get(0);
+		private final RuleCall cEventsEventIDTerminalRuleCall_11_2_1_0_1 = (RuleCall)cEventsEventCrossReference_11_2_1_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//Method:
 		//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 		//     '{'
 		//         ('description:' description = STRING)?
-		//         (modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
-		//         (events+=[Event] (',' events+=[Event])*)?
+		//         (modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+		//         (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 		//     '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -334,8 +338,8 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 		// '{'
 		//     ('description:' description = STRING)?
-		//     (modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
-		//     (events+=[Event] (',' events+=[Event])*)?
+		//     (modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+		//     (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 		// '}'
 		public Group getGroup() { return cGroup; }
 		
@@ -426,59 +430,71 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//STRING
 		public RuleCall getDescriptionSTRINGTerminalRuleCall_9_1_0() { return cDescriptionSTRINGTerminalRuleCall_9_1_0; }
 		
-		//(modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+		//(modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
 		public Group getGroup_10() { return cGroup_10; }
 		
+		//modifiersKeyword='modifiers:'
+		public Assignment getModifiersKeywordAssignment_10_0() { return cModifiersKeywordAssignment_10_0; }
+		
+		//'modifiers:'
+		public Keyword getModifiersKeywordModifiersKeyword_10_0_0() { return cModifiersKeywordModifiersKeyword_10_0_0; }
+		
 		//modifiers+=[Modifier]
-		public Assignment getModifiersAssignment_10_0() { return cModifiersAssignment_10_0; }
+		public Assignment getModifiersAssignment_10_1() { return cModifiersAssignment_10_1; }
 		
 		//[Modifier]
-		public CrossReference getModifiersModifierCrossReference_10_0_0() { return cModifiersModifierCrossReference_10_0_0; }
+		public CrossReference getModifiersModifierCrossReference_10_1_0() { return cModifiersModifierCrossReference_10_1_0; }
 		
 		//ID
-		public RuleCall getModifiersModifierIDTerminalRuleCall_10_0_0_1() { return cModifiersModifierIDTerminalRuleCall_10_0_0_1; }
+		public RuleCall getModifiersModifierIDTerminalRuleCall_10_1_0_1() { return cModifiersModifierIDTerminalRuleCall_10_1_0_1; }
 		
 		//(',' modifiers+=[Modifier])*
-		public Group getGroup_10_1() { return cGroup_10_1; }
+		public Group getGroup_10_2() { return cGroup_10_2; }
 		
 		//','
-		public Keyword getCommaKeyword_10_1_0() { return cCommaKeyword_10_1_0; }
+		public Keyword getCommaKeyword_10_2_0() { return cCommaKeyword_10_2_0; }
 		
 		//modifiers+=[Modifier]
-		public Assignment getModifiersAssignment_10_1_1() { return cModifiersAssignment_10_1_1; }
+		public Assignment getModifiersAssignment_10_2_1() { return cModifiersAssignment_10_2_1; }
 		
 		//[Modifier]
-		public CrossReference getModifiersModifierCrossReference_10_1_1_0() { return cModifiersModifierCrossReference_10_1_1_0; }
+		public CrossReference getModifiersModifierCrossReference_10_2_1_0() { return cModifiersModifierCrossReference_10_2_1_0; }
 		
 		//ID
-		public RuleCall getModifiersModifierIDTerminalRuleCall_10_1_1_0_1() { return cModifiersModifierIDTerminalRuleCall_10_1_1_0_1; }
+		public RuleCall getModifiersModifierIDTerminalRuleCall_10_2_1_0_1() { return cModifiersModifierIDTerminalRuleCall_10_2_1_0_1; }
 		
-		//(events+=[Event] (',' events+=[Event])*)?
+		//(eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 		public Group getGroup_11() { return cGroup_11; }
 		
+		//eventsKeyword='events:'
+		public Assignment getEventsKeywordAssignment_11_0() { return cEventsKeywordAssignment_11_0; }
+		
+		//'events:'
+		public Keyword getEventsKeywordEventsKeyword_11_0_0() { return cEventsKeywordEventsKeyword_11_0_0; }
+		
 		//events+=[Event]
-		public Assignment getEventsAssignment_11_0() { return cEventsAssignment_11_0; }
+		public Assignment getEventsAssignment_11_1() { return cEventsAssignment_11_1; }
 		
 		//[Event]
-		public CrossReference getEventsEventCrossReference_11_0_0() { return cEventsEventCrossReference_11_0_0; }
+		public CrossReference getEventsEventCrossReference_11_1_0() { return cEventsEventCrossReference_11_1_0; }
 		
 		//ID
-		public RuleCall getEventsEventIDTerminalRuleCall_11_0_0_1() { return cEventsEventIDTerminalRuleCall_11_0_0_1; }
+		public RuleCall getEventsEventIDTerminalRuleCall_11_1_0_1() { return cEventsEventIDTerminalRuleCall_11_1_0_1; }
 		
 		//(',' events+=[Event])*
-		public Group getGroup_11_1() { return cGroup_11_1; }
+		public Group getGroup_11_2() { return cGroup_11_2; }
 		
 		//','
-		public Keyword getCommaKeyword_11_1_0() { return cCommaKeyword_11_1_0; }
+		public Keyword getCommaKeyword_11_2_0() { return cCommaKeyword_11_2_0; }
 		
 		//events+=[Event]
-		public Assignment getEventsAssignment_11_1_1() { return cEventsAssignment_11_1_1; }
+		public Assignment getEventsAssignment_11_2_1() { return cEventsAssignment_11_2_1; }
 		
 		//[Event]
-		public CrossReference getEventsEventCrossReference_11_1_1_0() { return cEventsEventCrossReference_11_1_1_0; }
+		public CrossReference getEventsEventCrossReference_11_2_1_0() { return cEventsEventCrossReference_11_2_1_0; }
 		
 		//ID
-		public RuleCall getEventsEventIDTerminalRuleCall_11_1_1_0_1() { return cEventsEventIDTerminalRuleCall_11_1_1_0_1; }
+		public RuleCall getEventsEventIDTerminalRuleCall_11_2_1_0_1() { return cEventsEventIDTerminalRuleCall_11_2_1_0_1; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
@@ -780,8 +796,8 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 	//     '{'
 	//         ('description:' description = STRING)?
-	//         (modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
-	//         (events+=[Event] (',' events+=[Event])*)?
+	//         (modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+	//         (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 	//     '}'
 	//;
 	public MethodElements getMethodAccess() {

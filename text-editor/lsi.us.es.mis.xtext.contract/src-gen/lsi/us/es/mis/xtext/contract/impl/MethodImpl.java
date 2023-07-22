@@ -40,7 +40,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getStatemutability <em>Statemutability</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getModifiersKeyword <em>Modifiers Keyword</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getEventsKeyword <em>Events Keyword</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getEvents <em>Events</em>}</li>
  * </ul>
  *
@@ -129,6 +131,26 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   protected String description = DESCRIPTION_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getModifiersKeyword() <em>Modifiers Keyword</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifiersKeyword()
+   * @generated
+   * @ordered
+   */
+  protected static final String MODIFIERS_KEYWORD_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getModifiersKeyword() <em>Modifiers Keyword</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifiersKeyword()
+   * @generated
+   * @ordered
+   */
+  protected String modifiersKeyword = MODIFIERS_KEYWORD_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getModifiers() <em>Modifiers</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -137,6 +159,26 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @ordered
    */
   protected EList<Modifier> modifiers;
+
+  /**
+   * The default value of the '{@link #getEventsKeyword() <em>Events Keyword</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEventsKeyword()
+   * @generated
+   * @ordered
+   */
+  protected static final String EVENTS_KEYWORD_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEventsKeyword() <em>Events Keyword</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEventsKeyword()
+   * @generated
+   * @ordered
+   */
+  protected String eventsKeyword = EVENTS_KEYWORD_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getEvents() <em>Events</em>}' reference list.
@@ -280,6 +322,31 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @generated
    */
   @Override
+  public String getModifiersKeyword()
+  {
+    return modifiersKeyword;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setModifiersKeyword(String newModifiersKeyword)
+  {
+    String oldModifiersKeyword = modifiersKeyword;
+    modifiersKeyword = newModifiersKeyword;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.METHOD__MODIFIERS_KEYWORD, oldModifiersKeyword, modifiersKeyword));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Modifier> getModifiers()
   {
     if (modifiers == null)
@@ -287,6 +354,31 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       modifiers = new EObjectResolvingEList<Modifier>(Modifier.class, this, ContractPackage.METHOD__MODIFIERS);
     }
     return modifiers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getEventsKeyword()
+  {
+    return eventsKeyword;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setEventsKeyword(String newEventsKeyword)
+  {
+    String oldEventsKeyword = eventsKeyword;
+    eventsKeyword = newEventsKeyword;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.METHOD__EVENTS_KEYWORD, oldEventsKeyword, eventsKeyword));
   }
 
   /**
@@ -342,8 +434,12 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return getOutputs();
       case ContractPackage.METHOD__DESCRIPTION:
         return getDescription();
+      case ContractPackage.METHOD__MODIFIERS_KEYWORD:
+        return getModifiersKeyword();
       case ContractPackage.METHOD__MODIFIERS:
         return getModifiers();
+      case ContractPackage.METHOD__EVENTS_KEYWORD:
+        return getEventsKeyword();
       case ContractPackage.METHOD__EVENTS:
         return getEvents();
     }
@@ -378,9 +474,15 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case ContractPackage.METHOD__DESCRIPTION:
         setDescription((String)newValue);
         return;
+      case ContractPackage.METHOD__MODIFIERS_KEYWORD:
+        setModifiersKeyword((String)newValue);
+        return;
       case ContractPackage.METHOD__MODIFIERS:
         getModifiers().clear();
         getModifiers().addAll((Collection<? extends Modifier>)newValue);
+        return;
+      case ContractPackage.METHOD__EVENTS_KEYWORD:
+        setEventsKeyword((String)newValue);
         return;
       case ContractPackage.METHOD__EVENTS:
         getEvents().clear();
@@ -415,8 +517,14 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case ContractPackage.METHOD__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
+      case ContractPackage.METHOD__MODIFIERS_KEYWORD:
+        setModifiersKeyword(MODIFIERS_KEYWORD_EDEFAULT);
+        return;
       case ContractPackage.METHOD__MODIFIERS:
         getModifiers().clear();
+        return;
+      case ContractPackage.METHOD__EVENTS_KEYWORD:
+        setEventsKeyword(EVENTS_KEYWORD_EDEFAULT);
         return;
       case ContractPackage.METHOD__EVENTS:
         getEvents().clear();
@@ -445,8 +553,12 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return outputs != null && !outputs.isEmpty();
       case ContractPackage.METHOD__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+      case ContractPackage.METHOD__MODIFIERS_KEYWORD:
+        return MODIFIERS_KEYWORD_EDEFAULT == null ? modifiersKeyword != null : !MODIFIERS_KEYWORD_EDEFAULT.equals(modifiersKeyword);
       case ContractPackage.METHOD__MODIFIERS:
         return modifiers != null && !modifiers.isEmpty();
+      case ContractPackage.METHOD__EVENTS_KEYWORD:
+        return EVENTS_KEYWORD_EDEFAULT == null ? eventsKeyword != null : !EVENTS_KEYWORD_EDEFAULT.equals(eventsKeyword);
       case ContractPackage.METHOD__EVENTS:
         return events != null && !events.isEmpty();
     }
@@ -470,6 +582,10 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
     result.append(statemutability);
     result.append(", description: ");
     result.append(description);
+    result.append(", modifiersKeyword: ");
+    result.append(modifiersKeyword);
+    result.append(", eventsKeyword: ");
+    result.append(eventsKeyword);
     result.append(')');
     return result.toString();
   }

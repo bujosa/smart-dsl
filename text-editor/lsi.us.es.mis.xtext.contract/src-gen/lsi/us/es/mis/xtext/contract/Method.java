@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getStatemutability <em>Statemutability</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getDescription <em>Description</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getModifiersKeyword <em>Modifiers Keyword</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getEventsKeyword <em>Events Keyword</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getEvents <em>Events</em>}</li>
  * </ul>
  *
@@ -122,6 +124,28 @@ public interface Method extends EObject
   void setDescription(String value);
 
   /**
+   * Returns the value of the '<em><b>Modifiers Keyword</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modifiers Keyword</em>' attribute.
+   * @see #setModifiersKeyword(String)
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod_ModifiersKeyword()
+   * @model
+   * @generated
+   */
+  String getModifiersKeyword();
+
+  /**
+   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Method#getModifiersKeyword <em>Modifiers Keyword</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Modifiers Keyword</em>' attribute.
+   * @see #getModifiersKeyword()
+   * @generated
+   */
+  void setModifiersKeyword(String value);
+
+  /**
    * Returns the value of the '<em><b>Modifiers</b></em>' reference list.
    * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Modifier}.
    * <!-- begin-user-doc -->
@@ -132,6 +156,28 @@ public interface Method extends EObject
    * @generated
    */
   EList<Modifier> getModifiers();
+
+  /**
+   * Returns the value of the '<em><b>Events Keyword</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Events Keyword</em>' attribute.
+   * @see #setEventsKeyword(String)
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod_EventsKeyword()
+   * @model
+   * @generated
+   */
+  String getEventsKeyword();
+
+  /**
+   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Method#getEventsKeyword <em>Events Keyword</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Events Keyword</em>' attribute.
+   * @see #getEventsKeyword()
+   * @generated
+   */
+  void setEventsKeyword(String value);
 
   /**
    * Returns the value of the '<em><b>Events</b></em>' reference list.

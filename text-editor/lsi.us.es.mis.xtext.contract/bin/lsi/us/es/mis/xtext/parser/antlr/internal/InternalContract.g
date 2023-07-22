@@ -655,21 +655,35 @@ ruleMethod returns [EObject current=null]
 		(
 			(
 				(
+					lv_modifiersKeyword_16_0='modifiers:'
+					{
+						newLeafNode(lv_modifiersKeyword_16_0, grammarAccess.getMethodAccess().getModifiersKeywordModifiersKeyword_10_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMethodRule());
+						}
+						setWithLastConsumed($current, "modifiersKeyword", lv_modifiersKeyword_16_0, "modifiers:");
+					}
+				)
+			)
+			(
+				(
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getMethodRule());
 						}
 					}
-					otherlv_16=RULE_ID
+					otherlv_17=RULE_ID
 					{
-						newLeafNode(otherlv_16, grammarAccess.getMethodAccess().getModifiersModifierCrossReference_10_0_0());
+						newLeafNode(otherlv_17, grammarAccess.getMethodAccess().getModifiersModifierCrossReference_10_1_0());
 					}
 				)
 			)
 			(
-				otherlv_17=','
+				otherlv_18=','
 				{
-					newLeafNode(otherlv_17, grammarAccess.getMethodAccess().getCommaKeyword_10_1_0());
+					newLeafNode(otherlv_18, grammarAccess.getMethodAccess().getCommaKeyword_10_2_0());
 				}
 				(
 					(
@@ -678,9 +692,9 @@ ruleMethod returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getMethodRule());
 							}
 						}
-						otherlv_18=RULE_ID
+						otherlv_19=RULE_ID
 						{
-							newLeafNode(otherlv_18, grammarAccess.getMethodAccess().getModifiersModifierCrossReference_10_1_1_0());
+							newLeafNode(otherlv_19, grammarAccess.getMethodAccess().getModifiersModifierCrossReference_10_2_1_0());
 						}
 					)
 				)
@@ -689,21 +703,35 @@ ruleMethod returns [EObject current=null]
 		(
 			(
 				(
+					lv_eventsKeyword_20_0='events:'
+					{
+						newLeafNode(lv_eventsKeyword_20_0, grammarAccess.getMethodAccess().getEventsKeywordEventsKeyword_11_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMethodRule());
+						}
+						setWithLastConsumed($current, "eventsKeyword", lv_eventsKeyword_20_0, "events:");
+					}
+				)
+			)
+			(
+				(
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getMethodRule());
 						}
 					}
-					otherlv_19=RULE_ID
+					otherlv_21=RULE_ID
 					{
-						newLeafNode(otherlv_19, grammarAccess.getMethodAccess().getEventsEventCrossReference_11_0_0());
+						newLeafNode(otherlv_21, grammarAccess.getMethodAccess().getEventsEventCrossReference_11_1_0());
 					}
 				)
 			)
 			(
-				otherlv_20=','
+				otherlv_22=','
 				{
-					newLeafNode(otherlv_20, grammarAccess.getMethodAccess().getCommaKeyword_11_1_0());
+					newLeafNode(otherlv_22, grammarAccess.getMethodAccess().getCommaKeyword_11_2_0());
 				}
 				(
 					(
@@ -712,17 +740,17 @@ ruleMethod returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getMethodRule());
 							}
 						}
-						otherlv_21=RULE_ID
+						otherlv_23=RULE_ID
 						{
-							newLeafNode(otherlv_21, grammarAccess.getMethodAccess().getEventsEventCrossReference_11_1_1_0());
+							newLeafNode(otherlv_23, grammarAccess.getMethodAccess().getEventsEventCrossReference_11_2_1_0());
 						}
 					)
 				)
 			)*
 		)?
-		otherlv_22='}'
+		otherlv_24='}'
 		{
-			newLeafNode(otherlv_22, grammarAccess.getMethodAccess().getRightCurlyBracketKeyword_12());
+			newLeafNode(otherlv_24, grammarAccess.getMethodAccess().getRightCurlyBracketKeyword_12());
 		}
 	)
 ;

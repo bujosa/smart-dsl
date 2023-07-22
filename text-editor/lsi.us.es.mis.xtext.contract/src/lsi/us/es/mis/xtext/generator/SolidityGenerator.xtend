@@ -207,7 +207,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        		for (param: modifier.params) {
 	        			modifiers += param.name
 	        			if (param == modifier.params.last){
-	        				modifiers += ") "
+	        				modifiers += ")"
 	        			}else {
 	        				modifiers +=", "
 	        			}

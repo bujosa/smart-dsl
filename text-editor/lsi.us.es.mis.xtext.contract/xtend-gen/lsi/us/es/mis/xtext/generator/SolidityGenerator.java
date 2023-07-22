@@ -322,7 +322,7 @@ public class SolidityGenerator extends AbstractGenerator {
                   boolean _equals_1 = Objects.equal(param_1, _last);
                   if (_equals_1) {
                     String _modifiers_4 = modifiers;
-                    modifiers = (_modifiers_4 + ") ");
+                    modifiers = (_modifiers_4 + ")");
                   } else {
                     String _modifiers_5 = modifiers;
                     modifiers = (_modifiers_5 + ", ");
