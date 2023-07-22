@@ -8,6 +8,7 @@ import java.util.List;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Param;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -162,8 +163,55 @@ public class SolidityGenerator extends AbstractGenerator {
     }
   }
   
-  public Object appendModifiers(final Contract contract, final StringBuilder code) {
-    return null;
+  public void appendModifiers(final Contract contract, final StringBuilder code) {
+    EList<Modifier> _modifiers = contract.getModifiers();
+    for (final Modifier modifier : _modifiers) {
+      {
+        String params = "";
+        boolean _isEmpty = params.isEmpty();
+        if (_isEmpty) {
+          params = "()";
+        } else {
+          params = "(";
+        }
+        EList<Param> _params = modifier.getParams();
+        for (final Param param : _params) {
+          Param _last = IterableExtensions.<Param>last(modifier.getParams());
+          boolean _equals = Objects.equal(param, _last);
+          if (_equals) {
+            String _params_1 = params;
+            String _solidityDataTypeForFunction = this.getSolidityDataTypeForFunction(param.getType().toString());
+            String _plus = (_solidityDataTypeForFunction + " ");
+            String _name = param.getName();
+            String _plus_1 = (_plus + _name);
+            String _plus_2 = (_plus_1 + ")");
+            params = (_params_1 + _plus_2);
+          } else {
+            String _params_2 = params;
+            String _solidityDataTypeForFunction_1 = this.getSolidityDataTypeForFunction(param.getType().toString());
+            String _plus_3 = (_solidityDataTypeForFunction_1 + " ");
+            String _name_1 = param.getName();
+            String _plus_4 = (_plus_3 + _name_1);
+            String _plus_5 = (_plus_4 + ", ");
+            params = (_params_2 + _plus_5);
+          }
+        }
+        String _name_2 = modifier.getName();
+        String _plus_6 = ("\tmodifier " + _name_2);
+        String _plus_7 = (_plus_6 + params);
+        String _plus_8 = (_plus_7 + " {\n");
+        code.append(_plus_8);
+        String _validation = modifier.getValidation();
+        String _plus_9 = ("\t\trequire(" + _validation);
+        String _plus_10 = (_plus_9 + ", \"");
+        String _message = modifier.getMessage();
+        String _plus_11 = (_plus_10 + _message);
+        String _plus_12 = (_plus_11 + "\");\n");
+        code.append(_plus_12);
+        code.append("\t\t_;\n");
+        code.append("\t}\n\n");
+      }
+    }
   }
   
   public StringBuilder appendReceiveFunction(final StringBuilder code) {

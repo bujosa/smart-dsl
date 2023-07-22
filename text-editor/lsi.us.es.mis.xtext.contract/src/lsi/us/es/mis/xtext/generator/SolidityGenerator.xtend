@@ -126,7 +126,29 @@ class SolidityGenerator extends AbstractGenerator {
 	}
 	
 	def appendModifiers(Contract contract, StringBuilder code) {
-		
+		for (modifier : contract.modifiers) {
+			
+			var params = ""
+			
+			if (params.empty){
+				params = "()"
+			} else {
+				params = "("
+			}
+			
+			for (param: modifier.params) {
+				if (param == modifier.params.last()){
+					params += getSolidityDataTypeForFunction(param.type.toString) + " " + param.name + ")"
+				} else {
+					params += getSolidityDataTypeForFunction(param.type.toString) + " " + param.name + ", "
+				}
+			}
+			
+			code.append("\tmodifier " + modifier.name + params + " {\n")
+            code.append("\t\trequire("+modifier.validation+", \"" + modifier.message + "\");\n")
+            code.append("\t\t_;\n")
+            code.append("\t}\n\n")
+		}
 	}
 	
 	def appendReceiveFunction(StringBuilder code) {
