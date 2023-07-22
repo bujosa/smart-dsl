@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getDescription <em>Description</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod()
@@ -131,5 +132,17 @@ public interface Method extends EObject
    * @generated
    */
   EList<Modifier> getModifiers();
+
+  /**
+   * Returns the value of the '<em><b>Events</b></em>' reference list.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Event}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Events</em>' reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod_Events()
+   * @model
+   * @generated
+   */
+  EList<Event> getEvents();
 
 } // Method

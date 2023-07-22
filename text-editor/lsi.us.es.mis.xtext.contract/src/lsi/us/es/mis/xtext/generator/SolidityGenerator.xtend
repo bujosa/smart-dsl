@@ -132,7 +132,7 @@ class SolidityGenerator extends AbstractGenerator {
 			
 			var params = ""
 			
-			if (params.empty){
+			if (modifier.params.length() == 0){
 				params = "()"
 			} else {
 				params = "("
@@ -187,11 +187,11 @@ class SolidityGenerator extends AbstractGenerator {
 	        }
 	        
 	        if (method.outputs.length() != 0 ) {
-	        	returns += "returns ("
+	        	returns += " returns ("
 	        	for (output: method.outputs) {
 	        		returns += getSolidityDataTypeForFunction(output.type.toString)
 		        	if (output == method.outputs.last){
-		        		returns += ") "
+		        		returns += ")"
 		        	} else {
 		        		returns += ", "
 		        	}
@@ -200,9 +200,9 @@ class SolidityGenerator extends AbstractGenerator {
 	        
 	        for (modifier: method.modifiers){
 	        	if (modifier.params.length() == 0) {
-	        		modifiers  += modifier.name
+	        		modifiers  += " " + modifier.name
 	        	} else {
-	        		modifiers += modifier.name + "("
+	        		modifiers += " " +modifier.name + "("
 	        		for (param: modifier.params) {
 	        			modifiers += param.name
 	        			if (param == modifier.params.last){
@@ -217,7 +217,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        	}
 	        }
 	        
-	        code.append(") public " + modifiers + "" + returns +"{\n")
+	        code.append(") public" + modifiers + "" + returns +" {\n")
 	        code.append("\t\t// " + method.description + "\n")
 	        code.append("\t}\n\n")
 	    }

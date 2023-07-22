@@ -6,6 +6,7 @@ package lsi.us.es.mis.xtext.contract.impl;
 import java.util.Collection;
 
 import lsi.us.es.mis.xtext.contract.ContractPackage;
+import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
@@ -40,6 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @generated
@@ -135,6 +137,16 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @ordered
    */
   protected EList<Modifier> modifiers;
+
+  /**
+   * The cached value of the '{@link #getEvents() <em>Events</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEvents()
+   * @generated
+   * @ordered
+   */
+  protected EList<Event> events;
 
   /**
    * <!-- begin-user-doc -->
@@ -283,6 +295,21 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @generated
    */
   @Override
+  public EList<Event> getEvents()
+  {
+    if (events == null)
+    {
+      events = new EObjectResolvingEList<Event>(Event.class, this, ContractPackage.METHOD__EVENTS);
+    }
+    return events;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -317,6 +344,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return getDescription();
       case ContractPackage.METHOD__MODIFIERS:
         return getModifiers();
+      case ContractPackage.METHOD__EVENTS:
+        return getEvents();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -353,6 +382,10 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         getModifiers().clear();
         getModifiers().addAll((Collection<? extends Modifier>)newValue);
         return;
+      case ContractPackage.METHOD__EVENTS:
+        getEvents().clear();
+        getEvents().addAll((Collection<? extends Event>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -385,6 +418,9 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case ContractPackage.METHOD__MODIFIERS:
         getModifiers().clear();
         return;
+      case ContractPackage.METHOD__EVENTS:
+        getEvents().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -411,6 +447,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case ContractPackage.METHOD__MODIFIERS:
         return modifiers != null && !modifiers.isEmpty();
+      case ContractPackage.METHOD__EVENTS:
+        return events != null && !events.isEmpty();
     }
     return super.eIsSet(featureID);
   }

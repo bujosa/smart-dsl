@@ -315,13 +315,22 @@ public interface ContractPackage extends EPackage
   int METHOD__MODIFIERS = 5;
 
   /**
+   * The feature id for the '<em><b>Events</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD__EVENTS = 6;
+
+  /**
    * The number of structural features of the '<em>Method</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_FEATURE_COUNT = 6;
+  int METHOD_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.EventImpl <em>Event</em>}' class.
@@ -726,6 +735,17 @@ public interface ContractPackage extends EPackage
   EReference getMethod_Modifiers();
 
   /**
+   * Returns the meta object for the reference list '{@link lsi.us.es.mis.xtext.contract.Method#getEvents <em>Events</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Events</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Method#getEvents()
+   * @see #getMethod()
+   * @generated
+   */
+  EReference getMethod_Events();
+
+  /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Event <em>Event</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1072,6 +1092,14 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EReference METHOD__MODIFIERS = eINSTANCE.getMethod_Modifiers();
+
+    /**
+     * The meta object literal for the '<em><b>Events</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD__EVENTS = eINSTANCE.getMethod_Events();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.EventImpl <em>Event</em>}' class.

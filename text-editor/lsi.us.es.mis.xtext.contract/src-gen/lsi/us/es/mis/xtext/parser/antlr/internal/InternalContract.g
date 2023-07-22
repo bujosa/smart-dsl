@@ -686,9 +686,43 @@ ruleMethod returns [EObject current=null]
 				)
 			)*
 		)?
-		otherlv_19='}'
+		(
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMethodRule());
+						}
+					}
+					otherlv_19=RULE_ID
+					{
+						newLeafNode(otherlv_19, grammarAccess.getMethodAccess().getEventsEventCrossReference_11_0_0());
+					}
+				)
+			)
+			(
+				otherlv_20=','
+				{
+					newLeafNode(otherlv_20, grammarAccess.getMethodAccess().getCommaKeyword_11_1_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getMethodRule());
+							}
+						}
+						otherlv_21=RULE_ID
+						{
+							newLeafNode(otherlv_21, grammarAccess.getMethodAccess().getEventsEventCrossReference_11_1_1_0());
+						}
+					)
+				)
+			)*
+		)?
+		otherlv_22='}'
 		{
-			newLeafNode(otherlv_19, grammarAccess.getMethodAccess().getRightCurlyBracketKeyword_11());
+			newLeafNode(otherlv_22, grammarAccess.getMethodAccess().getRightCurlyBracketKeyword_12());
 		}
 	)
 ;

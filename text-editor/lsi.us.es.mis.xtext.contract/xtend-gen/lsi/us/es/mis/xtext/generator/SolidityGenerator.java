@@ -172,8 +172,9 @@ public class SolidityGenerator extends AbstractGenerator {
     for (final Modifier modifier : _modifiers) {
       {
         String params = "";
-        boolean _isEmpty = params.isEmpty();
-        if (_isEmpty) {
+        int _length = ((Object[])Conversions.unwrapArray(modifier.getParams(), Object.class)).length;
+        boolean _equals = (_length == 0);
+        if (_equals) {
           params = "()";
         } else {
           params = "(";
@@ -181,8 +182,8 @@ public class SolidityGenerator extends AbstractGenerator {
         EList<Param> _params = modifier.getParams();
         for (final Param param : _params) {
           Param _last = IterableExtensions.<Param>last(modifier.getParams());
-          boolean _equals = Objects.equal(param, _last);
-          if (_equals) {
+          boolean _equals_1 = Objects.equal(param, _last);
+          if (_equals_1) {
             String _params_1 = params;
             String _solidityDataTypeForFunction = this.getSolidityDataTypeForFunction(param.getType().toString());
             String _plus = (_solidityDataTypeForFunction + " ");
@@ -275,7 +276,7 @@ public class SolidityGenerator extends AbstractGenerator {
         boolean _notEquals = (_length != 0);
         if (_notEquals) {
           String _returns = returns;
-          returns = (_returns + "returns (");
+          returns = (_returns + " returns (");
           EList<Output> _outputs = method.getOutputs();
           for (final Output output : _outputs) {
             {
@@ -286,7 +287,7 @@ public class SolidityGenerator extends AbstractGenerator {
               boolean _equals = Objects.equal(output, _last);
               if (_equals) {
                 String _returns_2 = returns;
-                returns = (_returns_2 + ") ");
+                returns = (_returns_2 + ")");
               } else {
                 String _returns_3 = returns;
                 returns = (_returns_3 + ", ");
@@ -302,12 +303,14 @@ public class SolidityGenerator extends AbstractGenerator {
             if (_equals) {
               String _modifiers_1 = modifiers;
               String _name_1 = modifier.getName();
-              modifiers = (_modifiers_1 + _name_1);
+              String _plus_2 = (" " + _name_1);
+              modifiers = (_modifiers_1 + _plus_2);
             } else {
               String _modifiers_2 = modifiers;
               String _name_2 = modifier.getName();
-              String _plus_2 = (_name_2 + "(");
-              modifiers = (_modifiers_2 + _plus_2);
+              String _plus_3 = (" " + _name_2);
+              String _plus_4 = (_plus_3 + "(");
+              modifiers = (_modifiers_2 + _plus_4);
               EList<Param> _params_1 = modifier.getParams();
               for (final Param param_1 : _params_1) {
                 {
@@ -334,7 +337,7 @@ public class SolidityGenerator extends AbstractGenerator {
             }
           }
         }
-        code.append(((((") public " + modifiers) + "") + returns) + "{\n"));
+        code.append(((((") public" + modifiers) + "") + returns) + " {\n"));
         String _description = method.getDescription();
         String _plus_2 = ("\t\t// " + _description);
         String _plus_3 = (_plus_2 + "\n");
