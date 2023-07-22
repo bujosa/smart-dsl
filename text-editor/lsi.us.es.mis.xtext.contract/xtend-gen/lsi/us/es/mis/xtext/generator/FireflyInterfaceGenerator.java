@@ -356,13 +356,13 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder_1.newLineIfNotEmpty();
           _builder_1.append("],");
           _builder_1.newLine();
-          methods = _builder_1.toString();
+          params = _builder_1.toString();
         }
         boolean _isEmpty_1 = returns.isEmpty();
         if (_isEmpty_1) {
           StringConcatenation _builder_2 = new StringConcatenation();
           _builder_2.append("\"returns\": [],");
-          params = _builder_2.toString();
+          returns = _builder_2.toString();
         } else {
           StringConcatenation _builder_3 = new StringConcatenation();
           _builder_3.append("\"returns\": [");
@@ -372,7 +372,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
           _builder_3.newLineIfNotEmpty();
           _builder_3.append("],");
           _builder_3.newLine();
-          methods = _builder_3.toString();
+          returns = _builder_3.toString();
         }
         StringConcatenation _builder_4 = new StringConcatenation();
         _builder_4.append("{");

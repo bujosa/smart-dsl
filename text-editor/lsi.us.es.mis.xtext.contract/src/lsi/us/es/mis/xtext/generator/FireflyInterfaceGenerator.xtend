@@ -176,7 +176,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    	if (params.empty) {
 	    		params =  '''"params": [],'''
 	    	} else {
-		    	methods = '''
+		    	params = '''
 	    		"params": [
 	    			«params»
 	    		],
@@ -184,9 +184,9 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    	}
 	    	
 	    	if (returns.empty) {
-	    		params =  '''"returns": [],'''
+	    		returns =  '''"returns": [],'''
 	    	} else {
-		    	methods = '''
+		    	returns = '''
 	    		"returns": [
 	    			«returns»
 	    		],
@@ -194,14 +194,14 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	    	}
 	    	
 	        val methodCode = '''
-	        {
-	            "name": "«method.name»",
-	            "description": "«method.description»",
-	            «params»
-	            «returns»
-	            "details": {}
-	        }«IF count < max»,«ENDIF»
-	        '''
+		        {
+		            "name": "«method.name»",
+		            "description": "«method.description»",
+		            «params»
+		            «returns»
+		            "details": {}
+		        }«IF count < max»,«ENDIF»
+		        '''
 	        
 	        methods += methodCode
 	    }
