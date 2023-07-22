@@ -46,15 +46,16 @@ class SolidityGenerator extends AbstractGenerator {
 	}
 	
 	def appendAttributes(Contract contract, StringBuilder code) {
-		if (contract.ownership){
-			code.append("\t address owner;\n")
-		}
-		
 	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val attributeType = getSolidityDataType(attribute.type.toString)
 	        code.append("\t"+ attributeType + " " + attributeName +";\n")
 	    }
+	    
+	    if (contract.ownership){
+			code.append("\taddress owner;\n")
+		}
+		
 	    code.append("\n")
 	}
 	
@@ -74,6 +75,10 @@ class SolidityGenerator extends AbstractGenerator {
 	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        code.append("\t\t" + attributeName + " = _" + attributeName +";\n")
+	    }
+	    
+	    if (contract.ownership){
+	    	code.append("\t\t" + "owner = msg.sender;\n")
 	    }
 	    code.append("\t}\n\n")
 	}
@@ -104,7 +109,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        code.append("\tevent " + capitalizeFirstLetter(event.name) + "(")
 	        for (param : event.params) {
 	            val parameterName = param.name
-	            val parameterType = getSolidityDataTypeForFunction(param.type.toString)
+	            val parameterType = getSolidityDataTypeForEvent(param.type.toString)
 	            
 	            code.append(parameterType + " " + parameterName)
 	            if (param != event.params.last) {
@@ -162,6 +167,23 @@ class SolidityGenerator extends AbstractGenerator {
 	            return "uint256"
 	        case "string":
 	            return "string memory"
+	        case "boolean":
+	            return "bool"
+	        case "address":
+	            return "address"
+	        case "array":
+	            return "uint256[]"
+	        default:
+	            return "uint256"
+	    }
+	}
+	
+	def String getSolidityDataTypeForEvent(String dataType) {
+		switch (dataType) {
+	        case "integer":
+	            return "uint256"
+	        case "string":
+	            return "string"
 	        case "boolean":
 	            return "bool"
 	        case "address":

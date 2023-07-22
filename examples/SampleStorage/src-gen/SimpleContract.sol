@@ -4,14 +4,16 @@ pragma solidity ^0.8.0;
 contract SimpleContract {
 	uint256 total;
 	string name;
+	address owner;
 
 	event PaymentReceived(address sender, uint amount);
 	event NumberUpdated(uint256 total);
-	event NameUpdated(string memory name);
+	event NameUpdated(string name);
 
 	constructor(uint256 _total, string memory _name) {
 		total = _total;
 		name = _name;
+		owner = msg.sender;
 	}
 
 	function setTotal(uint256 _value) public {

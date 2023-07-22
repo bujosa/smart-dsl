@@ -1,11 +1,18 @@
 Contract SimpleContract {
 	version: "v1.0.0"
 	hasReceive
+	ownership
 	modifiable total integer
 	modifiable name string
 	
+	Modifier onlyOwner () {
+		message: "Only the contract owner can call this function."
+		validation: "msg.sender == owner"
+	}
+	
 	method example (x integer, name string, lastname string) -> x integer, name string {
 		description: "This is a sample of method"
+		onlyOwner 
 	}
 	
 	event NumberUpdated (total integer){

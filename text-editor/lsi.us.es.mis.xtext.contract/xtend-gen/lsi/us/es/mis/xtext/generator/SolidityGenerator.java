@@ -51,10 +51,6 @@ public class SolidityGenerator extends AbstractGenerator {
   public StringBuilder appendAttributes(final Contract contract, final StringBuilder code) {
     StringBuilder _xblockexpression = null;
     {
-      boolean _isOwnership = contract.isOwnership();
-      if (_isOwnership) {
-        code.append("\t address owner;\n");
-      }
       EList<Attribute> _attributes = contract.getAttributes();
       for (final Attribute attribute : _attributes) {
         {
@@ -62,6 +58,10 @@ public class SolidityGenerator extends AbstractGenerator {
           final String attributeType = this.getSolidityDataType(attribute.getType().toString());
           code.append((((("\t" + attributeType) + " ") + attributeName) + ";\n"));
         }
+      }
+      boolean _isOwnership = contract.isOwnership();
+      if (_isOwnership) {
+        code.append("\taddress owner;\n");
       }
       _xblockexpression = code.append("\n");
     }
@@ -92,6 +92,10 @@ public class SolidityGenerator extends AbstractGenerator {
           final String attributeName = attribute_1.getName();
           code.append((((("\t\t" + attributeName) + " = _") + attributeName) + ";\n"));
         }
+      }
+      boolean _isOwnership = contract.isOwnership();
+      if (_isOwnership) {
+        code.append(("\t\t" + "owner = msg.sender;\n"));
       }
       _xblockexpression = code.append("\t}\n\n");
     }
@@ -139,7 +143,7 @@ public class SolidityGenerator extends AbstractGenerator {
         for (final Param param : _params) {
           {
             final String parameterName = param.getName();
-            final String parameterType = this.getSolidityDataTypeForFunction(param.getType().toString());
+            final String parameterType = this.getSolidityDataTypeForEvent(param.getType().toString());
             code.append(((parameterType + " ") + parameterName));
             Param _last = IterableExtensions.<Param>last(event.getParams());
             boolean _notEquals = (!Objects.equal(param, _last));
@@ -220,6 +224,27 @@ public class SolidityGenerator extends AbstractGenerator {
           return "uint256";
         case "string":
           return "string memory";
+        case "boolean":
+          return "bool";
+        case "address":
+          return "address";
+        case "array":
+          return "uint256[]";
+        default:
+          return "uint256";
+      }
+    } else {
+      return "uint256";
+    }
+  }
+  
+  public String getSolidityDataTypeForEvent(final String dataType) {
+    if (dataType != null) {
+      switch (dataType) {
+        case "integer":
+          return "uint256";
+        case "string":
+          return "string";
         case "boolean":
           return "bool";
         case "address":
