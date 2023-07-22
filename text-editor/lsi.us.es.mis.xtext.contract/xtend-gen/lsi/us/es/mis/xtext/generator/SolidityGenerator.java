@@ -10,6 +10,7 @@ import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Modifier;
+import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -248,13 +250,14 @@ public class SolidityGenerator extends AbstractGenerator {
   
   public void appendMethods(final Contract contract, final StringBuilder code) {
     final EList<Method> methods = contract.getMethods();
-    this.appendPaymentReceivedEvent(contract, code);
     for (final Method method : methods) {
       {
         String _name = method.getName();
         String _plus = ("\tfunction " + _name);
         String _plus_1 = (_plus + "(");
         code.append(_plus_1);
+        String returns = "";
+        String modifiers = "";
         EList<Param> _params = method.getParams();
         for (final Param param : _params) {
           {
@@ -268,7 +271,70 @@ public class SolidityGenerator extends AbstractGenerator {
             }
           }
         }
-        code.append(") public {\n");
+        int _length = ((Object[])Conversions.unwrapArray(method.getOutputs(), Object.class)).length;
+        boolean _notEquals = (_length != 0);
+        if (_notEquals) {
+          String _returns = returns;
+          returns = (_returns + "returns (");
+          EList<Output> _outputs = method.getOutputs();
+          for (final Output output : _outputs) {
+            {
+              String _returns_1 = returns;
+              String _solidityDataTypeForFunction = this.getSolidityDataTypeForFunction(output.getType().toString());
+              returns = (_returns_1 + _solidityDataTypeForFunction);
+              Output _last = IterableExtensions.<Output>last(method.getOutputs());
+              boolean _equals = Objects.equal(output, _last);
+              if (_equals) {
+                String _returns_2 = returns;
+                returns = (_returns_2 + ") ");
+              } else {
+                String _returns_3 = returns;
+                returns = (_returns_3 + ", ");
+              }
+            }
+          }
+        }
+        EList<Modifier> _modifiers = method.getModifiers();
+        for (final Modifier modifier : _modifiers) {
+          {
+            int _length_1 = ((Object[])Conversions.unwrapArray(modifier.getParams(), Object.class)).length;
+            boolean _equals = (_length_1 == 0);
+            if (_equals) {
+              String _modifiers_1 = modifiers;
+              String _name_1 = modifier.getName();
+              modifiers = (_modifiers_1 + _name_1);
+            } else {
+              String _modifiers_2 = modifiers;
+              String _name_2 = modifier.getName();
+              String _plus_2 = (_name_2 + "(");
+              modifiers = (_modifiers_2 + _plus_2);
+              EList<Param> _params_1 = modifier.getParams();
+              for (final Param param_1 : _params_1) {
+                {
+                  String _modifiers_3 = modifiers;
+                  String _name_3 = param_1.getName();
+                  modifiers = (_modifiers_3 + _name_3);
+                  Param _last = IterableExtensions.<Param>last(modifier.getParams());
+                  boolean _equals_1 = Objects.equal(param_1, _last);
+                  if (_equals_1) {
+                    String _modifiers_4 = modifiers;
+                    modifiers = (_modifiers_4 + ") ");
+                  } else {
+                    String _modifiers_5 = modifiers;
+                    modifiers = (_modifiers_5 + ", ");
+                  }
+                }
+              }
+            }
+            Modifier _last = IterableExtensions.<Modifier>last(method.getModifiers());
+            boolean _equals_1 = Objects.equal(modifier, _last);
+            if (_equals_1) {
+              String _modifiers_3 = modifiers;
+              modifiers = (_modifiers_3 + " ");
+            }
+          }
+        }
+        code.append(((((") public " + modifiers) + "") + returns) + "{\n"));
         String _description = method.getDescription();
         String _plus_2 = ("// " + _description);
         String _plus_3 = (_plus_2 + "\n");

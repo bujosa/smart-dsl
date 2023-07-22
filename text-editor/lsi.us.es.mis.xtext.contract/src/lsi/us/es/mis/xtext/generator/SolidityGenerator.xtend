@@ -170,11 +170,12 @@ class SolidityGenerator extends AbstractGenerator {
 	
 	def appendMethods(Contract contract, StringBuilder code) {
 		val methods = contract.methods
-		
-		appendPaymentReceivedEvent(contract, code)
-		
+
 	    for (method : methods) {
 	        code.append("\tfunction " + method.name + "(")
+	        var returns = ""
+	        var modifiers = ""
+	        
 	        for (param : method.params) {
 	            val parameterName = param.name
 	            val parameterType = getSolidityDataTypeForFunction(param.type.toString)
@@ -185,7 +186,38 @@ class SolidityGenerator extends AbstractGenerator {
 	            }
 	        }
 	        
-	        code.append(") public {\n")
+	        if (method.outputs.length() != 0 ) {
+	        	returns += "returns ("
+	        	for (output: method.outputs) {
+	        		returns += getSolidityDataTypeForFunction(output.type.toString)
+		        	if (output == method.outputs.last){
+		        		returns += ") "
+		        	} else {
+		        		returns += ", "
+		        	}
+	        	}
+	        }  
+	        
+	        for (modifier: method.modifiers){
+	        	if (modifier.params.length() == 0) {
+	        		modifiers  += modifier.name
+	        	} else {
+	        		modifiers += modifier.name + "("
+	        		for (param: modifier.params) {
+	        			modifiers += param.name
+	        			if (param == modifier.params.last){
+	        				modifiers += ") "
+	        			}else {
+	        				modifiers +=", "
+	        			}
+	        		}
+	        	}
+	        	if (modifier == method.modifiers.last){
+	        		modifiers += " "
+	        	}
+	        }
+	        
+	        code.append(") public " + modifiers + "" + returns +"{\n")
 	        code.append("// " + method.description + "\n")
 	        code.append("}\n\n")
 	    }

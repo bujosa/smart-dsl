@@ -36,7 +36,7 @@ contract SimpleContract {
         name = _value;
     }
 
-    function getName() public view returns (string memory) {
+    function getName() public view onlyOwner returns (string memory) {
         return name;
     }
 }
