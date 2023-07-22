@@ -259,6 +259,7 @@ public class SolidityGenerator extends AbstractGenerator {
         code.append(_plus_1);
         String returns = "";
         String modifiers = "";
+        String events = "";
         EList<Param> _params = method.getParams();
         for (final Param param : _params) {
           {
@@ -337,11 +338,47 @@ public class SolidityGenerator extends AbstractGenerator {
             }
           }
         }
+        EList<Event> _events = method.getEvents();
+        for (final Event event : _events) {
+          int _length_1 = ((Object[])Conversions.unwrapArray(event.getParams(), Object.class)).length;
+          boolean _equals = (_length_1 == 0);
+          if (_equals) {
+            String _events_1 = events;
+            String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
+            String _plus_2 = ("\t\temit " + _capitalizeFirstLetter);
+            String _plus_3 = (_plus_2 + "();\n");
+            events = (_events_1 + _plus_3);
+          } else {
+            String _events_2 = events;
+            String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(event.getName());
+            String _plus_4 = ("\t\temit " + _capitalizeFirstLetter_1);
+            String _plus_5 = (_plus_4 + "(");
+            events = (_events_2 + _plus_5);
+            EList<Param> _params_1 = event.getParams();
+            for (final Param param_1 : _params_1) {
+              {
+                String _events_3 = events;
+                String _name_1 = param_1.getName();
+                events = (_events_3 + _name_1);
+                Param _last = IterableExtensions.<Param>last(event.getParams());
+                boolean _equals_1 = Objects.equal(param_1, _last);
+                if (_equals_1) {
+                  String _events_4 = events;
+                  events = (_events_4 + ");\n");
+                } else {
+                  String _events_5 = events;
+                  events = (_events_5 + ", ");
+                }
+              }
+            }
+          }
+        }
         code.append(((((") public" + modifiers) + "") + returns) + " {\n"));
         String _description = method.getDescription();
-        String _plus_2 = ("\t\t// " + _description);
-        String _plus_3 = (_plus_2 + "\n");
-        code.append(_plus_3);
+        String _plus_6 = ("\t\t// " + _description);
+        String _plus_7 = (_plus_6 + "\n");
+        code.append(_plus_7);
+        code.append(events);
         code.append("\t}\n\n");
       }
     }

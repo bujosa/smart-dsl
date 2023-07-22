@@ -139,16 +139,33 @@
 		    "details": {}
 		},
 		{
-		    "name": "NumberUpdated",
-		    "description": "Este evento es para notificar cuando el numero se actualiza",
+		    "name": "XUpdated",
+		    "description": "Este evento es para notificar cuando el numero se ha actualizado",
 		    "params": [
 		    	{
-		    	    "name": "total",
+		    	    "name": "x",
 		    	    "schema": {
 		    	        "type": "integer",
 		    	        "details": {
 		    	            "type": "uint256",
 		    	            "internalType": "uint256"
+		    	        }
+		    	    }
+		    	}
+		    ],
+		    "details": {}
+		},
+		{
+		    "name": "NameUpdated",
+		    "description": "Este evento es para notificar cuando el name se ha actualizado",
+		    "params": [
+		    	{
+		    	    "name": "name",
+		    	    "schema": {
+		    	        "type": "string",
+		    	        "details": {
+		    	            "type": "string memory",
+		    	            "internalType": "string memory"
 		    	        }
 		    	    }
 		    	}

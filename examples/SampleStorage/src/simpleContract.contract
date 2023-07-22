@@ -17,10 +17,16 @@ Contract SimpleContract {
 	method example (x integer, name string, lastname string) -> x integer, name string {
 		description: "This is a sample of method"
 		onlyOwner,
-		validNumber 
+		validNumber
+		XUpdated,
+		NameUpdated 
 	}
 	
-	event NumberUpdated (total integer){
-		description: "Este evento es para notificar cuando el numero se actualiza"
+	event XUpdated (x integer){
+		description: "Este evento es para notificar cuando el numero se ha actualizado"
+	}
+	
+	event NameUpdated(name string){
+		description: "Este evento es para notificar cuando el name se ha actualizado"
 	}
 }

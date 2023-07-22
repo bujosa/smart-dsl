@@ -6,7 +6,8 @@ contract SimpleContract {
     address owner;
 
     event PaymentReceived(address sender, uint amount);
-    event NumberUpdated(uint256 total);
+    event XUpdated(uint256 x);
+    event NameUpdated(string name);
 
     modifier onlyOwner() {
         require(
@@ -40,5 +41,7 @@ contract SimpleContract {
         string memory lastname
     ) public onlyOwner validNumber(x) returns (uint256, string memory) {
         // This is a sample of method
+        emit XUpdated(x);
+        emit NameUpdated(name);
     }
 }

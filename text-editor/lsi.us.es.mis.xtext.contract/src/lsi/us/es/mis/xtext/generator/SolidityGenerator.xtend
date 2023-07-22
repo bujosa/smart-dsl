@@ -175,6 +175,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        code.append("\tfunction " + method.name + "(")
 	        var returns = ""
 	        var modifiers = ""
+	        var events = ""
 	        
 	        for (param : method.params) {
 	            val parameterName = param.name
@@ -217,8 +218,25 @@ class SolidityGenerator extends AbstractGenerator {
 	        	}
 	        }
 	        
+	        for (event: method.events){
+	        	if (event.params.length() == 0) {
+	        		events  += "\t\temit " + capitalizeFirstLetter(event.name) + "();\n"
+	        	} else {
+	        		events += "\t\temit " + capitalizeFirstLetter(event.name) + "("
+	        		for (param: event.params) {
+	        			events += param.name
+	        			if (param == event.params.last){
+	        				events += ");\n"
+	        			}else {
+	        				events +=", "
+	        			}
+	        		}
+	        	}
+	        }
+	        
 	        code.append(") public" + modifiers + "" + returns +" {\n")
 	        code.append("\t\t// " + method.description + "\n")
+	       	code.append(events);
 	        code.append("\t}\n\n")
 	    }
 	}
