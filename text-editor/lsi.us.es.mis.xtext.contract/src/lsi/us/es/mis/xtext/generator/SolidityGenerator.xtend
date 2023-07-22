@@ -218,8 +218,8 @@ class SolidityGenerator extends AbstractGenerator {
 	        }
 	        
 	        code.append(") public " + modifiers + "" + returns +"{\n")
-	        code.append("// " + method.description + "\n")
-	        code.append("}\n\n")
+	        code.append("\t\t// " + method.description + "\n")
+	        code.append("\t}\n\n")
 	    }
 	}
 	

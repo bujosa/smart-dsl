@@ -9,7 +9,6 @@ import (
 type SimpleContract struct {
 	contractapi.Contract
 	Total uint64
-	Name string
 }
 
 func (sc *SimpleContract) SetTotal(ctx contractapi.TransactionContextInterface, value uint64) error {
@@ -21,19 +20,9 @@ func (sc *SimpleContract) GetTotal(ctx contractapi.TransactionContextInterface) 
 	return sc.Total, nil
 }
 
-func (sc *SimpleContract) SetName(ctx contractapi.TransactionContextInterface, value string) error {
-	sc.Name = value
-	return nil
-}
-
-func (sc *SimpleContract) GetName(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.Name, nil
-}
-
 func (sc *SimpleContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	// Inicializa los valores de los atributos
 	sc.Total = 0
-	sc.Name = ""
 	return nil
 }
 

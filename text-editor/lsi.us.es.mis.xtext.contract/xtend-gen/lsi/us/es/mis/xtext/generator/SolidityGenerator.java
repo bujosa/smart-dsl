@@ -336,10 +336,10 @@ public class SolidityGenerator extends AbstractGenerator {
         }
         code.append(((((") public " + modifiers) + "") + returns) + "{\n"));
         String _description = method.getDescription();
-        String _plus_2 = ("// " + _description);
+        String _plus_2 = ("\t\t// " + _description);
         String _plus_3 = (_plus_2 + "\n");
         code.append(_plus_3);
-        code.append("}\n\n");
+        code.append("\t}\n\n");
       }
     }
   }

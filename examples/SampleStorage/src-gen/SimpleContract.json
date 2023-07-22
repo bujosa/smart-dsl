@@ -49,39 +49,6 @@
     	    }
     	},
     	{
-    	    "name": "setName",
-    	    "description": "",
-    	    "params": [
-    	        {
-    	            "name": "_value",
-    	            "schema": {
-    	                "type": "string",
-    	                "details": {
-    	                    "type": "string memory",
-    	                    "internalType": "string memory"
-    	                }
-    	            }
-    	        }
-    	    ],
-    	    "returns": []
-    	},
-    	{
-    	    "name": "getName",
-    	    "description": "",
-    	    "params": [],
-    	    "returns": [
-    	        {
-    	        	"name": "output",
-    	        	"schema": {
-    	        	    "type": "string"
-    	        	}
-    	        }
-    	    ],
-    	    "details": {
-    	        "stateMutability": "viewable"
-    	    }
-    	},
-    	{
     	    "name": "example",
     	    "description": "This is a sample of method",
     	    "params": [
@@ -173,7 +140,7 @@
 		},
 		{
 		    "name": "NumberUpdated",
-		    "description": "Este evento se utilizo para notificar a la red cuando el name sea actualizado",
+		    "description": "Este evento es para notificar cuando el numero se actualiza",
 		    "params": [
 		    	{
 		    	    "name": "total",
@@ -182,23 +149,6 @@
 		    	        "details": {
 		    	            "type": "uint256",
 		    	            "internalType": "uint256"
-		    	        }
-		    	    }
-		    	}
-		    ],
-		    "details": {}
-		},
-		{
-		    "name": "NameUpdated",
-		    "description": "Esto es para enviar el evento de cuando se actualice el nombre.",
-		    "params": [
-		    	{
-		    	    "name": "name",
-		    	    "schema": {
-		    	        "type": "string",
-		    	        "details": {
-		    	            "type": "string memory",
-		    	            "internalType": "string memory"
 		    	        }
 		    	    }
 		    	}

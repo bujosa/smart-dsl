@@ -3,7 +3,6 @@ Contract SimpleContract {
 	hasReceive
 	ownership
 	modifiable total integer
-	modifiable name string
 	
 	Modifier onlyOwner () {
 		message: "Only the contract owner can call this function."
@@ -16,10 +15,6 @@ Contract SimpleContract {
 	}
 	
 	event NumberUpdated (total integer){
-		description: "Este evento se utilizo para notificar a la red cuando el name sea actualizado"
-	}
-	
-	event NameUpdated (name string){
-		description: "Esto es para enviar el evento de cuando se actualice el nombre."
+		description: "Este evento es para notificar cuando el numero se actualiza"
 	}
 }
