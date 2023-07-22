@@ -92,7 +92,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	
 	def String defineMethods(Contract contract) {
 		var count = 0
-	    var max = contract.attributes.length()
+	    var max = contract.attributes.length() + contract.methods.length()
 	    var methods = appendReceiveMethod(contract)
 	    
 	    for (attribute : contract.attributes) {
@@ -103,7 +103,7 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	        
 	        // Set Method
 	        if (attribute.modifiable) {
-		        val param = '''
+		         val param = '''
 			        {
 			            "name": "_value",
 			            «getParamTypeForSolidity(attributeType)»
@@ -137,6 +137,69 @@ class FireflyInterfaceGenerator extends AbstractGenerator {
 	            "details": {
 	                "stateMutability": "viewable"
 	            }
+	        }«IF count < max»,«ENDIF»
+	        '''
+	        
+	        methods += methodCode
+	    }
+	    
+	    for (method: contract.methods) {
+	    	count++
+	    	var params = ""
+	    	var returns = ""
+	    	
+	    	for (param: method.params){
+	    		val paramName = param.name
+	        	val paramType = param.type.toString()
+	    	    val element = '''
+			        {
+			            "name": "«paramName»",
+			            «getParamTypeForSolidity(paramType)»
+			        }«IF param != method.params.last»,«ENDIF»
+			      '''
+			      
+			    params += element
+	    	}
+	    	
+	    	for (output: method.outputs) {
+	    		val paramName = output.name
+	        	val paramType = output.type.toString()
+	    	    val element = '''
+			        {
+			            "name": "«paramName»",
+			            «getParamTypeForSolidity(paramType)»
+			        }«IF output != method.outputs.last»,«ENDIF»
+			      '''
+			    returns += element
+	    	}
+	    	
+	    	if (params.empty) {
+	    		params =  '''"params": [],'''
+	    	} else {
+		    	methods = '''
+	    		"params": [
+	    			«params»
+	    		],
+	    	'''
+	    	}
+	    	
+	    	if (returns.empty) {
+	    		params =  '''"returns": [],'''
+	    	} else {
+		    	methods = '''
+	    		"returns": [
+	    			«returns»
+	    		],
+	    	'''
+	    	}
+	    	
+	        val methodCode = '''
+	        {
+	            "name": "«method.name»",
+	            "description": "«method.description»",
+	            «params»
+	            «returns»
+	            "details": {}
 	        }«IF count < max»,«ENDIF»
 	        '''
 	        

@@ -3,9 +3,12 @@
  */
 package lsi.us.es.mis.xtext.generator;
 
+import com.google.common.base.Objects;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.Method;
+import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -164,7 +167,9 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
   
   public String defineMethods(final Contract contract) {
     int count = 0;
-    int max = ((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length;
+    int _length = ((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length;
+    int _length_1 = ((Object[])Conversions.unwrapArray(contract.getMethods(), Object.class)).length;
+    int max = (_length + _length_1);
     String methods = this.appendReceiveMethod(contract);
     EList<Attribute> _attributes = contract.getAttributes();
     for (final Attribute attribute : _attributes) {
@@ -267,6 +272,142 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
         final String methodCode_1 = _builder_2.toString();
         String _methods_1 = methods;
         methods = (_methods_1 + methodCode_1);
+      }
+    }
+    EList<Method> _methods = contract.getMethods();
+    for (final Method method : _methods) {
+      {
+        count++;
+        String params = "";
+        String returns = "";
+        EList<Param> _params = method.getParams();
+        for (final Param param : _params) {
+          {
+            final String paramName = param.getName();
+            final String paramType = param.getType().toString();
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("{");
+            _builder.newLine();
+            _builder.append("    ");
+            _builder.append("\"name\": \"");
+            _builder.append(paramName, "    ");
+            _builder.append("\",");
+            _builder.newLineIfNotEmpty();
+            _builder.append("    ");
+            String _paramTypeForSolidity = this.getParamTypeForSolidity(paramType);
+            _builder.append(_paramTypeForSolidity, "    ");
+            _builder.newLineIfNotEmpty();
+            _builder.append("}");
+            {
+              Param _last = IterableExtensions.<Param>last(method.getParams());
+              boolean _notEquals = (!Objects.equal(param, _last));
+              if (_notEquals) {
+                _builder.append(",");
+              }
+            }
+            _builder.newLineIfNotEmpty();
+            final String element = _builder.toString();
+            String _params_1 = params;
+            params = (_params_1 + element);
+          }
+        }
+        EList<Output> _outputs = method.getOutputs();
+        for (final Output output : _outputs) {
+          {
+            final String paramName = output.getName();
+            final String paramType = output.getType().toString();
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("{");
+            _builder.newLine();
+            _builder.append("    ");
+            _builder.append("\"name\": \"");
+            _builder.append(paramName, "    ");
+            _builder.append("\",");
+            _builder.newLineIfNotEmpty();
+            _builder.append("    ");
+            String _paramTypeForSolidity = this.getParamTypeForSolidity(paramType);
+            _builder.append(_paramTypeForSolidity, "    ");
+            _builder.newLineIfNotEmpty();
+            _builder.append("}");
+            {
+              Output _last = IterableExtensions.<Output>last(method.getOutputs());
+              boolean _notEquals = (!Objects.equal(output, _last));
+              if (_notEquals) {
+                _builder.append(",");
+              }
+            }
+            _builder.newLineIfNotEmpty();
+            final String element = _builder.toString();
+            String _returns = returns;
+            returns = (_returns + element);
+          }
+        }
+        boolean _isEmpty = params.isEmpty();
+        if (_isEmpty) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("\"params\": [],");
+          params = _builder.toString();
+        } else {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("\"params\": [");
+          _builder_1.newLine();
+          _builder_1.append("\t");
+          _builder_1.append(params, "\t");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("],");
+          _builder_1.newLine();
+          methods = _builder_1.toString();
+        }
+        boolean _isEmpty_1 = returns.isEmpty();
+        if (_isEmpty_1) {
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("\"returns\": [],");
+          params = _builder_2.toString();
+        } else {
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append("\"returns\": [");
+          _builder_3.newLine();
+          _builder_3.append("\t");
+          _builder_3.append(returns, "\t");
+          _builder_3.newLineIfNotEmpty();
+          _builder_3.append("],");
+          _builder_3.newLine();
+          methods = _builder_3.toString();
+        }
+        StringConcatenation _builder_4 = new StringConcatenation();
+        _builder_4.append("{");
+        _builder_4.newLine();
+        _builder_4.append("    ");
+        _builder_4.append("\"name\": \"");
+        String _name = method.getName();
+        _builder_4.append(_name, "    ");
+        _builder_4.append("\",");
+        _builder_4.newLineIfNotEmpty();
+        _builder_4.append("    ");
+        _builder_4.append("\"description\": \"");
+        String _description = method.getDescription();
+        _builder_4.append(_description, "    ");
+        _builder_4.append("\",");
+        _builder_4.newLineIfNotEmpty();
+        _builder_4.append("    ");
+        _builder_4.append(params, "    ");
+        _builder_4.newLineIfNotEmpty();
+        _builder_4.append("    ");
+        _builder_4.append(returns, "    ");
+        _builder_4.newLineIfNotEmpty();
+        _builder_4.append("    ");
+        _builder_4.append("\"details\": {}");
+        _builder_4.newLine();
+        _builder_4.append("}");
+        {
+          if ((count < max)) {
+            _builder_4.append(",");
+          }
+        }
+        _builder_4.newLineIfNotEmpty();
+        final String methodCode = _builder_4.toString();
+        String _methods_1 = methods;
+        methods = (_methods_1 + methodCode);
       }
     }
     boolean _isEmpty = methods.isEmpty();
