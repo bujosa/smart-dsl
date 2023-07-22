@@ -8,6 +8,7 @@ import java.util.List;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Param;
 import org.eclipse.emf.common.util.EList;
@@ -245,8 +246,36 @@ public class SolidityGenerator extends AbstractGenerator {
     return _xifexpression;
   }
   
-  public Object appendMethods(final Contract contract, final StringBuilder code) {
-    return null;
+  public void appendMethods(final Contract contract, final StringBuilder code) {
+    final EList<Method> methods = contract.getMethods();
+    this.appendPaymentReceivedEvent(contract, code);
+    for (final Method method : methods) {
+      {
+        String _name = method.getName();
+        String _plus = ("\tfunction " + _name);
+        String _plus_1 = (_plus + "(");
+        code.append(_plus_1);
+        EList<Param> _params = method.getParams();
+        for (final Param param : _params) {
+          {
+            final String parameterName = param.getName();
+            final String parameterType = this.getSolidityDataTypeForFunction(param.getType().toString());
+            code.append(((parameterType + " ") + parameterName));
+            Param _last = IterableExtensions.<Param>last(method.getParams());
+            boolean _notEquals = (!Objects.equal(param, _last));
+            if (_notEquals) {
+              code.append(", ");
+            }
+          }
+        }
+        code.append(") public {\n");
+        String _description = method.getDescription();
+        String _plus_2 = ("// " + _description);
+        String _plus_3 = (_plus_2 + "\n");
+        code.append(_plus_3);
+        code.append("}\n\n");
+      }
+    }
   }
   
   public String getSolidityDataType(final String dataType) {
