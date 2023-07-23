@@ -68,7 +68,11 @@ public class SolidityGenerator extends AbstractGenerator {
       if (_isOwnership) {
         code.append("\taddress owner;\n");
       }
-      _xblockexpression = code.append("\n");
+      StringBuilder _xifexpression = null;
+      if ((contract.isOwnership() || (((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length != 0))) {
+        _xifexpression = code.append("\n");
+      }
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -251,6 +255,10 @@ public class SolidityGenerator extends AbstractGenerator {
   
   public void appendMethods(final Contract contract, final StringBuilder code) {
     final EList<Method> methods = contract.getMethods();
+    boolean _isHasReceive = contract.isHasReceive();
+    if (_isHasReceive) {
+      this.appendReceiveFunction(code);
+    }
     for (final Method method : methods) {
       {
         String _name = method.getName();

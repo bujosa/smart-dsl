@@ -58,7 +58,9 @@ class SolidityGenerator extends AbstractGenerator {
 			code.append("\taddress owner;\n")
 		}
 		
-	    code.append("\n")
+		if (contract.ownership || contract.attributes.length() != 0){
+			code.append("\n")
+		}
 	}
 	
 	def appendConstructor(Contract contract, StringBuilder code) {
@@ -170,6 +172,10 @@ class SolidityGenerator extends AbstractGenerator {
 	
 	def appendMethods(Contract contract, StringBuilder code) {
 		val methods = contract.methods
+		
+		if(contract.hasReceive){
+			appendReceiveFunction(code)
+		}
 
 	    for (method : methods) {
 	        code.append("\tfunction " + method.name + "(")
