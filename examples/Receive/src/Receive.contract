@@ -1,0 +1,4 @@
+Contract Receive {
+	version: "V1.0.0"
+	hasReceive
+}

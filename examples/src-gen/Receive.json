@@ -1,0 +1,46 @@
+{
+    "name": "Receive",
+    "version":  "V1.0.0",
+    "methods": [
+    	{
+    	    "name": "receive",
+    	    "description": "This function is to receive payments to the smart contract",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {
+    	        "stateMutability": "payable"
+    	    }
+    	}
+    ]
+    ,
+	"events": [
+		{
+		    "name": "PaymentReceived",
+		    "description": "This event is for notify when a payment was received",
+		    "params": [
+		    	{
+		    		"name": "sender",
+		    		"schema": {
+		    		    "type": "address",
+		    		    "details": {
+		    		        "type": "address",
+		    		        "internalType": "address",
+		    		        "indexed": false
+		    		    }
+		    		}
+		    	},
+		    	{
+		    		"name": "amount",
+		    		"schema": {
+		    		    "type": "integer",
+		    		    "details": {
+		    		        "type": "uint256",
+		    		        "internalType": "uint256"
+		    		    }
+		    		}
+		    	}
+		    ],
+		    "details": {}
+		}
+	]
+}
