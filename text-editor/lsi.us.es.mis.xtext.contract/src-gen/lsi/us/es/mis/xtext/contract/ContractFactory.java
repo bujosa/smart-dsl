@@ -87,6 +87,15 @@ public interface ContractFactory extends EFactory
   Output createOutput();
 
   /**
+   * Returns a new object of class '<em>Mapping Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mapping Declaration</em>'.
+   * @generated
+   */
+  MappingDeclaration createMappingDeclaration();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getMethods <em>Methods</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getMappings <em>Mappings</em>}</li>
  * </ul>
  *
  * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract()
@@ -167,5 +168,17 @@ public interface Contract extends EObject
    * @generated
    */
   EList<Modifier> getModifiers();
+
+  /**
+   * Returns the value of the '<em><b>Mappings</b></em>' containment reference list.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.MappingDeclaration}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Mappings</em>' containment reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Mappings()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MappingDeclaration> getMappings();
 
 } // Contract

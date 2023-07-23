@@ -141,13 +141,22 @@ public interface ContractPackage extends EPackage
   int CONTRACT__MODIFIERS = 7;
 
   /**
+   * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTRACT__MAPPINGS = 8;
+
+  /**
    * The number of structural features of the '<em>Contract</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTRACT_FEATURE_COUNT = 8;
+  int CONTRACT_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -471,6 +480,52 @@ public interface ContractPackage extends EPackage
   int OUTPUT_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl <em>Mapping Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl
+   * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getMappingDeclaration()
+   * @generated
+   */
+  int MAPPING_DECLARATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAPPING_DECLARATION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>From Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAPPING_DECLARATION__FROM_TYPE = 1;
+
+  /**
+   * The feature id for the '<em><b>To Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAPPING_DECLARATION__TO_TYPE = 2;
+
+  /**
+   * The number of structural features of the '<em>Mapping Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAPPING_DECLARATION_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.DataType <em>Data Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -478,7 +533,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getDataType()
    * @generated
    */
-  int DATA_TYPE = 7;
+  int DATA_TYPE = 8;
 
 
   /**
@@ -578,6 +633,17 @@ public interface ContractPackage extends EPackage
    * @generated
    */
   EReference getContract_Modifiers();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getMappings <em>Mappings</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Mappings</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Contract#getMappings()
+   * @see #getContract()
+   * @generated
+   */
+  EReference getContract_Mappings();
 
   /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Attribute <em>Attribute</em>}'.
@@ -893,6 +959,49 @@ public interface ContractPackage extends EPackage
   EAttribute getOutput_Type();
 
   /**
+   * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration <em>Mapping Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Mapping Declaration</em>'.
+   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration
+   * @generated
+   */
+  EClass getMappingDeclaration();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration#getName()
+   * @see #getMappingDeclaration()
+   * @generated
+   */
+  EAttribute getMappingDeclaration_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration#getFromType <em>From Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>From Type</em>'.
+   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration#getFromType()
+   * @see #getMappingDeclaration()
+   * @generated
+   */
+  EAttribute getMappingDeclaration_FromType();
+
+  /**
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration#getToType <em>To Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>To Type</em>'.
+   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration#getToType()
+   * @see #getMappingDeclaration()
+   * @generated
+   */
+  EAttribute getMappingDeclaration_ToType();
+
+  /**
    * Returns the meta object for enum '{@link lsi.us.es.mis.xtext.contract.DataType <em>Data Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -998,6 +1107,14 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EReference CONTRACT__MODIFIERS = eINSTANCE.getContract_Modifiers();
+
+    /**
+     * The meta object literal for the '<em><b>Mappings</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTRACT__MAPPINGS = eINSTANCE.getContract_Mappings();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -1242,6 +1359,40 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EAttribute OUTPUT__TYPE = eINSTANCE.getOutput_Type();
+
+    /**
+     * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl <em>Mapping Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl
+     * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getMappingDeclaration()
+     * @generated
+     */
+    EClass MAPPING_DECLARATION = eINSTANCE.getMappingDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAPPING_DECLARATION__NAME = eINSTANCE.getMappingDeclaration_Name();
+
+    /**
+     * The meta object literal for the '<em><b>From Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAPPING_DECLARATION__FROM_TYPE = eINSTANCE.getMappingDeclaration_FromType();
+
+    /**
+     * The meta object literal for the '<em><b>To Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAPPING_DECLARATION__TO_TYPE = eINSTANCE.getMappingDeclaration_ToType();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.DataType <em>Data Type</em>}' enum.

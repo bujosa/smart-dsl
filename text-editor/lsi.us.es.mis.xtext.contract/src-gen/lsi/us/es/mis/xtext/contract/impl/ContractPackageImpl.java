@@ -9,6 +9,7 @@ import lsi.us.es.mis.xtext.contract.ContractFactory;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.DataType;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
@@ -78,6 +79,13 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   private EClass outputEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mappingDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -246,6 +254,17 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
   public EReference getContract_Modifiers()
   {
     return (EReference)contractEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getContract_Mappings()
+  {
+    return (EReference)contractEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -573,6 +592,50 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
+  public EClass getMappingDeclaration()
+  {
+    return mappingDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMappingDeclaration_Name()
+  {
+    return (EAttribute)mappingDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMappingDeclaration_FromType()
+  {
+    return (EAttribute)mappingDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMappingDeclaration_ToType()
+  {
+    return (EAttribute)mappingDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getDataType()
   {
     return dataTypeEEnum;
@@ -618,6 +681,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     createEReference(contractEClass, CONTRACT__EVENTS);
     createEReference(contractEClass, CONTRACT__METHODS);
     createEReference(contractEClass, CONTRACT__MODIFIERS);
+    createEReference(contractEClass, CONTRACT__MAPPINGS);
 
     attributeEClass = createEClass(ATTRIBUTE);
     createEAttribute(attributeEClass, ATTRIBUTE__MODIFIABLE);
@@ -653,6 +717,11 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     outputEClass = createEClass(OUTPUT);
     createEAttribute(outputEClass, OUTPUT__NAME);
     createEAttribute(outputEClass, OUTPUT__TYPE);
+
+    mappingDeclarationEClass = createEClass(MAPPING_DECLARATION);
+    createEAttribute(mappingDeclarationEClass, MAPPING_DECLARATION__NAME);
+    createEAttribute(mappingDeclarationEClass, MAPPING_DECLARATION__FROM_TYPE);
+    createEAttribute(mappingDeclarationEClass, MAPPING_DECLARATION__TO_TYPE);
 
     // Create enums
     dataTypeEEnum = createEEnum(DATA_TYPE);
@@ -698,6 +767,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEReference(getContract_Events(), this.getEvent(), null, "events", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Methods(), this.getMethod(), null, "methods", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Modifiers(), this.getModifier(), null, "modifiers", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContract_Mappings(), this.getMappingDeclaration(), null, "mappings", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAttribute_Modifiable(), ecorePackage.getEBoolean(), "modifiable", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -733,6 +803,11 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOutput_Name(), ecorePackage.getEString(), "name", null, 0, 1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOutput_Type(), this.getDataType(), "type", null, 0, 1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mappingDeclarationEClass, MappingDeclaration.class, "MappingDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMappingDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, MappingDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMappingDeclaration_FromType(), this.getDataType(), "fromType", null, 0, 1, MappingDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMappingDeclaration_ToType(), this.getDataType(), "toType", null, 0, 1, MappingDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(dataTypeEEnum, DataType.class, "DataType");

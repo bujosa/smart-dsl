@@ -233,10 +233,30 @@ ruleContract returns [EObject current=null]
 					}
 				)
 			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getContractAccess().getMappingsMappingDeclarationParserRuleCall_7_4_0());
+					}
+					lv_mappings_11_0=ruleMappingDeclaration
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getContractRule());
+						}
+						add(
+							$current,
+							"mappings",
+							lv_mappings_11_0,
+							"lsi.us.es.mis.xtext.Contract.MappingDeclaration");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
 		)*
-		otherlv_11='}'
+		otherlv_12='}'
 		{
-			newLeafNode(otherlv_11, grammarAccess.getContractAccess().getRightCurlyBracketKeyword_8());
+			newLeafNode(otherlv_12, grammarAccess.getContractAccess().getRightCurlyBracketKeyword_8());
 		}
 	)
 ;
@@ -984,6 +1004,93 @@ ruleOutput returns [EObject current=null]
 						$current,
 						"type",
 						lv_type_1_0,
+						"lsi.us.es.mis.xtext.Contract.DataType");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleMappingDeclaration
+entryRuleMappingDeclaration returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMappingDeclarationRule()); }
+	iv_ruleMappingDeclaration=ruleMappingDeclaration
+	{ $current=$iv_ruleMappingDeclaration.current; }
+	EOF;
+
+// Rule MappingDeclaration
+ruleMappingDeclaration returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='mapping'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getMappingDeclarationAccess().getMappingKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getMappingDeclarationAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMappingDeclarationRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='fromType'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMappingDeclarationAccess().getFromTypeKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMappingDeclarationAccess().getFromTypeDataTypeEnumRuleCall_3_0());
+				}
+				lv_fromType_3_0=ruleDataType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMappingDeclarationRule());
+					}
+					set(
+						$current,
+						"fromType",
+						lv_fromType_3_0,
+						"lsi.us.es.mis.xtext.Contract.DataType");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4='toType'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getMappingDeclarationAccess().getToTypeKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMappingDeclarationAccess().getToTypeDataTypeEnumRuleCall_5_0());
+				}
+				lv_toType_5_0=ruleDataType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMappingDeclarationRule());
+					}
+					set(
+						$current,
+						"toType",
+						lv_toType_5_0,
 						"lsi.us.es.mis.xtext.Contract.DataType");
 					afterParserOrEnumRuleCall();
 				}

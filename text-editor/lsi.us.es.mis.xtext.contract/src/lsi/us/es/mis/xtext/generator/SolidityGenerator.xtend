@@ -54,11 +54,19 @@ class SolidityGenerator extends AbstractGenerator {
 	        code.append("\t"+ attributeType + " " + attributeName +";\n")
 	    }
 	    
+	    
 	    if (contract.ownership){
 			code.append("\taddress owner;\n")
 		}
 		
-		if (contract.ownership || contract.attributes.length() != 0){
+		for (mapping : contract.mappings) {
+	        val mappingName = mapping.name
+	        val fromType = getSolidityDataType(mapping.fromType.toString)
+	        val toType = getSolidityDataType(mapping.toType.toString)
+	        code.append("\tmapping("+ fromType + " => " + toType +") public " +mappingName+";\n")
+	    }
+		
+		if (contract.ownership || contract.attributes.length() != 0 || contract.mappings.length() !=  0){
 			code.append("\n")
 		}
 	}
@@ -230,7 +238,11 @@ class SolidityGenerator extends AbstractGenerator {
 	        	} else {
 	        		events += "\t\temit " + capitalizeFirstLetter(event.name) + "("
 	        		for (param: event.params) {
-	        			events += param.name
+	        			var value = param.name
+	        			if (value == "from") {
+	        				value = "msg.sender"
+	        			}
+	        			events += value
 	        			if (param == event.params.last){
 	        				events += ");\n"
 	        			}else {
@@ -241,7 +253,9 @@ class SolidityGenerator extends AbstractGenerator {
 	        }
 	        
 	        code.append(") public" + modifiers + "" + returns +" {\n")
-	        code.append("\t\t// " + method.description + "\n")
+	        if (method.description != null){
+	        	code.append("\t\t// " + method.description + "\n")
+	        }
 	       	code.append(events);
 	        code.append("\t}\n\n")
 	    }

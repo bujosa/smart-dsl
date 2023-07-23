@@ -22,6 +22,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/events"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/methods"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/modifiers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/mappings"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/modifiable"/>
@@ -57,6 +58,11 @@
     <genClasses ecoreClass="Contract.ecore#//Output">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Output/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Output/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Contract.ecore#//MappingDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//MappingDeclaration/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//MappingDeclaration/fromType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//MappingDeclaration/toType"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

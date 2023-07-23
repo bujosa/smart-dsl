@@ -73,6 +73,7 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
       case ContractPackage.EVENT: return createEvent();
       case ContractPackage.PARAM: return createParam();
       case ContractPackage.OUTPUT: return createOutput();
+      case ContractPackage.MAPPING_DECLARATION: return createMappingDeclaration();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -194,6 +195,18 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
   {
     OutputImpl output = new OutputImpl();
     return output;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MappingDeclaration createMappingDeclaration()
+  {
+    MappingDeclarationImpl mappingDeclaration = new MappingDeclarationImpl();
+    return mappingDeclaration;
   }
 
   /**

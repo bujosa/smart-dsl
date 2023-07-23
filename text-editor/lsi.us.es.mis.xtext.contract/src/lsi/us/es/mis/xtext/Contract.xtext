@@ -8,7 +8,7 @@ Contract:
 		'version:' version = STRING
 		(hasReceive?='hasReceive')?
 		(ownership?='ownership')?
-		(attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
+		(attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
 	'}'
 ;
 
@@ -50,3 +50,7 @@ Output:
 
 enum DataType:
 	INTEGER = 'integer' | STRING='string' | BOOLEAN='boolean' | ADDRESS = 'address' | array = 'array';
+	
+MappingDeclaration:
+	'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+;

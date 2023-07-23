@@ -9,6 +9,7 @@ import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Modifier;
 
@@ -42,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getMethods <em>Methods</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getMappings <em>Mappings</em>}</li>
  * </ul>
  *
  * @generated
@@ -167,6 +169,16 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @ordered
    */
   protected EList<Modifier> modifiers;
+
+  /**
+   * The cached value of the '{@link #getMappings() <em>Mappings</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMappings()
+   * @generated
+   * @ordered
+   */
+  protected EList<MappingDeclaration> mappings;
 
   /**
    * <!-- begin-user-doc -->
@@ -355,6 +367,21 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @generated
    */
   @Override
+  public EList<MappingDeclaration> getMappings()
+  {
+    if (mappings == null)
+    {
+      mappings = new EObjectContainmentEList<MappingDeclaration>(MappingDeclaration.class, this, ContractPackage.CONTRACT__MAPPINGS);
+    }
+    return mappings;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -367,6 +394,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
       case ContractPackage.CONTRACT__MODIFIERS:
         return ((InternalEList<?>)getModifiers()).basicRemove(otherEnd, msgs);
+      case ContractPackage.CONTRACT__MAPPINGS:
+        return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -397,6 +426,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return getMethods();
       case ContractPackage.CONTRACT__MODIFIERS:
         return getModifiers();
+      case ContractPackage.CONTRACT__MAPPINGS:
+        return getMappings();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -440,6 +471,10 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         getModifiers().clear();
         getModifiers().addAll((Collection<? extends Modifier>)newValue);
         return;
+      case ContractPackage.CONTRACT__MAPPINGS:
+        getMappings().clear();
+        getMappings().addAll((Collection<? extends MappingDeclaration>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -478,6 +513,9 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
       case ContractPackage.CONTRACT__MODIFIERS:
         getModifiers().clear();
         return;
+      case ContractPackage.CONTRACT__MAPPINGS:
+        getMappings().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -508,6 +546,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return methods != null && !methods.isEmpty();
       case ContractPackage.CONTRACT__MODIFIERS:
         return modifiers != null && !modifiers.isEmpty();
+      case ContractPackage.CONTRACT__MAPPINGS:
+        return mappings != null && !mappings.isEmpty();
     }
     return super.eIsSet(featureID);
   }

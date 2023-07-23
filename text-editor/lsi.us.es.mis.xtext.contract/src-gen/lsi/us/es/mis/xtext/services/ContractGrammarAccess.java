@@ -48,6 +48,8 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cMethodsMethodParserRuleCall_7_2_0 = (RuleCall)cMethodsAssignment_7_2.eContents().get(0);
 		private final Assignment cModifiersAssignment_7_3 = (Assignment)cAlternatives_7.eContents().get(3);
 		private final RuleCall cModifiersModifierParserRuleCall_7_3_0 = (RuleCall)cModifiersAssignment_7_3.eContents().get(0);
+		private final Assignment cMappingsAssignment_7_4 = (Assignment)cAlternatives_7.eContents().get(4);
+		private final RuleCall cMappingsMappingDeclarationParserRuleCall_7_4_0 = (RuleCall)cMappingsAssignment_7_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//Contract:
@@ -56,7 +58,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//        'version:' version = STRING
 		//        (hasReceive?='hasReceive')?
 		//        (ownership?='ownership')?
-		//        (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
+		//        (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -66,7 +68,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    'version:' version = STRING
 		//    (hasReceive?='hasReceive')?
 		//    (ownership?='ownership')?
-		//    (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
+		//    (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -103,7 +105,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'ownership'
 		public Keyword getOwnershipOwnershipKeyword_6_0() { return cOwnershipOwnershipKeyword_6_0; }
 		
-		//(attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
+		//(attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
 		public Alternatives getAlternatives_7() { return cAlternatives_7; }
 		
 		//attributes+=Attribute
@@ -129,6 +131,12 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//Modifier
 		public RuleCall getModifiersModifierParserRuleCall_7_3_0() { return cModifiersModifierParserRuleCall_7_3_0; }
+		
+		//mappings+=MappingDeclaration
+		public Assignment getMappingsAssignment_7_4() { return cMappingsAssignment_7_4; }
+		
+		//MappingDeclaration
+		public RuleCall getMappingsMappingDeclarationParserRuleCall_7_4_0() { return cMappingsMappingDeclarationParserRuleCall_7_4_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
@@ -641,6 +649,54 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//DataType
 		public RuleCall getTypeDataTypeEnumRuleCall_1_0() { return cTypeDataTypeEnumRuleCall_1_0; }
 	}
+	public class MappingDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.MappingDeclaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMappingKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cFromTypeKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cFromTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cFromTypeDataTypeEnumRuleCall_3_0 = (RuleCall)cFromTypeAssignment_3.eContents().get(0);
+		private final Keyword cToTypeKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cToTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cToTypeDataTypeEnumRuleCall_5_0 = (RuleCall)cToTypeAssignment_5.eContents().get(0);
+		
+		//MappingDeclaration:
+		//    'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+		public Group getGroup() { return cGroup; }
+		
+		//'mapping'
+		public Keyword getMappingKeyword_0() { return cMappingKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'fromType'
+		public Keyword getFromTypeKeyword_2() { return cFromTypeKeyword_2; }
+		
+		//fromType=DataType
+		public Assignment getFromTypeAssignment_3() { return cFromTypeAssignment_3; }
+		
+		//DataType
+		public RuleCall getFromTypeDataTypeEnumRuleCall_3_0() { return cFromTypeDataTypeEnumRuleCall_3_0; }
+		
+		//'toType'
+		public Keyword getToTypeKeyword_4() { return cToTypeKeyword_4; }
+		
+		//toType=DataType
+		public Assignment getToTypeAssignment_5() { return cToTypeAssignment_5; }
+		
+		//DataType
+		public RuleCall getToTypeDataTypeEnumRuleCall_5_0() { return cToTypeDataTypeEnumRuleCall_5_0; }
+	}
 	
 	public class DataTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.DataType");
@@ -702,6 +758,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final ParamElements pParam;
 	private final OutputElements pOutput;
 	private final DataTypeElements eDataType;
+	private final MappingDeclarationElements pMappingDeclaration;
 	
 	private final Grammar grammar;
 	
@@ -720,6 +777,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pParam = new ParamElements();
 		this.pOutput = new OutputElements();
 		this.eDataType = new DataTypeElements();
+		this.pMappingDeclaration = new MappingDeclarationElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -755,7 +813,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//        'version:' version = STRING
 	//        (hasReceive?='hasReceive')?
 	//        (ownership?='ownership')?
-	//        (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
+	//        (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
 	//    '}'
 	//;
 	public ContractElements getContractAccess() {
@@ -852,6 +910,17 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	public EnumRule getDataTypeRule() {
 		return getDataTypeAccess().getRule();
+	}
+	
+	//MappingDeclaration:
+	//    'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+	//;
+	public MappingDeclarationElements getMappingDeclarationAccess() {
+		return pMappingDeclaration;
+	}
+	
+	public ParserRule getMappingDeclarationRule() {
+		return getMappingDeclarationAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

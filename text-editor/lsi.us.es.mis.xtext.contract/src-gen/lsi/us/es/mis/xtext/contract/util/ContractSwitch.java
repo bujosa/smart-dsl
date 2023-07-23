@@ -122,6 +122,13 @@ public class ContractSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ContractPackage.MAPPING_DECLARATION:
+      {
+        MappingDeclaration mappingDeclaration = (MappingDeclaration)theEObject;
+        T result = caseMappingDeclaration(mappingDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -234,6 +241,22 @@ public class ContractSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOutput(Output object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mapping Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mapping Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMappingDeclaration(MappingDeclaration object)
   {
     return null;
   }

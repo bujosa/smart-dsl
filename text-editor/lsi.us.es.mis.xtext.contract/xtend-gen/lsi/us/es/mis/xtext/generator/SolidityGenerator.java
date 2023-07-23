@@ -8,6 +8,7 @@ import java.util.List;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
@@ -68,8 +69,17 @@ public class SolidityGenerator extends AbstractGenerator {
       if (_isOwnership) {
         code.append("\taddress owner;\n");
       }
+      EList<MappingDeclaration> _mappings = contract.getMappings();
+      for (final MappingDeclaration mapping : _mappings) {
+        {
+          final String mappingName = mapping.getName();
+          final String fromType = this.getSolidityDataType(mapping.getFromType().toString());
+          final String toType = this.getSolidityDataType(mapping.getToType().toString());
+          code.append((((((("\tmapping(" + fromType) + " => ") + toType) + ") public ") + mappingName) + ";\n"));
+        }
+      }
       StringBuilder _xifexpression = null;
-      if ((contract.isOwnership() || (((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length != 0))) {
+      if (((contract.isOwnership() || (((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length != 0)) || (((Object[])Conversions.unwrapArray(contract.getMappings(), Object.class)).length != 0))) {
         _xifexpression = code.append("\n");
       }
       _xblockexpression = _xifexpression;
@@ -365,12 +375,16 @@ public class SolidityGenerator extends AbstractGenerator {
             EList<Param> _params_1 = event.getParams();
             for (final Param param_1 : _params_1) {
               {
-                String _events_3 = events;
-                String _name_1 = param_1.getName();
-                events = (_events_3 + _name_1);
-                Param _last = IterableExtensions.<Param>last(event.getParams());
-                boolean _equals_1 = Objects.equal(param_1, _last);
+                String value = param_1.getName();
+                boolean _equals_1 = Objects.equal(value, "from");
                 if (_equals_1) {
+                  value = "msg.sender";
+                }
+                String _events_3 = events;
+                events = (_events_3 + value);
+                Param _last = IterableExtensions.<Param>last(event.getParams());
+                boolean _equals_2 = Objects.equal(param_1, _last);
+                if (_equals_2) {
                   String _events_4 = events;
                   events = (_events_4 + ");\n");
                 } else {
@@ -383,9 +397,13 @@ public class SolidityGenerator extends AbstractGenerator {
         }
         code.append(((((") public" + modifiers) + "") + returns) + " {\n"));
         String _description = method.getDescription();
-        String _plus_6 = ("\t\t// " + _description);
-        String _plus_7 = (_plus_6 + "\n");
-        code.append(_plus_7);
+        boolean _notEquals_1 = (!Objects.equal(_description, null));
+        if (_notEquals_1) {
+          String _description_1 = method.getDescription();
+          String _plus_6 = ("\t\t// " + _description_1);
+          String _plus_7 = (_plus_6 + "\n");
+          code.append(_plus_7);
+        }
         code.append(events);
         code.append("\t}\n\n");
       }

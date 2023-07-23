@@ -9,6 +9,7 @@ import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
@@ -46,6 +47,9 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case ContractPackage.EVENT:
 				sequence_Event(context, (Event) semanticObject); 
+				return; 
+			case ContractPackage.MAPPING_DECLARATION:
+				sequence_MappingDeclaration(context, (MappingDeclaration) semanticObject); 
 				return; 
 			case ContractPackage.METHOD:
 				sequence_Method(context, (Method) semanticObject); 
@@ -86,7 +90,7 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         version=STRING 
 	 *         hasReceive?='hasReceive'? 
 	 *         ownership?='ownership'? 
-	 *         (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier)*
+	 *         (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
 	 *     )
 	 */
 	protected void sequence_Contract(ISerializationContext context, Contract semanticObject) {
@@ -103,6 +107,30 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 */
 	protected void sequence_Event(ISerializationContext context, Event semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MappingDeclaration returns MappingDeclaration
+	 *
+	 * Constraint:
+	 *     (name=ID fromType=DataType toType=DataType)
+	 */
+	protected void sequence_MappingDeclaration(ISerializationContext context, MappingDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__NAME));
+			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__FROM_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__FROM_TYPE));
+			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__TO_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__TO_TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMappingDeclarationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getMappingDeclarationAccess().getFromTypeDataTypeEnumRuleCall_3_0(), semanticObject.getFromType());
+		feeder.accept(grammarAccess.getMappingDeclarationAccess().getToTypeDataTypeEnumRuleCall_5_0(), semanticObject.getToType());
+		feeder.finish();
 	}
 	
 	

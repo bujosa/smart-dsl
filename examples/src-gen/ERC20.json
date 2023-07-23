@@ -1,0 +1,129 @@
+{
+    "name": "ERC20",
+    "version":  "v1.0.0",
+    "methods": [
+    	{
+    	    "name": "getName",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getSymbol",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getTotalSupply",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "integer",
+    	        	    "details": {
+    	        	        "type": "uint256",
+    	        	        "internalType": "uint256"
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "transfer",
+    	    "description": "Este metodo es para transferir dinero",
+    	    "params": [
+    	    	{
+    	    	    "name": "to",
+    	    	    "schema": {
+    	    	        "type": "address",
+    	    	        "details": {
+    	    	            "type": "address",
+    	    	            "internalType": "address",
+    	    	            "indexed": false
+    	    	        }
+    	    	    }
+    	    	},
+    	    	{
+    	    	    "name": "value",
+    	    	    "schema": {
+    	    	        "type": "integer",
+    	    	        "details": {
+    	    	            "type": "uint256",
+    	    	            "internalType": "uint256"
+    	    	        }
+    	    	    }
+    	    	}
+    	    ],
+    	    "returns": [],
+    	    "details": {}
+    	}
+    ]
+    ,
+	"events": [
+		{
+		    "name": "Transfer",
+		    "description": "Esto es para cuando se haga la transferencia se notifique en la blockchain",
+		    "params": [
+		    	{
+		    	    "name": "from",
+		    	    "schema": {
+		    	        "type": "address",
+		    	        "details": {
+		    	            "type": "address",
+		    	            "internalType": "address",
+		    	            "indexed": false
+		    	        }
+		    	    }
+		    	},
+		    	{
+		    	    "name": "to",
+		    	    "schema": {
+		    	        "type": "address",
+		    	        "details": {
+		    	            "type": "address",
+		    	            "internalType": "address",
+		    	            "indexed": false
+		    	        }
+		    	    }
+		    	},
+		    	{
+		    	    "name": "value",
+		    	    "schema": {
+		    	        "type": "integer",
+		    	        "details": {
+		    	            "type": "uint256",
+		    	            "internalType": "uint256"
+		    	        }
+		    	    }
+		    	}
+		    ],
+		    "details": {}
+		}
+	]
+}
