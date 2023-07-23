@@ -1,0 +1,33 @@
+Contract TestResults {
+	version: 'v1.0.0'
+	modifiable Grade string
+	amount integer
+	studentAddress address
+	teacherAddress address
+	parentsAddress address
+	
+	Modifier onlyParents(){
+		message: "Only Parents"
+		validation: "msg.sender == parentsAddress"
+	}
+	
+	Modifier onlyTeacher (){
+		message: "Only Teacher"
+		validation: "msg.sender == teacherAddress"
+	}
+	
+	Modifier onlyStudent () {
+		message: "OnlyStudent"
+		validation: "msg.sender == studentAddress"
+	}
+	
+	method  CreateContract () -> {
+		description: "Este metodo es para crear un contracto"
+		modifiers: onlyTeacher
+	}
+	
+	method WithdrawAmount() -> {
+		description: "Este metodo es para retirar fondo"
+		modifiers: onlyStudent
+	}
+}

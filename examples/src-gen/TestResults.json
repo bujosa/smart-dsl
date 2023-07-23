@@ -1,0 +1,138 @@
+{
+    "name": "TestResults",
+    "version":  "v1.0.0",
+    "methods": [
+    	{
+    	    "name": "setGrade",
+    	    "description": "",
+    	    "params": [
+    	        {
+    	            "name": "_value",
+    	            "schema": {
+    	                "type": "string",
+    	                "details": {
+    	                    "type": "string memory",
+    	                    "internalType": "string memory"
+    	                }
+    	            }
+    	        }
+    	    ],
+    	    "returns": []
+    	},
+    	{
+    	    "name": "getGrade",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getAmount",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "integer",
+    	        	    "details": {
+    	        	        "type": "uint256",
+    	        	        "internalType": "uint256"
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getStudentAddress",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getTeacherAddress",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getParentsAddress",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "CreateContract",
+    	    "description": "Este metodo es para crear un contracto",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	},
+    	{
+    	    "name": "WithdrawAmount",
+    	    "description": "Este metodo es para retirar fondo",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	}
+    ]
+    ,
+	"events": []
+}
