@@ -3,17 +3,16 @@
 ','=20
 '->'=26
 'Contract'=11
-'Modifier'=18
 'address'=37
 'array'=38
 'boolean'=36
+'dataStore'=31
 'description:'=27
 'event'=30
 'events:'=29
 'fromType'=32
 'hasReceive'=14
 'integer'=34
-'mapping'=31
 'message:'=22
 'method'=24
 'modifiable'=17
@@ -23,6 +22,7 @@
 'string'=35
 'toType'=33
 'validation:'=23
+'validator'=18
 'version:'=13
 '{'=12
 '}'=16
