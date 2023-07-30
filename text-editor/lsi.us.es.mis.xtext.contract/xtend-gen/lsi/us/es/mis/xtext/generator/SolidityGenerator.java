@@ -69,8 +69,8 @@ public class SolidityGenerator extends AbstractGenerator {
       if (_isOwnership) {
         code.append("\taddress owner;\n");
       }
-      EList<DataStore> _datastores = contract.getDatastores();
-      for (final DataStore datastore : _datastores) {
+      EList<DataStore> _dataStores = contract.getDataStores();
+      for (final DataStore datastore : _dataStores) {
         {
           final String mappingName = datastore.getName();
           final String fromType = this.getSolidityDataType(datastore.getFromType().toString());
@@ -79,7 +79,7 @@ public class SolidityGenerator extends AbstractGenerator {
         }
       }
       StringBuilder _xifexpression = null;
-      if (((contract.isOwnership() || (((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length != 0)) || (((Object[])Conversions.unwrapArray(contract.getDatastores(), Object.class)).length != 0))) {
+      if (((contract.isOwnership() || (((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length != 0)) || (((Object[])Conversions.unwrapArray(contract.getDataStores(), Object.class)).length != 0))) {
         _xifexpression = code.append("\n");
       }
       _xblockexpression = _xifexpression;

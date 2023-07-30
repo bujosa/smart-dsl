@@ -59,14 +59,14 @@ class SolidityGenerator extends AbstractGenerator {
 			code.append("\taddress owner;\n")
 		}
 		
-		for (datastore: contract.datastores) {
+		for (datastore: contract.dataStores) {
 	        val mappingName = datastore.name
 	        val fromType = getSolidityDataType(datastore.fromType.toString)
 	        val toType = getSolidityDataType(datastore.toType.toString)
 	        code.append("\tmapping("+ fromType + " => " + toType +") public " +mappingName+";\n")
 	    }
 		
-		if (contract.ownership || contract.attributes.length() != 0 || contract.datastores.length() !=  0){
+		if (contract.ownership || contract.attributes.length() != 0 || contract.dataStores.length() !=  0){
 			code.append("\n")
 		}
 	}

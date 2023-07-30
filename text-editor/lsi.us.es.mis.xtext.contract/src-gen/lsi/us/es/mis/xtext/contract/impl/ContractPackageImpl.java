@@ -262,7 +262,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getContract_Datastores()
+  public EReference getContract_DataStores()
   {
     return (EReference)contractEClass.getEStructuralFeatures().get(8);
   }
@@ -681,7 +681,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     createEReference(contractEClass, CONTRACT__EVENTS);
     createEReference(contractEClass, CONTRACT__METHODS);
     createEReference(contractEClass, CONTRACT__VALIDATORS);
-    createEReference(contractEClass, CONTRACT__DATASTORES);
+    createEReference(contractEClass, CONTRACT__DATA_STORES);
 
     attributeEClass = createEClass(ATTRIBUTE);
     createEAttribute(attributeEClass, ATTRIBUTE__MODIFIABLE);
@@ -767,7 +767,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEReference(getContract_Events(), this.getEvent(), null, "events", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Methods(), this.getMethod(), null, "methods", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Validators(), this.getValidator(), null, "validators", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getContract_Datastores(), this.getDataStore(), null, "datastores", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContract_DataStores(), this.getDataStore(), null, "dataStores", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAttribute_Modifiable(), ecorePackage.getEBoolean(), "modifiable", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

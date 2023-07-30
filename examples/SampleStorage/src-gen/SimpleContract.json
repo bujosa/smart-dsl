@@ -1,0 +1,176 @@
+{
+    "name": "SimpleContract",
+    "version":  "v1.0.0",
+    "methods": [
+    	{
+    	    "name": "receive",
+    	    "description": "This function is to receive payments to the smart contract",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {
+    	        "stateMutability": "payable"
+    	    }
+    	},
+    	{
+    	    "name": "setTotal",
+    	    "description": "",
+    	    "params": [
+    	        {
+    	            "name": "_value",
+    	            "schema": {
+    	                "type": "integer",
+    	                "details": {
+    	                    "type": "uint256",
+    	                    "internalType": "uint256"
+    	                }
+    	            }
+    	        }
+    	    ],
+    	    "returns": []
+    	},
+    	{
+    	    "name": "getTotal",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "integer",
+    	        	    "details": {
+    	        	        "type": "uint256",
+    	        	        "internalType": "uint256"
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "example",
+    	    "description": "This is a sample of method",
+    	    "params": [
+    	    	{
+    	    	    "name": "x",
+    	    	    "schema": {
+    	    	        "type": "integer",
+    	    	        "details": {
+    	    	            "type": "uint256",
+    	    	            "internalType": "uint256"
+    	    	        }
+    	    	    }
+    	    	},
+    	    	{
+    	    	    "name": "name",
+    	    	    "schema": {
+    	    	        "type": "string",
+    	    	        "details": {
+    	    	            "type": "string memory",
+    	    	            "internalType": "string memory"
+    	    	        }
+    	    	    }
+    	    	},
+    	    	{
+    	    	    "name": "lastname",
+    	    	    "schema": {
+    	    	        "type": "string",
+    	    	        "details": {
+    	    	            "type": "string memory",
+    	    	            "internalType": "string memory"
+    	    	        }
+    	    	    }
+    	    	}
+    	    ],
+    	    "returns": [
+    	    	{
+    	    	    "name": "x",
+    	    	    "schema": {
+    	    	        "type": "integer",
+    	    	        "details": {
+    	    	            "type": "uint256",
+    	    	            "internalType": "uint256"
+    	    	        }
+    	    	    }
+    	    	},
+    	    	{
+    	    	    "name": "name",
+    	    	    "schema": {
+    	    	        "type": "string",
+    	    	        "details": {
+    	    	            "type": "string memory",
+    	    	            "internalType": "string memory"
+    	    	        }
+    	    	    }
+    	    	}
+    	    ],
+    	    "details": {}
+    	}
+    ]
+    ,
+	"events": [
+		{
+		    "name": "PaymentReceived",
+		    "description": "This event is for notify when a payment was received",
+		    "params": [
+		    	{
+		    		"name": "sender",
+		    		"schema": {
+		    		    "type": "address",
+		    		    "details": {
+		    		        "type": "address",
+		    		        "internalType": "address",
+		    		        "indexed": false
+		    		    }
+		    		}
+		    	},
+		    	{
+		    		"name": "amount",
+		    		"schema": {
+		    		    "type": "integer",
+		    		    "details": {
+		    		        "type": "uint256",
+		    		        "internalType": "uint256"
+		    		    }
+		    		}
+		    	}
+		    ],
+		    "details": {}
+		},
+		{
+		    "name": "XUpdated",
+		    "description": "Este evento es para notificar cuando el numero se ha actualizado",
+		    "params": [
+		    	{
+		    	    "name": "x",
+		    	    "schema": {
+		    	        "type": "integer",
+		    	        "details": {
+		    	            "type": "uint256",
+		    	            "internalType": "uint256"
+		    	        }
+		    	    }
+		    	}
+		    ],
+		    "details": {}
+		},
+		{
+		    "name": "NameUpdated",
+		    "description": "Este evento es para notificar cuando el name se ha actualizado",
+		    "params": [
+		    	{
+		    	    "name": "name",
+		    	    "schema": {
+		    	        "type": "string",
+		    	        "details": {
+		    	            "type": "string memory",
+		    	            "internalType": "string memory"
+		    	        }
+		    	    }
+		    	}
+		    ],
+		    "details": {}
+		}
+	]
+}

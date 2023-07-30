@@ -90,7 +90,7 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         version=STRING 
 	 *         hasReceive?='hasReceive'? 
 	 *         ownership?='ownership'? 
-	 *         (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | datastores+=DataStore)*
+	 *         (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | dataStores+=DataStore)*
 	 *     )
 	 */
 	protected void sequence_Contract(ISerializationContext context, Contract semanticObject) {
@@ -145,7 +145,7 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         statemutability=STRING? 
 	 *         (outputs+=Output outputs+=Output*)? 
 	 *         description=STRING? 
-	 *         (modifiersKeyword='modifiers:' validators+=[Validator|ID] validators+=[Validator|ID]*)? 
+	 *         (modifiersKeyword='validators:' validators+=[Validator|ID] validators+=[Validator|ID]*)? 
 	 *         (eventsKeyword='events:' events+=[Event|ID] events+=[Event|ID]*)?
 	 *     )
 	 */

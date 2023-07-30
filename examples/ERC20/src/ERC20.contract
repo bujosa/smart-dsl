@@ -3,7 +3,7 @@ Contract ERC20 {
 	name string
 	symbol string
 	totalSupply integer
-	mapping balanceOf fromType address toType integer
+	dataStore balanceOf fromType address toType integer
 	
 	event Transfer(from address, to address, value integer) {
 		description: "Esto es para cuando se haga la transferencia se notifique en la blockchain"
@@ -11,11 +11,11 @@ Contract ERC20 {
 	
 	method transfer (to address, value integer) -> {
 		description: "Este metodo es para transferir dinero"
-		modifiers: validBalance
+		validators: validBalance
 		events: Transfer
 	}
 	
-	Modifier validBalance(value integer) {	
+	validator validBalance(value integer) {	
 		message: "Saldo Insufiente"
 		validation: "balanceOf[msg.sender] >= value"
 	}

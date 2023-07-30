@@ -16,13 +16,13 @@
 'message:'=22
 'method'=24
 'modifiable'=17
-'modifiers:'=28
 'ownership'=15
 'stateMutability:'=25
 'string'=35
 'toType'=33
 'validation:'=23
 'validator'=18
+'validators:'=28
 'version:'=13
 '{'=12
 '}'=16

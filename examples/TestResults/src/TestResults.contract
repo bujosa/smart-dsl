@@ -6,28 +6,28 @@ Contract TestResults {
 	teacherAddress address
 	parentsAddress address
 	
-	Modifier onlyParents(){
+	validator onlyParents(){
 		message: "Only Parents"
 		validation: "msg.sender == parentsAddress"
 	}
 	
-	Modifier onlyTeacher (){
+	validator onlyTeacher (){
 		message: "Only Teacher"
 		validation: "msg.sender == teacherAddress"
 	}
 	
-	Modifier onlyStudent () {
+	validator onlyStudent () {
 		message: "OnlyStudent"
 		validation: "msg.sender == studentAddress"
 	}
 	
 	method  CreateContract () -> {
 		description: "Este metodo es para crear un contracto"
-		modifiers: onlyTeacher
+		validators: onlyTeacher
 	}
 	
 	method WithdrawAmount() -> {
 		description: "Este metodo es para retirar fondo"
-		modifiers: onlyStudent
+		validators: onlyStudent
 	}
 }

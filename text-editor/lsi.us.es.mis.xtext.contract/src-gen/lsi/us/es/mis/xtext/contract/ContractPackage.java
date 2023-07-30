@@ -141,13 +141,13 @@ public interface ContractPackage extends EPackage
   int CONTRACT__VALIDATORS = 7;
 
   /**
-   * The feature id for the '<em><b>Datastores</b></em>' containment reference list.
+   * The feature id for the '<em><b>Data Stores</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTRACT__DATASTORES = 8;
+  int CONTRACT__DATA_STORES = 8;
 
   /**
    * The number of structural features of the '<em>Contract</em>' class.
@@ -635,15 +635,15 @@ public interface ContractPackage extends EPackage
   EReference getContract_Validators();
 
   /**
-   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getDatastores <em>Datastores</em>}'.
+   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getDataStores <em>Data Stores</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Datastores</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Contract#getDatastores()
+   * @return the meta object for the containment reference list '<em>Data Stores</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Contract#getDataStores()
    * @see #getContract()
    * @generated
    */
-  EReference getContract_Datastores();
+  EReference getContract_DataStores();
 
   /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Attribute <em>Attribute</em>}'.
@@ -1109,12 +1109,12 @@ public interface ContractPackage extends EPackage
     EReference CONTRACT__VALIDATORS = eINSTANCE.getContract_Validators();
 
     /**
-     * The meta object literal for the '<em><b>Datastores</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Data Stores</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTRACT__DATASTORES = eINSTANCE.getContract_Datastores();
+    EReference CONTRACT__DATA_STORES = eINSTANCE.getContract_DataStores();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.AttributeImpl <em>Attribute</em>}' class.

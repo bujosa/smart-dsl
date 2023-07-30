@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getMethods <em>Methods</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getValidators <em>Validators</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getDatastores <em>Datastores</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getDataStores <em>Data Stores</em>}</li>
  * </ul>
  *
  * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract()
@@ -170,15 +170,15 @@ public interface Contract extends EObject
   EList<Validator> getValidators();
 
   /**
-   * Returns the value of the '<em><b>Datastores</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Data Stores</b></em>' containment reference list.
    * The list contents are of type {@link lsi.us.es.mis.xtext.contract.DataStore}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Datastores</em>' containment reference list.
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Datastores()
+   * @return the value of the '<em>Data Stores</em>' containment reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_DataStores()
    * @model containment="true"
    * @generated
    */
-  EList<DataStore> getDatastores();
+  EList<DataStore> getDataStores();
 
 } // Contract

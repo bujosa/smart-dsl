@@ -22,7 +22,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/events"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/methods"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/validators"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/datastores"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/dataStores"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/modifiable"/>

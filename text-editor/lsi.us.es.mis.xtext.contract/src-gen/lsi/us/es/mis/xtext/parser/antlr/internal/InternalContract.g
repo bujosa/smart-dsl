@@ -237,17 +237,17 @@ ruleContract returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getContractAccess().getDatastoresDataStoreParserRuleCall_7_4_0());
+						newCompositeNode(grammarAccess.getContractAccess().getDataStoresDataStoreParserRuleCall_7_4_0());
 					}
-					lv_datastores_11_0=ruleDataStore
+					lv_dataStores_11_0=ruleDataStore
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getContractRule());
 						}
 						add(
 							$current,
-							"datastores",
-							lv_datastores_11_0,
+							"dataStores",
+							lv_dataStores_11_0,
 							"lsi.us.es.mis.xtext.Contract.DataStore");
 						afterParserOrEnumRuleCall();
 					}
@@ -675,15 +675,15 @@ ruleMethod returns [EObject current=null]
 		(
 			(
 				(
-					lv_modifiersKeyword_16_0='modifiers:'
+					lv_modifiersKeyword_16_0='validators:'
 					{
-						newLeafNode(lv_modifiersKeyword_16_0, grammarAccess.getMethodAccess().getModifiersKeywordModifiersKeyword_10_0_0());
+						newLeafNode(lv_modifiersKeyword_16_0, grammarAccess.getMethodAccess().getModifiersKeywordValidatorsKeyword_10_0_0());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getMethodRule());
 						}
-						setWithLastConsumed($current, "modifiersKeyword", lv_modifiersKeyword_16_0, "modifiers:");
+						setWithLastConsumed($current, "modifiersKeyword", lv_modifiersKeyword_16_0, "validators:");
 					}
 				)
 			)

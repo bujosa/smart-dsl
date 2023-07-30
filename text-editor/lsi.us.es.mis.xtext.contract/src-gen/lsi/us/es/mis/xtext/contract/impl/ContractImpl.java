@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getMethods <em>Methods</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getValidators <em>Validators</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getDatastores <em>Datastores</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getDataStores <em>Data Stores</em>}</li>
  * </ul>
  *
  * @generated
@@ -171,14 +171,14 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
   protected EList<Validator> validators;
 
   /**
-   * The cached value of the '{@link #getDatastores() <em>Datastores</em>}' containment reference list.
+   * The cached value of the '{@link #getDataStores() <em>Data Stores</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDatastores()
+   * @see #getDataStores()
    * @generated
    * @ordered
    */
-  protected EList<DataStore> datastores;
+  protected EList<DataStore> dataStores;
 
   /**
    * <!-- begin-user-doc -->
@@ -367,13 +367,13 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @generated
    */
   @Override
-  public EList<DataStore> getDatastores()
+  public EList<DataStore> getDataStores()
   {
-    if (datastores == null)
+    if (dataStores == null)
     {
-      datastores = new EObjectContainmentEList<DataStore>(DataStore.class, this, ContractPackage.CONTRACT__DATASTORES);
+      dataStores = new EObjectContainmentEList<DataStore>(DataStore.class, this, ContractPackage.CONTRACT__DATA_STORES);
     }
-    return datastores;
+    return dataStores;
   }
 
   /**
@@ -394,8 +394,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
       case ContractPackage.CONTRACT__VALIDATORS:
         return ((InternalEList<?>)getValidators()).basicRemove(otherEnd, msgs);
-      case ContractPackage.CONTRACT__DATASTORES:
-        return ((InternalEList<?>)getDatastores()).basicRemove(otherEnd, msgs);
+      case ContractPackage.CONTRACT__DATA_STORES:
+        return ((InternalEList<?>)getDataStores()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -426,8 +426,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return getMethods();
       case ContractPackage.CONTRACT__VALIDATORS:
         return getValidators();
-      case ContractPackage.CONTRACT__DATASTORES:
-        return getDatastores();
+      case ContractPackage.CONTRACT__DATA_STORES:
+        return getDataStores();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -471,9 +471,9 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         getValidators().clear();
         getValidators().addAll((Collection<? extends Validator>)newValue);
         return;
-      case ContractPackage.CONTRACT__DATASTORES:
-        getDatastores().clear();
-        getDatastores().addAll((Collection<? extends DataStore>)newValue);
+      case ContractPackage.CONTRACT__DATA_STORES:
+        getDataStores().clear();
+        getDataStores().addAll((Collection<? extends DataStore>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -513,8 +513,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
       case ContractPackage.CONTRACT__VALIDATORS:
         getValidators().clear();
         return;
-      case ContractPackage.CONTRACT__DATASTORES:
-        getDatastores().clear();
+      case ContractPackage.CONTRACT__DATA_STORES:
+        getDataStores().clear();
         return;
     }
     super.eUnset(featureID);
@@ -546,8 +546,8 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return methods != null && !methods.isEmpty();
       case ContractPackage.CONTRACT__VALIDATORS:
         return validators != null && !validators.isEmpty();
-      case ContractPackage.CONTRACT__DATASTORES:
-        return datastores != null && !datastores.isEmpty();
+      case ContractPackage.CONTRACT__DATA_STORES:
+        return dataStores != null && !dataStores.isEmpty();
     }
     return super.eIsSet(featureID);
   }
