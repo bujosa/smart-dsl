@@ -42,13 +42,13 @@ public interface ContractFactory extends EFactory
   Attribute createAttribute();
 
   /**
-   * Returns a new object of class '<em>Modifier</em>'.
+   * Returns a new object of class '<em>Validator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Modifier</em>'.
+   * @return a new object of class '<em>Validator</em>'.
    * @generated
    */
-  Modifier createModifier();
+  Validator createValidator();
 
   /**
    * Returns a new object of class '<em>Method</em>'.
@@ -87,13 +87,13 @@ public interface ContractFactory extends EFactory
   Output createOutput();
 
   /**
-   * Returns a new object of class '<em>Mapping Declaration</em>'.
+   * Returns a new object of class '<em>Data Store</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Mapping Declaration</em>'.
+   * @return a new object of class '<em>Data Store</em>'.
    * @generated
    */
-  MappingDeclaration createMappingDeclaration();
+  DataStore createDataStore();
 
   /**
    * Returns the package supported by this factory.

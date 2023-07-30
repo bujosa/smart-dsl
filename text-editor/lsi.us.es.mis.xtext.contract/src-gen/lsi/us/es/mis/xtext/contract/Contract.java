@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getMethods <em>Methods</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getModifiers <em>Modifiers</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getMappings <em>Mappings</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getValidators <em>Validators</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Contract#getDatastores <em>Datastores</em>}</li>
  * </ul>
  *
  * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract()
@@ -158,27 +158,27 @@ public interface Contract extends EObject
   EList<Method> getMethods();
 
   /**
-   * Returns the value of the '<em><b>Modifiers</b></em>' containment reference list.
-   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Modifier}.
+   * Returns the value of the '<em><b>Validators</b></em>' containment reference list.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Validator}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Modifiers</em>' containment reference list.
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Modifiers()
+   * @return the value of the '<em>Validators</em>' containment reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Validators()
    * @model containment="true"
    * @generated
    */
-  EList<Modifier> getModifiers();
+  EList<Validator> getValidators();
 
   /**
-   * Returns the value of the '<em><b>Mappings</b></em>' containment reference list.
-   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.MappingDeclaration}.
+   * Returns the value of the '<em><b>Datastores</b></em>' containment reference list.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.DataStore}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Mappings</em>' containment reference list.
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Mappings()
+   * @return the value of the '<em>Datastores</em>' containment reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getContract_Datastores()
    * @model containment="true"
    * @generated
    */
-  EList<MappingDeclaration> getMappings();
+  EList<DataStore> getDatastores();
 
 } // Contract

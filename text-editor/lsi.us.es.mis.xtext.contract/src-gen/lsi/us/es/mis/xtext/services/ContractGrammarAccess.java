@@ -46,10 +46,10 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cEventsEventParserRuleCall_7_1_0 = (RuleCall)cEventsAssignment_7_1.eContents().get(0);
 		private final Assignment cMethodsAssignment_7_2 = (Assignment)cAlternatives_7.eContents().get(2);
 		private final RuleCall cMethodsMethodParserRuleCall_7_2_0 = (RuleCall)cMethodsAssignment_7_2.eContents().get(0);
-		private final Assignment cModifiersAssignment_7_3 = (Assignment)cAlternatives_7.eContents().get(3);
-		private final RuleCall cModifiersModifierParserRuleCall_7_3_0 = (RuleCall)cModifiersAssignment_7_3.eContents().get(0);
-		private final Assignment cMappingsAssignment_7_4 = (Assignment)cAlternatives_7.eContents().get(4);
-		private final RuleCall cMappingsMappingDeclarationParserRuleCall_7_4_0 = (RuleCall)cMappingsAssignment_7_4.eContents().get(0);
+		private final Assignment cValidatorsAssignment_7_3 = (Assignment)cAlternatives_7.eContents().get(3);
+		private final RuleCall cValidatorsValidatorParserRuleCall_7_3_0 = (RuleCall)cValidatorsAssignment_7_3.eContents().get(0);
+		private final Assignment cDatastoresAssignment_7_4 = (Assignment)cAlternatives_7.eContents().get(4);
+		private final RuleCall cDatastoresDataStoreParserRuleCall_7_4_0 = (RuleCall)cDatastoresAssignment_7_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//Contract:
@@ -58,7 +58,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//        'version:' version = STRING
 		//        (hasReceive?='hasReceive')?
 		//        (ownership?='ownership')?
-		//        (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
+		//        (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | datastores+=DataStore)*
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -68,7 +68,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    'version:' version = STRING
 		//    (hasReceive?='hasReceive')?
 		//    (ownership?='ownership')?
-		//    (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
+		//    (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | datastores+=DataStore)*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -105,7 +105,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'ownership'
 		public Keyword getOwnershipOwnershipKeyword_6_0() { return cOwnershipOwnershipKeyword_6_0; }
 		
-		//(attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
+		//(attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | datastores+=DataStore)*
 		public Alternatives getAlternatives_7() { return cAlternatives_7; }
 		
 		//attributes+=Attribute
@@ -126,17 +126,17 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//Method
 		public RuleCall getMethodsMethodParserRuleCall_7_2_0() { return cMethodsMethodParserRuleCall_7_2_0; }
 		
-		//modifiers+=Modifier
-		public Assignment getModifiersAssignment_7_3() { return cModifiersAssignment_7_3; }
+		//validators+=Validator
+		public Assignment getValidatorsAssignment_7_3() { return cValidatorsAssignment_7_3; }
 		
-		//Modifier
-		public RuleCall getModifiersModifierParserRuleCall_7_3_0() { return cModifiersModifierParserRuleCall_7_3_0; }
+		//Validator
+		public RuleCall getValidatorsValidatorParserRuleCall_7_3_0() { return cValidatorsValidatorParserRuleCall_7_3_0; }
 		
-		//mappings+=MappingDeclaration
-		public Assignment getMappingsAssignment_7_4() { return cMappingsAssignment_7_4; }
+		//datastores+=DataStore
+		public Assignment getDatastoresAssignment_7_4() { return cDatastoresAssignment_7_4; }
 		
-		//MappingDeclaration
-		public RuleCall getMappingsMappingDeclarationParserRuleCall_7_4_0() { return cMappingsMappingDeclarationParserRuleCall_7_4_0; }
+		//DataStore
+		public RuleCall getDatastoresDataStoreParserRuleCall_7_4_0() { return cDatastoresDataStoreParserRuleCall_7_4_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
@@ -177,10 +177,10 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//DataType
 		public RuleCall getTypeDataTypeEnumRuleCall_2_0() { return cTypeDataTypeEnumRuleCall_2_0; }
 	}
-	public class ModifierElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.Modifier");
+	public class ValidatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.Validator");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cModifierKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cValidatorKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -201,8 +201,8 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cValidationSTRINGTerminalRuleCall_9_0 = (RuleCall)cValidationAssignment_9.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
-		//Modifier:
-		//    'Modifier' name=ID '(' (params+=Param (',' params+=Param)*)? ')'
+		//Validator:
+		//    'validator' name=ID '(' (params+=Param (',' params+=Param)*)? ')'
 		//    '{'
 		//        'message:' message = STRING
 		//        'validation:' validation = STRING
@@ -210,15 +210,15 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Modifier' name=ID '(' (params+=Param (',' params+=Param)*)? ')'
+		//'validator' name=ID '(' (params+=Param (',' params+=Param)*)? ')'
 		//'{'
 		//    'message:' message = STRING
 		//    'validation:' validation = STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//'Modifier'
-		public Keyword getModifierKeyword_0() { return cModifierKeyword_0; }
+		//'validator'
+		public Keyword getValidatorKeyword_0() { return cValidatorKeyword_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -312,14 +312,14 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
 		private final Assignment cModifiersKeywordAssignment_10_0 = (Assignment)cGroup_10.eContents().get(0);
 		private final Keyword cModifiersKeywordModifiersKeyword_10_0_0 = (Keyword)cModifiersKeywordAssignment_10_0.eContents().get(0);
-		private final Assignment cModifiersAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
-		private final CrossReference cModifiersModifierCrossReference_10_1_0 = (CrossReference)cModifiersAssignment_10_1.eContents().get(0);
-		private final RuleCall cModifiersModifierIDTerminalRuleCall_10_1_0_1 = (RuleCall)cModifiersModifierCrossReference_10_1_0.eContents().get(1);
+		private final Assignment cValidatorsAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final CrossReference cValidatorsValidatorCrossReference_10_1_0 = (CrossReference)cValidatorsAssignment_10_1.eContents().get(0);
+		private final RuleCall cValidatorsValidatorIDTerminalRuleCall_10_1_0_1 = (RuleCall)cValidatorsValidatorCrossReference_10_1_0.eContents().get(1);
 		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
 		private final Keyword cCommaKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
-		private final Assignment cModifiersAssignment_10_2_1 = (Assignment)cGroup_10_2.eContents().get(1);
-		private final CrossReference cModifiersModifierCrossReference_10_2_1_0 = (CrossReference)cModifiersAssignment_10_2_1.eContents().get(0);
-		private final RuleCall cModifiersModifierIDTerminalRuleCall_10_2_1_0_1 = (RuleCall)cModifiersModifierCrossReference_10_2_1_0.eContents().get(1);
+		private final Assignment cValidatorsAssignment_10_2_1 = (Assignment)cGroup_10_2.eContents().get(1);
+		private final CrossReference cValidatorsValidatorCrossReference_10_2_1_0 = (CrossReference)cValidatorsAssignment_10_2_1.eContents().get(0);
+		private final RuleCall cValidatorsValidatorIDTerminalRuleCall_10_2_1_0_1 = (RuleCall)cValidatorsValidatorCrossReference_10_2_1_0.eContents().get(1);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
 		private final Assignment cEventsKeywordAssignment_11_0 = (Assignment)cGroup_11.eContents().get(0);
 		private final Keyword cEventsKeywordEventsKeyword_11_0_0 = (Keyword)cEventsKeywordAssignment_11_0.eContents().get(0);
@@ -337,7 +337,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 		//     '{'
 		//         ('description:' description = STRING)?
-		//         (modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+		//         (modifiersKeyword='modifiers:' validators+=[Validator] (',' validators+=[Validator])*)?
 		//         (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 		//     '}'
 		//;
@@ -346,7 +346,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 		// '{'
 		//     ('description:' description = STRING)?
-		//     (modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+		//     (modifiersKeyword='modifiers:' validators+=[Validator] (',' validators+=[Validator])*)?
 		//     (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 		// '}'
 		public Group getGroup() { return cGroup; }
@@ -438,7 +438,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//STRING
 		public RuleCall getDescriptionSTRINGTerminalRuleCall_9_1_0() { return cDescriptionSTRINGTerminalRuleCall_9_1_0; }
 		
-		//(modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+		//(modifiersKeyword='modifiers:' validators+=[Validator] (',' validators+=[Validator])*)?
 		public Group getGroup_10() { return cGroup_10; }
 		
 		//modifiersKeyword='modifiers:'
@@ -447,29 +447,29 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'modifiers:'
 		public Keyword getModifiersKeywordModifiersKeyword_10_0_0() { return cModifiersKeywordModifiersKeyword_10_0_0; }
 		
-		//modifiers+=[Modifier]
-		public Assignment getModifiersAssignment_10_1() { return cModifiersAssignment_10_1; }
+		//validators+=[Validator]
+		public Assignment getValidatorsAssignment_10_1() { return cValidatorsAssignment_10_1; }
 		
-		//[Modifier]
-		public CrossReference getModifiersModifierCrossReference_10_1_0() { return cModifiersModifierCrossReference_10_1_0; }
+		//[Validator]
+		public CrossReference getValidatorsValidatorCrossReference_10_1_0() { return cValidatorsValidatorCrossReference_10_1_0; }
 		
 		//ID
-		public RuleCall getModifiersModifierIDTerminalRuleCall_10_1_0_1() { return cModifiersModifierIDTerminalRuleCall_10_1_0_1; }
+		public RuleCall getValidatorsValidatorIDTerminalRuleCall_10_1_0_1() { return cValidatorsValidatorIDTerminalRuleCall_10_1_0_1; }
 		
-		//(',' modifiers+=[Modifier])*
+		//(',' validators+=[Validator])*
 		public Group getGroup_10_2() { return cGroup_10_2; }
 		
 		//','
 		public Keyword getCommaKeyword_10_2_0() { return cCommaKeyword_10_2_0; }
 		
-		//modifiers+=[Modifier]
-		public Assignment getModifiersAssignment_10_2_1() { return cModifiersAssignment_10_2_1; }
+		//validators+=[Validator]
+		public Assignment getValidatorsAssignment_10_2_1() { return cValidatorsAssignment_10_2_1; }
 		
-		//[Modifier]
-		public CrossReference getModifiersModifierCrossReference_10_2_1_0() { return cModifiersModifierCrossReference_10_2_1_0; }
+		//[Validator]
+		public CrossReference getValidatorsValidatorCrossReference_10_2_1_0() { return cValidatorsValidatorCrossReference_10_2_1_0; }
 		
 		//ID
-		public RuleCall getModifiersModifierIDTerminalRuleCall_10_2_1_0_1() { return cModifiersModifierIDTerminalRuleCall_10_2_1_0_1; }
+		public RuleCall getValidatorsValidatorIDTerminalRuleCall_10_2_1_0_1() { return cValidatorsValidatorIDTerminalRuleCall_10_2_1_0_1; }
 		
 		//(eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 		public Group getGroup_11() { return cGroup_11; }
@@ -649,10 +649,10 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//DataType
 		public RuleCall getTypeDataTypeEnumRuleCall_1_0() { return cTypeDataTypeEnumRuleCall_1_0; }
 	}
-	public class MappingDeclarationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.MappingDeclaration");
+	public class DataStoreElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.DataStore");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMappingKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDataStoreKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cFromTypeKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -662,16 +662,16 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Assignment cToTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cToTypeDataTypeEnumRuleCall_5_0 = (RuleCall)cToTypeAssignment_5.eContents().get(0);
 		
-		//MappingDeclaration:
-		//    'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+		//DataStore:
+		//    'dataStore' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+		//'dataStore' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
 		public Group getGroup() { return cGroup; }
 		
-		//'mapping'
-		public Keyword getMappingKeyword_0() { return cMappingKeyword_0; }
+		//'dataStore'
+		public Keyword getDataStoreKeyword_0() { return cDataStoreKeyword_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -752,13 +752,13 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	private final ContractElements pContract;
 	private final AttributeElements pAttribute;
-	private final ModifierElements pModifier;
+	private final ValidatorElements pValidator;
 	private final MethodElements pMethod;
 	private final EventElements pEvent;
 	private final ParamElements pParam;
 	private final OutputElements pOutput;
 	private final DataTypeElements eDataType;
-	private final MappingDeclarationElements pMappingDeclaration;
+	private final DataStoreElements pDataStore;
 	
 	private final Grammar grammar;
 	
@@ -771,13 +771,13 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.gaTerminals = gaTerminals;
 		this.pContract = new ContractElements();
 		this.pAttribute = new AttributeElements();
-		this.pModifier = new ModifierElements();
+		this.pValidator = new ValidatorElements();
 		this.pMethod = new MethodElements();
 		this.pEvent = new EventElements();
 		this.pParam = new ParamElements();
 		this.pOutput = new OutputElements();
 		this.eDataType = new DataTypeElements();
-		this.pMappingDeclaration = new MappingDeclarationElements();
+		this.pDataStore = new DataStoreElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -813,7 +813,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//        'version:' version = STRING
 	//        (hasReceive?='hasReceive')?
 	//        (ownership?='ownership')?
-	//        (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
+	//        (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | datastores+=DataStore)*
 	//    '}'
 	//;
 	public ContractElements getContractAccess() {
@@ -835,26 +835,26 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getAttributeAccess().getRule();
 	}
 	
-	//Modifier:
-	//    'Modifier' name=ID '(' (params+=Param (',' params+=Param)*)? ')'
+	//Validator:
+	//    'validator' name=ID '(' (params+=Param (',' params+=Param)*)? ')'
 	//    '{'
 	//        'message:' message = STRING
 	//        'validation:' validation = STRING
 	//    '}'
 	//;
-	public ModifierElements getModifierAccess() {
-		return pModifier;
+	public ValidatorElements getValidatorAccess() {
+		return pValidator;
 	}
 	
-	public ParserRule getModifierRule() {
-		return getModifierAccess().getRule();
+	public ParserRule getValidatorRule() {
+		return getValidatorAccess().getRule();
 	}
 	
 	//Method:
 	//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 	//     '{'
 	//         ('description:' description = STRING)?
-	//         (modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+	//         (modifiersKeyword='modifiers:' validators+=[Validator] (',' validators+=[Validator])*)?
 	//         (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 	//     '}'
 	//;
@@ -912,15 +912,15 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getDataTypeAccess().getRule();
 	}
 	
-	//MappingDeclaration:
-	//    'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+	//DataStore:
+	//    'dataStore' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
 	//;
-	public MappingDeclarationElements getMappingDeclarationAccess() {
-		return pMappingDeclaration;
+	public DataStoreElements getDataStoreAccess() {
+		return pDataStore;
 	}
 	
-	public ParserRule getMappingDeclarationRule() {
-		return getMappingDeclarationAccess().getRule();
+	public ParserRule getDataStoreRule() {
+		return getDataStoreAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

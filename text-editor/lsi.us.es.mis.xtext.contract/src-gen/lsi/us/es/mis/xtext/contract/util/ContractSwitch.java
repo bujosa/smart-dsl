@@ -87,10 +87,10 @@ public class ContractSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ContractPackage.MODIFIER:
+      case ContractPackage.VALIDATOR:
       {
-        Modifier modifier = (Modifier)theEObject;
-        T result = caseModifier(modifier);
+        Validator validator = (Validator)theEObject;
+        T result = caseValidator(validator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -122,10 +122,10 @@ public class ContractSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ContractPackage.MAPPING_DECLARATION:
+      case ContractPackage.DATA_STORE:
       {
-        MappingDeclaration mappingDeclaration = (MappingDeclaration)theEObject;
-        T result = caseMappingDeclaration(mappingDeclaration);
+        DataStore dataStore = (DataStore)theEObject;
+        T result = caseDataStore(dataStore);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -166,17 +166,17 @@ public class ContractSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Modifier</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Validator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Modifier</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Validator</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModifier(Modifier object)
+  public T caseValidator(Validator object)
   {
     return null;
   }
@@ -246,17 +246,17 @@ public class ContractSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Mapping Declaration</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Data Store</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Mapping Declaration</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Data Store</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMappingDeclaration(MappingDeclaration object)
+  public T caseDataStore(DataStore object)
   {
     return null;
   }

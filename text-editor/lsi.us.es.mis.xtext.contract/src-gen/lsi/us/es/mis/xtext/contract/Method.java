@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getDescription <em>Description</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getModifiersKeyword <em>Modifiers Keyword</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getValidators <em>Validators</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getEventsKeyword <em>Events Keyword</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.Method#getEvents <em>Events</em>}</li>
  * </ul>
@@ -146,16 +146,16 @@ public interface Method extends EObject
   void setModifiersKeyword(String value);
 
   /**
-   * Returns the value of the '<em><b>Modifiers</b></em>' reference list.
-   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Modifier}.
+   * Returns the value of the '<em><b>Validators</b></em>' reference list.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Validator}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Modifiers</em>' reference list.
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod_Modifiers()
+   * @return the value of the '<em>Validators</em>' reference list.
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getMethod_Validators()
    * @model
    * @generated
    */
-  EList<Modifier> getModifiers();
+  EList<Validator> getValidators();
 
   /**
    * Returns the value of the '<em><b>Events Keyword</b></em>' attribute.

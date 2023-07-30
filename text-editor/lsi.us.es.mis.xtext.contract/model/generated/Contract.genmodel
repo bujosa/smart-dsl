@@ -21,19 +21,19 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/events"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/methods"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/modifiers"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/mappings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/validators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Contract/datastores"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/modifiable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Attribute/type"/>
     </genClasses>
-    <genClasses ecoreClass="Contract.ecore#//Modifier">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Modifier/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Modifier/params"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Modifier/message"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Modifier/validation"/>
+    <genClasses ecoreClass="Contract.ecore#//Validator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Validator/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Validator/params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Validator/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Validator/validation"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Method">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/name"/>
@@ -42,7 +42,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/outputs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/modifiersKeyword"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/modifiers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/validators"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/eventsKeyword"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/events"/>
     </genClasses>
@@ -59,10 +59,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Output/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Output/type"/>
     </genClasses>
-    <genClasses ecoreClass="Contract.ecore#//MappingDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//MappingDeclaration/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//MappingDeclaration/fromType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//MappingDeclaration/toType"/>
+    <genClasses ecoreClass="Contract.ecore#//DataStore">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//DataStore/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//DataStore/fromType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//DataStore/toType"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

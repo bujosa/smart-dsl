@@ -8,10 +8,10 @@ import java.util.Collection;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
+import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.Event;
-import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Modifier;
+import lsi.us.es.mis.xtext.contract.Validator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -42,8 +42,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getMethods <em>Methods</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getModifiers <em>Modifiers</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getMappings <em>Mappings</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getValidators <em>Validators</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ContractImpl#getDatastores <em>Datastores</em>}</li>
  * </ul>
  *
  * @generated
@@ -161,24 +161,24 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
   protected EList<Method> methods;
 
   /**
-   * The cached value of the '{@link #getModifiers() <em>Modifiers</em>}' containment reference list.
+   * The cached value of the '{@link #getValidators() <em>Validators</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModifiers()
+   * @see #getValidators()
    * @generated
    * @ordered
    */
-  protected EList<Modifier> modifiers;
+  protected EList<Validator> validators;
 
   /**
-   * The cached value of the '{@link #getMappings() <em>Mappings</em>}' containment reference list.
+   * The cached value of the '{@link #getDatastores() <em>Datastores</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMappings()
+   * @see #getDatastores()
    * @generated
    * @ordered
    */
-  protected EList<MappingDeclaration> mappings;
+  protected EList<DataStore> datastores;
 
   /**
    * <!-- begin-user-doc -->
@@ -352,13 +352,13 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @generated
    */
   @Override
-  public EList<Modifier> getModifiers()
+  public EList<Validator> getValidators()
   {
-    if (modifiers == null)
+    if (validators == null)
     {
-      modifiers = new EObjectContainmentEList<Modifier>(Modifier.class, this, ContractPackage.CONTRACT__MODIFIERS);
+      validators = new EObjectContainmentEList<Validator>(Validator.class, this, ContractPackage.CONTRACT__VALIDATORS);
     }
-    return modifiers;
+    return validators;
   }
 
   /**
@@ -367,13 +367,13 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
    * @generated
    */
   @Override
-  public EList<MappingDeclaration> getMappings()
+  public EList<DataStore> getDatastores()
   {
-    if (mappings == null)
+    if (datastores == null)
     {
-      mappings = new EObjectContainmentEList<MappingDeclaration>(MappingDeclaration.class, this, ContractPackage.CONTRACT__MAPPINGS);
+      datastores = new EObjectContainmentEList<DataStore>(DataStore.class, this, ContractPackage.CONTRACT__DATASTORES);
     }
-    return mappings;
+    return datastores;
   }
 
   /**
@@ -392,10 +392,10 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
       case ContractPackage.CONTRACT__METHODS:
         return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
-      case ContractPackage.CONTRACT__MODIFIERS:
-        return ((InternalEList<?>)getModifiers()).basicRemove(otherEnd, msgs);
-      case ContractPackage.CONTRACT__MAPPINGS:
-        return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
+      case ContractPackage.CONTRACT__VALIDATORS:
+        return ((InternalEList<?>)getValidators()).basicRemove(otherEnd, msgs);
+      case ContractPackage.CONTRACT__DATASTORES:
+        return ((InternalEList<?>)getDatastores()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -424,10 +424,10 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return getEvents();
       case ContractPackage.CONTRACT__METHODS:
         return getMethods();
-      case ContractPackage.CONTRACT__MODIFIERS:
-        return getModifiers();
-      case ContractPackage.CONTRACT__MAPPINGS:
-        return getMappings();
+      case ContractPackage.CONTRACT__VALIDATORS:
+        return getValidators();
+      case ContractPackage.CONTRACT__DATASTORES:
+        return getDatastores();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -467,13 +467,13 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         getMethods().clear();
         getMethods().addAll((Collection<? extends Method>)newValue);
         return;
-      case ContractPackage.CONTRACT__MODIFIERS:
-        getModifiers().clear();
-        getModifiers().addAll((Collection<? extends Modifier>)newValue);
+      case ContractPackage.CONTRACT__VALIDATORS:
+        getValidators().clear();
+        getValidators().addAll((Collection<? extends Validator>)newValue);
         return;
-      case ContractPackage.CONTRACT__MAPPINGS:
-        getMappings().clear();
-        getMappings().addAll((Collection<? extends MappingDeclaration>)newValue);
+      case ContractPackage.CONTRACT__DATASTORES:
+        getDatastores().clear();
+        getDatastores().addAll((Collection<? extends DataStore>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -510,11 +510,11 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
       case ContractPackage.CONTRACT__METHODS:
         getMethods().clear();
         return;
-      case ContractPackage.CONTRACT__MODIFIERS:
-        getModifiers().clear();
+      case ContractPackage.CONTRACT__VALIDATORS:
+        getValidators().clear();
         return;
-      case ContractPackage.CONTRACT__MAPPINGS:
-        getMappings().clear();
+      case ContractPackage.CONTRACT__DATASTORES:
+        getDatastores().clear();
         return;
     }
     super.eUnset(featureID);
@@ -544,10 +544,10 @@ public class ContractImpl extends MinimalEObjectImpl.Container implements Contra
         return events != null && !events.isEmpty();
       case ContractPackage.CONTRACT__METHODS:
         return methods != null && !methods.isEmpty();
-      case ContractPackage.CONTRACT__MODIFIERS:
-        return modifiers != null && !modifiers.isEmpty();
-      case ContractPackage.CONTRACT__MAPPINGS:
-        return mappings != null && !mappings.isEmpty();
+      case ContractPackage.CONTRACT__VALIDATORS:
+        return validators != null && !validators.isEmpty();
+      case ContractPackage.CONTRACT__DATASTORES:
+        return datastores != null && !datastores.isEmpty();
     }
     return super.eIsSet(featureID);
   }

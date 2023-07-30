@@ -86,9 +86,9 @@ public class ContractAdapterFactory extends AdapterFactoryImpl
         return createAttributeAdapter();
       }
       @Override
-      public Adapter caseModifier(Modifier object)
+      public Adapter caseValidator(Validator object)
       {
-        return createModifierAdapter();
+        return createValidatorAdapter();
       }
       @Override
       public Adapter caseMethod(Method object)
@@ -111,9 +111,9 @@ public class ContractAdapterFactory extends AdapterFactoryImpl
         return createOutputAdapter();
       }
       @Override
-      public Adapter caseMappingDeclaration(MappingDeclaration object)
+      public Adapter caseDataStore(DataStore object)
       {
-        return createMappingDeclarationAdapter();
+        return createDataStoreAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -168,16 +168,16 @@ public class ContractAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link lsi.us.es.mis.xtext.contract.Modifier <em>Modifier</em>}'.
+   * Creates a new adapter for an object of class '{@link lsi.us.es.mis.xtext.contract.Validator <em>Validator</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see lsi.us.es.mis.xtext.contract.Modifier
+   * @see lsi.us.es.mis.xtext.contract.Validator
    * @generated
    */
-  public Adapter createModifierAdapter()
+  public Adapter createValidatorAdapter()
   {
     return null;
   }
@@ -243,16 +243,16 @@ public class ContractAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration <em>Mapping Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link lsi.us.es.mis.xtext.contract.DataStore <em>Data Store</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration
+   * @see lsi.us.es.mis.xtext.contract.DataStore
    * @generated
    */
-  public Adapter createMappingDeclarationAdapter()
+  public Adapter createDataStoreAdapter()
   {
     return null;
   }

@@ -12,17 +12,17 @@
         eType="#//Event" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//Method" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modifiers" upperBound="-1"
-        eType="#//Modifier" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
-        eType="#//MappingDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validators" upperBound="-1"
+        eType="#//Validator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datastores" upperBound="-1"
+        eType="#//DataStore" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifiable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DataType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Modifier">
+  <eClassifiers xsi:type="ecore:EClass" name="Validator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="#//Param" containment="true"/>
@@ -38,8 +38,8 @@
         eType="#//Output" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifiersKeyword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modifiers" unique="false"
-        upperBound="-1" eType="#//Modifier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validators" unique="false"
+        upperBound="-1" eType="#//Validator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventsKeyword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" unique="false"
         upperBound="-1" eType="#//Event"/>
@@ -65,7 +65,7 @@
     <eLiterals name="ADDRESS" value="3" literal="address"/>
     <eLiterals name="array" value="4" literal="array"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MappingDeclaration">
+  <eClassifiers xsi:type="ecore:EClass" name="DataStore">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fromType" eType="#//DataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="toType" eType="#//DataType"/>

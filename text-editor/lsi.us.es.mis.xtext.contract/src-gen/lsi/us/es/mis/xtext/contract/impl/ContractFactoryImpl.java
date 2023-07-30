@@ -68,12 +68,12 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
     {
       case ContractPackage.CONTRACT: return createContract();
       case ContractPackage.ATTRIBUTE: return createAttribute();
-      case ContractPackage.MODIFIER: return createModifier();
+      case ContractPackage.VALIDATOR: return createValidator();
       case ContractPackage.METHOD: return createMethod();
       case ContractPackage.EVENT: return createEvent();
       case ContractPackage.PARAM: return createParam();
       case ContractPackage.OUTPUT: return createOutput();
-      case ContractPackage.MAPPING_DECLARATION: return createMappingDeclaration();
+      case ContractPackage.DATA_STORE: return createDataStore();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -143,10 +143,10 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
    * @generated
    */
   @Override
-  public Modifier createModifier()
+  public Validator createValidator()
   {
-    ModifierImpl modifier = new ModifierImpl();
-    return modifier;
+    ValidatorImpl validator = new ValidatorImpl();
+    return validator;
   }
 
   /**
@@ -203,10 +203,10 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
    * @generated
    */
   @Override
-  public MappingDeclaration createMappingDeclaration()
+  public DataStore createDataStore()
   {
-    MappingDeclarationImpl mappingDeclaration = new MappingDeclarationImpl();
-    return mappingDeclaration;
+    DataStoreImpl dataStore = new DataStoreImpl();
+    return dataStore;
   }
 
   /**

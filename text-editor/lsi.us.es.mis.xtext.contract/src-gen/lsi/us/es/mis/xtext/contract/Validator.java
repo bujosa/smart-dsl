@@ -9,24 +9,24 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Modifier</b></em>'.
+ * A representation of the model object '<em><b>Validator</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Modifier#getName <em>Name</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Modifier#getParams <em>Params</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Modifier#getMessage <em>Message</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.Modifier#getValidation <em>Validation</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Validator#getName <em>Name</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Validator#getParams <em>Params</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Validator#getMessage <em>Message</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.Validator#getValidation <em>Validation</em>}</li>
  * </ul>
  *
- * @see lsi.us.es.mis.xtext.contract.ContractPackage#getModifier()
+ * @see lsi.us.es.mis.xtext.contract.ContractPackage#getValidator()
  * @model
  * @generated
  */
-public interface Modifier extends EObject
+public interface Validator extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -34,14 +34,14 @@ public interface Modifier extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getModifier_Name()
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getValidator_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Modifier#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Validator#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -56,7 +56,7 @@ public interface Modifier extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Params</em>' containment reference list.
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getModifier_Params()
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getValidator_Params()
    * @model containment="true"
    * @generated
    */
@@ -68,14 +68,14 @@ public interface Modifier extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Message</em>' attribute.
    * @see #setMessage(String)
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getModifier_Message()
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getValidator_Message()
    * @model
    * @generated
    */
   String getMessage();
 
   /**
-   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Modifier#getMessage <em>Message</em>}' attribute.
+   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Validator#getMessage <em>Message</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Message</em>' attribute.
@@ -90,14 +90,14 @@ public interface Modifier extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Validation</em>' attribute.
    * @see #setValidation(String)
-   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getModifier_Validation()
+   * @see lsi.us.es.mis.xtext.contract.ContractPackage#getValidator_Validation()
    * @model
    * @generated
    */
   String getValidation();
 
   /**
-   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Modifier#getValidation <em>Validation</em>}' attribute.
+   * Sets the value of the '{@link lsi.us.es.mis.xtext.contract.Validator#getValidation <em>Validation</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Validation</em>' attribute.
@@ -106,4 +106,4 @@ public interface Modifier extends EObject
    */
   void setValidation(String value);
 
-} // Modifier
+} // Validator

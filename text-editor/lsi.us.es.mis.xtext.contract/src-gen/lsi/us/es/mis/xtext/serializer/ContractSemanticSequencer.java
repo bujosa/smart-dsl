@@ -8,12 +8,12 @@ import java.util.Set;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
+import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.Event;
-import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
+import lsi.us.es.mis.xtext.contract.Validator;
 import lsi.us.es.mis.xtext.services.ContractGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -45,23 +45,23 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case ContractPackage.CONTRACT:
 				sequence_Contract(context, (Contract) semanticObject); 
 				return; 
+			case ContractPackage.DATA_STORE:
+				sequence_DataStore(context, (DataStore) semanticObject); 
+				return; 
 			case ContractPackage.EVENT:
 				sequence_Event(context, (Event) semanticObject); 
 				return; 
-			case ContractPackage.MAPPING_DECLARATION:
-				sequence_MappingDeclaration(context, (MappingDeclaration) semanticObject); 
-				return; 
 			case ContractPackage.METHOD:
 				sequence_Method(context, (Method) semanticObject); 
-				return; 
-			case ContractPackage.MODIFIER:
-				sequence_Modifier(context, (Modifier) semanticObject); 
 				return; 
 			case ContractPackage.OUTPUT:
 				sequence_Output(context, (Output) semanticObject); 
 				return; 
 			case ContractPackage.PARAM:
 				sequence_Param(context, (Param) semanticObject); 
+				return; 
+			case ContractPackage.VALIDATOR:
+				sequence_Validator(context, (Validator) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -90,11 +90,35 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         version=STRING 
 	 *         hasReceive?='hasReceive'? 
 	 *         ownership?='ownership'? 
-	 *         (attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
+	 *         (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | datastores+=DataStore)*
 	 *     )
 	 */
 	protected void sequence_Contract(ISerializationContext context, Contract semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DataStore returns DataStore
+	 *
+	 * Constraint:
+	 *     (name=ID fromType=DataType toType=DataType)
+	 */
+	protected void sequence_DataStore(ISerializationContext context, DataStore semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.DATA_STORE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.DATA_STORE__NAME));
+			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.DATA_STORE__FROM_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.DATA_STORE__FROM_TYPE));
+			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.DATA_STORE__TO_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.DATA_STORE__TO_TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDataStoreAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getDataStoreAccess().getFromTypeDataTypeEnumRuleCall_3_0(), semanticObject.getFromType());
+		feeder.accept(grammarAccess.getDataStoreAccess().getToTypeDataTypeEnumRuleCall_5_0(), semanticObject.getToType());
+		feeder.finish();
 	}
 	
 	
@@ -112,30 +136,6 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     MappingDeclaration returns MappingDeclaration
-	 *
-	 * Constraint:
-	 *     (name=ID fromType=DataType toType=DataType)
-	 */
-	protected void sequence_MappingDeclaration(ISerializationContext context, MappingDeclaration semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__NAME));
-			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__FROM_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__FROM_TYPE));
-			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__TO_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.MAPPING_DECLARATION__TO_TYPE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMappingDeclarationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getMappingDeclarationAccess().getFromTypeDataTypeEnumRuleCall_3_0(), semanticObject.getFromType());
-		feeder.accept(grammarAccess.getMappingDeclarationAccess().getToTypeDataTypeEnumRuleCall_5_0(), semanticObject.getToType());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Method returns Method
 	 *
 	 * Constraint:
@@ -145,23 +145,11 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         statemutability=STRING? 
 	 *         (outputs+=Output outputs+=Output*)? 
 	 *         description=STRING? 
-	 *         (modifiersKeyword='modifiers:' modifiers+=[Modifier|ID] modifiers+=[Modifier|ID]*)? 
+	 *         (modifiersKeyword='modifiers:' validators+=[Validator|ID] validators+=[Validator|ID]*)? 
 	 *         (eventsKeyword='events:' events+=[Event|ID] events+=[Event|ID]*)?
 	 *     )
 	 */
 	protected void sequence_Method(ISerializationContext context, Method semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Modifier returns Modifier
-	 *
-	 * Constraint:
-	 *     (name=ID (params+=Param params+=Param*)? message=STRING validation=STRING)
-	 */
-	protected void sequence_Modifier(ISerializationContext context, Modifier semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -205,6 +193,18 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		feeder.accept(grammarAccess.getParamAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getParamAccess().getTypeDataTypeEnumRuleCall_1_0(), semanticObject.getType());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Validator returns Validator
+	 *
+	 * Constraint:
+	 *     (name=ID (params+=Param params+=Param*)? message=STRING validation=STRING)
+	 */
+	protected void sequence_Validator(ISerializationContext context, Validator semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

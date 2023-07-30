@@ -6,8 +6,8 @@ package lsi.us.es.mis.xtext.contract.impl;
 import java.util.Collection;
 
 import lsi.us.es.mis.xtext.contract.ContractPackage;
-import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Param;
+import lsi.us.es.mis.xtext.contract.Validator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -25,21 +25,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Modifier</b></em>'.
+ * An implementation of the model object '<em><b>Validator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl#getName <em>Name</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl#getParams <em>Params</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl#getMessage <em>Message</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl#getValidation <em>Validation</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ValidatorImpl#getName <em>Name</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ValidatorImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ValidatorImpl#getMessage <em>Message</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.ValidatorImpl#getValidation <em>Validation</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifier
+public class ValidatorImpl extends MinimalEObjectImpl.Container implements Validator
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -116,7 +116,7 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ModifierImpl()
+  protected ValidatorImpl()
   {
     super();
   }
@@ -129,7 +129,7 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
   @Override
   protected EClass eStaticClass()
   {
-    return ContractPackage.Literals.MODIFIER;
+    return ContractPackage.Literals.VALIDATOR;
   }
 
   /**
@@ -154,7 +154,7 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.MODIFIER__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.VALIDATOR__NAME, oldName, name));
   }
 
   /**
@@ -167,7 +167,7 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<Param>(Param.class, this, ContractPackage.MODIFIER__PARAMS);
+      params = new EObjectContainmentEList<Param>(Param.class, this, ContractPackage.VALIDATOR__PARAMS);
     }
     return params;
   }
@@ -194,7 +194,7 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
     String oldMessage = message;
     message = newMessage;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.MODIFIER__MESSAGE, oldMessage, message));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.VALIDATOR__MESSAGE, oldMessage, message));
   }
 
   /**
@@ -219,7 +219,7 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
     String oldValidation = validation;
     validation = newValidation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.MODIFIER__VALIDATION, oldValidation, validation));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.VALIDATOR__VALIDATION, oldValidation, validation));
   }
 
   /**
@@ -232,7 +232,7 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
   {
     switch (featureID)
     {
-      case ContractPackage.MODIFIER__PARAMS:
+      case ContractPackage.VALIDATOR__PARAMS:
         return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -248,13 +248,13 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
   {
     switch (featureID)
     {
-      case ContractPackage.MODIFIER__NAME:
+      case ContractPackage.VALIDATOR__NAME:
         return getName();
-      case ContractPackage.MODIFIER__PARAMS:
+      case ContractPackage.VALIDATOR__PARAMS:
         return getParams();
-      case ContractPackage.MODIFIER__MESSAGE:
+      case ContractPackage.VALIDATOR__MESSAGE:
         return getMessage();
-      case ContractPackage.MODIFIER__VALIDATION:
+      case ContractPackage.VALIDATOR__VALIDATION:
         return getValidation();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -271,17 +271,17 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
   {
     switch (featureID)
     {
-      case ContractPackage.MODIFIER__NAME:
+      case ContractPackage.VALIDATOR__NAME:
         setName((String)newValue);
         return;
-      case ContractPackage.MODIFIER__PARAMS:
+      case ContractPackage.VALIDATOR__PARAMS:
         getParams().clear();
         getParams().addAll((Collection<? extends Param>)newValue);
         return;
-      case ContractPackage.MODIFIER__MESSAGE:
+      case ContractPackage.VALIDATOR__MESSAGE:
         setMessage((String)newValue);
         return;
-      case ContractPackage.MODIFIER__VALIDATION:
+      case ContractPackage.VALIDATOR__VALIDATION:
         setValidation((String)newValue);
         return;
     }
@@ -298,16 +298,16 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
   {
     switch (featureID)
     {
-      case ContractPackage.MODIFIER__NAME:
+      case ContractPackage.VALIDATOR__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ContractPackage.MODIFIER__PARAMS:
+      case ContractPackage.VALIDATOR__PARAMS:
         getParams().clear();
         return;
-      case ContractPackage.MODIFIER__MESSAGE:
+      case ContractPackage.VALIDATOR__MESSAGE:
         setMessage(MESSAGE_EDEFAULT);
         return;
-      case ContractPackage.MODIFIER__VALIDATION:
+      case ContractPackage.VALIDATOR__VALIDATION:
         setValidation(VALIDATION_EDEFAULT);
         return;
     }
@@ -324,13 +324,13 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
   {
     switch (featureID)
     {
-      case ContractPackage.MODIFIER__NAME:
+      case ContractPackage.VALIDATOR__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ContractPackage.MODIFIER__PARAMS:
+      case ContractPackage.VALIDATOR__PARAMS:
         return params != null && !params.isEmpty();
-      case ContractPackage.MODIFIER__MESSAGE:
+      case ContractPackage.VALIDATOR__MESSAGE:
         return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
-      case ContractPackage.MODIFIER__VALIDATION:
+      case ContractPackage.VALIDATOR__VALIDATION:
         return VALIDATION_EDEFAULT == null ? validation != null : !VALIDATION_EDEFAULT.equals(validation);
     }
     return super.eIsSet(featureID);
@@ -357,4 +357,4 @@ public class ModifierImpl extends MinimalEObjectImpl.Container implements Modifi
     return result.toString();
   }
 
-} //ModifierImpl
+} //ValidatorImpl

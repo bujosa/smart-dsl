@@ -8,7 +8,7 @@ Contract:
 		'version:' version = STRING
 		(hasReceive?='hasReceive')?
 		(ownership?='ownership')?
-		(attributes+=Attribute | events+=Event | methods+=Method | modifiers+=Modifier | mappings+=MappingDeclaration)*
+		(attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | datastores+=DataStore)*
 	'}'
 ;
 
@@ -16,8 +16,8 @@ Attribute:
 	(modifiable?='modifiable')? name=ID type=DataType 
 ;
 
-Modifier:
-	'Modifier' name=ID '(' (params+=Param (',' params+=Param)*)? ')' 
+Validator:
+	'validator' name=ID '(' (params+=Param (',' params+=Param)*)? ')' 
 	'{'
 		'message:' message = STRING
 		'validation:' validation = STRING
@@ -28,7 +28,7 @@ Method:
 	'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
 	 '{'
 	 	('description:' description = STRING)?
-	 	(modifiersKeyword='modifiers:' modifiers+=[Modifier] (',' modifiers+=[Modifier])*)?
+	 	(modifiersKeyword='modifiers:' validators+=[Validator] (',' validators+=[Validator])*)?
 	 	(eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
 	 '}'
 ;
@@ -51,6 +51,6 @@ Output:
 enum DataType:
 	INTEGER = 'integer' | STRING='string' | BOOLEAN='boolean' | ADDRESS = 'address' | array = 'array';
 	
-MappingDeclaration:
-	'mapping' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
+DataStore:
+	'dataStore' name=ID 'fromType'  fromType=DataType 'toType' toType=DataType
 ;

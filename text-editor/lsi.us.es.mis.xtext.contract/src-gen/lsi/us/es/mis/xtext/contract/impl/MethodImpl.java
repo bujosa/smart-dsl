@@ -8,9 +8,9 @@ import java.util.Collection;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
+import lsi.us.es.mis.xtext.contract.Validator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getModifiersKeyword <em>Modifiers Keyword</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getValidators <em>Validators</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getEventsKeyword <em>Events Keyword</em>}</li>
  *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl#getEvents <em>Events</em>}</li>
  * </ul>
@@ -151,14 +151,14 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   protected String modifiersKeyword = MODIFIERS_KEYWORD_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getModifiers() <em>Modifiers</em>}' reference list.
+   * The cached value of the '{@link #getValidators() <em>Validators</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModifiers()
+   * @see #getValidators()
    * @generated
    * @ordered
    */
-  protected EList<Modifier> modifiers;
+  protected EList<Validator> validators;
 
   /**
    * The default value of the '{@link #getEventsKeyword() <em>Events Keyword</em>}' attribute.
@@ -347,13 +347,13 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @generated
    */
   @Override
-  public EList<Modifier> getModifiers()
+  public EList<Validator> getValidators()
   {
-    if (modifiers == null)
+    if (validators == null)
     {
-      modifiers = new EObjectResolvingEList<Modifier>(Modifier.class, this, ContractPackage.METHOD__MODIFIERS);
+      validators = new EObjectResolvingEList<Validator>(Validator.class, this, ContractPackage.METHOD__VALIDATORS);
     }
-    return modifiers;
+    return validators;
   }
 
   /**
@@ -436,8 +436,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return getDescription();
       case ContractPackage.METHOD__MODIFIERS_KEYWORD:
         return getModifiersKeyword();
-      case ContractPackage.METHOD__MODIFIERS:
-        return getModifiers();
+      case ContractPackage.METHOD__VALIDATORS:
+        return getValidators();
       case ContractPackage.METHOD__EVENTS_KEYWORD:
         return getEventsKeyword();
       case ContractPackage.METHOD__EVENTS:
@@ -477,9 +477,9 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case ContractPackage.METHOD__MODIFIERS_KEYWORD:
         setModifiersKeyword((String)newValue);
         return;
-      case ContractPackage.METHOD__MODIFIERS:
-        getModifiers().clear();
-        getModifiers().addAll((Collection<? extends Modifier>)newValue);
+      case ContractPackage.METHOD__VALIDATORS:
+        getValidators().clear();
+        getValidators().addAll((Collection<? extends Validator>)newValue);
         return;
       case ContractPackage.METHOD__EVENTS_KEYWORD:
         setEventsKeyword((String)newValue);
@@ -520,8 +520,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case ContractPackage.METHOD__MODIFIERS_KEYWORD:
         setModifiersKeyword(MODIFIERS_KEYWORD_EDEFAULT);
         return;
-      case ContractPackage.METHOD__MODIFIERS:
-        getModifiers().clear();
+      case ContractPackage.METHOD__VALIDATORS:
+        getValidators().clear();
         return;
       case ContractPackage.METHOD__EVENTS_KEYWORD:
         setEventsKeyword(EVENTS_KEYWORD_EDEFAULT);
@@ -555,8 +555,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case ContractPackage.METHOD__MODIFIERS_KEYWORD:
         return MODIFIERS_KEYWORD_EDEFAULT == null ? modifiersKeyword != null : !MODIFIERS_KEYWORD_EDEFAULT.equals(modifiersKeyword);
-      case ContractPackage.METHOD__MODIFIERS:
-        return modifiers != null && !modifiers.isEmpty();
+      case ContractPackage.METHOD__VALIDATORS:
+        return validators != null && !validators.isEmpty();
       case ContractPackage.METHOD__EVENTS_KEYWORD:
         return EVENTS_KEYWORD_EDEFAULT == null ? eventsKeyword != null : !EVENTS_KEYWORD_EDEFAULT.equals(eventsKeyword);
       case ContractPackage.METHOD__EVENTS:

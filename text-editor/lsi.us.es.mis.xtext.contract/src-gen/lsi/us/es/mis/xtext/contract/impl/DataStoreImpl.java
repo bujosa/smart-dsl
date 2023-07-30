@@ -4,8 +4,8 @@
 package lsi.us.es.mis.xtext.contract.impl;
 
 import lsi.us.es.mis.xtext.contract.ContractPackage;
+import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.DataType;
-import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -16,20 +16,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mapping Declaration</b></em>'.
+ * An implementation of the model object '<em><b>Data Store</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl#getName <em>Name</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl#getFromType <em>From Type</em>}</li>
- *   <li>{@link lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl#getToType <em>To Type</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.DataStoreImpl#getName <em>Name</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.DataStoreImpl#getFromType <em>From Type</em>}</li>
+ *   <li>{@link lsi.us.es.mis.xtext.contract.impl.DataStoreImpl#getToType <em>To Type</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MappingDeclarationImpl extends MinimalEObjectImpl.Container implements MappingDeclaration
+public class DataStoreImpl extends MinimalEObjectImpl.Container implements DataStore
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -96,7 +96,7 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MappingDeclarationImpl()
+  protected DataStoreImpl()
   {
     super();
   }
@@ -109,7 +109,7 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
   @Override
   protected EClass eStaticClass()
   {
-    return ContractPackage.Literals.MAPPING_DECLARATION;
+    return ContractPackage.Literals.DATA_STORE;
   }
 
   /**
@@ -134,7 +134,7 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.MAPPING_DECLARATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.DATA_STORE__NAME, oldName, name));
   }
 
   /**
@@ -159,7 +159,7 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
     DataType oldFromType = fromType;
     fromType = newFromType == null ? FROM_TYPE_EDEFAULT : newFromType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.MAPPING_DECLARATION__FROM_TYPE, oldFromType, fromType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.DATA_STORE__FROM_TYPE, oldFromType, fromType));
   }
 
   /**
@@ -184,7 +184,7 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
     DataType oldToType = toType;
     toType = newToType == null ? TO_TYPE_EDEFAULT : newToType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.MAPPING_DECLARATION__TO_TYPE, oldToType, toType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ContractPackage.DATA_STORE__TO_TYPE, oldToType, toType));
   }
 
   /**
@@ -197,11 +197,11 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ContractPackage.MAPPING_DECLARATION__NAME:
+      case ContractPackage.DATA_STORE__NAME:
         return getName();
-      case ContractPackage.MAPPING_DECLARATION__FROM_TYPE:
+      case ContractPackage.DATA_STORE__FROM_TYPE:
         return getFromType();
-      case ContractPackage.MAPPING_DECLARATION__TO_TYPE:
+      case ContractPackage.DATA_STORE__TO_TYPE:
         return getToType();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -217,13 +217,13 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ContractPackage.MAPPING_DECLARATION__NAME:
+      case ContractPackage.DATA_STORE__NAME:
         setName((String)newValue);
         return;
-      case ContractPackage.MAPPING_DECLARATION__FROM_TYPE:
+      case ContractPackage.DATA_STORE__FROM_TYPE:
         setFromType((DataType)newValue);
         return;
-      case ContractPackage.MAPPING_DECLARATION__TO_TYPE:
+      case ContractPackage.DATA_STORE__TO_TYPE:
         setToType((DataType)newValue);
         return;
     }
@@ -240,13 +240,13 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ContractPackage.MAPPING_DECLARATION__NAME:
+      case ContractPackage.DATA_STORE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ContractPackage.MAPPING_DECLARATION__FROM_TYPE:
+      case ContractPackage.DATA_STORE__FROM_TYPE:
         setFromType(FROM_TYPE_EDEFAULT);
         return;
-      case ContractPackage.MAPPING_DECLARATION__TO_TYPE:
+      case ContractPackage.DATA_STORE__TO_TYPE:
         setToType(TO_TYPE_EDEFAULT);
         return;
     }
@@ -263,11 +263,11 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ContractPackage.MAPPING_DECLARATION__NAME:
+      case ContractPackage.DATA_STORE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ContractPackage.MAPPING_DECLARATION__FROM_TYPE:
+      case ContractPackage.DATA_STORE__FROM_TYPE:
         return fromType != FROM_TYPE_EDEFAULT;
-      case ContractPackage.MAPPING_DECLARATION__TO_TYPE:
+      case ContractPackage.DATA_STORE__TO_TYPE:
         return toType != TO_TYPE_EDEFAULT;
     }
     return super.eIsSet(featureID);
@@ -294,4 +294,4 @@ public class MappingDeclarationImpl extends MinimalEObjectImpl.Container impleme
     return result.toString();
   }
 
-} //MappingDeclarationImpl
+} //DataStoreImpl

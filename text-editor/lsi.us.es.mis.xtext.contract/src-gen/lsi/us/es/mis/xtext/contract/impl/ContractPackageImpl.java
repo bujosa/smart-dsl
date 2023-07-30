@@ -7,13 +7,13 @@ import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.ContractFactory;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
+import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.DataType;
 import lsi.us.es.mis.xtext.contract.Event;
-import lsi.us.es.mis.xtext.contract.MappingDeclaration;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Modifier;
 import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
+import lsi.us.es.mis.xtext.contract.Validator;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -50,7 +50,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modifierEClass = null;
+  private EClass validatorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -85,7 +85,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass mappingDeclarationEClass = null;
+  private EClass dataStoreEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -251,7 +251,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getContract_Modifiers()
+  public EReference getContract_Validators()
   {
     return (EReference)contractEClass.getEStructuralFeatures().get(7);
   }
@@ -262,7 +262,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getContract_Mappings()
+  public EReference getContract_Datastores()
   {
     return (EReference)contractEClass.getEStructuralFeatures().get(8);
   }
@@ -317,9 +317,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EClass getModifier()
+  public EClass getValidator()
   {
-    return modifierEClass;
+    return validatorEClass;
   }
 
   /**
@@ -328,9 +328,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EAttribute getModifier_Name()
+  public EAttribute getValidator_Name()
   {
-    return (EAttribute)modifierEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)validatorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -339,9 +339,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getModifier_Params()
+  public EReference getValidator_Params()
   {
-    return (EReference)modifierEClass.getEStructuralFeatures().get(1);
+    return (EReference)validatorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -350,9 +350,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EAttribute getModifier_Message()
+  public EAttribute getValidator_Message()
   {
-    return (EAttribute)modifierEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)validatorEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -361,9 +361,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EAttribute getModifier_Validation()
+  public EAttribute getValidator_Validation()
   {
-    return (EAttribute)modifierEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)validatorEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -449,7 +449,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EReference getMethod_Modifiers()
+  public EReference getMethod_Validators()
   {
     return (EReference)methodEClass.getEStructuralFeatures().get(6);
   }
@@ -592,9 +592,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EClass getMappingDeclaration()
+  public EClass getDataStore()
   {
-    return mappingDeclarationEClass;
+    return dataStoreEClass;
   }
 
   /**
@@ -603,9 +603,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EAttribute getMappingDeclaration_Name()
+  public EAttribute getDataStore_Name()
   {
-    return (EAttribute)mappingDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)dataStoreEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -614,9 +614,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EAttribute getMappingDeclaration_FromType()
+  public EAttribute getDataStore_FromType()
   {
-    return (EAttribute)mappingDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)dataStoreEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -625,9 +625,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EAttribute getMappingDeclaration_ToType()
+  public EAttribute getDataStore_ToType()
   {
-    return (EAttribute)mappingDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)dataStoreEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -680,19 +680,19 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     createEReference(contractEClass, CONTRACT__ATTRIBUTES);
     createEReference(contractEClass, CONTRACT__EVENTS);
     createEReference(contractEClass, CONTRACT__METHODS);
-    createEReference(contractEClass, CONTRACT__MODIFIERS);
-    createEReference(contractEClass, CONTRACT__MAPPINGS);
+    createEReference(contractEClass, CONTRACT__VALIDATORS);
+    createEReference(contractEClass, CONTRACT__DATASTORES);
 
     attributeEClass = createEClass(ATTRIBUTE);
     createEAttribute(attributeEClass, ATTRIBUTE__MODIFIABLE);
     createEAttribute(attributeEClass, ATTRIBUTE__NAME);
     createEAttribute(attributeEClass, ATTRIBUTE__TYPE);
 
-    modifierEClass = createEClass(MODIFIER);
-    createEAttribute(modifierEClass, MODIFIER__NAME);
-    createEReference(modifierEClass, MODIFIER__PARAMS);
-    createEAttribute(modifierEClass, MODIFIER__MESSAGE);
-    createEAttribute(modifierEClass, MODIFIER__VALIDATION);
+    validatorEClass = createEClass(VALIDATOR);
+    createEAttribute(validatorEClass, VALIDATOR__NAME);
+    createEReference(validatorEClass, VALIDATOR__PARAMS);
+    createEAttribute(validatorEClass, VALIDATOR__MESSAGE);
+    createEAttribute(validatorEClass, VALIDATOR__VALIDATION);
 
     methodEClass = createEClass(METHOD);
     createEAttribute(methodEClass, METHOD__NAME);
@@ -701,7 +701,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     createEReference(methodEClass, METHOD__OUTPUTS);
     createEAttribute(methodEClass, METHOD__DESCRIPTION);
     createEAttribute(methodEClass, METHOD__MODIFIERS_KEYWORD);
-    createEReference(methodEClass, METHOD__MODIFIERS);
+    createEReference(methodEClass, METHOD__VALIDATORS);
     createEAttribute(methodEClass, METHOD__EVENTS_KEYWORD);
     createEReference(methodEClass, METHOD__EVENTS);
 
@@ -718,10 +718,10 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     createEAttribute(outputEClass, OUTPUT__NAME);
     createEAttribute(outputEClass, OUTPUT__TYPE);
 
-    mappingDeclarationEClass = createEClass(MAPPING_DECLARATION);
-    createEAttribute(mappingDeclarationEClass, MAPPING_DECLARATION__NAME);
-    createEAttribute(mappingDeclarationEClass, MAPPING_DECLARATION__FROM_TYPE);
-    createEAttribute(mappingDeclarationEClass, MAPPING_DECLARATION__TO_TYPE);
+    dataStoreEClass = createEClass(DATA_STORE);
+    createEAttribute(dataStoreEClass, DATA_STORE__NAME);
+    createEAttribute(dataStoreEClass, DATA_STORE__FROM_TYPE);
+    createEAttribute(dataStoreEClass, DATA_STORE__TO_TYPE);
 
     // Create enums
     dataTypeEEnum = createEEnum(DATA_TYPE);
@@ -766,19 +766,19 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEReference(getContract_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Events(), this.getEvent(), null, "events", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContract_Methods(), this.getMethod(), null, "methods", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getContract_Modifiers(), this.getModifier(), null, "modifiers", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getContract_Mappings(), this.getMappingDeclaration(), null, "mappings", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContract_Validators(), this.getValidator(), null, "validators", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContract_Datastores(), this.getDataStore(), null, "datastores", null, 0, -1, Contract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAttribute_Modifiable(), ecorePackage.getEBoolean(), "modifiable", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_Type(), this.getDataType(), "type", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(modifierEClass, Modifier.class, "Modifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getModifier_Name(), ecorePackage.getEString(), "name", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModifier_Params(), this.getParam(), null, "params", null, 0, -1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getModifier_Message(), ecorePackage.getEString(), "message", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getModifier_Validation(), ecorePackage.getEString(), "validation", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(validatorEClass, Validator.class, "Validator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getValidator_Name(), ecorePackage.getEString(), "name", null, 0, 1, Validator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getValidator_Params(), this.getParam(), null, "params", null, 0, -1, Validator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValidator_Message(), ecorePackage.getEString(), "message", null, 0, 1, Validator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValidator_Validation(), ecorePackage.getEString(), "validation", null, 0, 1, Validator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -787,7 +787,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEReference(getMethod_Outputs(), this.getOutput(), null, "outputs", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethod_Description(), ecorePackage.getEString(), "description", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethod_ModifiersKeyword(), ecorePackage.getEString(), "modifiersKeyword", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethod_Modifiers(), this.getModifier(), null, "modifiers", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethod_Validators(), this.getValidator(), null, "validators", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethod_EventsKeyword(), ecorePackage.getEString(), "eventsKeyword", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethod_Events(), this.getEvent(), null, "events", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -804,10 +804,10 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEAttribute(getOutput_Name(), ecorePackage.getEString(), "name", null, 0, 1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOutput_Type(), this.getDataType(), "type", null, 0, 1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(mappingDeclarationEClass, MappingDeclaration.class, "MappingDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMappingDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, MappingDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMappingDeclaration_FromType(), this.getDataType(), "fromType", null, 0, 1, MappingDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMappingDeclaration_ToType(), this.getDataType(), "toType", null, 0, 1, MappingDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(dataStoreEClass, DataStore.class, "DataStore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDataStore_Name(), ecorePackage.getEString(), "name", null, 0, 1, DataStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataStore_FromType(), this.getDataType(), "fromType", null, 0, 1, DataStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataStore_ToType(), this.getDataType(), "toType", null, 0, 1, DataStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(dataTypeEEnum, DataType.class, "DataType");

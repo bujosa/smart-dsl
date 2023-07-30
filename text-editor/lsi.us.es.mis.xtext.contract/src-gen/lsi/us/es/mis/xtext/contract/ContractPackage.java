@@ -132,22 +132,22 @@ public interface ContractPackage extends EPackage
   int CONTRACT__METHODS = 6;
 
   /**
-   * The feature id for the '<em><b>Modifiers</b></em>' containment reference list.
+   * The feature id for the '<em><b>Validators</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTRACT__MODIFIERS = 7;
+  int CONTRACT__VALIDATORS = 7;
 
   /**
-   * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
+   * The feature id for the '<em><b>Datastores</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTRACT__MAPPINGS = 8;
+  int CONTRACT__DATASTORES = 8;
 
   /**
    * The number of structural features of the '<em>Contract</em>' class.
@@ -205,14 +205,14 @@ public interface ContractPackage extends EPackage
   int ATTRIBUTE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl <em>Modifier</em>}' class.
+   * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.ValidatorImpl <em>Validator</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see lsi.us.es.mis.xtext.contract.impl.ModifierImpl
-   * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getModifier()
+   * @see lsi.us.es.mis.xtext.contract.impl.ValidatorImpl
+   * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getValidator()
    * @generated
    */
-  int MODIFIER = 2;
+  int VALIDATOR = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -221,7 +221,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODIFIER__NAME = 0;
+  int VALIDATOR__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -230,7 +230,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODIFIER__PARAMS = 1;
+  int VALIDATOR__PARAMS = 1;
 
   /**
    * The feature id for the '<em><b>Message</b></em>' attribute.
@@ -239,7 +239,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODIFIER__MESSAGE = 2;
+  int VALIDATOR__MESSAGE = 2;
 
   /**
    * The feature id for the '<em><b>Validation</b></em>' attribute.
@@ -248,16 +248,16 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODIFIER__VALIDATION = 3;
+  int VALIDATOR__VALIDATION = 3;
 
   /**
-   * The number of structural features of the '<em>Modifier</em>' class.
+   * The number of structural features of the '<em>Validator</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODIFIER_FEATURE_COUNT = 4;
+  int VALIDATOR_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl <em>Method</em>}' class.
@@ -324,13 +324,13 @@ public interface ContractPackage extends EPackage
   int METHOD__MODIFIERS_KEYWORD = 5;
 
   /**
-   * The feature id for the '<em><b>Modifiers</b></em>' reference list.
+   * The feature id for the '<em><b>Validators</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD__MODIFIERS = 6;
+  int METHOD__VALIDATORS = 6;
 
   /**
    * The feature id for the '<em><b>Events Keyword</b></em>' attribute.
@@ -480,14 +480,14 @@ public interface ContractPackage extends EPackage
   int OUTPUT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl <em>Mapping Declaration</em>}' class.
+   * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.DataStoreImpl <em>Data Store</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl
-   * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getMappingDeclaration()
+   * @see lsi.us.es.mis.xtext.contract.impl.DataStoreImpl
+   * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getDataStore()
    * @generated
    */
-  int MAPPING_DECLARATION = 7;
+  int DATA_STORE = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -496,7 +496,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MAPPING_DECLARATION__NAME = 0;
+  int DATA_STORE__NAME = 0;
 
   /**
    * The feature id for the '<em><b>From Type</b></em>' attribute.
@@ -505,7 +505,7 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MAPPING_DECLARATION__FROM_TYPE = 1;
+  int DATA_STORE__FROM_TYPE = 1;
 
   /**
    * The feature id for the '<em><b>To Type</b></em>' attribute.
@@ -514,16 +514,16 @@ public interface ContractPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MAPPING_DECLARATION__TO_TYPE = 2;
+  int DATA_STORE__TO_TYPE = 2;
 
   /**
-   * The number of structural features of the '<em>Mapping Declaration</em>' class.
+   * The number of structural features of the '<em>Data Store</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAPPING_DECLARATION_FEATURE_COUNT = 3;
+  int DATA_STORE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.DataType <em>Data Type</em>}' enum.
@@ -624,26 +624,26 @@ public interface ContractPackage extends EPackage
   EReference getContract_Methods();
 
   /**
-   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getModifiers <em>Modifiers</em>}'.
+   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getValidators <em>Validators</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Modifiers</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Contract#getModifiers()
+   * @return the meta object for the containment reference list '<em>Validators</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Contract#getValidators()
    * @see #getContract()
    * @generated
    */
-  EReference getContract_Modifiers();
+  EReference getContract_Validators();
 
   /**
-   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getMappings <em>Mappings</em>}'.
+   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Contract#getDatastores <em>Datastores</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Mappings</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Contract#getMappings()
+   * @return the meta object for the containment reference list '<em>Datastores</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Contract#getDatastores()
    * @see #getContract()
    * @generated
    */
-  EReference getContract_Mappings();
+  EReference getContract_Datastores();
 
   /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Attribute <em>Attribute</em>}'.
@@ -689,58 +689,58 @@ public interface ContractPackage extends EPackage
   EAttribute getAttribute_Type();
 
   /**
-   * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Modifier <em>Modifier</em>}'.
+   * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Validator <em>Validator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Modifier</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Modifier
+   * @return the meta object for class '<em>Validator</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Validator
    * @generated
    */
-  EClass getModifier();
+  EClass getValidator();
 
   /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Modifier#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Validator#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Modifier#getName()
-   * @see #getModifier()
+   * @see lsi.us.es.mis.xtext.contract.Validator#getName()
+   * @see #getValidator()
    * @generated
    */
-  EAttribute getModifier_Name();
+  EAttribute getValidator_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Modifier#getParams <em>Params</em>}'.
+   * Returns the meta object for the containment reference list '{@link lsi.us.es.mis.xtext.contract.Validator#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Modifier#getParams()
-   * @see #getModifier()
+   * @see lsi.us.es.mis.xtext.contract.Validator#getParams()
+   * @see #getValidator()
    * @generated
    */
-  EReference getModifier_Params();
+  EReference getValidator_Params();
 
   /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Modifier#getMessage <em>Message</em>}'.
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Validator#getMessage <em>Message</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Message</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Modifier#getMessage()
-   * @see #getModifier()
+   * @see lsi.us.es.mis.xtext.contract.Validator#getMessage()
+   * @see #getValidator()
    * @generated
    */
-  EAttribute getModifier_Message();
+  EAttribute getValidator_Message();
 
   /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Modifier#getValidation <em>Validation</em>}'.
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Validator#getValidation <em>Validation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Validation</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Modifier#getValidation()
-   * @see #getModifier()
+   * @see lsi.us.es.mis.xtext.contract.Validator#getValidation()
+   * @see #getValidator()
    * @generated
    */
-  EAttribute getModifier_Validation();
+  EAttribute getValidator_Validation();
 
   /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Method <em>Method</em>}'.
@@ -819,15 +819,15 @@ public interface ContractPackage extends EPackage
   EAttribute getMethod_ModifiersKeyword();
 
   /**
-   * Returns the meta object for the reference list '{@link lsi.us.es.mis.xtext.contract.Method#getModifiers <em>Modifiers</em>}'.
+   * Returns the meta object for the reference list '{@link lsi.us.es.mis.xtext.contract.Method#getValidators <em>Validators</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Modifiers</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Method#getModifiers()
+   * @return the meta object for the reference list '<em>Validators</em>'.
+   * @see lsi.us.es.mis.xtext.contract.Method#getValidators()
    * @see #getMethod()
    * @generated
    */
-  EReference getMethod_Modifiers();
+  EReference getMethod_Validators();
 
   /**
    * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Method#getEventsKeyword <em>Events Keyword</em>}'.
@@ -959,47 +959,47 @@ public interface ContractPackage extends EPackage
   EAttribute getOutput_Type();
 
   /**
-   * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration <em>Mapping Declaration</em>}'.
+   * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.DataStore <em>Data Store</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Mapping Declaration</em>'.
-   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration
+   * @return the meta object for class '<em>Data Store</em>'.
+   * @see lsi.us.es.mis.xtext.contract.DataStore
    * @generated
    */
-  EClass getMappingDeclaration();
+  EClass getDataStore();
 
   /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.DataStore#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration#getName()
-   * @see #getMappingDeclaration()
+   * @see lsi.us.es.mis.xtext.contract.DataStore#getName()
+   * @see #getDataStore()
    * @generated
    */
-  EAttribute getMappingDeclaration_Name();
+  EAttribute getDataStore_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration#getFromType <em>From Type</em>}'.
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.DataStore#getFromType <em>From Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>From Type</em>'.
-   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration#getFromType()
-   * @see #getMappingDeclaration()
+   * @see lsi.us.es.mis.xtext.contract.DataStore#getFromType()
+   * @see #getDataStore()
    * @generated
    */
-  EAttribute getMappingDeclaration_FromType();
+  EAttribute getDataStore_FromType();
 
   /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.MappingDeclaration#getToType <em>To Type</em>}'.
+   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.DataStore#getToType <em>To Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>To Type</em>'.
-   * @see lsi.us.es.mis.xtext.contract.MappingDeclaration#getToType()
-   * @see #getMappingDeclaration()
+   * @see lsi.us.es.mis.xtext.contract.DataStore#getToType()
+   * @see #getDataStore()
    * @generated
    */
-  EAttribute getMappingDeclaration_ToType();
+  EAttribute getDataStore_ToType();
 
   /**
    * Returns the meta object for enum '{@link lsi.us.es.mis.xtext.contract.DataType <em>Data Type</em>}'.
@@ -1101,20 +1101,20 @@ public interface ContractPackage extends EPackage
     EReference CONTRACT__METHODS = eINSTANCE.getContract_Methods();
 
     /**
-     * The meta object literal for the '<em><b>Modifiers</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Validators</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTRACT__MODIFIERS = eINSTANCE.getContract_Modifiers();
+    EReference CONTRACT__VALIDATORS = eINSTANCE.getContract_Validators();
 
     /**
-     * The meta object literal for the '<em><b>Mappings</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Datastores</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTRACT__MAPPINGS = eINSTANCE.getContract_Mappings();
+    EReference CONTRACT__DATASTORES = eINSTANCE.getContract_Datastores();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -1151,14 +1151,14 @@ public interface ContractPackage extends EPackage
     EAttribute ATTRIBUTE__TYPE = eINSTANCE.getAttribute_Type();
 
     /**
-     * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.ModifierImpl <em>Modifier</em>}' class.
+     * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.ValidatorImpl <em>Validator</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see lsi.us.es.mis.xtext.contract.impl.ModifierImpl
-     * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getModifier()
+     * @see lsi.us.es.mis.xtext.contract.impl.ValidatorImpl
+     * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getValidator()
      * @generated
      */
-    EClass MODIFIER = eINSTANCE.getModifier();
+    EClass VALIDATOR = eINSTANCE.getValidator();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1166,7 +1166,7 @@ public interface ContractPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODIFIER__NAME = eINSTANCE.getModifier_Name();
+    EAttribute VALIDATOR__NAME = eINSTANCE.getValidator_Name();
 
     /**
      * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
@@ -1174,7 +1174,7 @@ public interface ContractPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODIFIER__PARAMS = eINSTANCE.getModifier_Params();
+    EReference VALIDATOR__PARAMS = eINSTANCE.getValidator_Params();
 
     /**
      * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
@@ -1182,7 +1182,7 @@ public interface ContractPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODIFIER__MESSAGE = eINSTANCE.getModifier_Message();
+    EAttribute VALIDATOR__MESSAGE = eINSTANCE.getValidator_Message();
 
     /**
      * The meta object literal for the '<em><b>Validation</b></em>' attribute feature.
@@ -1190,7 +1190,7 @@ public interface ContractPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODIFIER__VALIDATION = eINSTANCE.getModifier_Validation();
+    EAttribute VALIDATOR__VALIDATION = eINSTANCE.getValidator_Validation();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.MethodImpl <em>Method</em>}' class.
@@ -1251,12 +1251,12 @@ public interface ContractPackage extends EPackage
     EAttribute METHOD__MODIFIERS_KEYWORD = eINSTANCE.getMethod_ModifiersKeyword();
 
     /**
-     * The meta object literal for the '<em><b>Modifiers</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Validators</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference METHOD__MODIFIERS = eINSTANCE.getMethod_Modifiers();
+    EReference METHOD__VALIDATORS = eINSTANCE.getMethod_Validators();
 
     /**
      * The meta object literal for the '<em><b>Events Keyword</b></em>' attribute feature.
@@ -1361,14 +1361,14 @@ public interface ContractPackage extends EPackage
     EAttribute OUTPUT__TYPE = eINSTANCE.getOutput_Type();
 
     /**
-     * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl <em>Mapping Declaration</em>}' class.
+     * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.DataStoreImpl <em>Data Store</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see lsi.us.es.mis.xtext.contract.impl.MappingDeclarationImpl
-     * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getMappingDeclaration()
+     * @see lsi.us.es.mis.xtext.contract.impl.DataStoreImpl
+     * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getDataStore()
      * @generated
      */
-    EClass MAPPING_DECLARATION = eINSTANCE.getMappingDeclaration();
+    EClass DATA_STORE = eINSTANCE.getDataStore();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1376,7 +1376,7 @@ public interface ContractPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MAPPING_DECLARATION__NAME = eINSTANCE.getMappingDeclaration_Name();
+    EAttribute DATA_STORE__NAME = eINSTANCE.getDataStore_Name();
 
     /**
      * The meta object literal for the '<em><b>From Type</b></em>' attribute feature.
@@ -1384,7 +1384,7 @@ public interface ContractPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MAPPING_DECLARATION__FROM_TYPE = eINSTANCE.getMappingDeclaration_FromType();
+    EAttribute DATA_STORE__FROM_TYPE = eINSTANCE.getDataStore_FromType();
 
     /**
      * The meta object literal for the '<em><b>To Type</b></em>' attribute feature.
@@ -1392,7 +1392,7 @@ public interface ContractPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MAPPING_DECLARATION__TO_TYPE = eINSTANCE.getMappingDeclaration_ToType();
+    EAttribute DATA_STORE__TO_TYPE = eINSTANCE.getDataStore_ToType();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.DataType <em>Data Type</em>}' enum.
