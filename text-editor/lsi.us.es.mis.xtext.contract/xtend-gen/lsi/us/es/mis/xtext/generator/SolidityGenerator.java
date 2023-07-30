@@ -7,14 +7,19 @@ import com.google.common.base.Objects;
 import java.util.List;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
+import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.Event;
+import lsi.us.es.mis.xtext.contract.Method;
+import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
+import lsi.us.es.mis.xtext.contract.Validator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -50,16 +55,36 @@ public class SolidityGenerator extends AbstractGenerator {
   }
   
   public StringBuilder appendAttributes(final Contract contract, final StringBuilder code) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field mappings is undefined for the type Contract"
-      + "\nThe method or field mappings is undefined for the type Contract"
-      + "\nname cannot be resolved"
-      + "\nfromType cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\ntoType cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nlength cannot be resolved"
-      + "\n!= cannot be resolved");
+    StringBuilder _xblockexpression = null;
+    {
+      EList<Attribute> _attributes = contract.getAttributes();
+      for (final Attribute attribute : _attributes) {
+        {
+          final String attributeName = attribute.getName();
+          final String attributeType = this.getSolidityDataType(attribute.getType().toString());
+          code.append((((("\t" + attributeType) + " ") + attributeName) + ";\n"));
+        }
+      }
+      boolean _isOwnership = contract.isOwnership();
+      if (_isOwnership) {
+        code.append("\taddress owner;\n");
+      }
+      EList<DataStore> _datastores = contract.getDatastores();
+      for (final DataStore datastore : _datastores) {
+        {
+          final String mappingName = datastore.getName();
+          final String fromType = this.getSolidityDataType(datastore.getFromType().toString());
+          final String toType = this.getSolidityDataType(datastore.getToType().toString());
+          code.append((((((("\tmapping(" + fromType) + " => ") + toType) + ") public ") + mappingName) + ";\n"));
+        }
+      }
+      StringBuilder _xifexpression = null;
+      if (((contract.isOwnership() || (((Object[])Conversions.unwrapArray(contract.getAttributes(), Object.class)).length != 0)) || (((Object[])Conversions.unwrapArray(contract.getDatastores(), Object.class)).length != 0))) {
+        _xifexpression = code.append("\n");
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   public StringBuilder appendConstructor(final Contract contract, final StringBuilder code) {
@@ -157,24 +182,55 @@ public class SolidityGenerator extends AbstractGenerator {
   }
   
   public void appendModifiers(final Contract contract, final StringBuilder code) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field modifiers is undefined for the type Contract"
-      + "\nparams cannot be resolved"
-      + "\nlength cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nparams cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nparams cannot be resolved"
-      + "\nlast cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nvalidation cannot be resolved"
-      + "\nmessage cannot be resolved");
+    EList<Validator> _validators = contract.getValidators();
+    for (final Validator modifier : _validators) {
+      {
+        String params = "";
+        int _length = ((Object[])Conversions.unwrapArray(modifier.getParams(), Object.class)).length;
+        boolean _equals = (_length == 0);
+        if (_equals) {
+          params = "()";
+        } else {
+          params = "(";
+        }
+        EList<Param> _params = modifier.getParams();
+        for (final Param param : _params) {
+          Param _last = IterableExtensions.<Param>last(modifier.getParams());
+          boolean _equals_1 = Objects.equal(param, _last);
+          if (_equals_1) {
+            String _params_1 = params;
+            String _solidityDataTypeForFunction = this.getSolidityDataTypeForFunction(param.getType().toString());
+            String _plus = (_solidityDataTypeForFunction + " ");
+            String _name = param.getName();
+            String _plus_1 = (_plus + _name);
+            String _plus_2 = (_plus_1 + ")");
+            params = (_params_1 + _plus_2);
+          } else {
+            String _params_2 = params;
+            String _solidityDataTypeForFunction_1 = this.getSolidityDataTypeForFunction(param.getType().toString());
+            String _plus_3 = (_solidityDataTypeForFunction_1 + " ");
+            String _name_1 = param.getName();
+            String _plus_4 = (_plus_3 + _name_1);
+            String _plus_5 = (_plus_4 + ", ");
+            params = (_params_2 + _plus_5);
+          }
+        }
+        String _name_2 = modifier.getName();
+        String _plus_6 = ("\tmodifier " + _name_2);
+        String _plus_7 = (_plus_6 + params);
+        String _plus_8 = (_plus_7 + " {\n");
+        code.append(_plus_8);
+        String _validation = modifier.getValidation();
+        String _plus_9 = ("\t\trequire(" + _validation);
+        String _plus_10 = (_plus_9 + ", \"");
+        String _message = modifier.getMessage();
+        String _plus_11 = (_plus_10 + _message);
+        String _plus_12 = (_plus_11 + "\");\n");
+        code.append(_plus_12);
+        code.append("\t\t_;\n");
+        code.append("\t}\n\n");
+      }
+    }
   }
   
   public StringBuilder appendReceiveFunction(final StringBuilder code) {
@@ -208,21 +264,150 @@ public class SolidityGenerator extends AbstractGenerator {
   }
   
   public void appendMethods(final Contract contract, final StringBuilder code) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field modifiers is undefined for the type Method"
-      + "\nThe method or field modifiers is undefined for the type Method"
-      + "\nparams cannot be resolved"
-      + "\nlength cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nparams cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nparams cannot be resolved"
-      + "\nlast cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nlast cannot be resolved");
+    final EList<Method> methods = contract.getMethods();
+    boolean _isHasReceive = contract.isHasReceive();
+    if (_isHasReceive) {
+      this.appendReceiveFunction(code);
+    }
+    for (final Method method : methods) {
+      {
+        String _name = method.getName();
+        String _plus = ("\tfunction " + _name);
+        String _plus_1 = (_plus + "(");
+        code.append(_plus_1);
+        String returns = "";
+        String modifiers = "";
+        String events = "";
+        EList<Param> _params = method.getParams();
+        for (final Param param : _params) {
+          {
+            final String parameterName = param.getName();
+            final String parameterType = this.getSolidityDataTypeForFunction(param.getType().toString());
+            code.append(((parameterType + " ") + parameterName));
+            Param _last = IterableExtensions.<Param>last(method.getParams());
+            boolean _notEquals = (!Objects.equal(param, _last));
+            if (_notEquals) {
+              code.append(", ");
+            }
+          }
+        }
+        int _length = ((Object[])Conversions.unwrapArray(method.getOutputs(), Object.class)).length;
+        boolean _notEquals = (_length != 0);
+        if (_notEquals) {
+          String _returns = returns;
+          returns = (_returns + " returns (");
+          EList<Output> _outputs = method.getOutputs();
+          for (final Output output : _outputs) {
+            {
+              String _returns_1 = returns;
+              String _solidityDataTypeForFunction = this.getSolidityDataTypeForFunction(output.getType().toString());
+              returns = (_returns_1 + _solidityDataTypeForFunction);
+              Output _last = IterableExtensions.<Output>last(method.getOutputs());
+              boolean _equals = Objects.equal(output, _last);
+              if (_equals) {
+                String _returns_2 = returns;
+                returns = (_returns_2 + ")");
+              } else {
+                String _returns_3 = returns;
+                returns = (_returns_3 + ", ");
+              }
+            }
+          }
+        }
+        EList<Validator> _validators = method.getValidators();
+        for (final Validator modifier : _validators) {
+          {
+            int _length_1 = ((Object[])Conversions.unwrapArray(modifier.getParams(), Object.class)).length;
+            boolean _equals = (_length_1 == 0);
+            if (_equals) {
+              String _modifiers = modifiers;
+              String _name_1 = modifier.getName();
+              String _plus_2 = (" " + _name_1);
+              modifiers = (_modifiers + _plus_2);
+            } else {
+              String _modifiers_1 = modifiers;
+              String _name_2 = modifier.getName();
+              String _plus_3 = (" " + _name_2);
+              String _plus_4 = (_plus_3 + "(");
+              modifiers = (_modifiers_1 + _plus_4);
+              EList<Param> _params_1 = modifier.getParams();
+              for (final Param param_1 : _params_1) {
+                {
+                  String _modifiers_2 = modifiers;
+                  String _name_3 = param_1.getName();
+                  modifiers = (_modifiers_2 + _name_3);
+                  Param _last = IterableExtensions.<Param>last(modifier.getParams());
+                  boolean _equals_1 = Objects.equal(param_1, _last);
+                  if (_equals_1) {
+                    String _modifiers_3 = modifiers;
+                    modifiers = (_modifiers_3 + ")");
+                  } else {
+                    String _modifiers_4 = modifiers;
+                    modifiers = (_modifiers_4 + ", ");
+                  }
+                }
+              }
+            }
+            Validator _last = IterableExtensions.<Validator>last(method.getValidators());
+            boolean _equals_1 = Objects.equal(modifier, _last);
+            if (_equals_1) {
+              String _modifiers_2 = modifiers;
+              modifiers = (_modifiers_2 + " ");
+            }
+          }
+        }
+        EList<Event> _events = method.getEvents();
+        for (final Event event : _events) {
+          int _length_1 = ((Object[])Conversions.unwrapArray(event.getParams(), Object.class)).length;
+          boolean _equals = (_length_1 == 0);
+          if (_equals) {
+            String _events_1 = events;
+            String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
+            String _plus_2 = ("\t\temit " + _capitalizeFirstLetter);
+            String _plus_3 = (_plus_2 + "();\n");
+            events = (_events_1 + _plus_3);
+          } else {
+            String _events_2 = events;
+            String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(event.getName());
+            String _plus_4 = ("\t\temit " + _capitalizeFirstLetter_1);
+            String _plus_5 = (_plus_4 + "(");
+            events = (_events_2 + _plus_5);
+            EList<Param> _params_1 = event.getParams();
+            for (final Param param_1 : _params_1) {
+              {
+                String value = param_1.getName();
+                boolean _equals_1 = Objects.equal(value, "from");
+                if (_equals_1) {
+                  value = "msg.sender";
+                }
+                String _events_3 = events;
+                events = (_events_3 + value);
+                Param _last = IterableExtensions.<Param>last(event.getParams());
+                boolean _equals_2 = Objects.equal(param_1, _last);
+                if (_equals_2) {
+                  String _events_4 = events;
+                  events = (_events_4 + ");\n");
+                } else {
+                  String _events_5 = events;
+                  events = (_events_5 + ", ");
+                }
+              }
+            }
+          }
+        }
+        code.append(((((") public" + modifiers) + "") + returns) + " {\n"));
+        String _description = method.getDescription();
+        boolean _tripleNotEquals = (_description != null);
+        if (_tripleNotEquals) {
+          String _description_1 = method.getDescription();
+          String _plus_6 = ("\t\t// " + _description_1);
+          String _plus_7 = (_plus_6 + "\n");
+          code.append(_plus_7);
+        }
+        code.append(events);
+        code.append("\t}\n\n");
+      }
+    }
   }
   
   public String getSolidityDataType(final String dataType) {

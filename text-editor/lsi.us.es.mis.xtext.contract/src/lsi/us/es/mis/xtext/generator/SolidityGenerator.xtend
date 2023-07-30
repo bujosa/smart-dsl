@@ -59,14 +59,14 @@ class SolidityGenerator extends AbstractGenerator {
 			code.append("\taddress owner;\n")
 		}
 		
-		for (mapping : contract.mappings) {
-	        val mappingName = mapping.name
-	        val fromType = getSolidityDataType(mapping.fromType.toString)
-	        val toType = getSolidityDataType(mapping.toType.toString)
+		for (datastore: contract.datastores) {
+	        val mappingName = datastore.name
+	        val fromType = getSolidityDataType(datastore.fromType.toString)
+	        val toType = getSolidityDataType(datastore.toType.toString)
 	        code.append("\tmapping("+ fromType + " => " + toType +") public " +mappingName+";\n")
 	    }
 		
-		if (contract.ownership || contract.attributes.length() != 0 || contract.mappings.length() !=  0){
+		if (contract.ownership || contract.attributes.length() != 0 || contract.datastores.length() !=  0){
 			code.append("\n")
 		}
 	}
@@ -138,7 +138,7 @@ class SolidityGenerator extends AbstractGenerator {
 	}
 	
 	def appendModifiers(Contract contract, StringBuilder code) {
-		for (modifier : contract.modifiers) {
+		for (modifier : contract.validators) {
 			
 			var params = ""
 			
@@ -213,7 +213,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        	}
 	        }  
 	        
-	        for (modifier: method.modifiers){
+	        for (modifier: method.validators){
 	        	if (modifier.params.length() == 0) {
 	        		modifiers  += " " + modifier.name
 	        	} else {
@@ -227,7 +227,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        			}
 	        		}
 	        	}
-	        	if (modifier == method.modifiers.last){
+	        	if (modifier == method.validators.last){
 	        		modifiers += " "
 	        	}
 	        }
@@ -253,7 +253,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        }
 	        
 	        code.append(") public" + modifiers + "" + returns +" {\n")
-	        if (method.description != null){
+	        if (method.description !== null){
 	        	code.append("\t\t// " + method.description + "\n")
 	        }
 	       	code.append(events);
