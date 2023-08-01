@@ -5,7 +5,7 @@
     <semanticResources>SampleStorage.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_najLcAsjEe63KuAF1yA3NQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nezZUAsjEe63KuAF1yA3NQ" name="contract" repPath="#_nc7KAAsjEe63KuAF1yA3NQ" changeId="1690912134494">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nezZUAsjEe63KuAF1yA3NQ" name="contract" repPath="#_nc7KAAsjEe63KuAF1yA3NQ" changeId="1690913060419">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="contract.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -686,7 +686,7 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_zepmMBlrEe6V7sOWXmRGgA" name="Param" tooltipText="&#xA;WARNING : The default value literal 'interger' must be a valid literal of the attribute's type" incomingEdges="_wOubEiBREe6-soTU9-lGkQ _GOYwaCBSEe6-soTU9-lGkQ" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_zepmMBlrEe6V7sOWXmRGgA" name="Param" tooltipText="" incomingEdges="_wOubEiBREe6-soTU9-lGkQ _GOYwaCBSEe6-soTU9-lGkQ" width="12" height="10">
       <target xmi:type="ecore:EClass" href="contract.ecore#//Param"/>
       <semanticElements xmi:type="ecore:EClass" href="contract.ecore#//Param"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -704,7 +704,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_3fkeBxlrEe6V7sOWXmRGgA" name="type : DataType = interger" tooltipText="&#xA;WARNING : The default value literal 'interger' must be a valid literal of the attribute's type">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_3fkeBxlrEe6V7sOWXmRGgA" name="type : DataType = integer" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="contract.ecore#//Param/type"/>
         <semanticElements xmi:type="ecore:EAttribute" href="contract.ecore#//Param/type"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_3flFABlrEe6V7sOWXmRGgA" labelAlignment="LEFT">
