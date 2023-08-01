@@ -8,7 +8,9 @@ Contract:
 		'version:' version = STRING
 		(hasReceive?='hasReceive')?
 		(ownership?='ownership')?
-		(attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | dataStores+=DataStore)*
+		(attributes+=Attribute | events+=Event | methods+=Method |
+			validators+=Validator | dataStores+=DataStore
+		)*
 	'}'
 ;
 

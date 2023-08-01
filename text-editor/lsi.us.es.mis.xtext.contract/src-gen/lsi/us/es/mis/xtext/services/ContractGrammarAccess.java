@@ -58,7 +58,9 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//        'version:' version = STRING
 		//        (hasReceive?='hasReceive')?
 		//        (ownership?='ownership')?
-		//        (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | dataStores+=DataStore)*
+		//        (attributes+=Attribute | events+=Event | methods+=Method |
+		//            validators+=Validator | dataStores+=DataStore
+		//        )*
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -68,7 +70,9 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    'version:' version = STRING
 		//    (hasReceive?='hasReceive')?
 		//    (ownership?='ownership')?
-		//    (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | dataStores+=DataStore)*
+		//    (attributes+=Attribute | events+=Event | methods+=Method |
+		//        validators+=Validator | dataStores+=DataStore
+		//    )*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -105,7 +109,9 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'ownership'
 		public Keyword getOwnershipOwnershipKeyword_6_0() { return cOwnershipOwnershipKeyword_6_0; }
 		
-		//(attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | dataStores+=DataStore)*
+		//(attributes+=Attribute | events+=Event | methods+=Method |
+		//    validators+=Validator | dataStores+=DataStore
+		//)*
 		public Alternatives getAlternatives_7() { return cAlternatives_7; }
 		
 		//attributes+=Attribute
@@ -813,7 +819,9 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//        'version:' version = STRING
 	//        (hasReceive?='hasReceive')?
 	//        (ownership?='ownership')?
-	//        (attributes+=Attribute | events+=Event | methods+=Method | validators+=Validator | dataStores+=DataStore)*
+	//        (attributes+=Attribute | events+=Event | methods+=Method |
+	//            validators+=Validator | dataStores+=DataStore
+	//        )*
 	//    '}'
 	//;
 	public ContractElements getContractAccess() {
