@@ -32,69 +32,10 @@ public class HyperledgerGenerator extends AbstractGenerator {
   public String toHyperledger(final Contract contract) {
     final String contractName = contract.getName();
     final StringBuilder code = new StringBuilder();
-    code.append("package main\n\n");
-    code.append("import (\n");
-    code.append("\t\"fmt\"\n");
-    code.append("\n");
-    code.append("\t\"github.com/hyperledger/fabric-contract-api-go/contractapi\"\n");
-    code.append(")\n\n");
-    code.append((("type " + contractName) + " struct {\n"));
-    code.append("\tcontractapi.Contract\n");
-    EList<Attribute> _attributes = contract.getAttributes();
-    for (final Attribute attribute : _attributes) {
-      {
-        final String attributeName = attribute.getName();
-        final String attributeType = this.getCorrectType(attribute.getType().toString());
-        String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-        String _plus = ("\t" + _capitalizeFirstLetter);
-        String _plus_1 = (_plus + " ");
-        String _plus_2 = (_plus_1 + attributeType);
-        String _plus_3 = (_plus_2 + "\n");
-        code.append(_plus_3);
-      }
-    }
-    code.append("}\n\n");
-    EList<Attribute> _attributes_1 = contract.getAttributes();
-    for (final Attribute attribute_1 : _attributes_1) {
-      {
-        final String attributeName = attribute_1.getName();
-        final String capitalizeAttributeName = this.capitalizeFirstLetter(attributeName);
-        final String attributeType = this.getCorrectType(attribute_1.getType().toString());
-        boolean _isModifiable = attribute_1.isModifiable();
-        if (_isModifiable) {
-          code.append((((((("func (sc *" + contractName) + ") Set") + capitalizeAttributeName) + "(ctx contractapi.TransactionContextInterface, value ") + attributeType) + ") error {\n"));
-          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-          String _plus = ("\tsc." + _capitalizeFirstLetter);
-          String _plus_1 = (_plus + " = value\n");
-          code.append(_plus_1);
-          code.append("\treturn nil\n");
-          code.append("}\n\n");
-        }
-        code.append((((((("func (sc *" + contractName) + ") Get") + capitalizeAttributeName) + "(ctx contractapi.TransactionContextInterface) (") + attributeType) + ", error) {\n"));
-        String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(attributeName);
-        String _plus_2 = ("\treturn sc." + _capitalizeFirstLetter_1);
-        String _plus_3 = (_plus_2 + ", nil\n");
-        code.append(_plus_3);
-        code.append("}\n\n");
-      }
-    }
-    code.append((("func (sc *" + contractName) + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n"));
-    code.append("\t// Inicializa los valores de los atributos\n");
-    EList<Attribute> _attributes_2 = contract.getAttributes();
-    for (final Attribute attribute_2 : _attributes_2) {
-      {
-        final String attributeName = attribute_2.getName();
-        final String defaultValue = this.getDefaultInitialValue(attribute_2.getType().toString());
-        String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-        String _plus = ("\tsc." + _capitalizeFirstLetter);
-        String _plus_1 = (_plus + " = ");
-        String _plus_2 = (_plus_1 + defaultValue);
-        String _plus_3 = (_plus_2 + "\n");
-        code.append(_plus_3);
-      }
-    }
-    code.append("\treturn nil\n");
-    code.append("}\n\n");
+    this.appendHeader(contract, code);
+    this.appendAttributes(contract, code);
+    this.appendAttributesMethods(contract, code);
+    this.appendConstructor(contract, code);
     code.append("func main() {\n");
     code.append((("\tchaincode, err := contractapi.NewChaincode(&" + contractName) + "{})\n"));
     code.append("\tif err != nil {\n");
@@ -106,6 +47,113 @@ public class HyperledgerGenerator extends AbstractGenerator {
     code.append("\t}\n");
     code.append("}\n");
     return code.toString();
+  }
+  
+  public StringBuilder appendHeader(final Contract contract, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      code.append("package main\n\n");
+      code.append("import (\n");
+      code.append("\t\"fmt\"\n");
+      code.append("\n");
+      code.append("\t\"github.com/hyperledger/fabric-contract-api-go/contractapi\"\n");
+      _xblockexpression = code.append(")\n\n");
+    }
+    return _xblockexpression;
+  }
+  
+  public StringBuilder appendConstructor(final Contract contract, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      String _name = contract.getName();
+      String _plus = ("func (sc *" + _name);
+      String _plus_1 = (_plus + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n");
+      code.append(_plus_1);
+      code.append("\t// Inicializa los valores de los atributos\n");
+      EList<Attribute> _attributes = contract.getAttributes();
+      for (final Attribute attribute : _attributes) {
+        {
+          final String attributeName = attribute.getName();
+          final String defaultValue = this.getDefaultInitialValue(attribute.getType().toString());
+          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
+          String _plus_2 = ("\tsc." + _capitalizeFirstLetter);
+          String _plus_3 = (_plus_2 + " = ");
+          String _plus_4 = (_plus_3 + defaultValue);
+          String _plus_5 = (_plus_4 + "\n");
+          code.append(_plus_5);
+        }
+      }
+      code.append("\treturn nil\n");
+      _xblockexpression = code.append("}\n\n");
+    }
+    return _xblockexpression;
+  }
+  
+  public StringBuilder appendAttributes(final Contract contract, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      String _name = contract.getName();
+      String _plus = ("type " + _name);
+      String _plus_1 = (_plus + " struct {\n");
+      code.append(_plus_1);
+      code.append("\tcontractapi.Contract\n");
+      EList<Attribute> _attributes = contract.getAttributes();
+      for (final Attribute attribute : _attributes) {
+        {
+          final String attributeName = attribute.getName();
+          final String attributeType = this.getCorrectType(attribute.getType().toString());
+          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
+          String _plus_2 = ("\t" + _capitalizeFirstLetter);
+          String _plus_3 = (_plus_2 + " ");
+          String _plus_4 = (_plus_3 + attributeType);
+          String _plus_5 = (_plus_4 + "\n");
+          code.append(_plus_5);
+        }
+      }
+      _xblockexpression = code.append("}\n\n");
+    }
+    return _xblockexpression;
+  }
+  
+  public void appendAttributesMethods(final Contract contract, final StringBuilder code) {
+    EList<Attribute> _attributes = contract.getAttributes();
+    for (final Attribute attribute : _attributes) {
+      {
+        final String attributeName = attribute.getName();
+        final String capitalizeAttributeName = this.capitalizeFirstLetter(attributeName);
+        final String attributeType = this.getCorrectType(attribute.getType().toString());
+        boolean _isModifiable = attribute.isModifiable();
+        if (_isModifiable) {
+          String _name = contract.getName();
+          String _plus = ("func (sc *" + _name);
+          String _plus_1 = (_plus + ") Set");
+          String _plus_2 = (_plus_1 + capitalizeAttributeName);
+          String _plus_3 = (_plus_2 + "(ctx contractapi.TransactionContextInterface, value ");
+          String _plus_4 = (_plus_3 + attributeType);
+          String _plus_5 = (_plus_4 + ") error {\n");
+          code.append(_plus_5);
+          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
+          String _plus_6 = ("\tsc." + _capitalizeFirstLetter);
+          String _plus_7 = (_plus_6 + " = value\n");
+          code.append(_plus_7);
+          code.append("\treturn nil\n");
+          code.append("}\n\n");
+        }
+        String _name_1 = contract.getName();
+        String _plus_8 = ("func (sc *" + _name_1);
+        String _plus_9 = (_plus_8 + ") Get");
+        String _plus_10 = (_plus_9 + capitalizeAttributeName);
+        String _plus_11 = (_plus_10 + "(ctx contractapi.TransactionContextInterface) (");
+        String _plus_12 = (_plus_11 + attributeType);
+        String _plus_13 = (_plus_12 + ", error) {\n");
+        code.append(_plus_13);
+        String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(attributeName);
+        String _plus_14 = ("\treturn sc." + _capitalizeFirstLetter_1);
+        String _plus_15 = (_plus_14 + ", nil\n");
+        code.append(_plus_15);
+        code.append("}\n\n");
+      }
+    }
   }
   
   public String getDefaultInitialValue(final String dataType) {

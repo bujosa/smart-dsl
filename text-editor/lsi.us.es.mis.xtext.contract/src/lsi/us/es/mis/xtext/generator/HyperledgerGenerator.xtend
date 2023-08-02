@@ -25,56 +25,20 @@ class HyperledgerGenerator extends AbstractGenerator {
 	def toHyperledger(Contract contract) {
 	    val contractName = contract.name
 	    val code = new StringBuilder
-	    code.append("package main\n\n")
-	    code.append("import (\n")
-	    code.append("\t\"fmt\"\n")
-	    code.append("\n")
-	    code.append("\t\"github.com/hyperledger/fabric-contract-api-go/contractapi\"\n")
-	    code.append(")\n\n")
-	    code.append("type " + contractName + " struct {\n")
-	    code.append("\tcontractapi.Contract\n")
 	    
-	    // Genera las declaraciones de los atributos
-	    for (attribute : contract.attributes) {
-	        val attributeName = attribute.name
-	        val attributeType = getCorrectType(attribute.type.toString)
-	        
-	        code.append("\t" + capitalizeFirstLetter(attributeName) + " " + attributeType + "\n")
-	    }
+	    // Agrega el header del smart contract
+	    appendHeader(contract, code)
+
 	    
-	    code.append("}\n\n")
+	    // Genera los atributos del contrato
+	    appendAttributes(contract, code)
+
 	    
-	    // Genera las funciones del contrato
-	    for (attribute : contract.attributes) {
-	        val attributeName = attribute.name
-	        val capitalizeAttributeName = capitalizeFirstLetter(attributeName)
-	        val attributeType = getCorrectType(attribute.type.toString)
-	        
-	        if (attribute.modifiable) {
-		        code.append("func (sc *" + contractName + ") Set" + capitalizeAttributeName + "(ctx contractapi.TransactionContextInterface, value " + attributeType + ") error {\n")
-		        code.append("\tsc." + capitalizeFirstLetter(attributeName) + " = value\n")
-		        code.append("\treturn nil\n")
-		        code.append("}\n\n")
-	        }
-	        
-	        code.append("func (sc *" + contractName + ") Get" + capitalizeAttributeName + "(ctx contractapi.TransactionContextInterface) (" + attributeType + ", error) {\n")
-	        code.append("\treturn sc." + capitalizeFirstLetter(attributeName) + ", nil\n")
-	        code.append("}\n\n")
-	    }
+	    // Genera las funciones relacionada con los atributos del contrato
+	    appendAttributesMethods(contract, code)
 	    
-	    code.append("func (sc *" + contractName + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n")
-	    code.append("\t// Inicializa los valores de los atributos\n")
-	    
-	    // Genera la inicialización de los atributos en el constructor
-	    for (attribute : contract.attributes) {
-	        val attributeName = attribute.name
-	        val defaultValue = getDefaultInitialValue(attribute.type.toString)
-	        
-	        code.append("\tsc." + capitalizeFirstLetter(attributeName) + " = " + defaultValue + "\n")
-	    }
-	    
-	    code.append("\treturn nil\n")
-	    code.append("}\n\n")
+	    // Genera el constructor con las variables inicializadas
+	    appendConstructor(contract, code)
 	    
 	    code.append("func main() {\n")
 	    code.append("\tchaincode, err := contractapi.NewChaincode(&" + contractName + "{})\n")
@@ -88,6 +52,65 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    code.append("}\n")
 	    
 	    return code.toString
+	}
+	
+	def appendHeader(Contract contract, StringBuilder code) {
+		code.append("package main\n\n")
+	    code.append("import (\n")
+	    code.append("\t\"fmt\"\n")
+	    code.append("\n")
+	    code.append("\t\"github.com/hyperledger/fabric-contract-api-go/contractapi\"\n")
+	    code.append(")\n\n")
+	}
+	
+	def appendConstructor(Contract contract, StringBuilder code) {
+		code.append("func (sc *" + contract.name + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n")
+	    code.append("\t// Inicializa los valores de los atributos\n")
+	    
+	    // Genera la inicialización de los atributos en el constructor
+	    for (attribute : contract.attributes) {
+	        val attributeName = attribute.name
+	        val defaultValue = getDefaultInitialValue(attribute.type.toString)
+	        
+	        code.append("\tsc." + capitalizeFirstLetter(attributeName) + " = " + defaultValue + "\n")
+	    }
+	    
+	    code.append("\treturn nil\n")
+	    code.append("}\n\n")
+	}
+	
+	def appendAttributes(Contract contract, StringBuilder code) {
+		code.append("type " + contract.name + " struct {\n")
+	    code.append("\tcontractapi.Contract\n")
+	    
+	    // Genera las declaraciones de los atributos
+	    for (attribute : contract.attributes) {
+	        val attributeName = attribute.name
+	        val attributeType = getCorrectType(attribute.type.toString)
+	        
+	        code.append("\t" + capitalizeFirstLetter(attributeName) + " " + attributeType + "\n")
+	    }
+	    
+	    code.append("}\n\n")
+	}
+	
+	def appendAttributesMethods(Contract contract, StringBuilder code) {
+		for (attribute : contract.attributes) {
+	        val attributeName = attribute.name
+	        val capitalizeAttributeName = capitalizeFirstLetter(attributeName)
+	        val attributeType = getCorrectType(attribute.type.toString)
+	        
+	        if (attribute.modifiable) {
+		        code.append("func (sc *" + contract.name + ") Set" + capitalizeAttributeName + "(ctx contractapi.TransactionContextInterface, value " + attributeType + ") error {\n")
+		        code.append("\tsc." + capitalizeFirstLetter(attributeName) + " = value\n")
+		        code.append("\treturn nil\n")
+		        code.append("}\n\n")
+	        }
+	        
+	        code.append("func (sc *" + contract.name + ") Get" + capitalizeAttributeName + "(ctx contractapi.TransactionContextInterface) (" + attributeType + ", error) {\n")
+	        code.append("\treturn sc." + capitalizeFirstLetter(attributeName) + ", nil\n")
+	        code.append("}\n\n")
+	    }
 	}
 
 	def String getDefaultInitialValue(String dataType) {
