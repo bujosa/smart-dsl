@@ -60,6 +60,10 @@ class HyperledgerGenerator extends AbstractGenerator {
 	        code.append("\tsc." + capitalizeFirstLetter(attributeName) + " = " + defaultValue + "\n")
 	    }
 	    
+	    if (contract.ownership){
+	    	code.append("\tsc.Owner = ctx.GetClientIdentity().GetID()\n")
+	    }
+	    
 	    code.append("\treturn nil\n")
 	    code.append("}\n\n")
 	}

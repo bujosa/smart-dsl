@@ -78,6 +78,10 @@ public class HyperledgerGenerator extends AbstractGenerator {
           code.append(_plus_5);
         }
       }
+      boolean _isOwnership = contract.isOwnership();
+      if (_isOwnership) {
+        code.append("\tsc.Owner = ctx.GetClientIdentity().GetID()\n");
+      }
       code.append("\treturn nil\n");
       _xblockexpression = code.append("}\n\n");
     }
