@@ -67,7 +67,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 		code.append("func (sc *" + contract.name + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n")
 	    code.append("\t// Inicializa los valores de los atributos\n")
 	    
-	    // Genera la inicialización de los atributos en el constructor
+	    // Genera la inicializaciï¿½n de los atributos en el constructor
 	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val defaultValue = getDefaultInitialValue(attribute.type.toString)
@@ -82,8 +82,12 @@ class HyperledgerGenerator extends AbstractGenerator {
 	def appendAttributes(Contract contract, StringBuilder code) {
 		code.append("type " + contract.name + " struct {\n")
 	    code.append("\tcontractapi.Contract\n")
+	     
+	    for (map: contract.dataStores) {
+	    	code.append("\t" + map.name + " map["+getCorrectType(map.fromType.toString)+"]" + getCorrectType(map.toType.toString) + "\n")
+	    }
 	    
-	    // Genera las declaraciones de los atributos
+	    
 	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val attributeType = getCorrectType(attribute.type.toString)

@@ -5,6 +5,7 @@ package lsi.us.es.mis.xtext.generator;
 
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
+import lsi.us.es.mis.xtext.contract.DataStore;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -97,17 +98,30 @@ public class HyperledgerGenerator extends AbstractGenerator {
       String _plus_1 = (_plus + " struct {\n");
       code.append(_plus_1);
       code.append("\tcontractapi.Contract\n");
+      EList<DataStore> _dataStores = contract.getDataStores();
+      for (final DataStore map : _dataStores) {
+        String _name_1 = map.getName();
+        String _plus_2 = ("\t" + _name_1);
+        String _plus_3 = (_plus_2 + " map[");
+        String _correctType = this.getCorrectType(map.getFromType().toString());
+        String _plus_4 = (_plus_3 + _correctType);
+        String _plus_5 = (_plus_4 + "]");
+        String _correctType_1 = this.getCorrectType(map.getToType().toString());
+        String _plus_6 = (_plus_5 + _correctType_1);
+        String _plus_7 = (_plus_6 + "\n");
+        code.append(_plus_7);
+      }
       EList<Attribute> _attributes = contract.getAttributes();
       for (final Attribute attribute : _attributes) {
         {
           final String attributeName = attribute.getName();
           final String attributeType = this.getCorrectType(attribute.getType().toString());
           String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-          String _plus_2 = ("\t" + _capitalizeFirstLetter);
-          String _plus_3 = (_plus_2 + " ");
-          String _plus_4 = (_plus_3 + attributeType);
-          String _plus_5 = (_plus_4 + "\n");
-          code.append(_plus_5);
+          String _plus_8 = ("\t" + _capitalizeFirstLetter);
+          String _plus_9 = (_plus_8 + " ");
+          String _plus_10 = (_plus_9 + attributeType);
+          String _plus_11 = (_plus_10 + "\n");
+          code.append(_plus_11);
         }
       }
       _xblockexpression = code.append("}\n\n");
