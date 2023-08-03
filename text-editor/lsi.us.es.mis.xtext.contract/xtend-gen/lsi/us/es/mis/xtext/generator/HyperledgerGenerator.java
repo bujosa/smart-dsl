@@ -6,6 +6,7 @@ package lsi.us.es.mis.xtext.generator;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.DataStore;
+import lsi.us.es.mis.xtext.contract.Method;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -123,45 +124,80 @@ public class HyperledgerGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
   
-  public void appendMethods(final Contract contract, final StringBuilder code) {
-    EList<Attribute> _attributes = contract.getAttributes();
-    for (final Attribute attribute : _attributes) {
-      {
-        final String attributeName = attribute.getName();
-        final String capitalizeAttributeName = this.capitalizeFirstLetter(attributeName);
-        final String attributeType = this.getCorrectType(attribute.getType().toString());
-        boolean _isModifiable = attribute.isModifiable();
-        if (_isModifiable) {
+  public StringBuilder appendMethods(final Contract contract, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      EList<Attribute> _attributes = contract.getAttributes();
+      for (final Attribute attribute : _attributes) {
+        {
+          final String attributeName = attribute.getName();
+          final String capitalizeAttributeName = this.capitalizeFirstLetter(attributeName);
+          final String attributeType = this.getCorrectType(attribute.getType().toString());
+          boolean _isModifiable = attribute.isModifiable();
+          if (_isModifiable) {
+            String _name = contract.getName();
+            String _plus = ("func (sc *" + _name);
+            String _plus_1 = (_plus + ") Set");
+            String _plus_2 = (_plus_1 + capitalizeAttributeName);
+            String _plus_3 = (_plus_2 + "(ctx contractapi.TransactionContextInterface, value ");
+            String _plus_4 = (_plus_3 + attributeType);
+            String _plus_5 = (_plus_4 + ") error {\n");
+            code.append(_plus_5);
+            String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
+            String _plus_6 = ("\tsc." + _capitalizeFirstLetter);
+            String _plus_7 = (_plus_6 + " = value\n");
+            code.append(_plus_7);
+            code.append("\treturn nil\n");
+            code.append("}\n\n");
+          }
+          String _name_1 = contract.getName();
+          String _plus_8 = ("func (sc *" + _name_1);
+          String _plus_9 = (_plus_8 + ") Get");
+          String _plus_10 = (_plus_9 + capitalizeAttributeName);
+          String _plus_11 = (_plus_10 + "(ctx contractapi.TransactionContextInterface) (");
+          String _plus_12 = (_plus_11 + attributeType);
+          String _plus_13 = (_plus_12 + ", error) {\n");
+          code.append(_plus_13);
+          String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(attributeName);
+          String _plus_14 = ("\treturn sc." + _capitalizeFirstLetter_1);
+          String _plus_15 = (_plus_14 + ", nil\n");
+          code.append(_plus_15);
+          code.append("}\n\n");
+        }
+      }
+      EList<Method> _methods = contract.getMethods();
+      for (final Method method : _methods) {
+        {
           String _name = contract.getName();
-          String _plus = ("func (sc *" + _name);
-          String _plus_1 = (_plus + ") Set");
-          String _plus_2 = (_plus_1 + capitalizeAttributeName);
-          String _plus_3 = (_plus_2 + "(ctx contractapi.TransactionContextInterface, value ");
-          String _plus_4 = (_plus_3 + attributeType);
-          String _plus_5 = (_plus_4 + ") error {\n");
-          code.append(_plus_5);
-          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-          String _plus_6 = ("\tsc." + _capitalizeFirstLetter);
-          String _plus_7 = (_plus_6 + " = value\n");
-          code.append(_plus_7);
+          String _plus = ("func (rc *" + _name);
+          String _plus_1 = (_plus + ") Receive(ctx contractapi.TransactionContextInterface) error {\n");
+          code.append(_plus_1);
+          code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n");
+          code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n");
           code.append("\treturn nil\n");
           code.append("}\n\n");
         }
-        String _name_1 = contract.getName();
-        String _plus_8 = ("func (sc *" + _name_1);
-        String _plus_9 = (_plus_8 + ") Get");
-        String _plus_10 = (_plus_9 + capitalizeAttributeName);
-        String _plus_11 = (_plus_10 + "(ctx contractapi.TransactionContextInterface) (");
-        String _plus_12 = (_plus_11 + attributeType);
-        String _plus_13 = (_plus_12 + ", error) {\n");
-        code.append(_plus_13);
-        String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(attributeName);
-        String _plus_14 = ("\treturn sc." + _capitalizeFirstLetter_1);
-        String _plus_15 = (_plus_14 + ", nil\n");
-        code.append(_plus_15);
-        code.append("}\n\n");
       }
+      StringBuilder _xifexpression = null;
+      boolean _isHasReceive = contract.isHasReceive();
+      if (_isHasReceive) {
+        _xifexpression = this.appendReceiveMethod(contract, code);
+      }
+      _xblockexpression = _xifexpression;
     }
+    return _xblockexpression;
+  }
+  
+  public StringBuilder appendReceiveMethod(final Contract contract, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n");
+      code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n");
+      code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n");
+      code.append("\treturn nil\n");
+      _xblockexpression = code.append("}\n\n");
+    }
+    return _xblockexpression;
   }
   
   public StringBuilder appendMain(final Contract contract, final StringBuilder code) {

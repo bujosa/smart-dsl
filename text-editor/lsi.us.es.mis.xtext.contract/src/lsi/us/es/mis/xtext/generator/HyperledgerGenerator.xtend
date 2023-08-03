@@ -103,6 +103,26 @@ class HyperledgerGenerator extends AbstractGenerator {
 	        code.append("\treturn sc." + capitalizeFirstLetter(attributeName) + ", nil\n")
 	        code.append("}\n\n")
 	    }
+	    
+	    for (method : contract.methods){
+	    	code.append("func (rc *"+contract.name +") Receive(ctx contractapi.TransactionContextInterface) error {\n")
+	    	code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n")
+	    	code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n")
+	    	code.append("\treturn nil\n")
+	    	code.append("}\n\n")
+	    }
+	    
+	    if (contract.hasReceive){
+	    	appendReceiveMethod(contract, code)
+	    }
+	}
+	
+	def appendReceiveMethod(Contract contract, StringBuilder code){
+    	code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n")
+    	code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n")
+    	code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n")
+    	code.append("\treturn nil\n")
+    	code.append("}\n\n")
 	}
 	
 	def appendMain(Contract contract, StringBuilder code){
