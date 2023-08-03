@@ -8,6 +8,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import lsi.us.es.mis.xtext.contract.Contract
+import lsi.us.es.mis.xtext.contract.Method
 
 /**
  * Generates code from your model files on save.
@@ -105,9 +106,16 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    }
 	    
 	    for (method : contract.methods){
-	    	code.append("func (rc *"+contract.name +") Receive(ctx contractapi.TransactionContextInterface) error {\n")
-	    	code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n")
-	    	code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n")
+	    	code.append("func (rc *"+contract.name +") "+ capitalizeFirstLetter(method.name) +"(ctx contractapi.TransactionContextInterface"+appendParams(method)+") error {\n")
+	    	
+			if (method.description !== null){
+	        	code.append("\t// " + method.description + "\n")
+	        }
+	        
+	       	appendValidators(method, code)
+	    
+	    	appendEvents(method, code)
+	     
 	    	code.append("\treturn nil\n")
 	    	code.append("}\n\n")
 	    }
@@ -117,9 +125,40 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    }
 	}
 	
+	def appendValidators(Method method, StringBuilder code){
+		if (method.validators.length == 0){
+			return
+		}
+		
+		code.append("\n")
+	}
+	
+	def appendEvents(Method method, StringBuilder code){
+		if (method.events.length == 0){
+			return
+		}
+		
+		code.append("\n")
+	}
+	
+	def String appendParams(Method method){
+		var result = ""
+		for (param: method.params){
+			result += " " + param.name + " " + getCorrectType(param.type.toString)
+		    if (param != method.params.last) {
+                result +=","
+            }
+		}
+		return result
+	}
+	
 	def appendReceiveMethod(Contract contract, StringBuilder code){
     	code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n")
-    	code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n")
+    	code.append("\targs := ctx.GetStub().GetArgs()\n")
+    	code.append("\tif len(args) > 0 {\n")
+    	code.append("\t\treturn fmt.Errorf(\"función Receive no acepta argumentos\")\n")
+    	code.append("\t}\n")
+    	code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetTxID())\n")
     	code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n")
     	code.append("\treturn nil\n")
     	code.append("}\n\n")

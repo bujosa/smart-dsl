@@ -3,16 +3,19 @@
  */
 package lsi.us.es.mis.xtext.generator;
 
+import com.google.common.base.Objects;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.Method;
+import lsi.us.es.mis.xtext.contract.Param;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -170,10 +173,24 @@ public class HyperledgerGenerator extends AbstractGenerator {
         {
           String _name = contract.getName();
           String _plus = ("func (rc *" + _name);
-          String _plus_1 = (_plus + ") Receive(ctx contractapi.TransactionContextInterface) error {\n");
-          code.append(_plus_1);
-          code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n");
-          code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n");
+          String _plus_1 = (_plus + ") ");
+          String _capitalizeFirstLetter = this.capitalizeFirstLetter(method.getName());
+          String _plus_2 = (_plus_1 + _capitalizeFirstLetter);
+          String _plus_3 = (_plus_2 + "(ctx contractapi.TransactionContextInterface");
+          String _appendParams = this.appendParams(method);
+          String _plus_4 = (_plus_3 + _appendParams);
+          String _plus_5 = (_plus_4 + ") error {\n");
+          code.append(_plus_5);
+          String _description = method.getDescription();
+          boolean _tripleNotEquals = (_description != null);
+          if (_tripleNotEquals) {
+            String _description_1 = method.getDescription();
+            String _plus_6 = ("\t// " + _description_1);
+            String _plus_7 = (_plus_6 + "\n");
+            code.append(_plus_7);
+          }
+          this.appendValidators(method, code);
+          this.appendEvents(method, code);
           code.append("\treturn nil\n");
           code.append("}\n\n");
         }
@@ -188,11 +205,56 @@ public class HyperledgerGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  public void appendValidators(final Method method, final StringBuilder code) {
+    int _length = ((Object[])Conversions.unwrapArray(method.getValidators(), Object.class)).length;
+    boolean _equals = (_length == 0);
+    if (_equals) {
+      return;
+    }
+    code.append("\n");
+  }
+  
+  public void appendEvents(final Method method, final StringBuilder code) {
+    int _length = ((Object[])Conversions.unwrapArray(method.getEvents(), Object.class)).length;
+    boolean _equals = (_length == 0);
+    if (_equals) {
+      return;
+    }
+    code.append("\n");
+  }
+  
+  public String appendParams(final Method method) {
+    String result = "";
+    EList<Param> _params = method.getParams();
+    for (final Param param : _params) {
+      {
+        String _result = result;
+        String _name = param.getName();
+        String _plus = (" " + _name);
+        String _plus_1 = (_plus + " ");
+        String _correctType = this.getCorrectType(param.getType().toString());
+        String _plus_2 = (_plus_1 + _correctType);
+        result = (_result + _plus_2);
+        Param _last = IterableExtensions.<Param>last(method.getParams());
+        boolean _notEquals = (!Objects.equal(param, _last));
+        if (_notEquals) {
+          String _result_1 = result;
+          result = (_result_1 + ",");
+        }
+      }
+    }
+    return result;
+  }
+  
   public StringBuilder appendReceiveMethod(final Contract contract, final StringBuilder code) {
     StringBuilder _xblockexpression = null;
     {
       code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n");
-      code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetArgs()[1])\n");
+      code.append("\targs := ctx.GetStub().GetArgs()\n");
+      code.append("\tif len(args) > 0 {\n");
+      code.append("\t\treturn fmt.Errorf(\"función Receive no acepta argumentos\")\n");
+      code.append("\t}\n");
+      code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetTxID())\n");
       code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n");
       code.append("\treturn nil\n");
       _xblockexpression = code.append("}\n\n");
