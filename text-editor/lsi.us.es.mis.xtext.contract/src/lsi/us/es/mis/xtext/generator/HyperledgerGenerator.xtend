@@ -175,14 +175,31 @@ class HyperledgerGenerator extends AbstractGenerator {
 	def String checkEventParams(Event event){
 		var result = ""
 		if (event.params.length > 0) {
-			result += ":"
+			result += "-> "
+		} else {
+			return "\")"
 		}
 		
 		for (param: event.params){
-			
+			result += capitalizeFirstLetter(param.name)+": " + getFormatStringForType(param.type.toString)
+			if (param != event.params.last) {
+				result += ", "
+			} else {
+				result += "\","
+			}
 		}
 		
-		
+		for (param: event.params){
+			var name = param.name
+			if (param.name == "from") {
+				name = "ctx.GetClientIdentity().GetID()"
+			}
+			result += name
+			if (param != event.params.last) {
+				result += ", "
+			}
+		}
+		result +="\")\n"
 		return result
 	}
 	

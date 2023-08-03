@@ -295,11 +295,51 @@ public class HyperledgerGenerator extends AbstractGenerator {
     boolean _greaterThan = (_length > 0);
     if (_greaterThan) {
       String _result = result;
-      result = (_result + ":");
+      result = (_result + "-> ");
+    } else {
+      return "\")";
     }
     EList<Param> _params = event.getParams();
     for (final Param param : _params) {
+      {
+        String _result_1 = result;
+        String _capitalizeFirstLetter = this.capitalizeFirstLetter(param.getName());
+        String _plus = (_capitalizeFirstLetter + ": ");
+        String _formatStringForType = this.getFormatStringForType(param.getType().toString());
+        String _plus_1 = (_plus + _formatStringForType);
+        result = (_result_1 + _plus_1);
+        Param _last = IterableExtensions.<Param>last(event.getParams());
+        boolean _notEquals = (!Objects.equal(param, _last));
+        if (_notEquals) {
+          String _result_2 = result;
+          result = (_result_2 + ", ");
+        } else {
+          String _result_3 = result;
+          result = (_result_3 + "\",");
+        }
+      }
     }
+    EList<Param> _params_1 = event.getParams();
+    for (final Param param_1 : _params_1) {
+      {
+        String name = param_1.getName();
+        String _name = param_1.getName();
+        boolean _equals = Objects.equal(_name, "from");
+        if (_equals) {
+          name = "ctx.GetClientIdentity().GetID()";
+        }
+        String _result_1 = result;
+        result = (_result_1 + name);
+        Param _last = IterableExtensions.<Param>last(event.getParams());
+        boolean _notEquals = (!Objects.equal(param_1, _last));
+        if (_notEquals) {
+          String _result_2 = result;
+          result = (_result_2 + ", ");
+        }
+      }
+    }
+    String _result_1 = result;
+    result = (_result_1 + "\")\n");
     return result;
   }
   
