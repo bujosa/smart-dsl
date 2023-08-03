@@ -10,6 +10,10 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import java.util.List
 import lsi.us.es.mis.xtext.contract.Attribute
 import lsi.us.es.mis.xtext.contract.Contract
+import lsi.us.es.mis.xtext.contract.Validator
+import lsi.us.es.mis.xtext.contract.Method
+import java.util.regex.Pattern
+import java.util.HashMap
 
 /**
  * Generates code from your model files on save.
@@ -161,6 +165,39 @@ class SolidityGenerator extends AbstractGenerator {
             code.append("\t\t_;\n")
             code.append("\t}\n\n")
 		}
+	}
+	
+	def String checkCondition(String condition, Validator validator, Method method){
+		val regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
+		val pattern = Pattern.compile(regex)
+		val matcher = pattern.matcher(condition)
+		val hashTable = new HashMap<String, String>()
+		
+		for (param: validator.params) {
+			hashTable.put(param.name, "validator")
+		}
+		
+		for (param: method.params) {
+			hashTable.put(param.name, "param")
+		}
+		
+		if (matcher.matches) {
+            var leftSide = matcher.group(1).replaceAll("\\s", "")
+            var operator = matcher.group(2)
+            var rightSide = matcher.group(3).replaceAll("\\s", "")
+            
+            if (leftSide == "from"){
+            	leftSide = "msg.sender"
+            } 
+            
+            if (rightSide == "from"){
+            	rightSide = "msg.sender"
+            }
+            
+            return leftSide +" " + operator + " "+ rightSide
+        } else {
+            return condition
+        }
 	}
 	
 	def appendReceiveFunction(StringBuilder code) {

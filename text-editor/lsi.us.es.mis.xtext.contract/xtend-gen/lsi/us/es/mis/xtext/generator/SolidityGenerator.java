@@ -4,7 +4,10 @@
 package lsi.us.es.mis.xtext.generator;
 
 import com.google.common.base.Objects;
+import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.DataStore;
@@ -230,6 +233,38 @@ public class SolidityGenerator extends AbstractGenerator {
         code.append("\t\t_;\n");
         code.append("\t}\n\n");
       }
+    }
+  }
+  
+  public String checkCondition(final String condition, final Validator validator, final Method method) {
+    final String regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
+    final Pattern pattern = Pattern.compile(regex);
+    final Matcher matcher = pattern.matcher(condition);
+    final HashMap<String, String> hashTable = new HashMap<String, String>();
+    EList<Param> _params = validator.getParams();
+    for (final Param param : _params) {
+      hashTable.put(param.getName(), "validator");
+    }
+    EList<Param> _params_1 = method.getParams();
+    for (final Param param_1 : _params_1) {
+      hashTable.put(param_1.getName(), "param");
+    }
+    boolean _matches = matcher.matches();
+    if (_matches) {
+      String leftSide = matcher.group(1).replaceAll("\\s", "");
+      String operator = matcher.group(2);
+      String rightSide = matcher.group(3).replaceAll("\\s", "");
+      boolean _equals = Objects.equal(leftSide, "from");
+      if (_equals) {
+        leftSide = "msg.sender";
+      }
+      boolean _equals_1 = Objects.equal(rightSide, "from");
+      if (_equals_1) {
+        rightSide = "msg.sender";
+      }
+      return ((((leftSide + " ") + operator) + " ") + rightSide);
+    } else {
+      return condition;
     }
   }
   
