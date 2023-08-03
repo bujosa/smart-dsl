@@ -4,11 +4,16 @@
 package lsi.us.es.mis.xtext.generator;
 
 import com.google.common.base.Objects;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.DataStore;
+import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
 import lsi.us.es.mis.xtext.contract.Param;
+import lsi.us.es.mis.xtext.contract.Validator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -215,7 +220,20 @@ public class HyperledgerGenerator extends AbstractGenerator {
     if (_equals) {
       return;
     }
-    code.append("\n");
+    EList<Validator> _validators = method.getValidators();
+    for (final Validator validator : _validators) {
+      {
+        String _checkCondition = this.checkCondition(validator.getValidation(), validator, method);
+        String _plus = ("if " + _checkCondition);
+        String _plus_1 = (_plus + " {");
+        code.append(_plus_1);
+        String _message = validator.getMessage();
+        String _plus_2 = ("\treturn fmt.Errorf(\"" + _message);
+        String _plus_3 = (_plus_2 + "\"}\n");
+        code.append(_plus_3);
+        code.append("}\n\n");
+      }
+    }
   }
   
   public void appendEvents(final Method method, final StringBuilder code) {
@@ -224,7 +242,28 @@ public class HyperledgerGenerator extends AbstractGenerator {
     if (_equals) {
       return;
     }
-    code.append("\n");
+    EList<Event> _events = method.getEvents();
+    for (final Event event : _events) {
+      {
+        String _description = event.getDescription();
+        boolean _tripleNotEquals = (_description != null);
+        if (_tripleNotEquals) {
+          String _description_1 = event.getDescription();
+          String _plus = ("\t// " + _description_1);
+          String _plus_1 = (_plus + "\n");
+          code.append(_plus_1);
+        }
+        String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
+        String _plus_2 = ("\teventPayload := fmt.Sprintf(\"" + _capitalizeFirstLetter);
+        String _checkEventParams = this.checkEventParams(event);
+        String _plus_3 = (_plus_2 + _checkEventParams);
+        code.append(_plus_3);
+        String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(event.getName());
+        String _plus_4 = ("\tctx.GetStub().SetEvent(\"" + _capitalizeFirstLetter_1);
+        String _plus_5 = (_plus_4 + "\", []byte(eventPayload))\n\n");
+        code.append(_plus_5);
+      }
+    }
   }
   
   public String appendParams(final Method method) {
@@ -248,6 +287,64 @@ public class HyperledgerGenerator extends AbstractGenerator {
       }
     }
     return result;
+  }
+  
+  public String checkEventParams(final Event event) {
+    String result = "";
+    int _length = ((Object[])Conversions.unwrapArray(event.getParams(), Object.class)).length;
+    boolean _greaterThan = (_length > 0);
+    if (_greaterThan) {
+      String _result = result;
+      result = (_result + ":");
+    }
+    EList<Param> _params = event.getParams();
+    for (final Param param : _params) {
+    }
+    return result;
+  }
+  
+  public String checkCondition(final String condition, final Validator validator, final Method method) {
+    final String regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
+    final Pattern pattern = Pattern.compile(regex);
+    final Matcher matcher = pattern.matcher(condition);
+    final HashMap<String, String> hashTable = new HashMap<String, String>();
+    EList<Param> _params = validator.getParams();
+    for (final Param param : _params) {
+      hashTable.put(param.getName(), "validator");
+    }
+    EList<Param> _params_1 = method.getParams();
+    for (final Param param_1 : _params_1) {
+      hashTable.put(param_1.getName(), "param");
+    }
+    boolean _matches = matcher.matches();
+    if (_matches) {
+      String leftSide = matcher.group(1).replaceAll("\\s", "");
+      String operator = matcher.group(2);
+      String rightSide = matcher.group(3).replaceAll("\\s", "");
+      if ((Objects.equal(leftSide, "msg.sender") || Objects.equal(leftSide, "from"))) {
+        leftSide = "ctx.GetClientIdentity().GetID()";
+      } else {
+        final boolean isLeftSideNumber = leftSide.matches("\\d+");
+        if (((isLeftSideNumber == false) && (!hashTable.containsKey(leftSide)))) {
+          String _capitalizeFirstLetter = this.capitalizeFirstLetter(leftSide);
+          String _plus = ("sc." + _capitalizeFirstLetter);
+          leftSide = _plus;
+        }
+      }
+      if ((Objects.equal(rightSide, "msg.sender") || Objects.equal(rightSide, "from"))) {
+        rightSide = "ctx.GetClientIdentity().GetID()";
+      } else {
+        final boolean isRightSideNumber = rightSide.matches("\\d+");
+        if (((isRightSideNumber == false) && (!hashTable.containsKey(rightSide)))) {
+          String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(rightSide);
+          String _plus_1 = ("sc." + _capitalizeFirstLetter_1);
+          rightSide = _plus_1;
+        }
+      }
+      return ((leftSide + operator) + rightSide);
+    } else {
+      return condition;
+    }
   }
   
   public StringBuilder appendReceiveMethod(final Contract contract, final StringBuilder code) {
@@ -331,6 +428,27 @@ public class HyperledgerGenerator extends AbstractGenerator {
       }
     } else {
       return "uint64";
+    }
+  }
+  
+  public String getFormatStringForType(final String dataType) {
+    if (dataType != null) {
+      switch (dataType) {
+        case "integer":
+          return "%d";
+        case "string":
+          return "%s";
+        case "boolean":
+          return "%t";
+        case "address":
+          return "%s";
+        case "array":
+          return "%s";
+        default:
+          return "%d";
+      }
+    } else {
+      return "%d";
     }
   }
   

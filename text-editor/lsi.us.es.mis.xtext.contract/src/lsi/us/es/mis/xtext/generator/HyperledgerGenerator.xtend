@@ -9,6 +9,11 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import lsi.us.es.mis.xtext.contract.Contract
 import lsi.us.es.mis.xtext.contract.Method
+import java.util.regex.Pattern
+import lsi.us.es.mis.xtext.contract.Validator
+import lsi.us.es.mis.xtext.contract.Event
+import java.util.HashMap
+
 
 /**
  * Generates code from your model files on save.
@@ -134,7 +139,11 @@ class HyperledgerGenerator extends AbstractGenerator {
 			return
 		}
 		
-		code.append("\n")
+		for (validator: method.validators){
+			code.append("if " + checkCondition(validator.validation, validator, method) + " {")
+			code.append("\treturn fmt.Errorf(\""+ validator.message +"\"}\n")
+			code.append("}\n\n")
+		}
 	}
 	
 	def appendEvents(Method method, StringBuilder code){
@@ -142,7 +151,14 @@ class HyperledgerGenerator extends AbstractGenerator {
 			return
 		}
 		
-		code.append("\n")
+		for (event: method.events){
+			if (event.description !== null){
+	        	code.append("\t// " + event.description + "\n")
+	        	
+	        }
+	        code.append("\teventPayload := fmt.Sprintf(\""+ capitalizeFirstLetter(event.name) + checkEventParams(event))
+	        code.append("\tctx.GetStub().SetEvent(\""+ capitalizeFirstLetter(event.name)+"\", []byte(eventPayload))\n\n")
+		}
 	}
 	
 	def String appendParams(Method method){
@@ -154,6 +170,63 @@ class HyperledgerGenerator extends AbstractGenerator {
             }
 		}
 		return result
+	}
+	
+	def String checkEventParams(Event event){
+		var result = ""
+		if (event.params.length > 0) {
+			result += ":"
+		}
+		
+		for (param: event.params){
+			
+		}
+		
+		
+		return result
+	}
+	
+	def String checkCondition(String condition, Validator validator, Method method){
+		val regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
+		val pattern = Pattern.compile(regex)
+		val matcher = pattern.matcher(condition)
+		val hashTable = new HashMap<String, String>()
+		
+		for (param: validator.params) {
+			hashTable.put(param.name, "validator")
+		}
+		
+		for (param: method.params) {
+			hashTable.put(param.name, "param")
+		}
+		
+		if (matcher.matches) {
+            var leftSide = matcher.group(1).replaceAll("\\s", "")
+            var operator = matcher.group(2)
+            var rightSide = matcher.group(3).replaceAll("\\s", "")
+            
+            if (leftSide == "msg.sender" || leftSide == "from"){
+            	leftSide = "ctx.GetClientIdentity().GetID()"
+            } else {
+            	val isLeftSideNumber = leftSide.matches("\\d+")
+            	if (isLeftSideNumber == false && !hashTable.containsKey(leftSide)){
+            		leftSide = "sc."+capitalizeFirstLetter(leftSide)
+            	}
+            }
+            
+            if (rightSide == "msg.sender" || rightSide == "from"){
+            	rightSide = "ctx.GetClientIdentity().GetID()"
+            } else {
+            	val isRightSideNumber = rightSide.matches("\\d+")
+            	if (isRightSideNumber == false && !hashTable.containsKey(rightSide)){
+            		rightSide = "sc."+capitalizeFirstLetter(rightSide)
+            	}
+            }
+            
+            return leftSide+operator+rightSide
+        } else {
+            return condition
+        }
 	}
 	
 	def appendReceiveMethod(Contract contract, StringBuilder code){
@@ -214,7 +287,24 @@ class HyperledgerGenerator extends AbstractGenerator {
 	            return "uint64"
 	    }
 	}
-
+	
+	def String getFormatStringForType(String dataType) {
+	    switch (dataType) {
+	        case "integer":
+	            return "%d"
+	        case "string":
+	            return "%s"
+	        case "boolean":
+	            return "%t"
+	        case "address":
+	            return "%s"
+	        case "array":
+	            return "%s" // Puedes ajustar esto según tus necesidades específicas para formatear un arreglo.
+	        default:
+	            return "%d" // Valor por defecto si el tipo de datos no coincide con ninguna opción.
+	    }
+	}
+	
 	def String capitalizeFirstLetter(String str) {
 	    return str.substring(0, 1).toUpperCase() + str.substring(1)
 	}
