@@ -55,9 +55,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 		
 	def appendConstructor(Contract contract, StringBuilder code) {
 		code.append("func (sc *" + contract.name + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n")
-	    code.append("\t// Inicializa los valores de los atributos\n")
 	    
-	    // Genera la inicialización de los atributos en el constructor
 	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val defaultValue = getDefaultInitialValue(attribute.type.toString)
@@ -140,9 +138,9 @@ class HyperledgerGenerator extends AbstractGenerator {
 		}
 		
 		for (validator: method.validators){
-			code.append("if " + checkCondition(validator.validation, validator, method) + " {")
-			code.append("\treturn fmt.Errorf(\""+ validator.message +"\"}\n")
-			code.append("}\n\n")
+			code.append("\tif " + checkCondition(validator.validation, validator, method) + " {\n")
+			code.append("\treturn fmt.Errorf(\""+ validator.message +"\")\n")
+			code.append("\t}\n\n")
 		}
 	}
 	
@@ -199,7 +197,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 				result += ", "
 			}
 		}
-		result +="\")\n"
+		result +=")\n"
 		return result
 	}
 	
@@ -250,7 +248,7 @@ class HyperledgerGenerator extends AbstractGenerator {
     	code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n")
     	code.append("\targs := ctx.GetStub().GetArgs()\n")
     	code.append("\tif len(args) > 0 {\n")
-    	code.append("\t\treturn fmt.Errorf(\"función Receive no acepta argumentos\")\n")
+    	code.append("\t\treturn fmt.Errorf(\"Receive function does not accept arguments\")\n")
     	code.append("\t}\n")
     	code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetTxID())\n")
     	code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n")
@@ -316,9 +314,9 @@ class HyperledgerGenerator extends AbstractGenerator {
 	        case "address":
 	            return "%s"
 	        case "array":
-	            return "%s" // Puedes ajustar esto según tus necesidades específicas para formatear un arreglo.
+	            return "%s"
 	        default:
-	            return "%d" // Valor por defecto si el tipo de datos no coincide con ninguna opción.
+	            return "%d"
 	    }
 	}
 	

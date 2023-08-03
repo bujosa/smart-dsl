@@ -69,7 +69,6 @@ public class HyperledgerGenerator extends AbstractGenerator {
       String _plus = ("func (sc *" + _name);
       String _plus_1 = (_plus + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n");
       code.append(_plus_1);
-      code.append("\t// Inicializa los valores de los atributos\n");
       EList<Attribute> _attributes = contract.getAttributes();
       for (final Attribute attribute : _attributes) {
         {
@@ -224,14 +223,14 @@ public class HyperledgerGenerator extends AbstractGenerator {
     for (final Validator validator : _validators) {
       {
         String _checkCondition = this.checkCondition(validator.getValidation(), validator, method);
-        String _plus = ("if " + _checkCondition);
-        String _plus_1 = (_plus + " {");
+        String _plus = ("\tif " + _checkCondition);
+        String _plus_1 = (_plus + " {\n");
         code.append(_plus_1);
         String _message = validator.getMessage();
         String _plus_2 = ("\treturn fmt.Errorf(\"" + _message);
-        String _plus_3 = (_plus_2 + "\"}\n");
+        String _plus_3 = (_plus_2 + "\")\n");
         code.append(_plus_3);
-        code.append("}\n\n");
+        code.append("\t}\n\n");
       }
     }
   }
@@ -339,7 +338,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
       }
     }
     String _result_1 = result;
-    result = (_result_1 + "\")\n");
+    result = (_result_1 + ")\n");
     return result;
   }
   
@@ -393,7 +392,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
       code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n");
       code.append("\targs := ctx.GetStub().GetArgs()\n");
       code.append("\tif len(args) > 0 {\n");
-      code.append("\t\treturn fmt.Errorf(\"función Receive no acepta argumentos\")\n");
+      code.append("\t\treturn fmt.Errorf(\"Receive function does not accept arguments\")\n");
       code.append("\t}\n");
       code.append("\teventPayload := fmt.Sprintf(\"PaymentReceived: %s, Amount: %d\", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetTxID())\n");
       code.append("\tctx.GetStub().SetEvent(\"PaymentReceived\", []byte(eventPayload))\n");
