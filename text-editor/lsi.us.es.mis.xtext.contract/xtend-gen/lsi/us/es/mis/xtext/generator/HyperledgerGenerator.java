@@ -88,6 +88,10 @@ public class HyperledgerGenerator extends AbstractGenerator {
       String _plus_1 = (_plus + " struct {\n");
       code.append(_plus_1);
       code.append("\tcontractapi.Contract\n");
+      boolean _isOwnership = contract.isOwnership();
+      if (_isOwnership) {
+        code.append("\tOwner string\n");
+      }
       EList<DataStore> _dataStores = contract.getDataStores();
       for (final DataStore map : _dataStores) {
         String _name_1 = map.getName();

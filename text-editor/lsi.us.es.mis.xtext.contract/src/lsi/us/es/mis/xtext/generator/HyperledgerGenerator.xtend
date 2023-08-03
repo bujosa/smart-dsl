@@ -66,6 +66,10 @@ class HyperledgerGenerator extends AbstractGenerator {
 	def appendAttributes(Contract contract, StringBuilder code) {
 		code.append("type " + contract.name + " struct {\n")
 	    code.append("\tcontractapi.Contract\n")
+	    
+	    if (contract.ownership) {
+	    	code.append("\tOwner string\n")
+	    }
 	     
 	    for (map: contract.dataStores) {
 	    	code.append("\t" + map.name + " map["+getCorrectType(map.fromType.toString)+"]" + getCorrectType(map.toType.toString) + "\n")
@@ -151,5 +155,4 @@ class HyperledgerGenerator extends AbstractGenerator {
 	def String capitalizeFirstLetter(String str) {
 	    return str.substring(0, 1).toUpperCase() + str.substring(1)
 	}
-	
 }
