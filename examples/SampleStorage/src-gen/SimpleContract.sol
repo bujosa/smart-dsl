@@ -10,7 +10,7 @@ contract SimpleContract {
 	event NameUpdated(string name);
 
 	modifier onlyOwner() {
-		require(msg.sender == owner, "Only the contract owner can call this function.");
+		require(msg.sender== owner, "Only the contract owner can call this function.");
 		_;
 	}
 

@@ -9,7 +9,7 @@ contract TestResults {
 	address parentsAddress;
 
 	modifier onlyParents() {
-		require(msg.sender == parentsAddress, "Only Parents");
+		require(msg.sender==parentsAddress, "Only Parents");
 		_;
 	}
 

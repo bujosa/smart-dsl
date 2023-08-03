@@ -6,7 +6,7 @@ Contract SimpleContract {
 	
 	validator onlyOwner () {
 		message: "Only the contract owner can call this function."
-		validation: "msg.sender == owner"
+		validation: "msg.sender== owner"
 	}
 	
 	validator validNumber(x integer) {

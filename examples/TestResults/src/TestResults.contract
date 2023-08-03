@@ -8,7 +8,7 @@ Contract TestResults {
 	
 	validator onlyParents(){
 		message: "Only Parents"
-		validation: "msg.sender == parentsAddress"
+		validation: "msg.sender==parentsAddress"
 	}
 	
 	validator onlyTeacher (){

@@ -227,7 +227,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
         String _plus_1 = (_plus + " {\n");
         code.append(_plus_1);
         String _message = validator.getMessage();
-        String _plus_2 = ("\treturn fmt.Errorf(\"" + _message);
+        String _plus_2 = ("\t\treturn fmt.Errorf(\"" + _message);
         String _plus_3 = (_plus_2 + "\")\n");
         code.append(_plus_3);
         code.append("\t}\n\n");

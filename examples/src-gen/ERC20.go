@@ -28,18 +28,18 @@ func (sc *ERC20) GetTotalSupply(ctx contractapi.TransactionContextInterface) (ui
 
 func (rc *ERC20) Transfer(ctx contractapi.TransactionContextInterface to string, value uint64) error {
 	// Este metodo es para transferir dinero
-if balanceOf[msg.sender] >= value {	return fmt.Errorf("Saldo Insufiente"}
-}
+	if balanceOf[msg.sender] >= value {
+		return fmt.Errorf("Saldo Insufiente")
+	}
 
 	// Esto es para cuando se haga la transferencia se notifique en la blockchain
-	eventPayload := fmt.Sprintf("Transfer-> From: %s, To: %s, Value: %d",ctx.GetClientIdentity().GetID(), to, value")
+	eventPayload := fmt.Sprintf("Transfer-> From: %s, To: %s, Value: %d",ctx.GetClientIdentity().GetID(), to, value)
 	ctx.GetStub().SetEvent("Transfer", []byte(eventPayload))
 
 	return nil
 }
 
 func (sc *ERC20) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	// Inicializa los valores de los atributos
 	sc.Name = ""
 	sc.Symbol = ""
 	sc.TotalSupply = 0

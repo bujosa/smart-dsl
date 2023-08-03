@@ -24,12 +24,12 @@ func (sc *SimpleContract) GetTotal(ctx contractapi.TransactionContextInterface) 
 func (rc *SimpleContract) Example(ctx contractapi.TransactionContextInterface x uint64, name string, lastname string) error {
 	// This is a sample of method
 	if ctx.GetClientIdentity().GetID()==sc.Owner {
-	return fmt.Errorf("Only the contract owner can call this function.")
-}
+		return fmt.Errorf("Only the contract owner can call this function.")
+	}
 
 	if x>4 {
-	return fmt.Errorf("The number must be greater than 4")
-}
+		return fmt.Errorf("The number must be greater than 4")
+	}
 
 	// Este evento es para notificar cuando el numero se ha actualizado
 	eventPayload := fmt.Sprintf("XUpdated-> X: %d",x)
@@ -45,7 +45,7 @@ func (rc *SimpleContract) Example(ctx contractapi.TransactionContextInterface x 
 func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {
 	args := ctx.GetStub().GetArgs()
 	if len(args) > 0 {
-		return fmt.Errorf("función Receive no acepta argumentos")
+		return fmt.Errorf("Receive function does not accept arguments")
 	}
 	eventPayload := fmt.Sprintf("PaymentReceived: %s, Amount: %d", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetTxID())
 	ctx.GetStub().SetEvent("PaymentReceived", []byte(eventPayload))
@@ -53,7 +53,6 @@ func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) 
 }
 
 func (sc *SimpleContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	// Inicializa los valores de los atributos
 	sc.Total = 0
 	sc.Owner = ctx.GetClientIdentity().GetID()
 	return nil

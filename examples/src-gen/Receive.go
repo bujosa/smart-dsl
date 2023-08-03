@@ -13,7 +13,7 @@ type Receive struct {
 func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {
 	args := ctx.GetStub().GetArgs()
 	if len(args) > 0 {
-		return fmt.Errorf("función Receive no acepta argumentos")
+		return fmt.Errorf("Receive function does not accept arguments")
 	}
 	eventPayload := fmt.Sprintf("PaymentReceived: %s, Amount: %d", ctx.GetClientIdentity().GetID(), ctx.GetStub().GetTxID())
 	ctx.GetStub().SetEvent("PaymentReceived", []byte(eventPayload))
@@ -21,7 +21,6 @@ func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) 
 }
 
 func (sc *Receive) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	// Inicializa los valores de los atributos
 	return nil
 }
 

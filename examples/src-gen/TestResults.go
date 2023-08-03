@@ -42,22 +42,23 @@ func (sc *TestResults) GetParentsAddress(ctx contractapi.TransactionContextInter
 
 func (rc *TestResults) CreateContract(ctx contractapi.TransactionContextInterface) error {
 	// Este metodo es para crear un contracto
-if ctx.GetClientIdentity().GetID()==sc.TeacherAddress {	return fmt.Errorf("Only Teacher"}
-}
+	if ctx.GetClientIdentity().GetID()==sc.TeacherAddress {
+		return fmt.Errorf("Only Teacher")
+	}
 
 	return nil
 }
 
 func (rc *TestResults) WithdrawAmount(ctx contractapi.TransactionContextInterface) error {
 	// Este metodo es para retirar fondo
-if ctx.GetClientIdentity().GetID()==sc.StudentAddress {	return fmt.Errorf("OnlyStudent"}
-}
+	if ctx.GetClientIdentity().GetID()==sc.StudentAddress {
+		return fmt.Errorf("OnlyStudent")
+	}
 
 	return nil
 }
 
 func (sc *TestResults) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	// Inicializa los valores de los atributos
 	sc.Grade = ""
 	sc.Amount = 0
 	sc.StudentAddress = ""

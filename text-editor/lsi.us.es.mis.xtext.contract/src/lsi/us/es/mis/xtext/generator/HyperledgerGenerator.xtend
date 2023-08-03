@@ -139,7 +139,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 		
 		for (validator: method.validators){
 			code.append("\tif " + checkCondition(validator.validation, validator, method) + " {\n")
-			code.append("\treturn fmt.Errorf(\""+ validator.message +"\")\n")
+			code.append("\t\treturn fmt.Errorf(\""+ validator.message +"\")\n")
 			code.append("\t}\n\n")
 		}
 	}
