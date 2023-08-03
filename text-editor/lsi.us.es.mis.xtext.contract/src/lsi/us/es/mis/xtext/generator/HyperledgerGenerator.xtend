@@ -23,33 +23,17 @@ class HyperledgerGenerator extends AbstractGenerator {
 	}
 	
 	def toHyperledger(Contract contract) {
-	    val contractName = contract.name
 	    val code = new StringBuilder
-	    
-	    // Agrega el header del smart contract
+	   
 	    appendHeader(contract, code)
 
-	    
-	    // Genera los atributos del contrato
 	    appendAttributes(contract, code)
 
+	    appendMethods(contract, code)
 	    
-	    // Genera las funciones relacionada con los atributos del contrato
-	    appendAttributesMethods(contract, code)
-	    
-	    // Genera el constructor con las variables inicializadas
 	    appendConstructor(contract, code)
 	    
-	    code.append("func main() {\n")
-	    code.append("\tchaincode, err := contractapi.NewChaincode(&" + contractName + "{})\n")
-	    code.append("\tif err != nil {\n")
-	    code.append("\t\tfmt.Printf(\"Error creating " + contractName + " chaincode: %s\", err.Error())\n")
-	    code.append("\t\treturn\n")
-	    code.append("\t}\n\n")
-	    code.append("\tif err := chaincode.Start(); err != nil {\n")
-	    code.append("\t\tfmt.Printf(\"Error starting " + contractName + " chaincode: %s\", err.Error())\n")
-	    code.append("\t}\n")
-	    code.append("}\n")
+	    appendMain(contract, code)
 	    
 	    return code.toString
 	}
@@ -62,12 +46,12 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    code.append("\t\"github.com/hyperledger/fabric-contract-api-go/contractapi\"\n")
 	    code.append(")\n\n")
 	}
-	
+		
 	def appendConstructor(Contract contract, StringBuilder code) {
 		code.append("func (sc *" + contract.name + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n")
 	    code.append("\t// Inicializa los valores de los atributos\n")
 	    
-	    // Genera la inicializaciï¿½n de los atributos en el constructor
+	    // Genera la inicialización de los atributos en el constructor
 	    for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val defaultValue = getDefaultInitialValue(attribute.type.toString)
@@ -98,7 +82,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    code.append("}\n\n")
 	}
 	
-	def appendAttributesMethods(Contract contract, StringBuilder code) {
+	def appendMethods(Contract contract, StringBuilder code) {
 		for (attribute : contract.attributes) {
 	        val attributeName = attribute.name
 	        val capitalizeAttributeName = capitalizeFirstLetter(attributeName)
@@ -116,7 +100,20 @@ class HyperledgerGenerator extends AbstractGenerator {
 	        code.append("}\n\n")
 	    }
 	}
-
+	
+	def appendMain(Contract contract, StringBuilder code){
+		code.append("func main() {\n")
+	    code.append("\tchaincode, err := contractapi.NewChaincode(&" + contract.name + "{})\n")
+	    code.append("\tif err != nil {\n")
+	    code.append("\t\tfmt.Printf(\"Error creating " + contract.name + " chaincode: %s\", err.Error())\n")
+	    code.append("\t\treturn\n")
+	    code.append("\t}\n\n")
+	    code.append("\tif err := chaincode.Start(); err != nil {\n")
+	    code.append("\t\tfmt.Printf(\"Error starting " + contract.name + " chaincode: %s\", err.Error())\n")
+	    code.append("\t}\n")
+	    code.append("}\n")
+	} 
+	
 	def String getDefaultInitialValue(String dataType) {
 	    switch (dataType) {
 	        case "integer":

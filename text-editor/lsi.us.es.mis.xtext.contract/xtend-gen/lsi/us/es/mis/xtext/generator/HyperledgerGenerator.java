@@ -31,22 +31,12 @@ public class HyperledgerGenerator extends AbstractGenerator {
   }
   
   public String toHyperledger(final Contract contract) {
-    final String contractName = contract.getName();
     final StringBuilder code = new StringBuilder();
     this.appendHeader(contract, code);
     this.appendAttributes(contract, code);
-    this.appendAttributesMethods(contract, code);
+    this.appendMethods(contract, code);
     this.appendConstructor(contract, code);
-    code.append("func main() {\n");
-    code.append((("\tchaincode, err := contractapi.NewChaincode(&" + contractName) + "{})\n"));
-    code.append("\tif err != nil {\n");
-    code.append((("\t\tfmt.Printf(\"Error creating " + contractName) + " chaincode: %s\", err.Error())\n"));
-    code.append("\t\treturn\n");
-    code.append("\t}\n\n");
-    code.append("\tif err := chaincode.Start(); err != nil {\n");
-    code.append((("\t\tfmt.Printf(\"Error starting " + contractName) + " chaincode: %s\", err.Error())\n"));
-    code.append("\t}\n");
-    code.append("}\n");
+    this.appendMain(contract, code);
     return code.toString();
   }
   
@@ -129,7 +119,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
   
-  public void appendAttributesMethods(final Contract contract, final StringBuilder code) {
+  public void appendMethods(final Contract contract, final StringBuilder code) {
     EList<Attribute> _attributes = contract.getAttributes();
     for (final Attribute attribute : _attributes) {
       {
@@ -168,6 +158,32 @@ public class HyperledgerGenerator extends AbstractGenerator {
         code.append("}\n\n");
       }
     }
+  }
+  
+  public StringBuilder appendMain(final Contract contract, final StringBuilder code) {
+    StringBuilder _xblockexpression = null;
+    {
+      code.append("func main() {\n");
+      String _name = contract.getName();
+      String _plus = ("\tchaincode, err := contractapi.NewChaincode(&" + _name);
+      String _plus_1 = (_plus + "{})\n");
+      code.append(_plus_1);
+      code.append("\tif err != nil {\n");
+      String _name_1 = contract.getName();
+      String _plus_2 = ("\t\tfmt.Printf(\"Error creating " + _name_1);
+      String _plus_3 = (_plus_2 + " chaincode: %s\", err.Error())\n");
+      code.append(_plus_3);
+      code.append("\t\treturn\n");
+      code.append("\t}\n\n");
+      code.append("\tif err := chaincode.Start(); err != nil {\n");
+      String _name_2 = contract.getName();
+      String _plus_4 = ("\t\tfmt.Printf(\"Error starting " + _name_2);
+      String _plus_5 = (_plus_4 + " chaincode: %s\", err.Error())\n");
+      code.append(_plus_5);
+      code.append("\t}\n");
+      _xblockexpression = code.append("}\n");
+    }
+    return _xblockexpression;
   }
   
   public String getDefaultInitialValue(final String dataType) {
