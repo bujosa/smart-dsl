@@ -78,15 +78,6 @@ public interface ContractFactory extends EFactory
   Param createParam();
 
   /**
-   * Returns a new object of class '<em>Output</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Output</em>'.
-   * @generated
-   */
-  Output createOutput();
-
-  /**
    * Returns a new object of class '<em>Data Store</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

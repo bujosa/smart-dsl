@@ -13,7 +13,6 @@ import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 import lsi.us.es.mis.xtext.contract.Validator;
 import org.eclipse.emf.common.util.EList;
@@ -331,13 +330,13 @@ public class SolidityGenerator extends AbstractGenerator {
         if (_notEquals) {
           String _returns = returns;
           returns = (_returns + " returns (");
-          EList<Output> _outputs = method.getOutputs();
-          for (final Output output : _outputs) {
+          EList<Param> _outputs = method.getOutputs();
+          for (final Param output : _outputs) {
             {
               String _returns_1 = returns;
               String _solidityDataTypeForFunction = this.getSolidityDataTypeForFunction(output.getType().toString());
               returns = (_returns_1 + _solidityDataTypeForFunction);
-              Output _last = IterableExtensions.<Output>last(method.getOutputs());
+              Param _last = IterableExtensions.<Param>last(method.getOutputs());
               boolean _equals = Objects.equal(output, _last);
               if (_equals) {
                 String _returns_2 = returns;

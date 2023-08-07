@@ -8,7 +8,6 @@ import lsi.us.es.mis.xtext.contract.Attribute;
 import lsi.us.es.mis.xtext.contract.Contract;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -311,8 +310,8 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
             params = (_params_1 + element);
           }
         }
-        EList<Output> _outputs = method.getOutputs();
-        for (final Output output : _outputs) {
+        EList<Param> _outputs = method.getOutputs();
+        for (final Param output : _outputs) {
           {
             final String paramName = output.getName();
             final String paramType = output.getType().toString();
@@ -330,7 +329,7 @@ public class FireflyInterfaceGenerator extends AbstractGenerator {
             _builder.newLineIfNotEmpty();
             _builder.append("}");
             {
-              Output _last = IterableExtensions.<Output>last(method.getOutputs());
+              Param _last = IterableExtensions.<Param>last(method.getOutputs());
               boolean _notEquals = (!Objects.equal(output, _last));
               if (_notEquals) {
                 _builder.append(",");

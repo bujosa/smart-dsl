@@ -443,43 +443,6 @@ public interface ContractPackage extends EPackage
   int PARAM_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.OutputImpl <em>Output</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see lsi.us.es.mis.xtext.contract.impl.OutputImpl
-   * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getOutput()
-   * @generated
-   */
-  int OUTPUT = 6;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OUTPUT__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OUTPUT__TYPE = 1;
-
-  /**
-   * The number of structural features of the '<em>Output</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OUTPUT_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link lsi.us.es.mis.xtext.contract.impl.DataStoreImpl <em>Data Store</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -487,7 +450,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getDataStore()
    * @generated
    */
-  int DATA_STORE = 7;
+  int DATA_STORE = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -533,7 +496,7 @@ public interface ContractPackage extends EPackage
    * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getDataType()
    * @generated
    */
-  int DATA_TYPE = 8;
+  int DATA_TYPE = 7;
 
 
   /**
@@ -927,38 +890,6 @@ public interface ContractPackage extends EPackage
   EAttribute getParam_Type();
 
   /**
-   * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.Output <em>Output</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Output</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Output
-   * @generated
-   */
-  EClass getOutput();
-
-  /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Output#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Output#getName()
-   * @see #getOutput()
-   * @generated
-   */
-  EAttribute getOutput_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link lsi.us.es.mis.xtext.contract.Output#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see lsi.us.es.mis.xtext.contract.Output#getType()
-   * @see #getOutput()
-   * @generated
-   */
-  EAttribute getOutput_Type();
-
-  /**
    * Returns the meta object for class '{@link lsi.us.es.mis.xtext.contract.DataStore <em>Data Store</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1333,32 +1264,6 @@ public interface ContractPackage extends EPackage
      * @generated
      */
     EAttribute PARAM__TYPE = eINSTANCE.getParam_Type();
-
-    /**
-     * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.OutputImpl <em>Output</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see lsi.us.es.mis.xtext.contract.impl.OutputImpl
-     * @see lsi.us.es.mis.xtext.contract.impl.ContractPackageImpl#getOutput()
-     * @generated
-     */
-    EClass OUTPUT = eINSTANCE.getOutput();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OUTPUT__NAME = eINSTANCE.getOutput_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OUTPUT__TYPE = eINSTANCE.getOutput_Type();
 
     /**
      * The meta object literal for the '{@link lsi.us.es.mis.xtext.contract.impl.DataStoreImpl <em>Data Store</em>}' class.

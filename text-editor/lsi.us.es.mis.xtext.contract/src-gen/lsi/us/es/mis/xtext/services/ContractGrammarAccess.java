@@ -305,11 +305,11 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
 		private final Assignment cOutputsAssignment_7_0 = (Assignment)cGroup_7.eContents().get(0);
-		private final RuleCall cOutputsOutputParserRuleCall_7_0_0 = (RuleCall)cOutputsAssignment_7_0.eContents().get(0);
+		private final RuleCall cOutputsParamParserRuleCall_7_0_0 = (RuleCall)cOutputsAssignment_7_0.eContents().get(0);
 		private final Group cGroup_7_1 = (Group)cGroup_7.eContents().get(1);
 		private final Keyword cCommaKeyword_7_1_0 = (Keyword)cGroup_7_1.eContents().get(0);
 		private final Assignment cOutputsAssignment_7_1_1 = (Assignment)cGroup_7_1.eContents().get(1);
-		private final RuleCall cOutputsOutputParserRuleCall_7_1_1_0 = (RuleCall)cOutputsAssignment_7_1_1.eContents().get(0);
+		private final RuleCall cOutputsParamParserRuleCall_7_1_1_0 = (RuleCall)cOutputsAssignment_7_1_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
 		private final Keyword cDescriptionKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
@@ -340,7 +340,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//Method:
-		//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
+		//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 		//     '{'
 		//         ('description:' description = STRING)?
 		//         (modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
@@ -349,7 +349,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
+		//'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 		// '{'
 		//     ('description:' description = STRING)?
 		//     (modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
@@ -408,26 +408,26 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'->'
 		public Keyword getHyphenMinusGreaterThanSignKeyword_6() { return cHyphenMinusGreaterThanSignKeyword_6; }
 		
-		//(outputs+=Output (',' outputs+=Output)*)?
+		//(outputs+=Param (',' outputs+=Param)*)?
 		public Group getGroup_7() { return cGroup_7; }
 		
-		//outputs+=Output
+		//outputs+=Param
 		public Assignment getOutputsAssignment_7_0() { return cOutputsAssignment_7_0; }
 		
-		//Output
-		public RuleCall getOutputsOutputParserRuleCall_7_0_0() { return cOutputsOutputParserRuleCall_7_0_0; }
+		//Param
+		public RuleCall getOutputsParamParserRuleCall_7_0_0() { return cOutputsParamParserRuleCall_7_0_0; }
 		
-		//(',' outputs+=Output)*
+		//(',' outputs+=Param)*
 		public Group getGroup_7_1() { return cGroup_7_1; }
 		
 		//','
 		public Keyword getCommaKeyword_7_1_0() { return cCommaKeyword_7_1_0; }
 		
-		//outputs+=Output
+		//outputs+=Param
 		public Assignment getOutputsAssignment_7_1_1() { return cOutputsAssignment_7_1_1; }
 		
-		//Output
-		public RuleCall getOutputsOutputParserRuleCall_7_1_1_0() { return cOutputsOutputParserRuleCall_7_1_1_0; }
+		//Param
+		public RuleCall getOutputsParamParserRuleCall_7_1_1_0() { return cOutputsParamParserRuleCall_7_1_1_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_8() { return cLeftCurlyBracketKeyword_8; }
@@ -627,34 +627,6 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//DataType
 		public RuleCall getTypeDataTypeEnumRuleCall_1_0() { return cTypeDataTypeEnumRuleCall_1_0; }
 	}
-	public class OutputElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.Output");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeDataTypeEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		
-		//Output:
-		//    name=ID type=DataType
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//name=ID type=DataType
-		public Group getGroup() { return cGroup; }
-		
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
-		
-		//type=DataType
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
-		
-		//DataType
-		public RuleCall getTypeDataTypeEnumRuleCall_1_0() { return cTypeDataTypeEnumRuleCall_1_0; }
-	}
 	public class DataStoreElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lsi.us.es.mis.xtext.Contract.DataStore");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -762,7 +734,6 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final MethodElements pMethod;
 	private final EventElements pEvent;
 	private final ParamElements pParam;
-	private final OutputElements pOutput;
 	private final DataTypeElements eDataType;
 	private final DataStoreElements pDataStore;
 	
@@ -781,7 +752,6 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pMethod = new MethodElements();
 		this.pEvent = new EventElements();
 		this.pParam = new ParamElements();
-		this.pOutput = new OutputElements();
 		this.eDataType = new DataTypeElements();
 		this.pDataStore = new DataStoreElements();
 	}
@@ -859,7 +829,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Method:
-	//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
+	//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 	//     '{'
 	//         ('description:' description = STRING)?
 	//         (modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
@@ -897,17 +867,6 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	public ParserRule getParamRule() {
 		return getParamAccess().getRule();
-	}
-	
-	//Output:
-	//    name=ID type=DataType
-	//;
-	public OutputElements getOutputAccess() {
-		return pOutput;
-	}
-	
-	public ParserRule getOutputRule() {
-		return getOutputAccess().getRule();
 	}
 	
 	//enum DataType:

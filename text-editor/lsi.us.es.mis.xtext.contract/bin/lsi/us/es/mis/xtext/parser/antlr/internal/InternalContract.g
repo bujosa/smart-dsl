@@ -602,9 +602,9 @@ ruleMethod returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMethodAccess().getOutputsOutputParserRuleCall_7_0_0());
+						newCompositeNode(grammarAccess.getMethodAccess().getOutputsParamParserRuleCall_7_0_0());
 					}
-					lv_outputs_10_0=ruleOutput
+					lv_outputs_10_0=ruleParam
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMethodRule());
@@ -613,7 +613,7 @@ ruleMethod returns [EObject current=null]
 							$current,
 							"outputs",
 							lv_outputs_10_0,
-							"lsi.us.es.mis.xtext.Contract.Output");
+							"lsi.us.es.mis.xtext.Contract.Param");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -626,9 +626,9 @@ ruleMethod returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getMethodAccess().getOutputsOutputParserRuleCall_7_1_1_0());
+							newCompositeNode(grammarAccess.getMethodAccess().getOutputsParamParserRuleCall_7_1_1_0());
 						}
-						lv_outputs_12_0=ruleOutput
+						lv_outputs_12_0=ruleParam
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getMethodRule());
@@ -637,7 +637,7 @@ ruleMethod returns [EObject current=null]
 								$current,
 								"outputs",
 								lv_outputs_12_0,
-								"lsi.us.es.mis.xtext.Contract.Output");
+								"lsi.us.es.mis.xtext.Contract.Param");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -943,62 +943,6 @@ ruleParam returns [EObject current=null]
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getParamRule());
-					}
-					set(
-						$current,
-						"type",
-						lv_type_1_0,
-						"lsi.us.es.mis.xtext.Contract.DataType");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-	)
-;
-
-// Entry rule entryRuleOutput
-entryRuleOutput returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getOutputRule()); }
-	iv_ruleOutput=ruleOutput
-	{ $current=$iv_ruleOutput.current; }
-	EOF;
-
-// Rule Output
-ruleOutput returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				lv_name_0_0=RULE_ID
-				{
-					newLeafNode(lv_name_0_0, grammarAccess.getOutputAccess().getNameIDTerminalRuleCall_0_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOutputRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_0_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getOutputAccess().getTypeDataTypeEnumRuleCall_1_0());
-				}
-				lv_type_1_0=ruleDataType
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getOutputRule());
 					}
 					set(
 						$current,

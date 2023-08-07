@@ -27,7 +27,7 @@ Validator:
 ;
 
 Method: 
-	'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Output (',' outputs+=Output)*)?
+	'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 	 '{'
 	 	('description:' description = STRING)?
 	 	(modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
@@ -43,10 +43,6 @@ Event:
 ;
 
 Param:
-    name=ID type=DataType
-;
-
-Output:
     name=ID type=DataType
 ;
 

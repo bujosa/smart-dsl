@@ -115,13 +115,6 @@ public class ContractSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ContractPackage.OUTPUT:
-      {
-        Output output = (Output)theEObject;
-        T result = caseOutput(output);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ContractPackage.DATA_STORE:
       {
         DataStore dataStore = (DataStore)theEObject;
@@ -225,22 +218,6 @@ public class ContractSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseParam(Param object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Output</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Output</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOutput(Output object)
   {
     return null;
   }

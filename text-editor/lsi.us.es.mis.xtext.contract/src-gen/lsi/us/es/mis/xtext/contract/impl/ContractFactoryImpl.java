@@ -72,7 +72,6 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
       case ContractPackage.METHOD: return createMethod();
       case ContractPackage.EVENT: return createEvent();
       case ContractPackage.PARAM: return createParam();
-      case ContractPackage.OUTPUT: return createOutput();
       case ContractPackage.DATA_STORE: return createDataStore();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -183,18 +182,6 @@ public class ContractFactoryImpl extends EFactoryImpl implements ContractFactory
   {
     ParamImpl param = new ParamImpl();
     return param;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Output createOutput()
-  {
-    OutputImpl output = new OutputImpl();
-    return output;
   }
 
   /**

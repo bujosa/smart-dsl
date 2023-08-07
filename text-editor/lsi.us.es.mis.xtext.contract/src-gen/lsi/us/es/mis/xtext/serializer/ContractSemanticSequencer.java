@@ -11,7 +11,6 @@ import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.DataStore;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 import lsi.us.es.mis.xtext.contract.Validator;
 import lsi.us.es.mis.xtext.services.ContractGrammarAccess;
@@ -53,9 +52,6 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case ContractPackage.METHOD:
 				sequence_Method(context, (Method) semanticObject); 
-				return; 
-			case ContractPackage.OUTPUT:
-				sequence_Output(context, (Output) semanticObject); 
 				return; 
 			case ContractPackage.PARAM:
 				sequence_Param(context, (Param) semanticObject); 
@@ -143,7 +139,7 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         name=ID 
 	 *         (params+=Param params+=Param*)? 
 	 *         statemutability=STRING? 
-	 *         (outputs+=Output outputs+=Output*)? 
+	 *         (outputs+=Param outputs+=Param*)? 
 	 *         description=STRING? 
 	 *         (modifiersKeyword='validators:' validators+=[Validator|ID] validators+=[Validator|ID]*)? 
 	 *         (eventsKeyword='events:' events+=[Event|ID] events+=[Event|ID]*)?
@@ -151,27 +147,6 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 */
 	protected void sequence_Method(ISerializationContext context, Method semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Output returns Output
-	 *
-	 * Constraint:
-	 *     (name=ID type=DataType)
-	 */
-	protected void sequence_Output(ISerializationContext context, Output semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.OUTPUT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.OUTPUT__NAME));
-			if (transientValues.isValueTransient(semanticObject, ContractPackage.Literals.OUTPUT__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContractPackage.Literals.OUTPUT__TYPE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOutputAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getOutputAccess().getTypeDataTypeEnumRuleCall_1_0(), semanticObject.getType());
-		feeder.finish();
 	}
 	
 	

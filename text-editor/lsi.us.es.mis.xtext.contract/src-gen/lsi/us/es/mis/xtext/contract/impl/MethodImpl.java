@@ -8,7 +8,6 @@ import java.util.Collection;
 import lsi.us.es.mis.xtext.contract.ContractPackage;
 import lsi.us.es.mis.xtext.contract.Event;
 import lsi.us.es.mis.xtext.contract.Method;
-import lsi.us.es.mis.xtext.contract.Output;
 import lsi.us.es.mis.xtext.contract.Param;
 import lsi.us.es.mis.xtext.contract.Validator;
 
@@ -108,7 +107,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @generated
    * @ordered
    */
-  protected EList<Output> outputs;
+  protected EList<Param> outputs;
 
   /**
    * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -282,11 +281,11 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @generated
    */
   @Override
-  public EList<Output> getOutputs()
+  public EList<Param> getOutputs()
   {
     if (outputs == null)
     {
-      outputs = new EObjectContainmentEList<Output>(Output.class, this, ContractPackage.METHOD__OUTPUTS);
+      outputs = new EObjectContainmentEList<Param>(Param.class, this, ContractPackage.METHOD__OUTPUTS);
     }
     return outputs;
   }
@@ -469,7 +468,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return;
       case ContractPackage.METHOD__OUTPUTS:
         getOutputs().clear();
-        getOutputs().addAll((Collection<? extends Output>)newValue);
+        getOutputs().addAll((Collection<? extends Param>)newValue);
         return;
       case ContractPackage.METHOD__DESCRIPTION:
         setDescription((String)newValue);

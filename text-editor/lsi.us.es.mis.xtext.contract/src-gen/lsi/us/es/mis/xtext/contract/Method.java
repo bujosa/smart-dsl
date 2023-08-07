@@ -91,7 +91,7 @@ public interface Method extends EObject
 
   /**
    * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
-   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Output}.
+   * The list contents are of type {@link lsi.us.es.mis.xtext.contract.Param}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Outputs</em>' containment reference list.
@@ -99,7 +99,7 @@ public interface Method extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Output> getOutputs();
+  EList<Param> getOutputs();
 
   /**
    * Returns the value of the '<em><b>Description</b></em>' attribute.

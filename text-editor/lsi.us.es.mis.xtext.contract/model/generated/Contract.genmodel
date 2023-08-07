@@ -55,10 +55,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Param/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Param/type"/>
     </genClasses>
-    <genClasses ecoreClass="Contract.ecore#//Output">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Output/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Output/type"/>
-    </genClasses>
     <genClasses ecoreClass="Contract.ecore#//DataStore">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//DataStore/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//DataStore/fromType"/>
