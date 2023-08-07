@@ -141,8 +141,8 @@ public class ContractSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         statemutability=STRING? 
 	 *         (outputs+=Param outputs+=Param*)? 
 	 *         description=STRING? 
-	 *         (modifiersKeyword='validators:' validators+=[Validator|ID] validators+=[Validator|ID]*)? 
-	 *         (eventsKeyword='events:' events+=[Event|ID] events+=[Event|ID]*)?
+	 *         (validators+=[Validator|ID] validators+=[Validator|ID]*)? 
+	 *         (events+=[Event|ID] events+=[Event|ID]*)?
 	 *     )
 	 */
 	protected void sequence_Method(ISerializationContext context, Method semanticObject) {

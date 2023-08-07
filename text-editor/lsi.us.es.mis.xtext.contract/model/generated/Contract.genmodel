@@ -41,9 +41,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/statemutability"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/outputs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/modifiersKeyword"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/validators"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contract.ecore#//Method/eventsKeyword"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Contract.ecore#//Method/events"/>
     </genClasses>
     <genClasses ecoreClass="Contract.ecore#//Event">

@@ -30,8 +30,8 @@ Method:
 	'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 	 '{'
 	 	('description:' description = STRING)?
-	 	(modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
-	 	(eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
+	 	('validators:' validators+=[Validator] (',' validators+=[Validator])*)?
+	 	('events:' events+=[Event] (',' events+=[Event])*)?
 	 '}'
 ;
 

@@ -673,20 +673,10 @@ ruleMethod returns [EObject current=null]
 			)
 		)?
 		(
-			(
-				(
-					lv_modifiersKeyword_16_0='validators:'
-					{
-						newLeafNode(lv_modifiersKeyword_16_0, grammarAccess.getMethodAccess().getModifiersKeywordValidatorsKeyword_10_0_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getMethodRule());
-						}
-						setWithLastConsumed($current, "modifiersKeyword", lv_modifiersKeyword_16_0, "validators:");
-					}
-				)
-			)
+			otherlv_16='validators:'
+			{
+				newLeafNode(otherlv_16, grammarAccess.getMethodAccess().getValidatorsKeyword_10_0());
+			}
 			(
 				(
 					{
@@ -721,20 +711,10 @@ ruleMethod returns [EObject current=null]
 			)*
 		)?
 		(
-			(
-				(
-					lv_eventsKeyword_20_0='events:'
-					{
-						newLeafNode(lv_eventsKeyword_20_0, grammarAccess.getMethodAccess().getEventsKeywordEventsKeyword_11_0_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getMethodRule());
-						}
-						setWithLastConsumed($current, "eventsKeyword", lv_eventsKeyword_20_0, "events:");
-					}
-				)
-			)
+			otherlv_20='events:'
+			{
+				newLeafNode(otherlv_20, grammarAccess.getMethodAccess().getEventsKeyword_11_0());
+			}
 			(
 				(
 					{

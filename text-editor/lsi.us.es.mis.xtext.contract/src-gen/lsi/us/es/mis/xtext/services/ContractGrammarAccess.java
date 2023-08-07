@@ -316,8 +316,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Assignment cDescriptionAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
 		private final RuleCall cDescriptionSTRINGTerminalRuleCall_9_1_0 = (RuleCall)cDescriptionAssignment_9_1.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Assignment cModifiersKeywordAssignment_10_0 = (Assignment)cGroup_10.eContents().get(0);
-		private final Keyword cModifiersKeywordValidatorsKeyword_10_0_0 = (Keyword)cModifiersKeywordAssignment_10_0.eContents().get(0);
+		private final Keyword cValidatorsKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
 		private final Assignment cValidatorsAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
 		private final CrossReference cValidatorsValidatorCrossReference_10_1_0 = (CrossReference)cValidatorsAssignment_10_1.eContents().get(0);
 		private final RuleCall cValidatorsValidatorIDTerminalRuleCall_10_1_0_1 = (RuleCall)cValidatorsValidatorCrossReference_10_1_0.eContents().get(1);
@@ -327,8 +326,7 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final CrossReference cValidatorsValidatorCrossReference_10_2_1_0 = (CrossReference)cValidatorsAssignment_10_2_1.eContents().get(0);
 		private final RuleCall cValidatorsValidatorIDTerminalRuleCall_10_2_1_0_1 = (RuleCall)cValidatorsValidatorCrossReference_10_2_1_0.eContents().get(1);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Assignment cEventsKeywordAssignment_11_0 = (Assignment)cGroup_11.eContents().get(0);
-		private final Keyword cEventsKeywordEventsKeyword_11_0_0 = (Keyword)cEventsKeywordAssignment_11_0.eContents().get(0);
+		private final Keyword cEventsKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
 		private final Assignment cEventsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
 		private final CrossReference cEventsEventCrossReference_11_1_0 = (CrossReference)cEventsAssignment_11_1.eContents().get(0);
 		private final RuleCall cEventsEventIDTerminalRuleCall_11_1_0_1 = (RuleCall)cEventsEventCrossReference_11_1_0.eContents().get(1);
@@ -343,8 +341,8 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 		//     '{'
 		//         ('description:' description = STRING)?
-		//         (modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
-		//         (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
+		//         ('validators:' validators+=[Validator] (',' validators+=[Validator])*)?
+		//         ('events:' events+=[Event] (',' events+=[Event])*)?
 		//     '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -352,8 +350,8 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 		// '{'
 		//     ('description:' description = STRING)?
-		//     (modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
-		//     (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
+		//     ('validators:' validators+=[Validator] (',' validators+=[Validator])*)?
+		//     ('events:' events+=[Event] (',' events+=[Event])*)?
 		// '}'
 		public Group getGroup() { return cGroup; }
 		
@@ -444,14 +442,11 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//STRING
 		public RuleCall getDescriptionSTRINGTerminalRuleCall_9_1_0() { return cDescriptionSTRINGTerminalRuleCall_9_1_0; }
 		
-		//(modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
+		//('validators:' validators+=[Validator] (',' validators+=[Validator])*)?
 		public Group getGroup_10() { return cGroup_10; }
 		
-		//modifiersKeyword='validators:'
-		public Assignment getModifiersKeywordAssignment_10_0() { return cModifiersKeywordAssignment_10_0; }
-		
 		//'validators:'
-		public Keyword getModifiersKeywordValidatorsKeyword_10_0_0() { return cModifiersKeywordValidatorsKeyword_10_0_0; }
+		public Keyword getValidatorsKeyword_10_0() { return cValidatorsKeyword_10_0; }
 		
 		//validators+=[Validator]
 		public Assignment getValidatorsAssignment_10_1() { return cValidatorsAssignment_10_1; }
@@ -477,14 +472,11 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ID
 		public RuleCall getValidatorsValidatorIDTerminalRuleCall_10_2_1_0_1() { return cValidatorsValidatorIDTerminalRuleCall_10_2_1_0_1; }
 		
-		//(eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
+		//('events:' events+=[Event] (',' events+=[Event])*)?
 		public Group getGroup_11() { return cGroup_11; }
 		
-		//eventsKeyword='events:'
-		public Assignment getEventsKeywordAssignment_11_0() { return cEventsKeywordAssignment_11_0; }
-		
 		//'events:'
-		public Keyword getEventsKeywordEventsKeyword_11_0_0() { return cEventsKeywordEventsKeyword_11_0_0; }
+		public Keyword getEventsKeyword_11_0() { return cEventsKeyword_11_0; }
 		
 		//events+=[Event]
 		public Assignment getEventsAssignment_11_1() { return cEventsAssignment_11_1; }
@@ -832,8 +824,8 @@ public class ContractGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//    'method' name=ID '(' (params+=Param (',' params+=Param)*)? ')' ('stateMutability:' statemutability=STRING)? '->' (outputs+=Param (',' outputs+=Param)*)?
 	//     '{'
 	//         ('description:' description = STRING)?
-	//         (modifiersKeyword='validators:' validators+=[Validator] (',' validators+=[Validator])*)?
-	//         (eventsKeyword='events:' events+=[Event] (',' events+=[Event])*)?
+	//         ('validators:' validators+=[Validator] (',' validators+=[Validator])*)?
+	//         ('events:' events+=[Event] (',' events+=[Event])*)?
 	//     '}'
 	//;
 	public MethodElements getMethodAccess() {

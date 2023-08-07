@@ -430,31 +430,9 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
    * @generated
    */
   @Override
-  public EAttribute getMethod_ModifiersKeyword()
-  {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getMethod_Validators()
   {
-    return (EReference)methodEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMethod_EventsKeyword()
-  {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(7);
+    return (EReference)methodEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -465,7 +443,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
   @Override
   public EReference getMethod_Events()
   {
-    return (EReference)methodEClass.getEStructuralFeatures().get(8);
+    return (EReference)methodEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -659,9 +637,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     createEAttribute(methodEClass, METHOD__STATEMUTABILITY);
     createEReference(methodEClass, METHOD__OUTPUTS);
     createEAttribute(methodEClass, METHOD__DESCRIPTION);
-    createEAttribute(methodEClass, METHOD__MODIFIERS_KEYWORD);
     createEReference(methodEClass, METHOD__VALIDATORS);
-    createEAttribute(methodEClass, METHOD__EVENTS_KEYWORD);
     createEReference(methodEClass, METHOD__EVENTS);
 
     eventEClass = createEClass(EVENT);
@@ -741,9 +717,7 @@ public class ContractPackageImpl extends EPackageImpl implements ContractPackage
     initEAttribute(getMethod_Statemutability(), ecorePackage.getEString(), "statemutability", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethod_Outputs(), this.getParam(), null, "outputs", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethod_Description(), ecorePackage.getEString(), "description", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethod_ModifiersKeyword(), ecorePackage.getEString(), "modifiersKeyword", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethod_Validators(), this.getValidator(), null, "validators", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethod_EventsKeyword(), ecorePackage.getEString(), "eventsKeyword", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethod_Events(), this.getEvent(), null, "events", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -24,11 +24,11 @@ func (sc *SimpleContract) GetTotal(ctx contractapi.TransactionContextInterface) 
 func (rc *SimpleContract) Example(ctx contractapi.TransactionContextInterface x uint64, name string, lastname string) error {
 	// This is a sample of method
 	if ctx.GetClientIdentity().GetID()==sc.Owner {
-	return fmt.Errorf("Only the contract owner can call this function.")
+		return fmt.Errorf("Only the contract owner can call this function.")
 	}
 
 	if x>4 {
-	return fmt.Errorf("The number must be greater than 4")
+		return fmt.Errorf("The number must be greater than 4")
 	}
 
 	// Este evento es para notificar cuando el numero se ha actualizado
