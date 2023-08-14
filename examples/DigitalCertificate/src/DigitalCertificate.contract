@@ -1,0 +1,33 @@
+Contract DigitalCertificate {
+	version: "1.0.0"
+	verifierAddress address
+	issuerAddress address
+	verifier boolean
+	Hash string
+	dataStore verifiers fromType address toType string
+	
+	validator onlyIssuer(){
+		message: "Only valid issuer"
+		validation: "msg.sender == issuerAddress"
+	}
+	
+	validator onlyVerifier(){
+		message: "Only valid verifier"
+		validation: "msg.sender == verifierAddress"
+	}
+	
+	method CreateCertificate() -> {
+		description: "This method is for create certificate"
+		validators: onlyIssuer
+	}
+	
+	method AcceptCertificate() -> {
+		description: "This method is for accept certificate"
+		validators: onlyVerifier
+	}
+	
+	method RejectCertificate() -> {
+		description: "This method is for reject certificate"
+		validators: onlyVerifier
+	}
+}

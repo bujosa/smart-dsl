@@ -1,0 +1,103 @@
+{
+    "name": "DigitalCertificate",
+    "version":  "1.0.0",
+    "methods": [
+    	{
+    	    "name": "getVerifierAddress",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getIssuerAddress",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getVerifier",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "boolean"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getHash",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "CreateCertificate",
+    	    "description": "This method is for create certificate",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	},
+    	{
+    	    "name": "AcceptCertificate",
+    	    "description": "This method is for accept certificate",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	},
+    	{
+    	    "name": "RejectCertificate",
+    	    "description": "This method is for reject certificate",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	}
+    ]
+    ,
+	"events": []
+}
