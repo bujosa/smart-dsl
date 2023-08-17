@@ -83,7 +83,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
       }
       boolean _isOwnership = contract.isOwnership();
       if (_isOwnership) {
-        code.append("\tsc.Owner = ctx.GetClientIdentity().GetID()\n");
+        code.append("\tsc.owner = ctx.GetClientIdentity().GetID()\n");
       }
       code.append("\treturn nil\n");
       _xblockexpression = code.append("}\n\n");
@@ -172,7 +172,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
       for (final Method method : _methods) {
         {
           String _name = contract.getName();
-          String _plus = ("func (rc *" + _name);
+          String _plus = ("func (sc *" + _name);
           String _plus_1 = (_plus + ") ");
           String _capitalizeFirstLetter = this.capitalizeFirstLetter(method.getName());
           String _plus_2 = (_plus_1 + _capitalizeFirstLetter);
@@ -228,6 +228,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
   }
   
   public void appendEvents(final Method method, final StringBuilder code) {
+    boolean alreadyDeclareEventPayload = false;
     int _length = ((Object[])Conversions.unwrapArray(method.getEvents(), Object.class)).length;
     boolean _equals = (_length == 0);
     if (_equals) {
@@ -244,15 +245,24 @@ public class HyperledgerGenerator extends AbstractGenerator {
           String _plus_1 = (_plus + "\n");
           code.append(_plus_1);
         }
-        String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
-        String _plus_2 = ("\teventPayload := fmt.Sprintf(\"" + _capitalizeFirstLetter);
-        String _checkEventParams = this.checkEventParams(event);
-        String _plus_3 = (_plus_2 + _checkEventParams);
-        code.append(_plus_3);
-        String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(event.getName());
-        String _plus_4 = ("\tctx.GetStub().SetEvent(\"" + _capitalizeFirstLetter_1);
-        String _plus_5 = (_plus_4 + "\", []byte(eventPayload))\n\n");
-        code.append(_plus_5);
+        if (alreadyDeclareEventPayload) {
+          String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
+          String _plus_2 = ("\teventPayload = fmt.Sprintf(\"" + _capitalizeFirstLetter);
+          String _checkEventParams = this.checkEventParams(event);
+          String _plus_3 = (_plus_2 + _checkEventParams);
+          code.append(_plus_3);
+        } else {
+          String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(event.getName());
+          String _plus_4 = ("\teventPayload := fmt.Sprintf(\"" + _capitalizeFirstLetter_1);
+          String _checkEventParams_1 = this.checkEventParams(event);
+          String _plus_5 = (_plus_4 + _checkEventParams_1);
+          code.append(_plus_5);
+        }
+        String _capitalizeFirstLetter_2 = this.capitalizeFirstLetter(event.getName());
+        String _plus_6 = ("\tctx.GetStub().SetEvent(\"" + _capitalizeFirstLetter_2);
+        String _plus_7 = (_plus_6 + "\", []byte(eventPayload))\n\n");
+        code.append(_plus_7);
+        alreadyDeclareEventPayload = true;
       }
     }
   }
@@ -261,21 +271,13 @@ public class HyperledgerGenerator extends AbstractGenerator {
     String result = "";
     EList<Param> _params = method.getParams();
     for (final Param param : _params) {
-      {
-        String _result = result;
-        String _name = param.getName();
-        String _plus = (" " + _name);
-        String _plus_1 = (_plus + " ");
-        String _correctType = this.getCorrectType(param.getType().toString());
-        String _plus_2 = (_plus_1 + _correctType);
-        result = (_result + _plus_2);
-        Param _last = IterableExtensions.<Param>last(method.getParams());
-        boolean _notEquals = (!Objects.equal(param, _last));
-        if (_notEquals) {
-          String _result_1 = result;
-          result = (_result_1 + ",");
-        }
-      }
+      String _result = result;
+      String _name = param.getName();
+      String _plus = (", " + _name);
+      String _plus_1 = (_plus + " ");
+      String _correctType = this.getCorrectType(param.getType().toString());
+      String _plus_2 = (_plus_1 + _correctType);
+      result = (_result + _plus_2);
     }
     return result;
   }
@@ -335,7 +337,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
   }
   
   public String checkCondition(final String condition, final Validator validator, final Method method) {
-    final String regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
+    final String regex = "([\\w.\\[\\]]+)\\s*([!=<>]+)\\s*([\\w.]+)";
     final Pattern pattern = Pattern.compile(regex);
     final Matcher matcher = pattern.matcher(condition);
     final HashMap<String, String> hashTable = new HashMap<String, String>();
@@ -347,30 +349,23 @@ public class HyperledgerGenerator extends AbstractGenerator {
     for (final Param param_1 : _params_1) {
       hashTable.put(param_1.getName(), "param");
     }
+    hashTable.put("ctx.GetClientIdentity().GetID()", "id");
     boolean _matches = matcher.matches();
     if (_matches) {
       String leftSide = matcher.group(1).replaceAll("\\s", "");
       String operator = matcher.group(2);
       String rightSide = matcher.group(3).replaceAll("\\s", "");
-      if ((Objects.equal(leftSide, "msg.sender") || Objects.equal(leftSide, "from"))) {
-        leftSide = "ctx.GetClientIdentity().GetID()";
-      } else {
-        final boolean isLeftSideNumber = leftSide.matches("\\d+");
-        if (((isLeftSideNumber == false) && (!hashTable.containsKey(leftSide)))) {
-          String _capitalizeFirstLetter = this.capitalizeFirstLetter(leftSide);
-          String _plus = ("sc." + _capitalizeFirstLetter);
-          leftSide = _plus;
-        }
+      leftSide = leftSide.replace("from", "ctx.GetClientIdentity().GetID()");
+      leftSide = leftSide.replace("msg.sender", "ctx.GetClientIdentity().GetID()");
+      final boolean isLeftSideNumber = leftSide.matches("\\d+");
+      if (((isLeftSideNumber == false) && (!hashTable.containsKey(leftSide)))) {
+        leftSide = ("sc." + leftSide);
       }
-      if ((Objects.equal(rightSide, "msg.sender") || Objects.equal(rightSide, "from"))) {
-        rightSide = "ctx.GetClientIdentity().GetID()";
-      } else {
-        final boolean isRightSideNumber = rightSide.matches("\\d+");
-        if (((isRightSideNumber == false) && (!hashTable.containsKey(rightSide)))) {
-          String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(rightSide);
-          String _plus_1 = ("sc." + _capitalizeFirstLetter_1);
-          rightSide = _plus_1;
-        }
+      rightSide = rightSide.replace("from", "ctx.GetClientIdentity().GetID()");
+      rightSide = rightSide.replace("msg.sender", "ctx.GetClientIdentity().GetID()");
+      final boolean isRightSideNumber = rightSide.matches("\\d+");
+      if (((isRightSideNumber == false) && (!hashTable.containsKey(rightSide)))) {
+        rightSide = ("sc." + rightSide);
       }
       return ((leftSide + operator) + rightSide);
     } else {
@@ -381,7 +376,10 @@ public class HyperledgerGenerator extends AbstractGenerator {
   public StringBuilder appendReceiveMethod(final Contract contract, final StringBuilder code) {
     StringBuilder _xblockexpression = null;
     {
-      code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n");
+      String _name = contract.getName();
+      String _plus = ("func (sc *" + _name);
+      String _plus_1 = (_plus + ") Receive(ctx contractapi.TransactionContextInterface) error {\n");
+      code.append(_plus_1);
       code.append("\targs := ctx.GetStub().GetArgs()\n");
       code.append("\tif len(args) > 0 {\n");
       code.append("\t\treturn fmt.Errorf(\"Receive function does not accept arguments\")\n");

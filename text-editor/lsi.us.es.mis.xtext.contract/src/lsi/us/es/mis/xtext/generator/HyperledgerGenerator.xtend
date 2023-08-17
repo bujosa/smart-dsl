@@ -62,7 +62,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    }
 	    
 	    if (contract.ownership){
-	    	code.append("\tsc.Owner = ctx.GetClientIdentity().GetID()\n")
+	    	code.append("\tsc.owner = ctx.GetClientIdentity().GetID()\n")
 	    }
 	    
 	    code.append("\treturn nil\n")
@@ -109,7 +109,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    }
 	    
 	    for (method : contract.methods){
-	    	code.append("func (rc *"+contract.name +") "+ capitalizeFirstLetter(method.name) +"(ctx contractapi.TransactionContextInterface"+appendParams(method)+") error {\n")
+	    	code.append("func (sc *"+contract.name +") "+ capitalizeFirstLetter(method.name) +"(ctx contractapi.TransactionContextInterface"+appendParams(method)+") error {\n")
 	    	
 			if (method.description !== null){
 	        	code.append("\t// " + method.description + "\n")
@@ -141,6 +141,9 @@ class HyperledgerGenerator extends AbstractGenerator {
 	}
 	
 	def appendEvents(Method method, StringBuilder code){
+		
+		var alreadyDeclareEventPayload = false
+		
 		if (method.events.length == 0){
 			return
 		}
@@ -150,18 +153,21 @@ class HyperledgerGenerator extends AbstractGenerator {
 	        	code.append("\t// " + event.description + "\n")
 	        	
 	        }
-	        code.append("\teventPayload := fmt.Sprintf(\""+ capitalizeFirstLetter(event.name) + checkEventParams(event))
+	        
+	        if (alreadyDeclareEventPayload){
+	        	code.append("\teventPayload = fmt.Sprintf(\""+ capitalizeFirstLetter(event.name) + checkEventParams(event))
+	        }else  {
+	        	code.append("\teventPayload := fmt.Sprintf(\""+ capitalizeFirstLetter(event.name) + checkEventParams(event))
+	        }
 	        code.append("\tctx.GetStub().SetEvent(\""+ capitalizeFirstLetter(event.name)+"\", []byte(eventPayload))\n\n")
+	        alreadyDeclareEventPayload = true
 		}
 	}
 	
 	def String appendParams(Method method){
 		var result = ""
 		for (param: method.params){
-			result += " " + param.name + " " + getCorrectType(param.type.toString)
-		    if (param != method.params.last) {
-                result +=","
-            }
+			result += ", " + param.name + " " + getCorrectType(param.type.toString)
 		}
 		return result
 	}
@@ -198,7 +204,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 	}
 	
 	def String checkCondition(String condition, Validator validator, Method method){
-		val regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
+		val regex = "([\\w.\\[\\]]+)\\s*([!=<>]+)\\s*([\\w.]+)";
 		val pattern = Pattern.compile(regex)
 		val matcher = pattern.matcher(condition)
 		val hashTable = new HashMap<String, String>()
@@ -211,29 +217,25 @@ class HyperledgerGenerator extends AbstractGenerator {
 			hashTable.put(param.name, "param")
 		}
 		
+		hashTable.put("ctx.GetClientIdentity().GetID()", "id")
+		
 		if (matcher.matches) {
             var leftSide = matcher.group(1).replaceAll("\\s", "")
             var operator = matcher.group(2)
             var rightSide = matcher.group(3).replaceAll("\\s", "")
             
-            if (leftSide == "msg.sender" || leftSide == "from"){
-            	leftSide = "ctx.GetClientIdentity().GetID()"
-            } else {
-            	val isLeftSideNumber = leftSide.matches("\\d+")
-            	if (isLeftSideNumber == false && !hashTable.containsKey(leftSide)){
-            		leftSide = "sc."+capitalizeFirstLetter(leftSide)
-            	}
-            }
-            
-            if (rightSide == "msg.sender" || rightSide == "from"){
-            	rightSide = "ctx.GetClientIdentity().GetID()"
-            } else {
-            	val isRightSideNumber = rightSide.matches("\\d+")
-            	if (isRightSideNumber == false && !hashTable.containsKey(rightSide)){
-            		rightSide = "sc."+capitalizeFirstLetter(rightSide)
-            	}
-            }
-            
+            leftSide = leftSide.replace("from", "ctx.GetClientIdentity().GetID()")
+            leftSide = leftSide.replace("msg.sender", "ctx.GetClientIdentity().GetID()")
+        	val isLeftSideNumber = leftSide.matches("\\d+")
+        	if (isLeftSideNumber == false && !hashTable.containsKey(leftSide)){
+        		leftSide = "sc."+leftSide
+        	}
+			rightSide = rightSide.replace("from", "ctx.GetClientIdentity().GetID()")
+        	rightSide = rightSide.replace("msg.sender", "ctx.GetClientIdentity().GetID()")
+        	val isRightSideNumber = rightSide.matches("\\d+")
+        	if (isRightSideNumber == false && !hashTable.containsKey(rightSide)){
+        		rightSide = "sc."+rightSide
+        	}
             return leftSide+operator+rightSide
         } else {
             return condition
@@ -241,7 +243,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 	}
 	
 	def appendReceiveMethod(Contract contract, StringBuilder code){
-    	code.append("func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {\n")
+    	code.append("func (sc *"+contract.name+") Receive(ctx contractapi.TransactionContextInterface) error {\n")
     	code.append("\targs := ctx.GetStub().GetArgs()\n")
     	code.append("\tif len(args) > 0 {\n")
     	code.append("\t\treturn fmt.Errorf(\"Receive function does not accept arguments\")\n")
