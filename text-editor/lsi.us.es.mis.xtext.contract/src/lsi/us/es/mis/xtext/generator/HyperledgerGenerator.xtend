@@ -57,10 +57,8 @@ class HyperledgerGenerator extends AbstractGenerator {
 		code.append("func (sc *" + contract.name + ") InitLedger(ctx contractapi.TransactionContextInterface) error {\n")
 	    
 	    for (attribute : contract.attributes) {
-	        val attributeName = attribute.name
 	        val defaultValue = getDefaultInitialValue(attribute.type.toString)
-	        
-	        code.append("\tsc." + capitalizeFirstLetter(attributeName) + " = " + defaultValue + "\n")
+	        code.append("\tsc." + attribute.name + " = " + defaultValue + "\n")
 	    }
 	    
 	    if (contract.ownership){
@@ -76,7 +74,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    code.append("\tcontractapi.Contract\n")
 	    
 	    if (contract.ownership) {
-	    	code.append("\tOwner string\n")
+	    	code.append("\towner string\n")
 	    }
 	     
 	    for (map: contract.dataStores) {
@@ -85,10 +83,8 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    
 	    
 	    for (attribute : contract.attributes) {
-	        val attributeName = attribute.name
 	        val attributeType = getCorrectType(attribute.type.toString)
-	        
-	        code.append("\t" + capitalizeFirstLetter(attributeName) + " " + attributeType + "\n")
+	        code.append("\t" + attribute.name + " " + attributeType + "\n")
 	    }
 	    
 	    code.append("}\n\n")
@@ -102,13 +98,13 @@ class HyperledgerGenerator extends AbstractGenerator {
 	        
 	        if (attribute.modifiable) {
 		        code.append("func (sc *" + contract.name + ") Set" + capitalizeAttributeName + "(ctx contractapi.TransactionContextInterface, value " + attributeType + ") error {\n")
-		        code.append("\tsc." + capitalizeFirstLetter(attributeName) + " = value\n")
+		        code.append("\tsc." + attributeName + " = value\n")
 		        code.append("\treturn nil\n")
 		        code.append("}\n\n")
 	        }
 	        
 	        code.append("func (sc *" + contract.name + ") Get" + capitalizeAttributeName + "(ctx contractapi.TransactionContextInterface) (" + attributeType + ", error) {\n")
-	        code.append("\treturn sc." + capitalizeFirstLetter(attributeName) + ", nil\n")
+	        code.append("\treturn sc." + attributeName + ", nil\n")
 	        code.append("}\n\n")
 	    }
 	    

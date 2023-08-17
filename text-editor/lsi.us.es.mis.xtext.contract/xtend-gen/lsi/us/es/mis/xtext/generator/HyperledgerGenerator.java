@@ -72,10 +72,9 @@ public class HyperledgerGenerator extends AbstractGenerator {
       EList<Attribute> _attributes = contract.getAttributes();
       for (final Attribute attribute : _attributes) {
         {
-          final String attributeName = attribute.getName();
           final String defaultValue = this.getDefaultInitialValue(attribute.getType().toString());
-          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-          String _plus_2 = ("\tsc." + _capitalizeFirstLetter);
+          String _name_1 = attribute.getName();
+          String _plus_2 = ("\tsc." + _name_1);
           String _plus_3 = (_plus_2 + " = ");
           String _plus_4 = (_plus_3 + defaultValue);
           String _plus_5 = (_plus_4 + "\n");
@@ -102,7 +101,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
       code.append("\tcontractapi.Contract\n");
       boolean _isOwnership = contract.isOwnership();
       if (_isOwnership) {
-        code.append("\tOwner string\n");
+        code.append("\towner string\n");
       }
       EList<DataStore> _dataStores = contract.getDataStores();
       for (final DataStore map : _dataStores) {
@@ -120,10 +119,9 @@ public class HyperledgerGenerator extends AbstractGenerator {
       EList<Attribute> _attributes = contract.getAttributes();
       for (final Attribute attribute : _attributes) {
         {
-          final String attributeName = attribute.getName();
           final String attributeType = this.getCorrectType(attribute.getType().toString());
-          String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-          String _plus_8 = ("\t" + _capitalizeFirstLetter);
+          String _name_2 = attribute.getName();
+          String _plus_8 = ("\t" + _name_2);
           String _plus_9 = (_plus_8 + " ");
           String _plus_10 = (_plus_9 + attributeType);
           String _plus_11 = (_plus_10 + "\n");
@@ -154,25 +152,19 @@ public class HyperledgerGenerator extends AbstractGenerator {
             String _plus_4 = (_plus_3 + attributeType);
             String _plus_5 = (_plus_4 + ") error {\n");
             code.append(_plus_5);
-            String _capitalizeFirstLetter = this.capitalizeFirstLetter(attributeName);
-            String _plus_6 = ("\tsc." + _capitalizeFirstLetter);
-            String _plus_7 = (_plus_6 + " = value\n");
-            code.append(_plus_7);
+            code.append((("\tsc." + attributeName) + " = value\n"));
             code.append("\treturn nil\n");
             code.append("}\n\n");
           }
           String _name_1 = contract.getName();
-          String _plus_8 = ("func (sc *" + _name_1);
-          String _plus_9 = (_plus_8 + ") Get");
-          String _plus_10 = (_plus_9 + capitalizeAttributeName);
-          String _plus_11 = (_plus_10 + "(ctx contractapi.TransactionContextInterface) (");
-          String _plus_12 = (_plus_11 + attributeType);
-          String _plus_13 = (_plus_12 + ", error) {\n");
-          code.append(_plus_13);
-          String _capitalizeFirstLetter_1 = this.capitalizeFirstLetter(attributeName);
-          String _plus_14 = ("\treturn sc." + _capitalizeFirstLetter_1);
-          String _plus_15 = (_plus_14 + ", nil\n");
-          code.append(_plus_15);
+          String _plus_6 = ("func (sc *" + _name_1);
+          String _plus_7 = (_plus_6 + ") Get");
+          String _plus_8 = (_plus_7 + capitalizeAttributeName);
+          String _plus_9 = (_plus_8 + "(ctx contractapi.TransactionContextInterface) (");
+          String _plus_10 = (_plus_9 + attributeType);
+          String _plus_11 = (_plus_10 + ", error) {\n");
+          code.append(_plus_11);
+          code.append((("\treturn sc." + attributeName) + ", nil\n"));
           code.append("}\n\n");
         }
       }
