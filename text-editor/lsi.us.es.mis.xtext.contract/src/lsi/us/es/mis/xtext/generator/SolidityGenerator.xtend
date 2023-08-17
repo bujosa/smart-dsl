@@ -122,6 +122,9 @@ class SolidityGenerator extends AbstractGenerator {
 		appendPaymentReceivedEvent(contract, code)
 		
 	    for (event : events) {
+	    	if (event.description !== null){
+	    		code.append("\t// " + event.description + "\n")
+	    	}
 	        code.append("\tevent " + capitalizeFirstLetter(event.name) + "(")
 	        for (param : event.params) {
 	            val parameterName = param.name

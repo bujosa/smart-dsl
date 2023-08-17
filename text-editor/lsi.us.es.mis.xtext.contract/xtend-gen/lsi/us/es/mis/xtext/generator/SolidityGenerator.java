@@ -156,10 +156,18 @@ public class SolidityGenerator extends AbstractGenerator {
     this.appendPaymentReceivedEvent(contract, code);
     for (final Event event : events) {
       {
+        String _description = event.getDescription();
+        boolean _tripleNotEquals = (_description != null);
+        if (_tripleNotEquals) {
+          String _description_1 = event.getDescription();
+          String _plus = ("\t// " + _description_1);
+          String _plus_1 = (_plus + "\n");
+          code.append(_plus_1);
+        }
         String _capitalizeFirstLetter = this.capitalizeFirstLetter(event.getName());
-        String _plus = ("\tevent " + _capitalizeFirstLetter);
-        String _plus_1 = (_plus + "(");
-        code.append(_plus_1);
+        String _plus_2 = ("\tevent " + _capitalizeFirstLetter);
+        String _plus_3 = (_plus_2 + "(");
+        code.append(_plus_3);
         EList<Param> _params = event.getParams();
         for (final Param param : _params) {
           {
