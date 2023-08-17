@@ -9,49 +9,49 @@ import (
 type DigitalCertificate struct {
 	contractapi.Contract
 	verifiers map[string]string
-	VerifierAddress string
-	IssuerAddress string
-	Verifier bool
+	verifierAddress string
+	issuerAddress string
+	verifier bool
 	Hash string
 }
 
 func (sc *DigitalCertificate) GetVerifierAddress(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.VerifierAddress, nil
+	return sc.verifierAddress, nil
 }
 
 func (sc *DigitalCertificate) GetIssuerAddress(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.IssuerAddress, nil
+	return sc.issuerAddress, nil
 }
 
 func (sc *DigitalCertificate) GetVerifier(ctx contractapi.TransactionContextInterface) (bool, error) {
-	return sc.Verifier, nil
+	return sc.verifier, nil
 }
 
 func (sc *DigitalCertificate) GetHash(ctx contractapi.TransactionContextInterface) (string, error) {
 	return sc.Hash, nil
 }
 
-func (rc *DigitalCertificate) CreateCertificate(ctx contractapi.TransactionContextInterface) error {
+func (sc *DigitalCertificate) CreateCertificate(ctx contractapi.TransactionContextInterface) error {
 	// This method is for create certificate
-	if ctx.GetClientIdentity().GetID()==sc.IssuerAddress {
+	if ctx.GetClientIdentity().GetID()==sc.issuerAddress {
 		return fmt.Errorf("Only valid issuer")
 	}
 
 	return nil
 }
 
-func (rc *DigitalCertificate) AcceptCertificate(ctx contractapi.TransactionContextInterface) error {
+func (sc *DigitalCertificate) AcceptCertificate(ctx contractapi.TransactionContextInterface) error {
 	// This method is for accept certificate
-	if ctx.GetClientIdentity().GetID()==sc.VerifierAddress {
+	if ctx.GetClientIdentity().GetID()==sc.verifierAddress {
 		return fmt.Errorf("Only valid verifier")
 	}
 
 	return nil
 }
 
-func (rc *DigitalCertificate) RejectCertificate(ctx contractapi.TransactionContextInterface) error {
+func (sc *DigitalCertificate) RejectCertificate(ctx contractapi.TransactionContextInterface) error {
 	// This method is for reject certificate
-	if ctx.GetClientIdentity().GetID()==sc.VerifierAddress {
+	if ctx.GetClientIdentity().GetID()==sc.verifierAddress {
 		return fmt.Errorf("Only valid verifier")
 	}
 
@@ -59,9 +59,9 @@ func (rc *DigitalCertificate) RejectCertificate(ctx contractapi.TransactionConte
 }
 
 func (sc *DigitalCertificate) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	sc.VerifierAddress = ""
-	sc.IssuerAddress = ""
-	sc.Verifier = false
+	sc.verifierAddress = ""
+	sc.issuerAddress = ""
+	sc.verifier = false
 	sc.Hash = ""
 	return nil
 }

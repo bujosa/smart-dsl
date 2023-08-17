@@ -7,6 +7,7 @@ contract ERC20 {
 	uint256 totalSupply;
 	mapping(address => uint256) public balanceOf;
 
+	// Esto es para cuando se haga la transferencia se notifique en la blockchain
 	event Transfer(address from, address to, uint256 value);
 
 	modifier validBalance(uint256 value) {

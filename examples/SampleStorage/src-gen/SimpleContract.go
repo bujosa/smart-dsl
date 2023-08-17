@@ -8,22 +8,22 @@ import (
 
 type SimpleContract struct {
 	contractapi.Contract
-	Owner string
-	Total uint64
+	owner string
+	total uint64
 }
 
 func (sc *SimpleContract) SetTotal(ctx contractapi.TransactionContextInterface, value uint64) error {
-	sc.Total = value
+	sc.total = value
 	return nil
 }
 
 func (sc *SimpleContract) GetTotal(ctx contractapi.TransactionContextInterface) (uint64, error) {
-	return sc.Total, nil
+	return sc.total, nil
 }
 
-func (rc *SimpleContract) Example(ctx contractapi.TransactionContextInterface x uint64, name string, lastname string) error {
+func (sc *SimpleContract) Example(ctx contractapi.TransactionContextInterface, x uint64, name string, lastname string) error {
 	// This is a sample of method
-	if ctx.GetClientIdentity().GetID()==sc.Owner {
+	if ctx.GetClientIdentity().GetID()==sc.owner {
 		return fmt.Errorf("Only the contract owner can call this function.")
 	}
 
@@ -36,13 +36,13 @@ func (rc *SimpleContract) Example(ctx contractapi.TransactionContextInterface x 
 	ctx.GetStub().SetEvent("XUpdated", []byte(eventPayload))
 
 	// Este evento es para notificar cuando el name se ha actualizado
-	eventPayload := fmt.Sprintf("NameUpdated-> Name: %s",name)
+	eventPayload = fmt.Sprintf("NameUpdated-> Name: %s",name)
 	ctx.GetStub().SetEvent("NameUpdated", []byte(eventPayload))
 
 	return nil
 }
 
-func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {
+func (sc *SimpleContract) Receive(ctx contractapi.TransactionContextInterface) error {
 	args := ctx.GetStub().GetArgs()
 	if len(args) > 0 {
 		return fmt.Errorf("Receive function does not accept arguments")
@@ -53,8 +53,8 @@ func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) 
 }
 
 func (sc *SimpleContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	sc.Total = 0
-	sc.Owner = ctx.GetClientIdentity().GetID()
+	sc.total = 0
+	sc.owner = ctx.GetClientIdentity().GetID()
 	return nil
 }
 

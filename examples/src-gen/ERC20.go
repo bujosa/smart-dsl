@@ -9,26 +9,26 @@ import (
 type ERC20 struct {
 	contractapi.Contract
 	balanceOf map[string]uint64
-	Name string
-	Symbol string
-	TotalSupply uint64
+	name string
+	symbol string
+	totalSupply uint64
 }
 
 func (sc *ERC20) GetName(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.Name, nil
+	return sc.name, nil
 }
 
 func (sc *ERC20) GetSymbol(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.Symbol, nil
+	return sc.symbol, nil
 }
 
 func (sc *ERC20) GetTotalSupply(ctx contractapi.TransactionContextInterface) (uint64, error) {
-	return sc.TotalSupply, nil
+	return sc.totalSupply, nil
 }
 
-func (rc *ERC20) Transfer(ctx contractapi.TransactionContextInterface to string, value uint64) error {
+func (sc *ERC20) Transfer(ctx contractapi.TransactionContextInterface, to string, value uint64) error {
 	// Este metodo es para transferir dinero
-	if balanceOf[msg.sender] >= value {
+	if sc.balanceOf[ctx.GetClientIdentity().GetID()]>=value {
 		return fmt.Errorf("Saldo Insufiente")
 	}
 
@@ -40,9 +40,9 @@ func (rc *ERC20) Transfer(ctx contractapi.TransactionContextInterface to string,
 }
 
 func (sc *ERC20) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	sc.Name = ""
-	sc.Symbol = ""
-	sc.TotalSupply = 0
+	sc.name = ""
+	sc.symbol = ""
+	sc.totalSupply = 0
 	return nil
 }
 

@@ -10,7 +10,7 @@ type Receive struct {
 	contractapi.Contract
 }
 
-func (rc *ReceiveContract) Receive(ctx contractapi.TransactionContextInterface) error {
+func (sc *Receive) Receive(ctx contractapi.TransactionContextInterface) error {
 	args := ctx.GetStub().GetArgs()
 	if len(args) > 0 {
 		return fmt.Errorf("Receive function does not accept arguments")

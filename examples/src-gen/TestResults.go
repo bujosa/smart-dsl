@@ -9,10 +9,10 @@ import (
 type TestResults struct {
 	contractapi.Contract
 	Grade string
-	Amount uint64
-	StudentAddress string
-	TeacherAddress string
-	ParentsAddress string
+	amount uint64
+	studentAddress string
+	teacherAddress string
+	parentsAddress string
 }
 
 func (sc *TestResults) SetGrade(ctx contractapi.TransactionContextInterface, value string) error {
@@ -25,33 +25,33 @@ func (sc *TestResults) GetGrade(ctx contractapi.TransactionContextInterface) (st
 }
 
 func (sc *TestResults) GetAmount(ctx contractapi.TransactionContextInterface) (uint64, error) {
-	return sc.Amount, nil
+	return sc.amount, nil
 }
 
 func (sc *TestResults) GetStudentAddress(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.StudentAddress, nil
+	return sc.studentAddress, nil
 }
 
 func (sc *TestResults) GetTeacherAddress(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.TeacherAddress, nil
+	return sc.teacherAddress, nil
 }
 
 func (sc *TestResults) GetParentsAddress(ctx contractapi.TransactionContextInterface) (string, error) {
-	return sc.ParentsAddress, nil
+	return sc.parentsAddress, nil
 }
 
-func (rc *TestResults) CreateContract(ctx contractapi.TransactionContextInterface) error {
+func (sc *TestResults) CreateContract(ctx contractapi.TransactionContextInterface) error {
 	// Este metodo es para crear un contracto
-	if ctx.GetClientIdentity().GetID()==sc.TeacherAddress {
+	if ctx.GetClientIdentity().GetID()==sc.teacherAddress {
 		return fmt.Errorf("Only Teacher")
 	}
 
 	return nil
 }
 
-func (rc *TestResults) WithdrawAmount(ctx contractapi.TransactionContextInterface) error {
+func (sc *TestResults) WithdrawAmount(ctx contractapi.TransactionContextInterface) error {
 	// Este metodo es para retirar fondo
-	if ctx.GetClientIdentity().GetID()==sc.StudentAddress {
+	if ctx.GetClientIdentity().GetID()==sc.studentAddress {
 		return fmt.Errorf("OnlyStudent")
 	}
 
@@ -60,10 +60,10 @@ func (rc *TestResults) WithdrawAmount(ctx contractapi.TransactionContextInterfac
 
 func (sc *TestResults) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	sc.Grade = ""
-	sc.Amount = 0
-	sc.StudentAddress = ""
-	sc.TeacherAddress = ""
-	sc.ParentsAddress = ""
+	sc.amount = 0
+	sc.studentAddress = ""
+	sc.teacherAddress = ""
+	sc.parentsAddress = ""
 	return nil
 }
 

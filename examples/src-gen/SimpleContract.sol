@@ -6,7 +6,9 @@ contract SimpleContract {
 	address owner;
 
 	event PaymentReceived(address sender, uint amount);
+	// Este evento es para notificar cuando el numero se ha actualizado
 	event XUpdated(uint256 x);
+	// Este evento es para notificar cuando el name se ha actualizado
 	event NameUpdated(string name);
 
 	modifier onlyOwner() {
