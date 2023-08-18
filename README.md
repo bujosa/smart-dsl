@@ -22,13 +22,11 @@ This repo is about MDE for blockchain, I create some models and xtext for auto g
 - Smart Contract in Hyperledger
 - Firefly Format Interface (FFI)
 
-## How to use
+## How to install
 
 - Clone this repo
-- Run as eclipse application the xtext project
-
-Or
-
-- Use the plugin jar in the folder `plugins` and put in your eclipse plugin folder (eclipse/plugins)
-- Restart eclipse
-- Create a new project with the .contract extension
+- Install Eclipse
+- Go to Help -> Install New Software
+- Add the plugin from this repo (local)
+- Install the plugin
+- Restart Eclipse
