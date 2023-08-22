@@ -1,0 +1,3 @@
+Contract DoctorBill {
+	version: "1.0.0"	
+}
