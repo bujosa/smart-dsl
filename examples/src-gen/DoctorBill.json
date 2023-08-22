@@ -1,6 +1,100 @@
 {
     "name": "DoctorBill",
     "version":  "1.0.0",
-    "methods": [],
+    "methods": [
+    	{
+    	    "name": "getInsurer",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getDoctor",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getPatient",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getAmount",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "integer",
+    	        	    "details": {
+    	        	        "type": "uint256",
+    	        	        "internalType": "uint256"
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "CreateInvoice",
+    	    "description": "This method is for create the invoice",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	},
+    	{
+    	    "name": "PayInvoice",
+    	    "description": "This method is for pay the invoice",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	}
+    ]
+    ,
 	"events": []
 }

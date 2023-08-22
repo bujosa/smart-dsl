@@ -1,3 +1,28 @@
 Contract DoctorBill {
-	version: "1.0.0"	
+	version: "1.0.0"
+	insurer address
+	doctor address
+	patient string
+	amount integer
+	
+	validator onlyDoctor() {
+		message: "Only Doctor"
+		validation: "msg.sender == doctor"
+	}
+	
+	validator onlyInsurer(){
+		message: "Only Insurer"
+		validation:"msg.sender == insurer"
+	}
+	
+	method CreateInvoice() -> {
+		description: "This method is for create the invoice"
+		validators: onlyDoctor
+	}
+	
+	method PayInvoice() -> {
+		description: "This method is for pay the invoice"
+		validators: onlyInsurer
+	}
+		
 }
