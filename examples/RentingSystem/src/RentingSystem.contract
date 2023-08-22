@@ -1,0 +1,28 @@
+Contract RentingSystem {
+	version: "v1.0.0"
+	landLord address
+	tenant address
+	location address
+	name string
+	rent integer
+	
+	validator onlyTenant() {
+		message: "Only Tenant"
+		validation: "msg.sender == tenant"
+	}
+	
+	validator onlyLandLord() {
+		message: "Only LandLord"
+		validation: "msg.sender == landLord"
+	}
+	
+	method setRent(_rent integer) -> {
+		description: "This operation is for set the new rent value"
+		validators: onlyLandLord
+	}
+	
+	method payRent() -> {
+		description: "This operation is for pay the rent"
+		validators: onlyTenant
+	}
+}
