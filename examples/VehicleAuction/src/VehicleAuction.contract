@@ -15,7 +15,7 @@ Contract VehicleAuction {
 		validation: "msg.sender == owner"
 	}
 	
-	method placeBid(newAmount integer) -> {
+	method placeBid(_bidAmount integer) -> {
 		description: "This operation if for bid"
 		validators: onlyBidder
 	}

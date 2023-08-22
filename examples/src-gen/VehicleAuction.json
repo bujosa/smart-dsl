@@ -85,7 +85,7 @@
     	    "description": "This operation if for bid",
     	    "params": [
     	    	{
-    	    	    "name": "newAmount",
+    	    	    "name": "_bidAmount",
     	    	    "schema": {
     	    	        "type": "integer",
     	    	        "details": {

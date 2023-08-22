@@ -40,12 +40,14 @@ contract VehicleAuction {
 		return bidAmount;
 	}
 
-	function placeBid(uint256 newAmount) public onlyBidder  {
+	function placeBid(uint256 _bidAmount) public onlyBidder  {
 		// This operation if for bid
+		bidAmount = _bidAmount;
 	}
 
 	function changeOwner(address _owner) public onlyOwner  {
 		// This operation is only for change the owner
+		owner = _owner;
 	}
 
 }

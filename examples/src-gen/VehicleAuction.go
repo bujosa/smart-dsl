@@ -30,7 +30,7 @@ func (sc *VehicleAuction) GetBidAmount(ctx contractapi.TransactionContextInterfa
 	return sc.bidAmount, nil
 }
 
-func (sc *VehicleAuction) PlaceBid(ctx contractapi.TransactionContextInterface, newAmount uint64) error {
+func (sc *VehicleAuction) PlaceBid(ctx contractapi.TransactionContextInterface, _bidAmount uint64) error {
 	// This operation if for bid
 	if ctx.GetClientIdentity().GetID()==sc.bidder {
 		return fmt.Errorf("Only Bidder")
