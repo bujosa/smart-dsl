@@ -446,10 +446,35 @@ public class SolidityGenerator extends AbstractGenerator {
           String _plus_7 = (_plus_6 + "\n");
           code.append(_plus_7);
         }
+        code.append(this.checkParams(contract, method));
         code.append(events);
         code.append("\t}\n\n");
       }
     }
+  }
+  
+  public String checkParams(final Contract contract, final Method method) {
+    String params = "";
+    final HashMap<String, String> hashTable = new HashMap<String, String>();
+    EList<Attribute> _attributes = contract.getAttributes();
+    for (final Attribute attribute : _attributes) {
+      hashTable.put(attribute.getName(), "attribute");
+    }
+    EList<Param> _params = method.getParams();
+    for (final Param param : _params) {
+      {
+        String newParam = param.getName().replace("_", "");
+        boolean _contains = param.getName().contains("_");
+        if (_contains) {
+          boolean _containsKey = hashTable.containsKey(newParam);
+          if (_containsKey) {
+            String _params_1 = params;
+            params = (_params_1 + (((("\t\t" + newParam) + " = _") + newParam) + ";\n"));
+          }
+        }
+      }
+    }
+    return params;
   }
   
   public String getSolidityDataType(final String dataType) {

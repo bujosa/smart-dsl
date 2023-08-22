@@ -20,7 +20,7 @@ Contract VehicleAuction {
 		validators: onlyBidder
 	}
 	
-	method changeOwner(newOwner address) -> {
+	method changeOwner(_owner address) -> {
 		description: "This operation is only for change the owner"
 		validators:onlyOwner
 	}

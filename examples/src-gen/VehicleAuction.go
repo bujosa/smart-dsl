@@ -39,7 +39,7 @@ func (sc *VehicleAuction) PlaceBid(ctx contractapi.TransactionContextInterface, 
 	return nil
 }
 
-func (sc *VehicleAuction) ChangeOwner(ctx contractapi.TransactionContextInterface, newOwner string) error {
+func (sc *VehicleAuction) ChangeOwner(ctx contractapi.TransactionContextInterface, _owner string) error {
 	// This operation is only for change the owner
 	if ctx.GetClientIdentity().GetID()==sc.owner {
 		return fmt.Errorf("Only Owner")

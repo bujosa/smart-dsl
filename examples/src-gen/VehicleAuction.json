@@ -103,7 +103,7 @@
     	    "description": "This operation is only for change the owner",
     	    "params": [
     	    	{
-    	    	    "name": "newOwner",
+    	    	    "name": "_owner",
     	    	    "schema": {
     	    	        "type": "address",
     	    	        "details": {

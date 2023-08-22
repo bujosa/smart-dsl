@@ -14,6 +14,7 @@ import lsi.us.es.mis.xtext.contract.Validator
 import lsi.us.es.mis.xtext.contract.Method
 import java.util.regex.Pattern
 import java.util.HashMap
+import org.eclipse.xtext.xbase.lib.StringExtensions
 
 /**
  * Generates code from your model files on save.
@@ -296,9 +297,32 @@ class SolidityGenerator extends AbstractGenerator {
 	        if (method.description !== null){
 	        	code.append("\t\t// " + method.description + "\n")
 	        }
+	        code.append(checkParams(contract, method));
 	       	code.append(events);
 	        code.append("\t}\n\n")
 	    }
+	}
+	
+	def String checkParams(Contract contract, Method method) {
+		var params = ""
+		
+		val hashTable = new HashMap<String, String>()
+		
+		for (attribute: contract.attributes) {
+			hashTable.put(attribute.name, "attribute")
+		}
+		
+		for (param: method.params){
+			var newParam = param.name.replace("_", "")
+			if (param.name.contains("_")) {
+				if (hashTable.containsKey(newParam)){
+					params += "\t\t" + newParam + " = _"+newParam+";\n"
+				}
+			}
+		}
+		
+		
+		return params
 	}
 	
 	def String getSolidityDataType(String dataType) {

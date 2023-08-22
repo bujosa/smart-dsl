@@ -44,7 +44,7 @@ contract VehicleAuction {
 		// This operation if for bid
 	}
 
-	function changeOwner(address newOwner) public onlyOwner  {
+	function changeOwner(address _owner) public onlyOwner  {
 		// This operation is only for change the owner
 	}
 
