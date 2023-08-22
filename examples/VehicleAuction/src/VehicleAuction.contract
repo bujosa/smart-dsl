@@ -1,0 +1,3 @@
+Contract VehicleAuction {
+	version: "v1.0.0"
+}
