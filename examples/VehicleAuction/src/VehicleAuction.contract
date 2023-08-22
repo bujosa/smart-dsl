@@ -1,3 +1,27 @@
 Contract VehicleAuction {
 	version: "v1.0.0"
+	owner address
+	bidder address
+	name string
+	bidAmount integer
+	
+	validator onlyBidder () {
+		message: "Only Bidder"
+		validation: "msg.sender == bidder"
+	}
+	
+	validator onlyOwner () {
+		message: "Only Owner"
+		validation: "msg.sender == owner"
+	}
+	
+	method placeBid(newAmount integer) -> {
+		description: "This operation if for bid"
+		validators: onlyBidder
+	}
+	
+	method changeOwner(newOwner address) -> {
+		description: "This operation is only for change the owner"
+		validators:onlyOwner
+	}
 }

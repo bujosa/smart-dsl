@@ -1,0 +1,123 @@
+{
+    "name": "VehicleAuction",
+    "version":  "v1.0.0",
+    "methods": [
+    	{
+    	    "name": "getOwner",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getBidder",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getName",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getBidAmount",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "integer",
+    	        	    "details": {
+    	        	        "type": "uint256",
+    	        	        "internalType": "uint256"
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "placeBid",
+    	    "description": "This operation if for bid",
+    	    "params": [
+    	    	{
+    	    	    "name": "newAmount",
+    	    	    "schema": {
+    	    	        "type": "integer",
+    	    	        "details": {
+    	    	            "type": "uint256",
+    	    	            "internalType": "uint256"
+    	    	        }
+    	    	    }
+    	    	}
+    	    ],
+    	    "returns": [],
+    	    "details": {}
+    	},
+    	{
+    	    "name": "changeOwner",
+    	    "description": "This operation is only for change the owner",
+    	    "params": [
+    	    	{
+    	    	    "name": "newOwner",
+    	    	    "schema": {
+    	    	        "type": "address",
+    	    	        "details": {
+    	    	            "type": "address",
+    	    	            "internalType": "address",
+    	    	            "indexed": false
+    	    	        }
+    	    	    }
+    	    	}
+    	    ],
+    	    "returns": [],
+    	    "details": {}
+    	}
+    ]
+    ,
+	"events": []
+}

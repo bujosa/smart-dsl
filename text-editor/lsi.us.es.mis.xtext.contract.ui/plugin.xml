@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension
+		point="org.eclipse.ui.editors">
+		<editor
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+			default="true"
+			extensions="contract"
+			id="lsi.us.es.mis.xtext.Contract"
+			name="Contract Editor">
+		</editor>
+	</extension>
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+			<activeWhen>
+				<reference
+					definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="lsi.us.es.mis.xtext.Contract.validate">
+			<activeWhen>
+				<reference
+					definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<!-- copy qualified name -->
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
+			<activeWhen>
+				<reference definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
+			<activeWhen>
+				<and>
+					<reference definitionId="lsi.us.es.mis.xtext.Contract.XtextEditor.opened" />
+					<iterate>
+						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="lsi.us.es.mis.xtext.Contract.Editor.opened">
+			<and>
+				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="lsi.us.es.mis.xtext.Contract"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+		<definition id="lsi.us.es.mis.xtext.Contract.XtextEditor.opened">
+			<and>
+				<reference definitionId="isXtextEditorActive"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="lsi.us.es.mis.xtext.Contract"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+	</extension>
+	<extension
+			point="org.eclipse.ui.preferencePages">
+		<page
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="lsi.us.es.mis.xtext.Contract"
+			name="Contract">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+		</page>
+		<page
+			category="lsi.us.es.mis.xtext.Contract"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="lsi.us.es.mis.xtext.Contract.coloring"
+			name="Syntax Coloring">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+		</page>
+		<page
+			category="lsi.us.es.mis.xtext.Contract"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="lsi.us.es.mis.xtext.Contract.templates"
+			name="Templates">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+		</page>
+	</extension>
+	<extension
+			point="org.eclipse.ui.propertyPages">
+		<page
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="lsi.us.es.mis.xtext.Contract"
+			name="Contract">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension
+		point="org.eclipse.ui.keywords">
+		<keyword
+			id="lsi.us.es.mis.xtext.ui.keyword_Contract"
+			label="Contract"/>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Trigger expensive validation"
+			id="lsi.us.es.mis.xtext.Contract.validate"
+			name="Validate">
+		</command>
+		<!-- copy qualified name -->
+		<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+		</command>
+		<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command
+				commandId="lsi.us.es.mis.xtext.Contract.validate"
+				style="push"
+				tooltip="Trigger expensive validation">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<!-- copy qualified name -->
+		<menuContribution locationURI="popup:#TextEditorContext?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:edit?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.xtext.ui.outline?after=additions">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<and>
+						<reference definitionId="lsi.us.es.mis.xtext.Contract.XtextEditor.opened" />
+						<iterate>
+							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			commandId="org.eclipse.xtext.ui.editor.FindReferences">
+			<activeWhen>
+				<reference
+					definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="contract"
+			id="lsi.us.es.mis.xtext.Contract.contenttype"
+			name="Contract File"
+			priority="normal">
+		</content-type>
+	</extension>
+	<!-- adding resource factories -->
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="contract">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+		<resourceServiceProvider
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="contract">
+		</resourceServiceProvider>
+	</extension>
+	<!-- marker definitions for lsi.us.es.mis.xtext.Contract -->
+	<extension
+			id="contract.check.fast"
+			name="Contract Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.fast"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="contract.check.normal"
+			name="Contract Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.normal"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="contract.check.expensive"
+			name="Contract Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.expensive"/>
+		<persistent value="true"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="lsi.us.es.mis.xtext.Contract"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="lsi.us.es.mis.xtext.Contract.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.xtext.builder.participant">
+		<participant
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			fileExtensions="contract"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="lsi.us.es.mis.xtext.Contract"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="lsi.us.es.mis.xtext.Contract.compiler.preferencePage"
+			name="Compiler">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.propertyPages">
+		<page
+			category="lsi.us.es.mis.xtext.Contract"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="lsi.us.es.mis.xtext.Contract.compiler.propertyPage"
+			name="Compiler">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
+			<command
+				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
+				id="lsi.us.es.mis.xtext.Contract.OpenGeneratedCode"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
+			<activeWhen>
+				<reference definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened" />
+			</activeWhen>
+		</handler>
+	</extension>
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- quickfix marker resolution generator for lsi.us.es.mis.xtext.Contract -->
+	<extension
+			point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="lsi.us.es.mis.xtext.contract.ui.contract.check.fast">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="lsi.us.es.mis.xtext.contract.ui.contract.check.normal">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="lsi.us.es.mis.xtext.contract.ui.contract.check.expensive">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+	</extension>
+	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="lsi.us.es.mis.xtext.Contract.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="lsi.us.es.mis.xtext.Contract"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="lsi.us.es.mis.xtext.Contract.refactoring"
+			name="Refactoring">
+			<keywordReference id="lsi.us.es.mis.xtext.ui.keyword_Contract"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.compare.contentViewers">
+		<viewer id="lsi.us.es.mis.xtext.Contract.compare.contentViewers"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="contract">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="lsi.us.es.mis.xtext.Contract.contenttype"
+			contentViewerId="lsi.us.es.mis.xtext.Contract.compare.contentViewers" />
+	</extension>
+	<extension point="org.eclipse.compare.contentMergeViewers">
+		<viewer id="lsi.us.es.mis.xtext.Contract.compare.contentMergeViewers"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="contract" label="Contract Compare">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="lsi.us.es.mis.xtext.Contract.contenttype"
+			contentMergeViewerId="lsi.us.es.mis.xtext.Contract.compare.contentMergeViewers" />
+	</extension>
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider id="lsi.us.es.mis.xtext.Contract.editors.documentProviders"
+			class="lsi.us.es.mis.xtext.ui.ContractExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+			extensions="contract">
+		</provider>
+	</extension>
+	<extension point="org.eclipse.team.core.fileTypes">
+		<fileTypes
+			extension="contract"
+			type="text">
+		</fileTypes>
+	</extension>
+</plugin>
