@@ -1,0 +1,132 @@
+{
+    "name": "RentingSystem",
+    "version":  "v1.0.0",
+    "methods": [
+    	{
+    	    "name": "getLandLord",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getTenant",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getLocation",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "address",
+    	        	    "details": {
+    	        	        "type": "address",
+    	        	        "internalType": "address",
+    	        	        "indexed": false
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getName",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "string"
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "getRent",
+    	    "description": "",
+    	    "params": [],
+    	    "returns": [
+    	        {
+    	        	"name": "output",
+    	        	"schema": {
+    	        	    "type": "integer",
+    	        	    "details": {
+    	        	        "type": "uint256",
+    	        	        "internalType": "uint256"
+    	        	    }
+    	        	}
+    	        }
+    	    ],
+    	    "details": {
+    	        "stateMutability": "viewable"
+    	    }
+    	},
+    	{
+    	    "name": "setRent",
+    	    "description": "This operation is for set the new rent value",
+    	    "params": [
+    	    	{
+    	    	    "name": "_rent",
+    	    	    "schema": {
+    	    	        "type": "integer",
+    	    	        "details": {
+    	    	            "type": "uint256",
+    	    	            "internalType": "uint256"
+    	    	        }
+    	    	    }
+    	    	}
+    	    ],
+    	    "returns": [],
+    	    "details": {}
+    	},
+    	{
+    	    "name": "payRent",
+    	    "description": "This operation is for pay the rent",
+    	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	}
+    ]
+    ,
+	"events": []
+}
