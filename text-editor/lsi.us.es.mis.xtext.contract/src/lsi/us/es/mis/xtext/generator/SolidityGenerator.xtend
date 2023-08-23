@@ -293,7 +293,7 @@ class SolidityGenerator extends AbstractGenerator {
 	        	}
 	        }
 	        
-	        code.append(") public" + modifiers + "" + returns +" {\n")
+	        code.append(") public" + checkMutability(method) + modifiers + "" + returns +" {\n")
 	        if (method.description !== null){
 	        	code.append("\t\t// " + method.description + "\n")
 	        }
@@ -301,6 +301,13 @@ class SolidityGenerator extends AbstractGenerator {
 	       	code.append(events);
 	        code.append("\t}\n\n")
 	    }
+	}
+	
+	def String checkMutability(Method method) {
+		if (method.statemutability !== null){
+			return " " + method.statemutability + " "
+		}
+		return ""
 	}
 	
 	def String checkParams(Contract contract, Method method) {

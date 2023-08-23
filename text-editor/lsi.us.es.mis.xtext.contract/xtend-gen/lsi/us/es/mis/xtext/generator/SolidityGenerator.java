@@ -437,20 +437,37 @@ public class SolidityGenerator extends AbstractGenerator {
             }
           }
         }
-        code.append(((((") public" + modifiers) + "") + returns) + " {\n"));
+        String _checkMutability = this.checkMutability(method);
+        String _plus_6 = (") public" + _checkMutability);
+        String _plus_7 = (_plus_6 + modifiers);
+        String _plus_8 = (_plus_7 + "");
+        String _plus_9 = (_plus_8 + returns);
+        String _plus_10 = (_plus_9 + " {\n");
+        code.append(_plus_10);
         String _description = method.getDescription();
         boolean _tripleNotEquals = (_description != null);
         if (_tripleNotEquals) {
           String _description_1 = method.getDescription();
-          String _plus_6 = ("\t\t// " + _description_1);
-          String _plus_7 = (_plus_6 + "\n");
-          code.append(_plus_7);
+          String _plus_11 = ("\t\t// " + _description_1);
+          String _plus_12 = (_plus_11 + "\n");
+          code.append(_plus_12);
         }
         code.append(this.checkParams(contract, method));
         code.append(events);
         code.append("\t}\n\n");
       }
     }
+  }
+  
+  public String checkMutability(final Method method) {
+    String _statemutability = method.getStatemutability();
+    boolean _tripleNotEquals = (_statemutability != null);
+    if (_tripleNotEquals) {
+      String _statemutability_1 = method.getStatemutability();
+      String _plus = (" " + _statemutability_1);
+      return (_plus + " ");
+    }
+    return "";
   }
   
   public String checkParams(final Contract contract, final Method method) {
