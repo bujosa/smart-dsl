@@ -21,7 +21,7 @@ Contract RentingSystem {
 		validators: onlyLandLord
 	}
 	
-	method payRent() -> {
+	method payRent() stateMutability: "payable" -> {
 		description: "This operation is for pay the rent"
 		validators: onlyTenant
 	}
