@@ -14,7 +14,7 @@ import lsi.us.es.mis.xtext.contract.Validator
 import lsi.us.es.mis.xtext.contract.Method
 import java.util.regex.Pattern
 import java.util.HashMap
-import org.eclipse.xtext.xbase.lib.StringExtensions
+
 
 /**
  * Generates code from your model files on save.
@@ -165,25 +165,31 @@ class SolidityGenerator extends AbstractGenerator {
 			}
 			
 			code.append("\tmodifier " + modifier.name + params + " {\n")
-            code.append("\t\trequire("+modifier.validation+", \"" + modifier.message + "\");\n")
+            code.append("\t\trequire("+checkCondition(modifier, contract)+", \"" + modifier.message + "\");\n")
             code.append("\t\t_;\n")
             code.append("\t}\n\n")
 		}
 	}
 	
-	def String checkCondition(String condition, Validator validator, Method method){
+	def String checkCondition(Validator validator, Contract contract){
+		var condition = validator.validation
+		
 		val regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
 		val pattern = Pattern.compile(regex)
 		val matcher = pattern.matcher(condition)
+		
+		val regex2 = "\\s*(\\w+)\\s*==\\s*'([^']+)'"
+		val pattern2 = Pattern.compile(regex2)
+		val matcher2 = pattern2.matcher(condition)
+		
 		val hashTable = new HashMap<String, String>()
-		
 		for (param: validator.params) {
-			hashTable.put(param.name, "validator")
+			hashTable.put(param.name, param.type.toString())
+		}
+		for (attribute: contract.attributes) {
+			hashTable.put(attribute.name, attribute.type.toString())
 		}
 		
-		for (param: method.params) {
-			hashTable.put(param.name, "param")
-		}
 		
 		if (matcher.matches) {
             var leftSide = matcher.group(1).replaceAll("\\s", "")
@@ -199,9 +205,19 @@ class SolidityGenerator extends AbstractGenerator {
             }
             
             return leftSide +" " + operator + " "+ rightSide
-        } else {
-            return condition
-        }
+        }  
+        
+        if (matcher2.matches){
+    	    val variable = matcher2.group(1)
+			val value = matcher2.group(2)
+			val keyvalue = hashTable.get(variable)
+			condition = condition.replace("'"+value+"'", "keccak256(bytes("+"\"" + value +"\"" +"))")
+			if (keyvalue == "string"){
+				condition = condition.replace(variable, "keccak256(bytes("+ variable +"))")
+			}
+        } 
+        
+        return condition
 	}
 	
 	def appendReceiveFunction(StringBuilder code) {

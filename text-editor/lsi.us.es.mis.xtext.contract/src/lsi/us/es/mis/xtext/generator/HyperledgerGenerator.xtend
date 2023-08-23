@@ -207,6 +207,11 @@ class HyperledgerGenerator extends AbstractGenerator {
 		val regex = "([\\w.\\[\\]]+)\\s*([!=<>]+)\\s*([\\w.]+)";
 		val pattern = Pattern.compile(regex)
 		val matcher = pattern.matcher(condition)
+		
+		val regex2 = "\\s*(\\w+)\\s*==\\s*'([^']+)'"
+		val pattern2 = Pattern.compile(regex2)
+		val matcher2 = pattern2.matcher(condition)
+		
 		val hashTable = new HashMap<String, String>()
 		
 		for (param: validator.params) {
@@ -237,7 +242,13 @@ class HyperledgerGenerator extends AbstractGenerator {
         		rightSide = "sc."+rightSide
         	}
             return leftSide+operator+rightSide
-        } else {
+        } else if(matcher2.matches) {
+        	 val variable = matcher2.group(1)
+    	     if(!variable.matches("\\d+") && !hashTable.containsKey(variable)){
+    	     	return condition.replace(variable, "sc."+variable).replace("'","\"")
+    	     }
+        }
+        else {
             return condition
         }
 	}

@@ -230,8 +230,8 @@ public class SolidityGenerator extends AbstractGenerator {
         String _plus_7 = (_plus_6 + params);
         String _plus_8 = (_plus_7 + " {\n");
         code.append(_plus_8);
-        String _validation = modifier.getValidation();
-        String _plus_9 = ("\t\trequire(" + _validation);
+        String _checkCondition = this.checkCondition(modifier, contract);
+        String _plus_9 = ("\t\trequire(" + _checkCondition);
         String _plus_10 = (_plus_9 + ", \"");
         String _message = modifier.getMessage();
         String _plus_11 = (_plus_10 + _message);
@@ -243,18 +243,22 @@ public class SolidityGenerator extends AbstractGenerator {
     }
   }
   
-  public String checkCondition(final String condition, final Validator validator, final Method method) {
+  public String checkCondition(final Validator validator, final Contract contract) {
+    String condition = validator.getValidation();
     final String regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
     final Pattern pattern = Pattern.compile(regex);
     final Matcher matcher = pattern.matcher(condition);
+    final String regex2 = "\\s*(\\w+)\\s*==\\s*\'([^\']+)\'";
+    final Pattern pattern2 = Pattern.compile(regex2);
+    final Matcher matcher2 = pattern2.matcher(condition);
     final HashMap<String, String> hashTable = new HashMap<String, String>();
     EList<Param> _params = validator.getParams();
     for (final Param param : _params) {
-      hashTable.put(param.getName(), "validator");
+      hashTable.put(param.getName(), param.getType().toString());
     }
-    EList<Param> _params_1 = method.getParams();
-    for (final Param param_1 : _params_1) {
-      hashTable.put(param_1.getName(), "param");
+    EList<Attribute> _attributes = contract.getAttributes();
+    for (final Attribute attribute : _attributes) {
+      hashTable.put(attribute.getName(), attribute.getType().toString());
     }
     boolean _matches = matcher.matches();
     if (_matches) {
@@ -270,9 +274,19 @@ public class SolidityGenerator extends AbstractGenerator {
         rightSide = "msg.sender";
       }
       return ((((leftSide + " ") + operator) + " ") + rightSide);
-    } else {
-      return condition;
     }
+    boolean _matches_1 = matcher2.matches();
+    if (_matches_1) {
+      final String variable = matcher2.group(1);
+      final String value = matcher2.group(2);
+      final String keyvalue = hashTable.get(variable);
+      condition = condition.replace((("\'" + value) + "\'"), (((("keccak256(bytes(" + "\"") + value) + "\"") + "))"));
+      boolean _equals_2 = Objects.equal(keyvalue, "string");
+      if (_equals_2) {
+        condition = condition.replace(variable, (("keccak256(bytes(" + variable) + "))"));
+      }
+    }
+    return condition;
   }
   
   public StringBuilder appendReceiveFunction(final StringBuilder code) {

@@ -340,6 +340,9 @@ public class HyperledgerGenerator extends AbstractGenerator {
     final String regex = "([\\w.\\[\\]]+)\\s*([!=<>]+)\\s*([\\w.]+)";
     final Pattern pattern = Pattern.compile(regex);
     final Matcher matcher = pattern.matcher(condition);
+    final String regex2 = "\\s*(\\w+)\\s*==\\s*\'([^\']+)\'";
+    final Pattern pattern2 = Pattern.compile(regex2);
+    final Matcher matcher2 = pattern2.matcher(condition);
     final HashMap<String, String> hashTable = new HashMap<String, String>();
     EList<Param> _params = validator.getParams();
     for (final Param param : _params) {
@@ -369,8 +372,17 @@ public class HyperledgerGenerator extends AbstractGenerator {
       }
       return ((leftSide + operator) + rightSide);
     } else {
-      return condition;
+      boolean _matches_1 = matcher2.matches();
+      if (_matches_1) {
+        final String variable = matcher2.group(1);
+        if (((!variable.matches("\\d+")) && (!hashTable.containsKey(variable)))) {
+          return condition.replace(variable, ("sc." + variable)).replace("\'", "\"");
+        }
+      } else {
+        return condition;
+      }
     }
+    return null;
   }
   
   public StringBuilder appendReceiveMethod(final Contract contract, final StringBuilder code) {
