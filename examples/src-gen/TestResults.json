@@ -3,23 +3,6 @@
     "version":  "v1.0.0",
     "methods": [
     	{
-    	    "name": "setGrade",
-    	    "description": "",
-    	    "params": [
-    	        {
-    	            "name": "_value",
-    	            "schema": {
-    	                "type": "string",
-    	                "details": {
-    	                    "type": "string memory",
-    	                    "internalType": "string memory"
-    	                }
-    	            }
-    	        }
-    	    ],
-    	    "returns": []
-    	},
-    	{
     	    "name": "getGrade",
     	    "description": "",
     	    "params": [],
@@ -120,19 +103,62 @@
     	},
     	{
     	    "name": "CreateContract",
-    	    "description": "Este metodo es para crear un contracto",
+    	    "description": "This method is for create the contract",
     	    "params": [],
     	    "returns": [],
     	    "details": {}
     	},
     	{
     	    "name": "WithdrawAmount",
-    	    "description": "Este metodo es para retirar fondo",
+    	    "description": "This method is for witdraw the reward amount",
     	    "params": [],
+    	    "returns": [],
+    	    "details": {}
+    	},
+    	{
+    	    "name": "SetGrade",
+    	    "description": "This method is for set the grade",
+    	    "params": [
+    	    	{
+    	    	    "name": "_Grade",
+    	    	    "schema": {
+    	    	        "type": "string",
+    	    	        "details": {
+    	    	            "type": "string memory",
+    	    	            "internalType": "string memory"
+    	    	        }
+    	    	    }
+    	    	}
+    	    ],
     	    "returns": [],
     	    "details": {}
     	}
     ]
     ,
-	"events": []
+	"events": [
+		{
+		    "name": "NewGrade",
+		    "description": "Send event when the grade is updated",
+		    "params": [
+		    	{
+		    	    "name": "_Grade",
+		    	    "schema": {
+		    	        "type": "string",
+		    	        "details": {
+		    	            "type": "string memory",
+		    	            "internalType": "string memory"
+		    	        }
+		    	    }
+		    	}
+		    ],
+		    "details": {}
+		},
+		{
+		    "name": "MoneyWithdrawn",
+		    "description": "Send event when the money is withdrawn",
+		    "params": [
+		    ],
+		    "details": {}
+		}
+	]
 }

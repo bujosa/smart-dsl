@@ -8,8 +8,28 @@ contract TestResults {
 	address teacherAddress;
 	address parentsAddress;
 
+	// Send event when the grade is updated
+	event NewGrade(string _Grade);
+	// Send event when the money is withdrawn
+	event MoneyWithdrawn();
+
+	modifier validAmount() {
+		require(amount > 0, "The amount needs to be greater than zero");
+		_;
+	}
+
+	modifier validGrade() {
+		require(keccak256(bytes(Grade))!='', "The grade cant be empty");
+		_;
+	}
+
+	modifier checkGrade() {
+		require(keccak256(bytes(Grade))=='A', "The grade needs to be an A");
+		_;
+	}
+
 	modifier onlyParents() {
-		require(msg.sender==parentsAddress, "Only Parents");
+		require(msg.sender == parentsAddress, "Only Parents");
 		_;
 	}
 
@@ -29,10 +49,6 @@ contract TestResults {
 		studentAddress = _studentAddress;
 		teacherAddress = _teacherAddress;
 		parentsAddress = _parentsAddress;
-	}
-
-	function setGrade(string memory _value) public {
-		Grade = _value;
 	}
 
 	function getGrade() public view returns (string memory) {
@@ -55,12 +71,19 @@ contract TestResults {
 		return parentsAddress;
 	}
 
-	function CreateContract() public onlyTeacher  {
-		// Este metodo es para crear un contracto
+	function CreateContract() public onlyParents  {
+		// This method is for create the contract
 	}
 
-	function WithdrawAmount() public onlyStudent  {
-		// Este metodo es para retirar fondo
+	function WithdrawAmount() public onlyStudent validAmount checkGrade  {
+		// This method is for witdraw the reward amount
+		emit MoneyWithdrawn();
+	}
+
+	function SetGrade(string memory _Grade) public onlyTeacher validGrade  {
+		// This method is for set the grade
+		Grade = _Grade;
+		emit NewGrade(_Grade);
 	}
 
 }

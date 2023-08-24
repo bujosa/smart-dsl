@@ -1,10 +1,33 @@
 Contract TestResults {
 	version: 'v1.0.0'
-	modifiable Grade string
+	Grade string
 	amount integer
 	studentAddress address
 	teacherAddress address
 	parentsAddress address
+	
+	event NewGrade(_Grade string){
+		description: "Send event when the grade is updated"
+	}
+	
+	event MoneyWithdrawn() {
+		description: "Send event when the money is withdrawn"
+	}
+	
+	validator validAmount() {
+		message: "The amount needs to be greater than zero"
+		validation: "amount > 0"
+	}
+	
+	validator validGrade() {
+		message: "The grade cant be empty"
+		validation: "Grade!=''"
+	}
+	
+	validator checkGrade() {
+		message: "The grade needs to be an A"
+		validation: "Grade=='A'"
+	}
 	
 	validator onlyParents(){
 		message: "Only Parents"
@@ -22,12 +45,19 @@ Contract TestResults {
 	}
 	
 	method  CreateContract () -> {
-		description: "Este metodo es para crear un contracto"
-		validators: onlyTeacher
+		description: "This method is for create the contract"
+		validators: onlyParents
 	}
 	
 	method WithdrawAmount() -> {
-		description: "Este metodo es para retirar fondo"
-		validators: onlyStudent
+		description: "This method is for witdraw the reward amount"
+		validators: onlyStudent, validAmount, checkGrade
+		events: MoneyWithdrawn
+	}
+	
+	method SetGrade(_Grade string) -> {
+		description: "This method is for set the grade"
+		validators: onlyTeacher, validGrade
+		events: NewGrade
 	}
 }

@@ -12,12 +12,12 @@ contract SimpleContract {
 	event NameUpdated(string name);
 
 	modifier onlyOwner() {
-		require(msg.sender== owner, "Only the contract owner can call this function.");
+		require(msg.sender == owner, "Only the contract owner can call this function.");
 		_;
 	}
 
 	modifier validNumber(uint256 x) {
-		require(x>4, "The number must be greater than 4");
+		require(x > 4, "The number must be greater than 4");
 		_;
 	}
 
