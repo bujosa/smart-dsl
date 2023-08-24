@@ -6,10 +6,20 @@ Contract DigitalCertificate {
 	Hash string
 	dataStore verifiers fromType address toType string
 	
+	validator validCertificate() {
+		message: "The certificate need to be valid"
+		validation: "Hash!=''"
+	}
+	
+	validator validVerifier(){
+		message: "The verifier need to be in the list of verifiers"
+		validation: "verifiers[msg.sender]!=''"
+	}
+	
 	validator onlyIssuer(){
 		message: "Only valid issuer"
 		validation: "msg.sender == issuerAddress"
-	}
+	}	
 	
 	validator onlyVerifier(){
 		message: "Only valid verifier"
@@ -23,11 +33,11 @@ Contract DigitalCertificate {
 	
 	method AcceptCertificate() -> {
 		description: "This method is for accept certificate"
-		validators: onlyVerifier
+		validators: onlyVerifier, validVerifier
 	}
 	
 	method RejectCertificate() -> {
 		description: "This method is for reject certificate"
-		validators: onlyVerifier
+		validators: onlyVerifier, validCertificate, validVerifier
 	}
 }
