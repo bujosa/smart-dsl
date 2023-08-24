@@ -8,6 +8,16 @@ contract DigitalCertificate {
 	string Hash;
 	mapping(address => string) public verifiers;
 
+	modifier validCertificate() {
+		require(keccak256(bytes(Hash))!=0, "The certificate need to be valid");
+		_;
+	}
+
+	modifier validVerifier() {
+		require(keccak256(bytes(verifiers[msg.sender]))!=0, "The verifier need to be in the list of verifiers");
+		_;
+	}
+
 	modifier onlyIssuer() {
 		require(msg.sender == issuerAddress, "Only valid issuer");
 		_;
@@ -45,11 +55,11 @@ contract DigitalCertificate {
 		// This method is for create certificate
 	}
 
-	function AcceptCertificate() public onlyVerifier  {
+	function AcceptCertificate() public onlyVerifier validVerifier  {
 		// This method is for accept certificate
 	}
 
-	function RejectCertificate() public onlyVerifier  {
+	function RejectCertificate() public onlyVerifier validCertificate validVerifier  {
 		// This method is for reject certificate
 	}
 

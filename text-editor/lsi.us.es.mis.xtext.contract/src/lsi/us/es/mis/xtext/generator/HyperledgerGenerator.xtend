@@ -115,7 +115,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 	        	code.append("\t// " + method.description + "\n")
 	        }
 	        
-	       	appendValidators(method, code)
+	       	appendValidators(contract, method, code)
 	    
 	    	appendEvents(method, code)
 	     
@@ -128,13 +128,13 @@ class HyperledgerGenerator extends AbstractGenerator {
 	    }
 	}
 	
-	def appendValidators(Method method, StringBuilder code){
+	def appendValidators(Contract contract, Method method, StringBuilder code){
 		if (method.validators.length == 0){
 			return
 		}
 		
 		for (validator: method.validators){
-			code.append("\tif " + checkCondition(validator.validation, validator, method) + " {\n")
+			code.append("\tif " + checkCondition(contract, validator, method) + " {\n")
 			code.append("\t\treturn fmt.Errorf(\""+ validator.message +"\")\n")
 			code.append("\t}\n\n")
 		}
@@ -177,7 +177,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 		if (event.params.length > 0) {
 			result += "-> "
 		} else {
-			return "\")"
+			return "\")\n"
 		}
 		
 		for (param: event.params){
@@ -203,7 +203,8 @@ class HyperledgerGenerator extends AbstractGenerator {
 		return result
 	}
 	
-	def String checkCondition(String condition, Validator validator, Method method){
+	def String checkCondition(Contract contract, Validator validator, Method method){
+		var condition = validator.validation
 		val regex = "([\\w.\\[\\]]+)\\s*([!=<>]+)\\s*([\\w.]+)";
 		val pattern = Pattern.compile(regex)
 		val matcher = pattern.matcher(condition)
@@ -222,7 +223,12 @@ class HyperledgerGenerator extends AbstractGenerator {
 			hashTable.put(param.name, "param")
 		}
 		
+		condition = condition.replace("msg.sender","ctx.GetClientIdentity().GetID()")
+		condition = condition.replace("from","ctx.GetClientIdentity().GetID()")
+		condition = condition.replace("'", "\"")
 		hashTable.put("ctx.GetClientIdentity().GetID()", "id")
+		hashTable.put("msg.sender", "id")
+		hashTable.put("from", "id")
 		
 		if (matcher.matches) {
             var leftSide = matcher.group(1).replaceAll("\\s", "")
@@ -249,6 +255,11 @@ class HyperledgerGenerator extends AbstractGenerator {
     	     }
         }
         else {
+        	for (attribute: contract.attributes){
+        		if (condition.contains(attribute.name) && !hashTable.containsKey(attribute.name)){
+        			return condition.replace(attribute.name, "sc."+attribute.name)
+        		}
+        	}
             return condition
         }
 	}

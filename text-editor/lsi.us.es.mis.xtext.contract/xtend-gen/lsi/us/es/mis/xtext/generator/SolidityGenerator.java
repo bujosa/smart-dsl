@@ -248,7 +248,7 @@ public class SolidityGenerator extends AbstractGenerator {
     final String regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
     final Pattern pattern = Pattern.compile(regex);
     final Matcher matcher = pattern.matcher(condition);
-    final String regex2 = "\\s*(\\w+)\\s*(==|!=)\\s*\'([^\']*)\'";
+    final String regex2 = "\\s*([^!=]*)\\s*(==|!=)\\s*\'([^\']*)\'";
     final Pattern pattern2 = Pattern.compile(regex2);
     final Matcher matcher2 = pattern2.matcher(condition);
     final HashMap<String, String> hashTable = new HashMap<String, String>();
@@ -278,11 +278,17 @@ public class SolidityGenerator extends AbstractGenerator {
     boolean _matches_1 = matcher2.matches();
     if (_matches_1) {
       final String variable = matcher2.group(1);
-      final String value = matcher2.group(2);
+      final String value = matcher2.group(3);
       final String keyvalue = hashTable.get(variable);
       boolean _equals_2 = Objects.equal(keyvalue, "string");
       if (_equals_2) {
         condition = condition.replace(variable, (("keccak256(bytes(" + variable) + "))"));
+      }
+      EList<DataStore> _dataStores = contract.getDataStores();
+      for (final DataStore mapping : _dataStores) {
+        if ((condition.contains(mapping.getName()) && Objects.equal(mapping.getToType().toString(), "string"))) {
+          condition = condition.replace(variable, (("keccak256(bytes(" + variable) + "))"));
+        }
       }
       int _length = value.length();
       boolean _equals_3 = (_length == 0);

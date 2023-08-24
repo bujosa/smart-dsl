@@ -189,7 +189,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
             String _plus_7 = (_plus_6 + "\n");
             code.append(_plus_7);
           }
-          this.appendValidators(method, code);
+          this.appendValidators(contract, method, code);
           this.appendEvents(method, code);
           code.append("\treturn nil\n");
           code.append("}\n\n");
@@ -205,7 +205,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
   
-  public void appendValidators(final Method method, final StringBuilder code) {
+  public void appendValidators(final Contract contract, final Method method, final StringBuilder code) {
     int _length = ((Object[])Conversions.unwrapArray(method.getValidators(), Object.class)).length;
     boolean _equals = (_length == 0);
     if (_equals) {
@@ -214,7 +214,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
     EList<Validator> _validators = method.getValidators();
     for (final Validator validator : _validators) {
       {
-        String _checkCondition = this.checkCondition(validator.getValidation(), validator, method);
+        String _checkCondition = this.checkCondition(contract, validator, method);
         String _plus = ("\tif " + _checkCondition);
         String _plus_1 = (_plus + " {\n");
         code.append(_plus_1);
@@ -290,7 +290,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
       String _result = result;
       result = (_result + "-> ");
     } else {
-      return "\")";
+      return "\")\n";
     }
     EList<Param> _params = event.getParams();
     for (final Param param : _params) {
@@ -336,7 +336,8 @@ public class HyperledgerGenerator extends AbstractGenerator {
     return result;
   }
   
-  public String checkCondition(final String condition, final Validator validator, final Method method) {
+  public String checkCondition(final Contract contract, final Validator validator, final Method method) {
+    String condition = validator.getValidation();
     final String regex = "([\\w.\\[\\]]+)\\s*([!=<>]+)\\s*([\\w.]+)";
     final Pattern pattern = Pattern.compile(regex);
     final Matcher matcher = pattern.matcher(condition);
@@ -352,7 +353,12 @@ public class HyperledgerGenerator extends AbstractGenerator {
     for (final Param param_1 : _params_1) {
       hashTable.put(param_1.getName(), "param");
     }
+    condition = condition.replace("msg.sender", "ctx.GetClientIdentity().GetID()");
+    condition = condition.replace("from", "ctx.GetClientIdentity().GetID()");
+    condition = condition.replace("\'", "\"");
     hashTable.put("ctx.GetClientIdentity().GetID()", "id");
+    hashTable.put("msg.sender", "id");
+    hashTable.put("from", "id");
     boolean _matches = matcher.matches();
     if (_matches) {
       String leftSide = matcher.group(1).replaceAll("\\s", "");
@@ -379,6 +385,15 @@ public class HyperledgerGenerator extends AbstractGenerator {
           return condition.replace(variable, ("sc." + variable)).replace("\'", "\"");
         }
       } else {
+        EList<Attribute> _attributes = contract.getAttributes();
+        for (final Attribute attribute : _attributes) {
+          if ((condition.contains(attribute.getName()) && (!hashTable.containsKey(attribute.getName())))) {
+            String _name = attribute.getName();
+            String _name_1 = attribute.getName();
+            String _plus = ("sc." + _name_1);
+            return condition.replace(_name, _plus);
+          }
+        }
         return condition;
       }
     }
