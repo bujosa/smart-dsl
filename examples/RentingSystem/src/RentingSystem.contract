@@ -2,7 +2,7 @@ Contract RentingSystem {
 	version: "v1.0.0"
 	landLord address
 	tenant address
-	location address
+	location string
 	name string
 	rent integer
 	
