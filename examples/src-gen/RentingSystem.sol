@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 contract RentingSystem {
 	address landLord;
 	address tenant;
-	address location;
+	string location;
 	string name;
 	uint256 rent;
 
@@ -18,7 +18,7 @@ contract RentingSystem {
 		_;
 	}
 
-	constructor(address _landLord, address _tenant, address _location, string memory _name, uint256 _rent) {
+	constructor(address _landLord, address _tenant, string memory _location, string memory _name, uint256 _rent) {
 		landLord = _landLord;
 		tenant = _tenant;
 		location = _location;
@@ -34,7 +34,7 @@ contract RentingSystem {
 		return tenant;
 	}
 
-	function getLocation() public view returns (address) {
+	function getLocation() public view returns (string memory) {
 		return location;
 	}
 

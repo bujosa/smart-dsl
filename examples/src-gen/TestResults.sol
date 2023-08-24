@@ -19,12 +19,12 @@ contract TestResults {
 	}
 
 	modifier validGrade() {
-		require(keccak256(bytes(Grade))!='', "The grade cant be empty");
+		require(keccak256(bytes(Grade))!=0, "The grade cant be empty");
 		_;
 	}
 
 	modifier checkGrade() {
-		require(keccak256(bytes(Grade))=='A', "The grade needs to be an A");
+		require(keccak256(bytes(Grade))==keccak256(bytes("A")), "The grade needs to be an A");
 		_;
 	}
 

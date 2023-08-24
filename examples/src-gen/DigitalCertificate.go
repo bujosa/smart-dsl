@@ -8,11 +8,11 @@ import (
 
 type DigitalCertificate struct {
 	contractapi.Contract
-	verifiers map[string]string
+	verifiers       map[string]string
 	verifierAddress string
-	issuerAddress string
-	verifier bool
-	Hash string
+	issuerAddress   string
+	verifier        bool
+	Hash            string
 }
 
 func (sc *DigitalCertificate) GetVerifierAddress(ctx contractapi.TransactionContextInterface) (string, error) {
@@ -33,7 +33,7 @@ func (sc *DigitalCertificate) GetHash(ctx contractapi.TransactionContextInterfac
 
 func (sc *DigitalCertificate) CreateCertificate(ctx contractapi.TransactionContextInterface) error {
 	// This method is for create certificate
-	if ctx.GetClientIdentity().GetID()==sc.issuerAddress {
+	if ctx.GetClientIdentity().GetID() == sc.issuerAddress {
 		return fmt.Errorf("Only valid issuer")
 	}
 
@@ -42,8 +42,12 @@ func (sc *DigitalCertificate) CreateCertificate(ctx contractapi.TransactionConte
 
 func (sc *DigitalCertificate) AcceptCertificate(ctx contractapi.TransactionContextInterface) error {
 	// This method is for accept certificate
-	if ctx.GetClientIdentity().GetID()==sc.verifierAddress {
+	if ctx.GetClientIdentity().GetID() == sc.verifierAddress {
 		return fmt.Errorf("Only valid verifier")
+	}
+
+	if sc.verifiers[ctx.GetClientIdentity().GetID()] != "" {
+		return fmt.Errorf("The verifier need to be in the list of verifiers")
 	}
 
 	return nil
@@ -51,8 +55,16 @@ func (sc *DigitalCertificate) AcceptCertificate(ctx contractapi.TransactionConte
 
 func (sc *DigitalCertificate) RejectCertificate(ctx contractapi.TransactionContextInterface) error {
 	// This method is for reject certificate
-	if ctx.GetClientIdentity().GetID()==sc.verifierAddress {
+	if ctx.GetClientIdentity().GetID() == sc.verifierAddress {
 		return fmt.Errorf("Only valid verifier")
+	}
+
+	if sc.Hash != "" {
+		return fmt.Errorf("The certificate need to be valid")
+	}
+
+	if sc.verifiers[ctx.GetClientIdentity().GetID()] != "" {
+		return fmt.Errorf("The verifier need to be in the list of verifiers")
 	}
 
 	return nil
