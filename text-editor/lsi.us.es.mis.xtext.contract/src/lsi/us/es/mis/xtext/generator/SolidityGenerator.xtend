@@ -178,7 +178,7 @@ class SolidityGenerator extends AbstractGenerator {
 		val pattern = Pattern.compile(regex)
 		val matcher = pattern.matcher(condition)
 		
-		val regex2 = "\\s*(\\w+)\\s*==\\s*'([^']+)'"
+		val regex2 = "\\s*(\\w+)\\s*(==|!=)\\s*'([^']*)'"
 		val pattern2 = Pattern.compile(regex2)
 		val matcher2 = pattern2.matcher(condition)
 		
@@ -211,9 +211,13 @@ class SolidityGenerator extends AbstractGenerator {
     	    val variable = matcher2.group(1)
 			val value = matcher2.group(2)
 			val keyvalue = hashTable.get(variable)
-			condition = condition.replace("'"+value+"'", "keccak256(bytes("+"\"" + value +"\"" +"))")
 			if (keyvalue == "string"){
 				condition = condition.replace(variable, "keccak256(bytes("+ variable +"))")
+			}
+			if  (value.length() == 0){
+				condition = condition.replace("''", 0.toString())
+			} else {
+				condition = condition.replace("'"+value+"'", "keccak256(bytes("+"\"" + value +"\"" +"))")
 			}
         } 
         

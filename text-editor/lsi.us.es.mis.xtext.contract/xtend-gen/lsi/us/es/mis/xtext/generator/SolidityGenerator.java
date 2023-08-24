@@ -248,7 +248,7 @@ public class SolidityGenerator extends AbstractGenerator {
     final String regex = "([\\w.]+)\\s*([!=<>]+)\\s*([\\w.]+)";
     final Pattern pattern = Pattern.compile(regex);
     final Matcher matcher = pattern.matcher(condition);
-    final String regex2 = "\\s*(\\w+)\\s*==\\s*\'([^\']+)\'";
+    final String regex2 = "\\s*(\\w+)\\s*(==|!=)\\s*\'([^\']*)\'";
     final Pattern pattern2 = Pattern.compile(regex2);
     final Matcher matcher2 = pattern2.matcher(condition);
     final HashMap<String, String> hashTable = new HashMap<String, String>();
@@ -280,10 +280,16 @@ public class SolidityGenerator extends AbstractGenerator {
       final String variable = matcher2.group(1);
       final String value = matcher2.group(2);
       final String keyvalue = hashTable.get(variable);
-      condition = condition.replace((("\'" + value) + "\'"), (((("keccak256(bytes(" + "\"") + value) + "\"") + "))"));
       boolean _equals_2 = Objects.equal(keyvalue, "string");
       if (_equals_2) {
         condition = condition.replace(variable, (("keccak256(bytes(" + variable) + "))"));
+      }
+      int _length = value.length();
+      boolean _equals_3 = (_length == 0);
+      if (_equals_3) {
+        condition = condition.replace("\'\'", Integer.valueOf(0).toString());
+      } else {
+        condition = condition.replace((("\'" + value) + "\'"), (((("keccak256(bytes(" + "\"") + value) + "\"") + "))"));
       }
     }
     return condition;

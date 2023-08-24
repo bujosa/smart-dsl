@@ -340,7 +340,7 @@ public class HyperledgerGenerator extends AbstractGenerator {
     final String regex = "([\\w.\\[\\]]+)\\s*([!=<>]+)\\s*([\\w.]+)";
     final Pattern pattern = Pattern.compile(regex);
     final Matcher matcher = pattern.matcher(condition);
-    final String regex2 = "\\s*(\\w+)\\s*==\\s*\'([^\']+)\'";
+    final String regex2 = "\\s*(\\w+)\\s*(==|!=)\\s*\'([^\']*)\'";
     final Pattern pattern2 = Pattern.compile(regex2);
     final Matcher matcher2 = pattern2.matcher(condition);
     final HashMap<String, String> hashTable = new HashMap<String, String>();

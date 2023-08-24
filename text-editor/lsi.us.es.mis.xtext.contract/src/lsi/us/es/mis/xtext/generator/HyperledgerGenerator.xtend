@@ -208,7 +208,7 @@ class HyperledgerGenerator extends AbstractGenerator {
 		val pattern = Pattern.compile(regex)
 		val matcher = pattern.matcher(condition)
 		
-		val regex2 = "\\s*(\\w+)\\s*==\\s*'([^']+)'"
+		val regex2 = "\\s*(\\w+)\\s*(==|!=)\\s*'([^']*)'"
 		val pattern2 = Pattern.compile(regex2)
 		val matcher2 = pattern2.matcher(condition)
 		
