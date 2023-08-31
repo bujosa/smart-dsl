@@ -1,0 +1,41 @@
+{
+    "name": "SimpleStorage",
+    "version": "v1.0.0",
+    "methods": [
+        {
+            "name": "set",
+            "description": "This function is to set the stored data.",
+            "params": [
+                {
+                    "name": "_value",
+                    "schema": {
+                        "type": "integer",
+                        "details": {
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        }
+                    }
+                }
+            ],
+            "returns": []
+        },
+        {
+            "name": "get",
+            "description": "This function is to retrieve the stored data.",
+            "params": [],
+            "returns": [
+                {
+                    "name": "output",
+                    "schema": {
+                        "type": "integer",
+                        "details": {
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "events": []
+}
