@@ -110,7 +110,7 @@
     	},
     	{
     	    "name": "WithdrawAmount",
-    	    "description": "This method is for witdraw the reward amount",
+    	    "description": "This method is for withdraw the reward amount",
     	    "params": [],
     	    "returns": [],
     	    "details": {}

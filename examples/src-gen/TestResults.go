@@ -8,8 +8,8 @@ import (
 
 type TestResults struct {
 	contractapi.Contract
-	Grade          string
-	amount         uint64
+	Grade string
+	amount uint64
 	studentAddress string
 	teacherAddress string
 	parentsAddress string
@@ -37,7 +37,7 @@ func (sc *TestResults) GetParentsAddress(ctx contractapi.TransactionContextInter
 
 func (sc *TestResults) CreateContract(ctx contractapi.TransactionContextInterface) error {
 	// This method is for create the contract
-	if ctx.GetClientIdentity().GetID() == sc.parentsAddress {
+	if ctx.GetClientIdentity().GetID()==sc.parentsAddress {
 		return fmt.Errorf("Only Parents")
 	}
 
@@ -45,16 +45,16 @@ func (sc *TestResults) CreateContract(ctx contractapi.TransactionContextInterfac
 }
 
 func (sc *TestResults) WithdrawAmount(ctx contractapi.TransactionContextInterface) error {
-	// This method is for witdraw the reward amount
-	if ctx.GetClientIdentity().GetID() == sc.studentAddress {
+	// This method is for withdraw the reward amount
+	if ctx.GetClientIdentity().GetID()==sc.studentAddress {
 		return fmt.Errorf("OnlyStudent")
 	}
 
-	if sc.amount > 0 {
+	if sc.amount>0 {
 		return fmt.Errorf("The amount needs to be greater than zero")
 	}
 
-	if sc.Grade == "A" {
+	if sc.Grade=="A" {
 		return fmt.Errorf("The grade needs to be an A")
 	}
 
@@ -67,16 +67,16 @@ func (sc *TestResults) WithdrawAmount(ctx contractapi.TransactionContextInterfac
 
 func (sc *TestResults) SetGrade(ctx contractapi.TransactionContextInterface, _Grade string) error {
 	// This method is for set the grade
-	if ctx.GetClientIdentity().GetID() == sc.teacherAddress {
+	if ctx.GetClientIdentity().GetID()==sc.teacherAddress {
 		return fmt.Errorf("Only Teacher")
 	}
 
-	if sc.Grade != "" {
+	if sc.Grade!="" {
 		return fmt.Errorf("The grade cant be empty")
 	}
 
 	// Send event when the grade is updated
-	eventPayload := fmt.Sprintf("NewGrade-> _Grade: %s", _Grade)
+	eventPayload := fmt.Sprintf("NewGrade-> _Grade: %s",_Grade)
 	ctx.GetStub().SetEvent("NewGrade", []byte(eventPayload))
 
 	return nil

@@ -76,7 +76,7 @@ contract TestResults {
 	}
 
 	function WithdrawAmount() public onlyStudent validAmount checkGrade  {
-		// This method is for witdraw the reward amount
+		// This method is for withdraw the reward amount
 		emit MoneyWithdrawn();
 	}
 

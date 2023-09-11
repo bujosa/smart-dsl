@@ -50,7 +50,7 @@ Contract TestResults {
 	}
 	
 	method WithdrawAmount() -> {
-		description: "This method is for witdraw the reward amount"
+		description: "This method is for withdraw the reward amount"
 		validators: onlyStudent, validAmount, checkGrade
 		events: MoneyWithdrawn
 	}
